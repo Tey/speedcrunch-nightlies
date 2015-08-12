@@ -10,12 +10,6 @@ The latest version to date is `mingw-w32-bin_i686-linux_20130523.tar.bz2`. Extra
     cd mingw-w32
     tar xjf ../mingw-w32-bin_i686-linux_20130523.tar.bz2
 
-There is a problem with the `windows.h` header, because it is included as `Windows.h` in SpeedCrunch source code (`src/gui/mainwindow.cpp`), and the header names are case sensitive under Linux. The correct name is `Windows.h` (from the Windows Platform SDK), so we need to create a symbolic link from `Windows.h` to `windows.h`:
-
-    cd i686-w64-mingw32/include/
-    ln -s windows.h Windows.h
-    cd ../..
-
 Finally, add the binaries to the `PATH` and export the base path for later use:
 
     export PATH=$PATH:`pwd`/bin
@@ -57,9 +51,11 @@ Download the source code of SpeedCrunch, and extract it:
 Build the Makefiles:
 
     cd SpeedCrunch-master/src
-    $QT_PATH_W32/bin/qmake -spec win32-g++ "QMAKE_LFLAGS += -static" "QMAKE_CXXFLAGS += -std=c++0x" speedcrunch.pro
+    $QT_PATH_W32/bin/qmake -spec win32-g++ speedcrunch.pro
 
-The "-static" linker flag is needed to avoid the need to add mingw DLL when shipping SpeedCrunch. The "-std=c++0x" compiler flag is needed in order to enable the C++ 2011 support. Normally, it is set by `speedcrunch.pro`, but a condition prevents that when compiling for Windows.
+For the portable version of SpeedCrunch, the option `"DEFINES+=SPEEDCRUNCH_PORTABLE"` needs to be added:
+
+    $QT_PATH_W32/bin/qmake -spec win32-g++ "DEFINES+=SPEEDCRUNCH_PORTABLE" speedcrunch.pro
 
 Then build the application:
 
@@ -70,6 +66,6 @@ The executable should be available in the `release` sub-folder as `speedcrunch.e
 ## Pack the SpeedCrunch executable (optional)
 The final size of `speedcrunch.exe` is a bit big (>10MB), probably because of all the static libraries it contains. In order to reduce its size, it is possible to pack it with UPX:
 
-    upx -9 speedcrunch.exe
+    upx --best speedcrunch.exe
 
 This should reduce the size of the executable by 60%-70%. The executable will be erased with the packed version. Note that the version that comes with the Ubuntu package manager is less efficient than the compiled version available on the [UPX project page](http://sourceforge.net/projects/upx/files/upx/), even though the version number is the same (v3.9.1).
