@@ -15,28 +15,30 @@ Finally, add the binaries to the `PATH` and export the base path for later use:
     export PATH=$PATH:`pwd`/bin
     export MINGW32_PATH=`pwd`
 
+It is also possible to use the system package manager to install mingw32 (`mingw-w64` for Debian/Ubuntu), but the associated compiler must support the C++11 features (g++ 4.9.0 or higher).
+
 ## Compiling Qt
 There are Qt binaries for mingw, but I did not managed to make them work (the tools are compiled for Windows, but we need them to work with Linux instead).
 
-Download the source code for the latest Qt 4.8 release:
-<http://download.qt.io/official_releases/qt/4.8/4.8.7/qt-everywhere-opensource-src-4.8.7.tar.gz>
+Download the source code for the latest Qt 5.5 release:
+<http://download.qt.io/official_releases/qt/5.5/5.5.0/single/qt-everywhere-opensource-src-5.5.0.tar.gz>
 
 Extract them, and go to the directory:
 
-    tar xzf ./qt-everywhere-opensource-src-4.8.7.tar.gz
-    cd qt-everywhere-opensource-src-4.8.7.tar.gz
+    tar xzf ./qt-everywhere-opensource-src-5.5.0.tar.gz
+    cd qt-everywhere-opensource-src-5.5.0
 
 Generate the Makefiles (takes some minutes):
 
-    nice ./configure -prefix $PWD/install-release-static -static -confirm-license -release -opensource -no-multimedia -no-audio-backend -no-phonon -no-phonon-backend -nomake examples -nomake demos -nomake docs -no-sse2 -xplatform win32-g++ -device-option CROSS_COMPILE=i686-w64-mingw32-
+    nice ./configure -prefix $PWD/install-release-static -static -confirm-license -release -opensource -no-sql-sqlite -no-openssl -no-audio-backend -nomake examples -nomake tests -no-sse2 -xplatform win32-g++ -device-option CROSS_COMPILE=i686-w64-mingw32- -skip qtactiveqt -skip qtmultimedia -skip qtdoc -skip qtcanvas3d -skip qtactiveqt -skip qtenginio -skip qtlocation -skip qtmultimedia -skip qtserialport -skip qtquick1 -skip qtquickcontrols -skip qtscript -skip qtsensors -skip qtwebkit -skip qtwebsockets -skip qtxmlpatterns
 
-Some of the Qt features not used by SpeedCrunch are disabled in order to speed up the build.
+Some of the Qt features not used by SpeedCrunch are disabled in order to speed up the build. Also, `qtactiveqt` fails to compile with mingw32.
 
 Then, build Qt:
 
     nice make install
 
-This will put all the files into the `install-release-static` sub-folder. The building process is pretty long (at least 30 minutes to more than 1 hour). It can be speed up by using the `-j` option of make, which parallelizes the build process. Just specify the number of threads your CPU have, and it should decrease the build time significantly (e.g.: `nice make -j 4 install` for a 4 threads CPU).
+This will put all the files into the `install-release-static` sub-folder. The building process is pretty long (at least 30 minutes to more than 1 hour). It could be speed up by using the `-j` option of make, which parallelizes the build process. Just specify the number of threads your CPU have, and it should decrease the build time significantly (e.g.: `nice make -j 4 install` for a 4 threads CPU). **Note however that the build process for Qt5.5 does not seem to work well with parallelization.**
 
 Once Qt has been built, set an environment variable to the path which contains the produced files:
 
@@ -45,12 +47,12 @@ Once Qt has been built, set an environment variable to the path which contains t
 ## Building SpeedCrunch
 Download the source code of SpeedCrunch, and extract it:
 
-    wget -O SpeedCrunch-master.zip https://github.com/speedcrunch/SpeedCrunch/archive/master.zip
+    wget -O SpeedCrunch-master.zip https://bitbucket.org/heldercorreia/speedcrunch/get/master.zip
     unzip SpeedCrunch-master.zip
 
 Build the Makefiles:
 
-    cd SpeedCrunch-master/src
+    cd heldercorreia-speedcrunch-*/src
     $QT_PATH_W32/bin/qmake -spec win32-g++ speedcrunch.pro
 
 For the portable version of SpeedCrunch, the option `"DEFINES+=SPEEDCRUNCH_PORTABLE"` needs to be added:
