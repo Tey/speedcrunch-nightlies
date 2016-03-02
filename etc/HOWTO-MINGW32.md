@@ -34,6 +34,8 @@ Generate the Makefiles (takes some minutes):
 
 Some of the Qt features not used by SpeedCrunch are disabled in order to speed up the build. Also, `qtactiveqt` fails to compile with mingw32.
 
+**FIXME: `qcollectiongenerator` is not built with that configuration.**
+
 Then, build Qt:
 
     nice make install
@@ -44,6 +46,15 @@ Once Qt has been built, set an environment variable to the path which contains t
 
     export QT_PATH_W32=`pwd`/install-release-static
 
+## Installing Python and required modules
+Install [Python](https://www.python.org/downloads/) 2.7+ or 3.4+ and [pip](https://pip.pypa.io/en/latest/installing/) if not already installed. Then install the required modules:
+
+    pip install --user 'sphinx>=1.3' quark-sphinx-theme 'pygments<=2.1.0'
+
+The `--user` option tells pip to install the modules only for the current user so that root access is not needed. The path where the executables have been built needs to be added to the PATH then:
+
+    export PATH=$PATH:$HOME/.local/bin
+
 ## Building SpeedCrunch
 Download the source code of SpeedCrunch, and extract it:
 
@@ -53,11 +64,13 @@ Download the source code of SpeedCrunch, and extract it:
 Build the Makefiles:
 
     cd heldercorreia-speedcrunch-*/src
-    $QT_PATH_W32/bin/qmake -spec win32-g++ speedcrunch.pro
+    $QT_PATH_W32/bin/qmake -spec win32-g++ PYTHON_EXECUTABLE=python speedcrunch.pro
 
 For the portable version of SpeedCrunch, the option `"DEFINES+=SPEEDCRUNCH_PORTABLE"` needs to be added:
 
-    $QT_PATH_W32/bin/qmake -spec win32-g++ "DEFINES+=SPEEDCRUNCH_PORTABLE" speedcrunch.pro
+    $QT_PATH_W32/bin/qmake -spec win32-g++ PYTHON_EXECUTABLE=python "DEFINES+=SPEEDCRUNCH_PORTABLE" speedcrunch.pro
+
+**FIXME: change `speedcrunch.pro` so that the default Python executable is set to "python" for `win32-g++` (i.e., mingw32)**
 
 Then build the application:
 
