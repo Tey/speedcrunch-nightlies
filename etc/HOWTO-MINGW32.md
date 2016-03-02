@@ -79,6 +79,7 @@ For the portable version of SpeedCrunch, the option `"DEFINES+=SPEEDCRUNCH_PORTA
     $QT_PATH_W32/bin/qmake -spec win32-g++ PYTHON_EXECUTABLE=python QCOLLECTIONGENERATOR_EXECUTABLE=/usr/bin/qcollectiongenerator "DEFINES+=SPEEDCRUNCH_PORTABLE" speedcrunch.pro
 
 **FIXME: change `speedcrunch.pro` so that the default Python executable is set to "python" for `win32-g++` (i.e., mingw32)**
+
 **FIXME: the manual does not show up when compiled that way**
 
 Then build the application:
