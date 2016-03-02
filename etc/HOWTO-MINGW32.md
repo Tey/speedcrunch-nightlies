@@ -30,9 +30,9 @@ Extract them, and go to the directory:
 
 Generate the Makefiles (takes some minutes):
 
-    nice ./configure -prefix $PWD/install-release-static -static -confirm-license -release -opensource -no-sql-sqlite -no-openssl -no-audio-backend -nomake examples -nomake tests -no-sse2 -xplatform win32-g++ -device-option CROSS_COMPILE=i686-w64-mingw32- -skip qtactiveqt -skip qtmultimedia -skip qtdoc -skip qtcanvas3d -skip qtactiveqt -skip qtenginio -skip qtlocation -skip qtmultimedia -skip qtserialport -skip qtquick1 -skip qtquickcontrols -skip qtscript -skip qtsensors -skip qtwebkit -skip qtwebsockets -skip qtxmlpatterns -make tools
+    nice ./configure -prefix $PWD/install-release-static -static -confirm-license -release -opensource -no-sql-sqlite -no-openssl -no-audio-backend -nomake examples -nomake tests -no-sse2 -xplatform win32-g++ -device-option CROSS_COMPILE=i686-w64-mingw32- -skip qtactiveqt -skip qtmultimedia -skip qtdoc -skip qtcanvas3d -skip qtactiveqt -skip qtenginio -skip qtlocation -skip qtmultimedia -skip qtserialport -skip qtquick1 -skip qtquickcontrols -skip qtscript -skip qtsensors -skip qtwebkit -skip qtwebsockets -skip qtxmlpatterns
 
-Some of the Qt features not used by SpeedCrunch are disabled in order to speed up the build. Also, `qtactiveqt` fails to compile with mingw32. The `tools` part was supposed to be built by default, but it is not built if not given explicitly using `-make tools` (and SpeedCrunch needs it for building the manual).
+Some of the Qt features not used by SpeedCrunch are disabled in order to speed up the build. Also, `qtactiveqt` fails to compile with mingw32.
 
 Then, build Qt:
 
@@ -43,6 +43,14 @@ This will put all the files into the `install-release-static` sub-folder. The bu
 Once Qt has been built, set an environment variable to the path which contains the produced files:
 
     export QT_PATH_W32=`pwd`/install-release-static
+
+If you want to move or rename the `install-release-static` folder, you will need to create the file `qt.conf` in the `bin` subfolder with the following content:
+
+    [Paths]
+    Prefix = ..
+    
+
+**FIXME: we need `qcollectiongenerator` in order to build the manual but we cannot build it from mingw using the `-make tools` option as this will produce a Windows executable which we cannot use for building SpeedCrunch for Windows from Linux. Maybe we have to install it using the distribution packages?**
 
 ## Installing Python and required modules
 Install [Python](https://www.python.org/downloads/) 2.7+ or 3.4+ and [pip](https://pip.pypa.io/en/latest/installing/) if not already installed. Then install the required modules:
