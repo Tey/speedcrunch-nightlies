@@ -50,7 +50,9 @@ If you want to move or rename the `install-release-static` folder, you will need
     Prefix = ..
     
 
-**FIXME: we need `qcollectiongenerator` in order to build the manual but we cannot build it from mingw using the `-make tools` option as this will produce a Windows executable which we cannot use for building SpeedCrunch for Windows from Linux. Maybe we have to install it using the distribution packages?**
+Some Qt tools are also needed to build the manual. They are not built using the previous method and even though they were, they would be built as Windows executable so they cannot be used from Linux. They need to be installed separately. On Ubuntu:
+
+    sudo apt-get install qttools5-dev-tools qt5-default
 
 ## Installing Python and required modules
 Install [Python](https://www.python.org/downloads/) 2.7+ or 3.4+ and [pip](https://pip.pypa.io/en/latest/installing/) if not already installed. Then install the required modules:
@@ -70,13 +72,14 @@ Download the source code of SpeedCrunch, and extract it:
 Build the Makefiles:
 
     cd heldercorreia-speedcrunch-*/src
-    $QT_PATH_W32/bin/qmake -spec win32-g++ PYTHON_EXECUTABLE=python speedcrunch.pro
+    $QT_PATH_W32/bin/qmake -spec win32-g++ PYTHON_EXECUTABLE=python QCOLLECTIONGENERATOR_EXECUTABLE=/usr/bin/qcollectiongenerator speedcrunch.pro
 
 For the portable version of SpeedCrunch, the option `"DEFINES+=SPEEDCRUNCH_PORTABLE"` needs to be added:
 
-    $QT_PATH_W32/bin/qmake -spec win32-g++ PYTHON_EXECUTABLE=python "DEFINES+=SPEEDCRUNCH_PORTABLE" speedcrunch.pro
+    $QT_PATH_W32/bin/qmake -spec win32-g++ PYTHON_EXECUTABLE=python QCOLLECTIONGENERATOR_EXECUTABLE=/usr/bin/qcollectiongenerator "DEFINES+=SPEEDCRUNCH_PORTABLE" speedcrunch.pro
 
 **FIXME: change `speedcrunch.pro` so that the default Python executable is set to "python" for `win32-g++` (i.e., mingw32)**
+**FIXME: the manual does not show up when compiled that way**
 
 Then build the application:
 
