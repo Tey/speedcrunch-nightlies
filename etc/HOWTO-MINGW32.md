@@ -30,11 +30,9 @@ Extract them, and go to the directory:
 
 Generate the Makefiles (takes some minutes):
 
-    nice ./configure -prefix $PWD/install-release-static -static -confirm-license -release -opensource -no-sql-sqlite -no-openssl -no-audio-backend -nomake examples -nomake tests -no-sse2 -xplatform win32-g++ -device-option CROSS_COMPILE=i686-w64-mingw32- -skip qtactiveqt -skip qtmultimedia -skip qtdoc -skip qtcanvas3d -skip qtactiveqt -skip qtenginio -skip qtlocation -skip qtmultimedia -skip qtserialport -skip qtquick1 -skip qtquickcontrols -skip qtscript -skip qtsensors -skip qtwebkit -skip qtwebsockets -skip qtxmlpatterns
+    nice ./configure -prefix $PWD/install-release-static -static -confirm-license -release -opensource -no-sql-sqlite -no-openssl -no-audio-backend -nomake examples -nomake tests -no-sse2 -xplatform win32-g++ -device-option CROSS_COMPILE=i686-w64-mingw32- -skip qtactiveqt -skip qtmultimedia -skip qtdoc -skip qtcanvas3d -skip qtactiveqt -skip qtenginio -skip qtlocation -skip qtmultimedia -skip qtserialport -skip qtquick1 -skip qtquickcontrols -skip qtscript -skip qtsensors -skip qtwebkit -skip qtwebsockets -skip qtxmlpatterns -make tools
 
-Some of the Qt features not used by SpeedCrunch are disabled in order to speed up the build. Also, `qtactiveqt` fails to compile with mingw32.
-
-**FIXME: `qcollectiongenerator` is not built with that configuration.**
+Some of the Qt features not used by SpeedCrunch are disabled in order to speed up the build. Also, `qtactiveqt` fails to compile with mingw32. The `tools` part was supposed to be built by default, but it is not built if not given explicitly using `-make tools` (and SpeedCrunch needs it for building the manual).
 
 Then, build Qt:
 
