@@ -30,7 +30,7 @@ Extract them, and go to the directory:
 
 Generate the Makefiles (takes some minutes):
 
-    nice ./configure -prefix $PWD/install-release-static -static -confirm-license -release -opensource -no-sql-sqlite -no-openssl -no-audio-backend -nomake examples -nomake tests -no-sse2 -xplatform win32-g++ -device-option CROSS_COMPILE=i686-w64-mingw32- -skip qtactiveqt -skip qtmultimedia -skip qtdoc -skip qtcanvas3d -skip qtactiveqt -skip qtenginio -skip qtlocation -skip qtmultimedia -skip qtserialport -skip qtquick1 -skip qtquickcontrols -skip qtscript -skip qtsensors -skip qtwebkit -skip qtwebsockets -skip qtxmlpatterns
+    nice ./configure -prefix $PWD/install-release-static -static -confirm-license -release -opensource -no-openssl -no-audio-backend -nomake examples -nomake tests -no-sse2 -xplatform win32-g++ -device-option CROSS_COMPILE=i686-w64-mingw32- -skip qtactiveqt -skip qtmultimedia -skip qtdoc -skip qtcanvas3d -skip qtenginio -skip qtlocation -skip qtserialport -skip qtquick1 -skip qtquickcontrols -skip qtscript -skip qtsensors -skip qtwebkit -skip qtwebsockets -skip qtxmlpatterns
 
 Some of the Qt features not used by SpeedCrunch are disabled in order to speed up the build. Also, `qtactiveqt` fails to compile with mingw32.
 
@@ -72,15 +72,15 @@ Download the source code of SpeedCrunch, and extract it:
 Build the Makefiles:
 
     cd heldercorreia-speedcrunch-*/src
-    $QT_PATH_W32/bin/qmake -spec win32-g++ PYTHON_EXECUTABLE=python QCOLLECTIONGENERATOR_EXECUTABLE=/usr/bin/qcollectiongenerator speedcrunch.pro
+    $QT_PATH_W32/bin/qmake -spec win32-g++ PYTHON_EXECUTABLE=python "QTPLUGIN+=qsqlite" QCOLLECTIONGENERATOR_EXECUTABLE=/usr/bin/qcollectiongenerator speedcrunch.pro
 
 For the portable version of SpeedCrunch, the option `"DEFINES+=SPEEDCRUNCH_PORTABLE"` needs to be added:
 
-    $QT_PATH_W32/bin/qmake -spec win32-g++ PYTHON_EXECUTABLE=python QCOLLECTIONGENERATOR_EXECUTABLE=/usr/bin/qcollectiongenerator "DEFINES+=SPEEDCRUNCH_PORTABLE" speedcrunch.pro
+    $QT_PATH_W32/bin/qmake -spec win32-g++ PYTHON_EXECUTABLE=python "QTPLUGIN+=qsqlite" QCOLLECTIONGENERATOR_EXECUTABLE=/usr/bin/qcollectiongenerator "DEFINES+=SPEEDCRUNCH_PORTABLE" speedcrunch.pro
 
 **FIXME: change `speedcrunch.pro` so that the default Python executable is set to "python" for `win32-g++` (i.e., mingw32)**
 
-**FIXME: the manual does not show up when compiled that way**
+**FIXME: change `speedcrunch.pro` in order to add "QTPLUGIN+=qsqlite" for `win32-g++` (i.e., mingw32)**
 
 Then build the application:
 
