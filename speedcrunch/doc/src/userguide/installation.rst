@@ -103,7 +103,7 @@ development builds of SpeedCrunch are available for the following platforms:
 * `Windows <dev-win_>`_
 * `Ubuntu <dev-ubuntu_>`_ (14.04 and later)
 
-.. _dev-win: https://github.com/Tey/speedcrunch-nightlies/tree/master/win32
+.. _dev-win: https://github.com/Tey/speedcrunch-nightlies/releases
 .. _dev-ubuntu: https://code.launchpad.net/~fkrull/+archive/ubuntu/speedcrunch-daily
 
 
