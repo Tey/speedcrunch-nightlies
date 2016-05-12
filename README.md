@@ -1,8 +1,9 @@
 # speedcrunch-nightlies
 Nightly builds from the official SpeedCrunch repository.
 
+**Please check the [Releases list](https://github.com/Tey/speedcrunch-nightlies/releases) to download the latest builds.**
+
 The sub-folders are:
 
-* `latest`: contains the latest builds (both portable and non-portable versions).
-* `win32`: contains all the builds for Windows (both portable and non-portable versions).
 * `etc`: contains documents and scripts related to the building.
+* `speedcrunch`: contains the version of SpeedCrunch source code that was compiled in the latest builds.
