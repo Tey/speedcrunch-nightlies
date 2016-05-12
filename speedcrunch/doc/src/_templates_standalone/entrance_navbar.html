@@ -1,0 +1,36 @@
+{% extends "navbar.html" %}
+
+{% block navcontent %}
+<div class="collapse navbar-collapse nav-collapse">
+  <ul class="nav navbar-nav">
+    <li><a href="{{ pathto('index') }}">{{  _('Home') }}</a></li>
+    <li><a href="{{ pathto('download') }}">{{  _('Get It') }}</a></li>
+    <li><a href="{{ pathto('introduction') }}">{{  _('Documentation') }}</a></li>
+    <li><a href="https://groups.google.com/forum/#!forum/speedcrunch">{{  _('Forum') }}</a></li>
+    <li class="dropdown">
+      <a role="button"
+         id="languageSelector"
+         class="dropdown-toggle"
+         data-toggle="dropdown"
+         data-target="#"
+         href="">  {{_('Contribute')}}<b class="caret"></b></a>
+      <ul class="dropdown-menu">                                      
+       <li> <a href="https://bitbucket.org/heldercorreia/speedcrunch"> <i class="fa fa-bitbucket"></i>&nbsp;Bitbucket </a></li>
+       <li> <a href="https://www.transifex.com/heldercorreia/speedcrunch/">{{ _('Help translating') }} </a></li>
+       <li> <a href="https://bitbucket.org/heldercorreia/speedcrunch/issues">{{ _('Report a bug') }} </a></li>
+      </ul>
+    </li>
+
+    {% block navbarextra %}
+    {% endblock %}
+    {% if theme_source_link_position == "nav" %}
+      <li class="hidden-sm">{% include "sourcelink.html" %}</li>
+    {% endif %}
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+  {% block language_selector %}
+    {% include "language.html" %}
+  {% endblock %}
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+<li class="dropdown">
+  <a role="button"
+     id="languageSelector"
+     class="dropdown-toggle"
+     data-toggle="dropdown"
+     data-target="#"
+     href=""> <span class="fa fa-language fa-lg hidden-lg hidden-xs" style="vertical-align:middle;"> </span><span class="hidden-sm hidden-md">{%- if language is none %} English {%- else %}{%- for lang in languages %}{%- if lang[0] is equalto language %} {{lang[1]}} {%- endif %} {%- endfor %}  {%- endif %}</span><b class="caret"></b></a>
+  <ul class="dropdown-menu">
+ {%- for lang in languages %}                                         
+   <li> <a href="{{ pathto('.',1) }}/../{{ lang[0] }}/{{ pagename }}.html"> {{lang[1]}} </a></li>
+ {%- endfor %} 
+  </ul>
+</li>

@@ -1,0 +1,70 @@
+/* Copyright (C) 2014 Helder Correia [http://heldercorreia.net] */
+
+body {
+    background: #300a24;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", verdana, sans-serif;
+}
+
+#menu {
+    width: 450px;
+    height: 464px;
+    top: 50%;
+    left: 50%;
+    margin-left: -225px;
+    margin-top: -232px;
+    position: fixed;
+    background: #988592;
+    background: radial-gradient(circle at 50% 50%, white, #300a24);
+    border-radius: 60px;
+    box-shadow: 0px 0px 15px 1px black;
+    -webkit-transition: opacity 1s linear;
+    transition: opacity 1s linear;
+}
+
+.transparent {
+    opacity: 0;
+}
+
+.full-opaque {
+    opacity: 1;
+}
+
+img {
+    border: none;
+    vertical-align: middle;
+}
+
+a:hover img {
+    opacity: 0.5;
+}
+
+#big-icon-section {
+    width: 256px;
+    height: 256px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url("images/icon.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.icon-section {
+    text-align: center;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#icon-section-top img {
+    margin: 20px 30px;
+}
+
+#icon-section-bottom img {
+    margin: 20px 20px;
+}

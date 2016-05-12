@@ -1,0 +1,158 @@
+{% extends "layout.html" %}
+
+{%- block htmltitle %}
+<title>SpeedCrunch</title>
+{%- endblock %}
+
+{% macro entranceNavBar() %}
+{% include "entrance_navbar.html" %}
+{% endmacro %}
+
+
+{%- block content %}
+{{ entranceNavBar() }}
+
+{%- block jumbotron %}
+    <div class="jumbotron">
+      <div class="container">
+        <h1>SpeedCrunch</h1>
+        <p>{% trans %}A fast, high precision and powerful desktop calculator. {% endtrans %}</p>
+        <p><a class="btn btn-primary btn-lg" href="{{ pathto('download') }}" role="button"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ _('Download') }}</a>
+        <a class="btn btn-default btn-lg " href="{{ pathto('introduction') }}" role="button"> <i class="fa fa-book fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ _('Documentation') }}</a></p>
+      </div>
+    </div>
+{%- endblock %}  
+<div class="container">
+  <p>{% trans %}SpeedCrunch is a high-precision scientific calculator with a broad range of features. It is available for Windows, OS X, and Linux in a number of languages. SpeedCrunch is free and open-source, licensed under the GPL.{% endtrans %}</p>
+</div>
+{%- block featurette %}
+  <!-- START THE FEATURETTES -->
+<div class="container">
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">{{ _('Fast &amp efficient.') }}</h2>
+      <p class="lead">{{ _('SpeedCrunch computes the result on fly, as you enter your input. Customizable syntax highlighting allows you to easily spot mistakes. Select a part of an expression with your cursor to evaluate that part only.') }}</p>
+    </div>
+    <div class="col-md-5">
+      <img class="featurette-image img-responsive center-block" src="_static/dummy400x250.png" alt="Generic placeholder image">
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7 col-md-push-5">
+      <h2 class="featurette-heading">{{ _('Easy to use.') }} <span class="text-muted">{{ _('Even for Grandma.') }}</span></h2>
+      <p class="lead">{{ _('The results are shown in a scrollable window. Both inputs and results can be easily recalled.') }}</p>
+      <p class="lead">{{ _('If you prefer the oldschool way, an on-screen keypad is available as well.') }}</p>
+    </div>
+    <div class="col-md-5 col-md-pull-7">
+      <img class="featurette-image img-responsive center-block" src="_static/dummy400x250.png" alt="Generic placeholder image">
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">{{ _('Powerful.') }}</h2>
+      <p class="lead">{{ _('SpeedCrunch comes with over 80 built-in mathematical functions. Easily define more on your own.') }}</p>
+      <p class="lead">{{ _('Support for variables to store your results, 50 digits precision, complex numbers, numeral bases and unit conversions, ... ') }}</p>
+      <p class="lead">{{ _('Naturally, tab-completion allows you to speed up your task.') }}</p>
+    </div>
+    <div class="col-md-5">
+      <img class="featurette-image img-responsive center-block" src="_static/dummy400x250.png" alt="Generic placeholder image">
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7 col-md-push-5">
+      <h2 class="featurette-heading">{{ _('Library included.') }}</h2>
+      <p class="lead">{{ _('A built-in formula book allows to you to review and insert commonly used formulas, such as the volume of a cone.') }}</p>
+      <p class="lead">{{ _('Or insert one out of over 150 built-in scientific constants.') }}</p>
+    </div>
+    <div class="col-md-5 col-md-pull-7">
+      <img class="featurette-image img-responsive center-block" src="_static/dummy400x250.png" alt="Generic placeholder image">
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">{{ _('Cross-platform.') }} <span class="text-muted">{{ _('And multi-language.') }}</span></h2>
+      <p class="lead">{{ _('SpeedCrunch is available for Windows, OSX and Linux, and comes in a number of languages.') }}</p>
+    </div>
+    <div class="col-md-5">
+      <div class="row" style="margin-top:20px">
+        <span class="col-md-4"><i class="fa fa-windows fa-5x"></i></span>
+        <span class="col-md-4"><i class="fa fa-apple fa-5x"></i></span>
+        <span class="col-md-4"><i class="fa fa-linux fa-5x"></i></span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+</div>
+  <!-- /END THE FEATURETTES -->
+{%- endblock %}
+
+
+{% if 0 %}
+{%- block carousel %}
+<div>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img class="first-slide img-responsive center-block" src="_static/logo.png" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>{{ _('Example headline.') }}</h1>
+              <p>{% trans %}Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.{% endtrans %}</p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="second-slide img-responsive center-block" src="_static/logo.png" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>{% trans %}Another example headline.{% endtrans %}</h1>
+              <p>{% trans %}Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.{% endtrans %}</p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="third-slide img-responsive center-block" src="_static/logo.png" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>{% trans %}One more for good measure.{% endtrans %}</h1>
+              <p>{% trans %}Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.{% endtrans %}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">{{ _('Previous') }}</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">{{ _('Next') }}</span>
+      </a>
+    </div><!-- /.carousel -->
+ </div>
+{%- endblock %}  
+{%- endif %}
+
+
+{%- endblock %}

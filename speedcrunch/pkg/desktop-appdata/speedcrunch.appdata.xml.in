@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2016 Felix Krull <f_krull@gmx.de> -->
+<component type="desktop">
+  <id>speedcrunch.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <update_contact>speedcrunch@googlegroups.com</update_contact>
+
+  <!-- TRANSLATORS: Name of the application, usually shouldn't be translated. -->
+  <_name>SpeedCrunch</_name>
+  <!-- TRANSLATORS: Short one-line description. -->
+  <_summary>A high-precision scientific calculator</_summary>
+  <description>
+    <_p>
+      SpeedCrunch is a fast, high-precision scientific calculator. It features a syntax-highlighted
+      scrollable display and is designed to be fully used via keyboard.
+    </_p>
+
+    <_p>
+      It includes many built-in maths functions and supports advanced features like
+      user-defined functions, complex numbers, and unit conversions. This is combined with
+      a simple yet powerful user interface featuring on-the-fly results preview, syntax highlighting,
+      and autocompletion.
+    </_p>
+
+    <_p>
+      SpeedCrunch is available for several platforms in a number of languages.
+    </_p>
+  </description>
+
+  <screenshots>
+    <!-- TODO: Placeholder, need better screenshots. -->
+    <screenshot type="default">https://bitbucket.org/repo/dR7BnG/images/3654665019-capture.png</screenshot>
+  </screenshots>
+
+  <url type="homepage">http://speedcrunch.org</url>
+  <url type="bugtracker">https://bitbucket.org/heldercorreia/speedcrunch/issues</url>
+  <!-- TODO: Adjust once the URL is clear. -->
+  <url type="help">http://speedcrunch.org/introduction.html</url>
+
+  <!-- We can't use the <translations> tag since our qm files are baked into the
+       executable so we just use a static list instead. See:
+       https://blogs.gnome.org/hughsie/2016/01/25/appdata-and-the-gettext-domain/#comment-5137
+       TODO: Maybe autogenerate this. -->
+  <translation/>
+  <languages>
+    <lang>hu</lang>
+    <lang>pt_PT</lang>
+    <lang>pt</lang>
+    <lang>de</lang>
+    <lang>ko</lang>
+    <lang>id</lang>
+    <lang>he</lang>
+    <lang>lt</lang>
+    <lang>nl</lang>
+    <lang>it</lang>
+    <lang>zh</lang>
+    <lang>ja</lang>
+    <lang>fr</lang>
+    <lang>ru</lang>
+    <lang>et</lang>
+    <lang>lv</lang>
+    <lang>eu</lang>
+    <lang>el</lang>
+    <lang>es_AR</lang>
+    <lang>en_GB</lang>
+    <lang>fi</lang>
+    <lang>ar</lang>
+    <lang>pl</lang>
+    <lang>uz@Latn</lang>
+    <lang>es</lang>
+    <lang>ca</lang>
+    <lang>sk</lang>
+    <lang>nb</lang>
+    <lang>tr</lang>
+    <lang>ro</lang>
+    <lang>sv</lang>
+    <lang>da</lang>
+    <lang>cs</lang>
+    <lang>vi</lang>
+    <lang>en</lang>
+  </languages>
+</component>

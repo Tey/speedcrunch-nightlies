@@ -1,0 +1,37 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Provide a file local_config.rb next to Vagrantfile with variable definitions
+# as below to customize certain VM settings.
+
+begin
+  require_relative 'local_config'
+rescue LoadError
+  Cpus = 2
+  Memory = 2048
+end
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure(2) do |config|
+  # The most common configuration options are documented and commented below.
+  # For a complete reference, please see the online documentation at
+  # https://docs.vagrantup.com.
+
+  # A rolling CentOS 6 box.
+  config.vm.box = "geerlingguy/centos6"
+  config.vm.synced_folder "../..", "/speedcrunch-source"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = Memory
+    vb.cpus = Cpus
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    set -e
+    sh /vagrant/install-build-deps.sh
+    sudo -u vagrant sh /vagrant/get-qt-source.sh
+  SHELL
+end

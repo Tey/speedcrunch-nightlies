@@ -1,0 +1,10 @@
+{%- if pagename != "search" %}
+<li><form class="navbar-form" action="{{ pathto('search') }}" method="get">
+ <div class="form-group has-feedback">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+  <i class="glyphicon glyphicon-search form-control-feedback"></i>
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form></li>
+{%- endif %}

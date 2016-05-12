@@ -1,0 +1,26 @@
+{# Switch to icon instead of text in `sm` view size for BS3 only. #}
+{%- if prev %}
+  <li>
+    <a href="{{ prev.link|e }}" data-toggle="tooltip" title="{{ _('Previous Page: ') + prev.title|striptags }}">
+      {%- if theme_bootstrap_version == "2" -%}<span class="icon-chevron-left"></span>{%- endif -%}
+      {%- if theme_bootstrap_version == "3" -%}<span class="glyphicon glyphicon-chevron-left"></span>{%- endif -%}
+      <span class="hidden-sm hidden-tablet"> {{ _('Previous')}}</span>
+    </a>
+  </li>
+{%- endif %}
+{%- if next %}
+  <li>
+    <a href="{{ next.link|e }}" data-toggle="tooltip" title="{{ _('Next Page: ') + next.title|striptags }}">
+      <span class="hidden-sm hidden-tablet">{{ _('Next') }}</span>
+      {%- if theme_bootstrap_version == "2" -%}<span class="icon-chevron-right"></span>{%- endif -%}
+      {%- if theme_bootstrap_version == "3" -%}<span class="glyphicon glyphicon-chevron-right"></span>{%- endif -%}
+
+    </a>
+  </li>
+{%- endif %}
+
+<script>
+$(document).ready(function(){
+    $jqTheme('[data-toggle="tooltip"]').tooltip({placement: "bottom"});   
+});
+</script>

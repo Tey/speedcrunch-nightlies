@@ -1,0 +1,745 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016, The SpeedCrunch Developers
+# This file is distributed under the same license as the SpeedCrunch package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: test\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-23 18:39+0100\n"
+"PO-Revision-Date: 2016-02-23 18:05+0000\n"
+"Last-Translator: Pol Welter <polwelter@gmail.com>\n"
+"Language-Team: French (France) (http://www.transifex.com/polwel/test-439/language/fr_FR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ..\..\reference\basic.rst:2
+msgid "Basic math functions"
+msgstr ""
+
+#: ..\..\reference\basic.rst:5 ..\..\reference\statistical.rst:5
+msgid "General"
+msgstr ""
+
+#: ..\..\reference\basic.rst:9
+msgid ""
+"Returns the absolute value of ``x``, commonly written as \\|x\\|. In real "
+"mode, it flips the sign of negative number, thus enforcing it to be "
+"positive. When given a complex number as argument, it returns the modulus of"
+" the number."
+msgstr ""
+
+#: ..\..\reference\basic.rst:11
+msgid "The argument can have a dimension."
+msgstr ""
+
+#: ..\..\reference\basic.rst:13
+msgid "Example"
+msgstr ""
+
+#: ..\..\reference\basic.rst:22
+msgid ""
+"Returns the square root of *x*. Without **complex numbers** are enabled, "
+":func:`sqrt` is only defined for *x > 0*. In complex mode, any complex "
+"number may be supplied to :func:`sqrt`, yielding the complex root in the "
+"upper half plane."
+msgstr ""
+
+#: ..\..\reference\basic.rst:24
+msgid "The argument may have a dimension."
+msgstr ""
+
+#: ..\..\reference\basic.rst:28
+msgid "Computes the third (cubic) root of *x*."
+msgstr ""
+
+#: ..\..\reference\basic.rst:30
+msgid ""
+"In **real mode**, it accepts any real number. Negative numbers will yield a "
+"negative cubic root. ::"
+msgstr ""
+
+#: ..\..\reference\basic.rst:34
+msgid ""
+"In **complex mode**, :func:`cbrt` accetps any complex input. The result will"
+" generally be the first complex root, i.e. the one with a phase between 0 "
+"and π/3. Real negative arguments will however still yield a real (negative) "
+"result, thus complying with the function's behaviour in **real mode**. Use "
+"``x^(1/3)`` to enforce the first complex root."
+msgstr ""
+
+#: ..\..\reference\basic.rst:38
+msgid "Computes the natural exponential function."
+msgstr ""
+
+#: ..\..\reference\basic.rst:40 ..\..\reference\basic.rst:212
+#: ..\..\reference\basic.rst:220 ..\..\reference\basic.rst:228
+msgid "The argument must be dimensionless."
+msgstr ""
+
+#: ..\..\reference\basic.rst:43
+msgid ":func:`ln` (natural logarithm)"
+msgstr ""
+
+#: ..\..\reference\basic.rst:44
+msgid ":func:`lg` (binary logarithm)"
+msgstr ""
+
+#: ..\..\reference\basic.rst:45
+msgid ":func:`log` (arbitrary base logarithm)"
+msgstr ""
+
+#: ..\..\reference\basic.rst:49
+msgid ""
+"Computes the natural logarithm. In **real mode**, the argument must be real "
+"and >0."
+msgstr ""
+
+#: ..\..\reference\basic.rst:51
+msgid ""
+"In **complex mode** any non-zero number may be supplied. The result will be "
+"the principal value. The branch cut runs across the negative real axis. "
+"Nevertheless, in SpeedCrunch :func:`ln` is defined for negative real "
+"numbers, giving `ln(-x) = ln(\\|x\\|)) + πj``, extending the branch from the"
+" *upper* half-plane."
+msgstr ""
+
+#: ..\..\reference\basic.rst:55
+msgid ""
+"Computes the binary logarithm. In **complex mode** the same rules apply as "
+"for :func:`ln`."
+msgstr ""
+
+#: ..\..\reference\basic.rst:59
+msgid ""
+"Computes the decimal logarithm. In **complex mode** the same rules apply as "
+"for :func:`ln`."
+msgstr ""
+
+#: ..\..\reference\basic.rst:63
+msgid ""
+"Computes the logarithm of base *n* . In **complex mode** the same rules "
+"apply as for :func:`ln`."
+msgstr ""
+
+#: ..\..\reference\basic.rst:67
+msgid "Trigonometric & inverse trigonometric"
+msgstr ""
+
+#: ..\..\reference\basic.rst:71
+msgid ""
+"Returns the sine of *x*. The behaviour depends on both **angle mode** "
+"(degrees or radians) and on whether **complex numbers** are enabled."
+msgstr ""
+
+#: ..\..\reference\basic.rst:73
+msgid ""
+"In **degrees** mode, the argument is ssumed to be expressed in degrees, such"
+" that :func:`sin` is periodic with a period of 360 degrees: *sin(x) = "
+"sin(x+360)*. Complex arguments are not allowed in **degrees** mode, "
+"regardless of the corresponding setting."
+msgstr ""
+
+#: ..\..\reference\basic.rst:75
+msgid ""
+"When **radians** are set as angle unit, :func:`sin` will be 2π-periodic. The"
+" argument may be complex."
+msgstr ""
+
+#: ..\..\reference\basic.rst:77 ..\..\reference\basic.rst:96
+#: ..\..\reference\basic.rst:149
+msgid ""
+"For real argumenents beyond approx. \\|x\\|>10\\ :sup:`77`, SpeedCrunch no "
+"longer recognizes the periodicity of the function and issues an error."
+msgstr ""
+
+#: ..\..\reference\basic.rst:79
+msgid "The argument of :func:`sin` must be dimensionless."
+msgstr ""
+
+#: ..\..\reference\basic.rst:81
+msgid "The inverse function is :func:`arcsin`."
+msgstr ""
+
+#: ..\..\reference\basic.rst:84 ..\..\reference\basic.rst:122
+#: ..\..\reference\basic.rst:137
+msgid ":func:`cos`"
+msgstr ""
+
+#: ..\..\reference\basic.rst:85 ..\..\reference\basic.rst:104
+#: ..\..\reference\basic.rst:139
+msgid ":func:`tan`"
+msgstr ""
+
+#: ..\..\reference\basic.rst:86 ..\..\reference\basic.rst:105
+#: ..\..\reference\basic.rst:124
+msgid ":func:`cot`"
+msgstr ""
+
+#: ..\..\reference\basic.rst:90
+msgid ""
+"Returns the cosine of *x*. The behaviour depends on both **angle mode** "
+"(degrees or radians) and on whether **complex numbers** are enabled."
+msgstr ""
+
+#: ..\..\reference\basic.rst:92
+msgid ""
+"In **degrees** mode, the argument is ssumed to be expressed in degrees, such"
+" that :func:`cos` is periodic with a period of 360 degrees: *cos(x) = "
+"cos(x+360)*. Complex arguments are not allowed in **degrees** mode, "
+"regardless of the corresponding setting."
+msgstr ""
+
+#: ..\..\reference\basic.rst:94
+msgid ""
+"When **radians** are set as angle unit, :func:`cos` will be 2π-periodic. The"
+" argument may be complex."
+msgstr ""
+
+#: ..\..\reference\basic.rst:98 ..\..\reference\basic.rst:151
+msgid "The argument of :func:`cos` must be dimensionless."
+msgstr ""
+
+#: ..\..\reference\basic.rst:100
+msgid "The inverse function is :func:`arccos`."
+msgstr ""
+
+#: ..\..\reference\basic.rst:103 ..\..\reference\basic.rst:123
+#: ..\..\reference\basic.rst:138
+msgid ":func:`sin`"
+msgstr ""
+
+#: ..\..\reference\basic.rst:106
+msgid ":func:`sec`"
+msgstr ""
+
+#: ..\..\reference\basic.rst:107
+msgid ":func:`arccos`"
+msgstr ""
+
+#: ..\..\reference\basic.rst:111
+msgid ""
+"Returns the tangent of *x*. The behaviour depends on both **angle mode** "
+"(degrees or radians) and on whether **complex numbers** are enabled."
+msgstr ""
+
+#: ..\..\reference\basic.rst:113
+msgid ""
+"In **degrees** mode, the argument is ssumed to be expressed in degrees, such"
+" that :func:`tan` is periodic with a period of 180 degrees: *tan(x) = "
+"tan(x+180)*. Complex arguments are not allowed in **degrees** mode, "
+"regardless of the corresponding setting."
+msgstr ""
+
+#: ..\..\reference\basic.rst:115
+msgid ""
+"When **radians** are set as angle unit, :func:`tan` will be π-periodic. The "
+"argument may be complex."
+msgstr ""
+
+#: ..\..\reference\basic.rst:117
+msgid "The argument of :func:`tan` must be dimensionless."
+msgstr ""
+
+#: ..\..\reference\basic.rst:119
+msgid "The inverse function is :func:`arctan`."
+msgstr ""
+
+#: ..\..\reference\basic.rst:128
+msgid ""
+"Returns the cotangent of *x*. The behaviour depends on both **angle mode** "
+"(degrees or radians) and on whether **complex numbers** are enabled."
+msgstr ""
+
+#: ..\..\reference\basic.rst:130
+msgid ""
+"In **degrees** mode, the argument is ssumed to be expressed in degrees, such"
+" that :func:`cot` is periodic with a period of 180 degrees: *cot(x) = "
+"cot(x+180)*. Complex arguments are not allowed in **degrees** mode, "
+"regardless of the corresponding setting."
+msgstr ""
+
+#: ..\..\reference\basic.rst:132
+msgid ""
+"When **radians** are set as angle unit, :func:`cot` will be π-periodic. The "
+"argument may be complex."
+msgstr ""
+
+#: ..\..\reference\basic.rst:134
+msgid "The argument of :func:`cot` must be dimensionless."
+msgstr ""
+
+#: ..\..\reference\basic.rst:143
+msgid ""
+"Returns the secant of *x*, defined as the reciprocal cosine of *x*: `sec(x) "
+"= 1/cos(x)` . The behaviour depends on both **angle mode** (degrees or "
+"radians) and on whether **complex numbers** are enabled."
+msgstr ""
+
+#: ..\..\reference\basic.rst:145
+msgid ""
+"In **degrees** mode, the argument is ssumed to be expressed in degrees, such"
+" that :func:`sec` is periodic with a period of 360 degrees: *sec(x) = "
+"sec(x+360)*. Complex arguments are not allowed in **degrees** mode, "
+"regardless of the corresponding setting."
+msgstr ""
+
+#: ..\..\reference\basic.rst:147
+msgid ""
+"When **radians** are set as angle unit, :func:`sec` will be 2π-periodic. The"
+" argument may be complex."
+msgstr ""
+
+#: ..\..\reference\basic.rst:155
+msgid "Returns the cosecant of *x*."
+msgstr ""
+
+#: ..\..\reference\basic.rst:158
+msgid "TODO: Add more info"
+msgstr ""
+
+#: ..\..\reference\basic.rst:163
+msgid "Returns the inverse cosine of *x*, such that ``cos(arccos(x)) = x``."
+msgstr ""
+
+#: ..\..\reference\basic.rst:165 ..\..\reference\basic.rst:179
+#: ..\..\reference\basic.rst:194
+msgid ""
+"The behaviour of the function depends on both the **angle mode** (degrees or"
+" radians) and on whether **complex numbers** are enabled."
+msgstr ""
+
+#: ..\..\reference\basic.rst:167
+msgid ""
+"In **degreees** mode, :func:`arccos` takes a real argument from [--1, 1], "
+"and the return value is in the range [0, 180]. Real arguments outside [--1, "
+"1] and complex numbers are not allowed in **degrees** mode."
+msgstr ""
+
+#: ..\..\reference\basic.rst:169
+msgid ""
+"When **radians** are set as angle unit, :func:`arccos` maps an element from "
+"[--1, 1] to a value in [0, π]. When **complex numbers** are enabled in "
+"addition, :func:`arccos` may take any argument from the complex plane. In "
+"complex mode, ``arccos(-1) = π`` and ``arccos(1) = 0`` will yield the same "
+"result as in real mode."
+msgstr ""
+
+#: ..\..\reference\basic.rst:171 ..\..\reference\basic.rst:185
+msgid "The argument of :func:`arccos` must be dimensionless."
+msgstr ""
+
+#: ..\..\reference\basic.rst:173
+msgid "The inverse function is :func:`cos`."
+msgstr ""
+
+#: ..\..\reference\basic.rst:177
+msgid "Returns the inverse sine of *x*, such that ``sin(arcsin(x)) = x``."
+msgstr ""
+
+#: ..\..\reference\basic.rst:181
+msgid ""
+"In **degreees** mode, :func:`arcsin` takes a real argument from [--1, 1], "
+"and the return value is in the range [--90, 90]. Real arguments outside "
+"[--1, 1] and complex numbers are not allowed in **degrees** mode."
+msgstr ""
+
+#: ..\..\reference\basic.rst:183
+msgid ""
+"When **radians** are set as angle unit, :func:`arcsin` maps an element from "
+"[--1, 1] to a value in [--π/2, π/2]. When **complex numbers** are enabled in"
+" addition, :func:`arcsin` may take any argument from the complex plane. In "
+"complex mode, ``arcsin(-1) = π/2`` and ``arcsin(1) = π/2`` will yield the "
+"same result as in real mode."
+msgstr ""
+
+#: ..\..\reference\basic.rst:187
+msgid "The inverse function is :func:`sin`."
+msgstr ""
+
+#: ..\..\reference\basic.rst:192
+msgid "Returns the inverse sine of *x*, such that ``tan(arctan(x)) = x``."
+msgstr ""
+
+#: ..\..\reference\basic.rst:196
+msgid ""
+"In **degreees** mode, :func:`arctan` takes a real argument, and the return "
+"value is in the range [-90, 90]. Complex arguments are not allowed in "
+"**degrees** mode."
+msgstr ""
+
+#: ..\..\reference\basic.rst:198
+msgid ""
+"When **radians** are set as angle unit, :func:`arctan` maps a real number to"
+" a value in [-π/2, π/2]. When **complex numbers** are enabled in addition, "
+":func:`arctan` may take any argument from the complex plane, except for +/- "
+"j."
+msgstr ""
+
+#: ..\..\reference\basic.rst:200
+msgid "The argument of :func:`arctan` must be dimensionless."
+msgstr ""
+
+#: ..\..\reference\basic.rst:202
+msgid "The inverse function is :func:`tan`."
+msgstr ""
+
+#: ..\..\reference\basic.rst:206
+msgid "Hyperbolic & inverse hyperbolic"
+msgstr ""
+
+#: ..\..\reference\basic.rst:210
+msgid ""
+"Returns the hyperbolic sine of *x*. In **complex mode** any complex number "
+"may be used as argument."
+msgstr ""
+
+#: ..\..\reference\basic.rst:214
+msgid "The inverse function is :func:`arsinh`."
+msgstr ""
+
+#: ..\..\reference\basic.rst:218
+msgid ""
+"Returns the hyperbolic cosine of *x*. In **complex mode** any complex number"
+" may be used as argument."
+msgstr ""
+
+#: ..\..\reference\basic.rst:222
+msgid "The inverse function is :func:`arcosh`."
+msgstr ""
+
+#: ..\..\reference\basic.rst:226
+msgid ""
+"Returns the hyperbolic tangent of *x*. In **complex mode** any complex "
+"number may be used as argument."
+msgstr ""
+
+#: ..\..\reference\basic.rst:230
+msgid "The inverse function is :func:`artanh`."
+msgstr ""
+
+#: ..\..\reference\basic.rst:234
+msgid ""
+"Computes the area hyperbolic sine of `x`, the inverse fuction to "
+":func:`sinh`. `arsinh(x)` is the only solution to *cosh(y) = x*."
+msgstr ""
+
+#: ..\..\reference\basic.rst:236
+msgid ""
+"In complex mode, the function is defined for any complex *z* by arsinh(z) = "
+"ln[z + (z\\ :sup:`2`+1)\\ :sup`1/2`]."
+msgstr ""
+
+#: ..\..\reference\basic.rst:238 ..\..\reference\basic.rst:246
+#: ..\..\reference\basic.rst:255
+msgid "The function only accepts dimensionless arguments."
+msgstr ""
+
+#: ..\..\reference\basic.rst:242
+msgid ""
+"Computes the area hyperbolic cosine of `x`, the inverse fuction to "
+":func:`cosh`. `arcosh (x)` is the positive solution to *cosh(y) = x*. Except"
+" for `x=1`, the second solution to this equatiopn will be given by "
+"`--arcosh(x)`."
+msgstr ""
+
+#: ..\..\reference\basic.rst:244
+msgid ""
+"In real mode, the parameter `x` must be >1. In complex mode, the function is"
+" defined for any complex *z* by arcosh(z) = ln[z + (z\\ :sup:`2`-1)\\ "
+":sup:`2`]."
+msgstr ""
+
+#: ..\..\reference\basic.rst:251
+msgid ""
+"Computes the area hyperbolic tangent of `x`, the inverse function to tanh y."
+" `artanh (x)` is the only solution to tanh(y) = x*. In real mode, the "
+"parameter `x` has to fulfil -1 < `x` < 1."
+msgstr ""
+
+#: ..\..\reference\basic.rst:253
+msgid ""
+"In complex mode, `artanh` takes any argument, except for -1 and +1. In the "
+"complex plane it is defined by artanh(z) = 1/2 * ln[(z+1)/(z-1)]."
+msgstr ""
+
+#: ..\..\reference\basic.rst:258
+msgid "Special"
+msgstr ""
+
+#: ..\..\reference\basic.rst:266
+msgid "Various"
+msgstr ""
+
+#: ..\..\reference\functions.rst:2
+msgid "Built-in functions"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:2
+msgid "IEEE-754 Functions"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:6
+msgid ""
+"IEEE-754 is a standard for the representation of and computations with "
+"floating point numbers in binary systems. It is widely used by floating "
+"point implementations in CPUs. These functions implement encoding and "
+"decoding binary representations of floating point numbers according to "
+"IEEE-754."
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:11
+msgid ""
+"An IEEE-754 binary float consists of three parts: a sign bit, the exponent "
+"and the significand (sometimes called the mantissa). From these parts, the "
+"value is then calculated using the following formula: ``-1 ^ sign * 2 ^ "
+"(exponent - bias)  * 1.significand``.  The standard defines multiple binary "
+"formats of different sizes that all follow these rules, but differ in the "
+"number of bits allocated for the exponent and significand. The bias for the "
+"default formats is defined as ``bias = (2 ^ (exponent_bits - 1)) - 1``. See "
+"`this article`_ for a more detailed introduction into the subject."
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:21
+msgid "The following binary float formats are defined by the standard:"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:24
+msgid "Name"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:24
+msgid "Also known as"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:24
+msgid "Exponent bits"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:24
+msgid "Significand bits"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:26
+msgid "``binary16``"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:26
+msgid "Half precision"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:26
+msgid "5"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:26
+msgid "10"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:27
+msgid "``binary32``"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:27
+msgid "Single precisision"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:27
+msgid "8"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:27
+msgid "23"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:28
+msgid "``binary64``"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:28
+msgid "Double precision"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:28
+msgid "11"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:28
+msgid "52"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:29
+msgid "``binary128``"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:29
+msgid "Quad precision"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:29
+msgid "15"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:29
+msgid "112"
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:32
+msgid ""
+"In many programming languages, the ``binary32`` format is available as "
+"``float`` and ``binary64`` is available as ``double``."
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:38
+msgid "Encode a floating point number into a IEEE-754 binary representation."
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:40
+msgid "The floating point value to encode."
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:41 ..\..\reference\ieee754.rst:51
+msgid "The lenth of the exponent part, in bits."
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:42 ..\..\reference\ieee754.rst:52
+msgid "The length of the signficand part, in bits."
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:43 ..\..\reference\ieee754.rst:53
+msgid ""
+"The exponent bias to use. Derived from the length of the exponent if not "
+"specified."
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:48
+msgid "Calculate the value of an IEEE-754 binary float."
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:50
+msgid "The binary float to decode."
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:58
+msgid "Encode ``x`` in the half-precision binary format."
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:62
+msgid "Decode the half-precision binary float ``x``."
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:66
+msgid "Encode ``x`` in the single-precision binary format."
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:70
+msgid "Decode the single-precision binary float ``x``."
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:74
+msgid "Encode ``x`` in the double-precision binary format."
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:78
+msgid "Decode the double-precision binary float ``x``."
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:82
+msgid "Encode ``x`` in the quad-precision binary format."
+msgstr ""
+
+#: ..\..\reference\ieee754.rst:86
+msgid "Decode the quad-precision binary float ``x``."
+msgstr ""
+
+#: ..\..\reference\index.rst:2
+msgid "Reference"
+msgstr ""
+
+#: ..\..\reference\index.rst:4
+msgid ""
+"Here you may find any documentation on functions, constantrs, units, etc. "
+"built-in to SpeedCrunch."
+msgstr ""
+
+#: ..\..\reference\integer.rst:2
+msgid "Integer & bitwise operations"
+msgstr ""
+
+#: ..\..\reference\integer.rst:4
+msgid ""
+"Note that unlike in most programming languages, SpeedCrunch does *not* "
+"represent negative binary numbers by their two's complement. This is due to "
+"the fact that mathengine does not represent an integer with a fixed number "
+"of bits. Instead, the sign is stored as a separate property. Thus, while "
+"usually the signed 16-bit integers *0xFFFF* and *-1* are identical, they are"
+" distinct in SpeedCrunch."
+msgstr ""
+
+#: ..\..\reference\integer.rst:6
+msgid ""
+"To specify large integers, prefer the use of the shift operators (``1 << "
+"n``) to exponentiation (``2^n``). The latter will be performed as floating "
+"point, and will be prone to rounding errors. In particular, the result might"
+" not be integer."
+msgstr ""
+
+#: ..\..\reference\integer.rst:10
+msgid ""
+"Performs a bitwise logical AND on the submitted parameters (one or more). "
+"All parameters  have to be real integers from the range --2\\ :sup:`255` to "
+"+2\\ :sup:`255`--1 (signed or unsigned 256 bit integers), non integer "
+"arguments are rounded towards zero. The result ranges from --2\\ :sup:`255` "
+"to +2\\ :sup:`255`--1 (signed integer). Note that ``and(x)`` is not the "
+"identity, because the unsigned +2\\ :sup:`255` is mapped to the signed --2\\"
+" :sup:`255` for example. An error is returned if the parameters are not in "
+"the valid range."
+msgstr ""
+
+#: ..\..\reference\integer.rst:14
+msgid ""
+"Performs a bitwise logical OR on the submitted parameters (one or more). All"
+" parameters have to be integers from the range --2\\ :sup:`255` to +2\\ "
+":sup:`255`--1 (signed integer), non integer arguments are rounded towards "
+"zero. Note that ``or(x)`` is not the identity, because the unsigned 2\\ "
+":sup:`255` is mapped to the signed --2\\ :sup:`255`, for example."
+msgstr ""
+
+#: ..\..\reference\integer.rst:18
+msgid ""
+"Performs a bitwise logical XOR on the submitted parameters (one or more). "
+"All parameters have to be integers from the range --2\\ :sup:`255` to +2\\ "
+":sup:`255`--1  (signed integer), non integer arguments are rounded towards "
+"zero. Note that ``xor(x)`` is not the identity, because the unsigned 2\\ "
+":sup:`255` is mapped to the signed --2\\ :sup:`255`, for example."
+msgstr ""
+
+#: ..\..\reference\integer.rst:22
+msgid ""
+"The :func:`not` function is defined by ``not(x) = -x-1``, giving the same "
+"result as the one's complement operator ``~`` in C/C++."
+msgstr ""
+
+#: ..\..\reference\integer.rst:24
+msgid "The function does *not* simpy flip the bits!"
+msgstr ""
+
+#: ..\..\reference\statistical.rst:2
+msgid "Statistical Functions"
+msgstr ""
+
+#: ..\..\reference\statistical.rst:22
+msgid "Binomial distribution"
+msgstr ""
+
+#: ..\..\reference\statistical.rst:29
+msgid "Hypergeometric distribution"
+msgstr ""
+
+#: ..\..\reference\statistical.rst:36
+msgid "Poisson Distribution"
+msgstr ""

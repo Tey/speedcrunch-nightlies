@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>speedcrunch.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <update_contact>speedcrunch@googlegroups.com</update_contact>
+
+  
+  <name>SpeedCrunch</name>
+  <name xml:lang="de">SpeedCrunch</name>
+  
+  <summary>A high-precision scientific calculator</summary>
+  <summary xml:lang="de">Ein hochpräziser wissenschaftlicher Taschenrechner</summary>
+  <description>
+    <p>SpeedCrunch is a fast, high-precision scientific calculator. It features a syntax-highlighted scrollable display and is designed to be fully used via keyboard.</p>
+    <p xml:lang="de">SpeedCrunch ist ein schneller, hochpräziser, wissenschaftlicher Taschenrechner. Es bietet eine scrollbare Anzeige mit Syntaxhervorhebung und ist auf vollständige Tastaturbedienung ausgelegt.</p>
+
+    <p>It includes many built-in maths functions and supports advanced features like user-defined functions, complex numbers, and unit conversions. This is combined with a simple yet powerful user interface featuring on-the-fly results preview, syntax highlighting, and autocompletion.</p>
+    <p xml:lang="de">Es enthält viele eingebaute Mathematikfunktionen und unterstützt fortgeschrittene Funktionen wie benutzerdefinierte Funktionen, komplexe Zahlen und Einheitenumwandlungen. Dies ist verbunden mit einer einfacher, aber leistungsfähigen Benutzeroberfläche mit dynamischer Ergebnisvorschau, Syntaxhervorhebung und automatischer Vervollständigung.</p>
+
+    <p>SpeedCrunch is available for several platforms in a number of languages.</p>
+    <p xml:lang="de">SpeedCrunch ist für verschiedene Plattformen in einer Anzahl von Sprachen verfügbar.</p>
+  </description>
+
+  <screenshots>
+    
+    <screenshot type="default">https://bitbucket.org/repo/dR7BnG/images/3654665019-capture.png</screenshot>
+  </screenshots>
+
+  <url type="homepage">http://speedcrunch.org</url>
+  <url type="bugtracker">https://bitbucket.org/heldercorreia/speedcrunch/issues</url>
+  
+  <url type="help">http://speedcrunch.org/introduction.html</url>
+
+  
+  <translation/>
+  <languages>
+    <lang>hu</lang>
+    <lang>pt_PT</lang>
+    <lang>pt</lang>
+    <lang>de</lang>
+    <lang>ko</lang>
+    <lang>id</lang>
+    <lang>he</lang>
+    <lang>lt</lang>
+    <lang>nl</lang>
+    <lang>it</lang>
+    <lang>zh</lang>
+    <lang>ja</lang>
+    <lang>fr</lang>
+    <lang>ru</lang>
+    <lang>et</lang>
+    <lang>lv</lang>
+    <lang>eu</lang>
+    <lang>el</lang>
+    <lang>es_AR</lang>
+    <lang>en_GB</lang>
+    <lang>fi</lang>
+    <lang>ar</lang>
+    <lang>pl</lang>
+    <lang>uz@Latn</lang>
+    <lang>es</lang>
+    <lang>ca</lang>
+    <lang>sk</lang>
+    <lang>nb</lang>
+    <lang>tr</lang>
+    <lang>ro</lang>
+    <lang>sv</lang>
+    <lang>da</lang>
+    <lang>cs</lang>
+    <lang>vi</lang>
+    <lang>en</lang>
+  </languages>
+</component>

@@ -1,0 +1,266 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>IEEE-754 Functions</title>
+    
+    <link rel="stylesheet" href="../_static/quark.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../" type="text/css" />
+    <link rel="top" title="documentación de SpeedCrunch - 0.12" href="../index.html" />
+    <link rel="up" title="Reference" href="index.html" />
+    <link rel="next" title="Constants" href="constants.html" />
+    <link rel="prev" title="Statistical Functions" href="statistical.html" /> 
+  </head>
+  <body role="document">
+  <table class="navbar navbar-top">
+    
+  <tr>
+    <td width="50%">
+      <a class="nav-item nav-item-0" 
+         href="../index.html">documentación de SpeedCrunch - 0.12</a> &raquo; <a class="nav-item nav-item-1"
+             href="index.html">Reference</a>
+          
+    </td>
+
+    <td align="right" width="50%">
+      <a class="rel-item rel-item-1"
+           href="statistical.html"
+           title="Statistical Functions"
+           accesskey="P">anterior</a>
+         | 
+      <a class="rel-item rel-item-2"
+           href="constants.html"
+           title="Constants"
+           accesskey="N">siguiente</a>
+         | 
+      <a class="rel-item rel-item-3"
+           href="../sc-functionindex.html"
+           title="Function Index"
+           >functions</a>
+         | 
+      <a class="rel-item rel-item-4"
+           href="../genindex.html"
+           title="Índice General"
+           accesskey="I">índice</a>
+        
+      
+    </td>
+
+  </tr>
+
+  </table>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ieee-754-functions">
+<h1>IEEE-754 Functions</h1>
+<div class="versionadded">
+<p><span class="versionmodified">Nuevo en la versión 0.12.</span></p>
+</div>
+<p>IEEE-754 is a standard for the representation of and computations with floating point
+numbers in binary systems. It is widely used by floating point implementations in
+CPUs. These functions implement encoding and decoding binary representations of floating point
+numbers according to IEEE-754.</p>
+<p>An IEEE-754 binary float consists of three parts: a sign bit, the exponent and the significand
+(sometimes called the mantissa). From these parts, the value is then calculated using the
+following formula: <code class="docutils literal"><span class="pre">-1</span> <span class="pre">^</span> <span class="pre">sign</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">^</span> <span class="pre">(exponent</span> <span class="pre">-</span> <span class="pre">bias)</span> <span class="pre">*</span> <span class="pre">1.significand</span></code>.  The standard defines
+multiple binary formats of different sizes that all follow these rules, but differ in
+the number of bits allocated for the exponent and significand. The bias for the default
+formats is defined as <code class="docutils literal"><span class="pre">bias</span> <span class="pre">=</span> <span class="pre">(2</span> <span class="pre">^</span> <span class="pre">(exponent_bits</span> <span class="pre">-</span> <span class="pre">1))</span> <span class="pre">-</span> <span class="pre">1</span></code>.
+See <a class="reference external" href="http://chrishecker.com/images/f/fb/Gdmfp.pdf">this article</a> for a more detailed introduction into the subject.</p>
+<p>The following binary float formats are defined by the standard:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="30%" />
+<col width="22%" />
+<col width="27%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Also known as</th>
+<th class="head">Exponent bits</th>
+<th class="head">Significand bits</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">binary16</span></code></td>
+<td>Half precision</td>
+<td>5</td>
+<td>10</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">binary32</span></code></td>
+<td>Single precision</td>
+<td>8</td>
+<td>23</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">binary64</span></code></td>
+<td>Double precision</td>
+<td>11</td>
+<td>52</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">binary128</span></code></td>
+<td>Quad precision</td>
+<td>15</td>
+<td>112</td>
+</tr>
+</tbody>
+</table>
+<p>In many programming languages, the <code class="docutils literal"><span class="pre">binary32</span></code> format is available as <code class="docutils literal"><span class="pre">float</span></code>
+and <code class="docutils literal"><span class="pre">binary64</span></code> is available as <code class="docutils literal"><span class="pre">double</span></code>.</p>
+<dl class="function">
+<dt id="sc.ieee754_encode">
+<code class="descname">ieee754_encode</code><span class="sig-paren">(</span><em>x</em>; <em>exponent_bits</em>; <em>significand_bits</em><span class="optional">[</span>; <em>exponent_bias</em><span class="optional">]</span><span class="sig-paren">)</span></dt>
+<dd><p>Encode a floating point number into a IEEE-754 binary representation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> &#8211; The floating point value to encode.</li>
+<li><strong>exponent_bits</strong> &#8211; The length of the exponent part, in bits.</li>
+<li><strong>significand_bits</strong> &#8211; The length of the significand part, in bits.</li>
+<li><strong>exponent_bias</strong> &#8211; The exponent bias to use. Derived from the length of the
+exponent if not specified.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.ieee754_decode">
+<code class="descname">ieee754_decode</code><span class="sig-paren">(</span><em>x</em>; <em>exponent_bits</em>; <em>significand_bits</em><span class="optional">[</span>; <em>exponent_bias</em><span class="optional">]</span><span class="sig-paren">)</span></dt>
+<dd><p>Calculate the value of an IEEE-754 binary float.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> &#8211; The binary float to decode.</li>
+<li><strong>exponent_bits</strong> &#8211; The length of the exponent part, in bits.</li>
+<li><strong>significand_bits</strong> &#8211; The length of the significand part, in bits.</li>
+<li><strong>exponent_bias</strong> &#8211; The exponent bias to use. Derived from the length of the
+exponent if not specified.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.ieee754_half_encode">
+<code class="descname">ieee754_half_encode</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span></dt>
+<dd><p>Encode <code class="docutils literal"><span class="pre">x</span></code> in the half-precision binary format.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.ieee754_half_decode">
+<code class="descname">ieee754_half_decode</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span></dt>
+<dd><p>Decode the half-precision binary float <code class="docutils literal"><span class="pre">x</span></code>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.ieee754_single_encode">
+<code class="descname">ieee754_single_encode</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span></dt>
+<dd><p>Encode <code class="docutils literal"><span class="pre">x</span></code> in the single-precision binary format.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.ieee754_single_decode">
+<code class="descname">ieee754_single_decode</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span></dt>
+<dd><p>Decode the single-precision binary float <code class="docutils literal"><span class="pre">x</span></code>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.ieee754_double_encode">
+<code class="descname">ieee754_double_encode</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span></dt>
+<dd><p>Encode <code class="docutils literal"><span class="pre">x</span></code> in the double-precision binary format.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.ieee754_double_decode">
+<code class="descname">ieee754_double_decode</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span></dt>
+<dd><p>Decode the double-precision binary float <code class="docutils literal"><span class="pre">x</span></code>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.ieee754_quad_encode">
+<code class="descname">ieee754_quad_encode</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span></dt>
+<dd><p>Encode <code class="docutils literal"><span class="pre">x</span></code> in the quad-precision binary format.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.ieee754_quad_decode">
+<code class="descname">ieee754_quad_decode</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span></dt>
+<dd><p>Decode the quad-precision binary float <code class="docutils literal"><span class="pre">x</span></code>.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <table class="navbar navbar-bottom">
+    
+  <tr>
+    <td width="50%">
+      <a class="nav-item nav-item-0" 
+         href="../index.html">documentación de SpeedCrunch - 0.12</a> &raquo; <a class="nav-item nav-item-1"
+             href="index.html">Reference</a>
+          
+    </td>
+
+    <td align="right" width="50%">
+      <a class="rel-item rel-item-1"
+           href="statistical.html"
+           title="Statistical Functions"
+           >anterior</a>
+         | 
+      <a class="rel-item rel-item-2"
+           href="constants.html"
+           title="Constants"
+           >siguiente</a>
+         | 
+      <a class="rel-item rel-item-3"
+           href="../sc-functionindex.html"
+           title="Function Index"
+           >functions</a>
+         | 
+      <a class="rel-item rel-item-4"
+           href="../genindex.html"
+           title="Índice General"
+           >índice</a>
+        
+      
+    </td>
+
+  </tr>
+
+    <tr>
+      <td colspan="2" align="center">
+        
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, The SpeedCrunch Developers.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+      </td>
+    </tr>
+  </table>
+
+  </body>
+</html>

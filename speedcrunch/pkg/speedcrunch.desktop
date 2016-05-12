@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=SpeedCrunch
+Name[de]=SpeedCrunch
+Exec=speedcrunch
+Icon=speedcrunch
+Comment=A high-precision scientific calculator
+Comment[de]=Ein hochpräziser wissenschaftlicher Taschenrechner
+Categories=Qt;Utility;Calculator;
+# TRANSLATORS: Extra keywords for finding the application in the desktop environment. The trailing ';' is important!
+Keywords=arithmetic;calculation;math;scientific;
+Keywords[de]=arithmetik;berechnungen;rechnen;mathe;mathematik;wissenschaftlich;

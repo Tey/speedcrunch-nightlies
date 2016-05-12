@@ -1,0 +1,3 @@
+# All the shell scripts in that directory will be run in a Linux environment,
+# even when checking out on Windows, so they need their Unix line endings.
+pkg/cross-linux/*.sh text eol=lf
