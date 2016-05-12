@@ -17,7 +17,7 @@ equals(QT_MAJOR_VERSION, 4) {
     }
 }
 
-contains(CONFIG, debug) {
+CONFIG(debug, debug|release) {
     DEFINES += EVALUATOR_DEBUG
 }
 
