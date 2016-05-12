@@ -1,0 +1,17 @@
+Package: speedcrunch
+Version: @VERSION@-0~speedcrunch.org
+Architecture: @ARCH@
+Maintainer: The SpeedCrunch Developers <speedcrunch@googlegroups.com>
+Section: math
+Priority: optional
+Installed-Size: @NBYTES@
+Depends: libc6 (>= 2.10), libdbus-1-3 (>= 1.1.1), libfontconfig1 (>= 2.8.0), libfreetype6 (>= 2.2.1), libgcc1 (>= 1:4.1.1), libstdc++6 (>= 4.2.1), libx11-6, libx11-xcb1, libxcb1, libxi6 (>= 2:1.2.99.4)
+Description: A high-precision scientific calculator
+ SpeedCrunch is a high-precision scientific calculator. It features a
+ syntax-highlighted scrollable display and is designed to be fully used via
+ keyboard. Some distinctive features are auto-completion of functions and
+ variables, a formula book, and quick insertion of constants from various fields
+ of knowledge. Available for Windows, OS X, and Linux in a number of languages.
+ .
+ This binary package is provided by speedcrunch.org. It is a generic package
+ that is designed to install and run on all common Debian-based distributions.

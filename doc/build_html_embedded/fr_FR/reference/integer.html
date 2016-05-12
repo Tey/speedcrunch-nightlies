@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Integer &amp; Bitwise Arithmetic Functions</title>
+    
+    <link rel="stylesheet" href="../_static/quark.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../" type="text/css" />
+    <link rel="top" title="documentation SpeedCrunch 0.12" href="../index.html" />
+    <link rel="up" title="Reference" href="index.html" />
+    <link rel="next" title="Statistical Functions" href="statistical.html" />
+    <link rel="prev" title="Basic Math Functions" href="basic.html" /> 
+  </head>
+  <body role="document">
+  <table class="navbar navbar-top">
+    
+  <tr>
+    <td width="50%">
+      <a class="nav-item nav-item-0" 
+         href="../index.html">documentation SpeedCrunch 0.12</a> &raquo; <a class="nav-item nav-item-1"
+             href="index.html">Reference</a>
+          
+    </td>
+
+    <td align="right" width="50%">
+      <a class="rel-item rel-item-1"
+           href="basic.html"
+           title="Basic Math Functions"
+           accesskey="P">précédent</a>
+         | 
+      <a class="rel-item rel-item-2"
+           href="statistical.html"
+           title="Statistical Functions"
+           accesskey="N">suivant</a>
+         | 
+      <a class="rel-item rel-item-3"
+           href="../sc-functionindex.html"
+           title="Function Index"
+           >functions</a>
+         | 
+      <a class="rel-item rel-item-4"
+           href="../genindex.html"
+           title="Index général"
+           accesskey="I">index</a>
+        
+      
+    </td>
+
+  </tr>
+
+  </table>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="integer-bitwise-arithmetic-functions">
+<h1>Integer &amp; Bitwise Arithmetic Functions</h1>
+<p>SpeedCrunch stores integers with a precision of up to 256 bits. For this reason, when working with common length integers (e.g. 32 bit), negative numbers will <em>not</em> be given by the two&#8217;s complement of the respective number. Instead, the sign can be thought of being stored as a separate property. Thus, while usually the signed 16-bit integers <em>0xFFFF</em> and <em>-1</em> are identical, they are distinct in SpeedCrunch. See <a class="reference internal" href="#sc.mask" title="mask"><code class="xref sc sc-func docutils literal"><span class="pre">mask()</span></code></a> and <a class="reference internal" href="#sc.unmask" title="unmask"><code class="xref sc sc-func docutils literal"><span class="pre">unmask()</span></code></a> for how to convert a negative number into the two&#8217;s complement form.</p>
+<p>Any integer larger than the above limit will be silently converted into a floating point number, which will consequently make it susceptible to rounding errors.</p>
+<p>To specify large integers, prefer the use of the shift operators (<code class="docutils literal"><span class="pre">1</span> <span class="pre">&lt;&lt;</span> <span class="pre">n</span></code>) to exponentiation (<code class="docutils literal"><span class="pre">2^n</span></code>). The latter will be performed as floating point, and will be prone to rounding errors. In particular, the result might not be integer.</p>
+<div class="section" id="bitwise-operations">
+<h2>Bitwise Operations</h2>
+<dl class="function">
+<dt id="sc.and">
+<code class="descname">and</code><span class="sig-paren">(</span><em>x1</em>; <em>x2</em>; <em>...</em><span class="sig-paren">)</span></dt>
+<dd><p>Performs a bitwise logical AND on the submitted parameters (one or more). All parameters  have to be real integers from the range &#8211;2<sup>255</sup> to +2<sup>255</sup>&#8211;1 (signed or unsigned 256 bit integers), non integer arguments are rounded toward zero. The result ranges from &#8211;2<sup>255</sup> to +2<sup>255</sup>&#8211;1 (signed integer). Note that <code class="docutils literal"><span class="pre">and(x)</span></code> is not the identity, because the unsigned +2<sup>255</sup> is mapped to the signed &#8211;2<sup>255</sup> for example. An error is returned if the parameters are not in the valid range.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.or">
+<code class="descname">or</code><span class="sig-paren">(</span><em>x1</em>; <em>x2</em>; <em>...</em><span class="sig-paren">)</span></dt>
+<dd><p>Performs a bitwise logical OR on the submitted parameters (one or more). All parameters have to be integers from the range &#8211;2<sup>255</sup> to +2<sup>255</sup>&#8211;1 (signed integer), non integer arguments are rounded toward zero. Note that <code class="docutils literal"><span class="pre">or(x)</span></code> is not the identity, because the unsigned 2<sup>255</sup>     is mapped to the signed &#8211;2<sup>255</sup>, for example.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.xor">
+<code class="descname">xor</code><span class="sig-paren">(</span><em>x1</em>; <em>x2</em>; <em>...</em><span class="sig-paren">)</span></dt>
+<dd><p>Performs a bitwise logical XOR on the submitted parameters (one or more). All parameters have to be integers from the range &#8211;2<sup>255</sup> to +2<sup>255</sup>&#8211;1  (signed integer), non integer arguments are rounded toward zero. Note that <code class="docutils literal"><span class="pre">xor(x)</span></code> is not the identity, because the unsigned 2<sup>255</sup> is mapped to the signed &#8211;2<sup>255</sup>, for example.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.not">
+<code class="descname">not</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span></dt>
+<dd><p>The <a class="reference internal" href="#sc.not" title="not"><code class="xref sc sc-func docutils literal"><span class="pre">not()</span></code></a> function is defined by <code class="docutils literal"><span class="pre">not(x)</span> <span class="pre">=</span> <span class="pre">-x-1</span></code>, giving the same result as the one&#8217;s complement operator <code class="docutils literal"><span class="pre">~</span></code> in C/C++.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Avertissement</p>
+<p class="last">The function does <em>not</em> simply flip the bits!</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.shl">
+<code class="descname">shl</code><span class="sig-paren">(</span><em>x</em>; <em>n</em><span class="sig-paren">)</span></dt>
+<dd><p>Performs an arithmetic <strong>left</strong> shift.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> &#8211; The number (bit pattern) to shift, &#8211;2<sup>255</sup> &lt;= <cite>x</cite> &lt;= +2<sup>256</sup>-1.</li>
+<li><strong>n</strong> &#8211; Number of bits to shift, &#8211;255 &lt;= <cite>n</cite> &lt;= 255. Must be integer.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Note that <cite>n</cite> &lt; 0 results in a right shift. The result ranges from &#8211;2<sup>255</sup> to +2<sup>255</sup>-1 (signed integer). <cite>x</cite> is rounded toward zero before shifting.  If <cite>n</cite> = 0, <cite>x</cite> is returned without rounding.</p>
+<p>Shifted out bits are always dropped. During a right shift, the most significant bit (bit 255) is copied. During a left shift, zero bits are shifted in.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.shr">
+<code class="descname">shr</code><span class="sig-paren">(</span><em>n</em>; <em>bits</em><span class="sig-paren">)</span></dt>
+<dd><p>Performs an arithmetic <strong>right</strong> shift.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> &#8211; The number (bit pattern) to shift, &#8211;2<sup>255</sup> &lt;= <cite>x</cite> &lt;= +2<sup>256</sup>-1.</li>
+<li><strong>n</strong> &#8211; Number of bits to shift, &#8211;255 &lt;= <cite>n</cite> &lt;= 255. Must be integer.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Note that <cite>n</cite> &lt; 0 results in a left shift. The result ranges from &#8211;2<sup>255</sup> to +2<sup>255</sup>-1 (signed integer). <cite>x</cite> is rounded toward zero before shifting.  If <cite>n</cite> = 0, <cite>x</cite> is returned without rounding.</p>
+<p>Shifted out bits are always dropped. During a right shift, the most significant bit (bit 255) is copied. During a left shift, zero bits are shifted in.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.mask">
+<code class="descname">mask</code><span class="sig-paren">(</span><em>x</em>; <em>n</em><span class="sig-paren">)</span></dt>
+<dd><p>Returns the lowest <cite>n</cite> bits from <cite>x</cite>. For this, <cite>x</cite> must be in the range &#8211;2<sup>255</sup> &lt;= <cite>x</cite> &lt;= +2<sup>256</sup>-1, and <cite>n</cite> must be an integer, 1 &lt;= <cite>n</cite> &lt;= 255. <cite>x</cite> is rounded toward zero.</p>
+<p>The result is always unsigned.</p>
+<div class="admonition-example admonition">
+<p class="first admonition-title">Example</p>
+<p>We would like to find the two&#8217;s complement representation of -1 in a 16-bit system.</p>
+<div class="last highlight-python"><div class="highlight"><pre>hex(mask(-1; 16)) = 0xFFFF
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.unmask">
+<code class="descname">unmask</code><span class="sig-paren">(</span><em>x</em>; <em>n</em><span class="sig-paren">)</span></dt>
+<dd><p>Takes the lower <cite>n</cite> bits from <cite>x</cite> and sign-extends them to full 256 bit. This means that bit at position <cite>n</cite> - 1 is copied to all upper bits.</p>
+<p><cite>x</cite> must be in the range &#8211;2<sup>255</sup> &lt;= <cite>x</cite> &lt;= +2<sup>256</sup>-1, and <cite>n</cite> must be an integer, 1 &lt;= <cite>n</cite> &lt;= 255. <cite>x</cite> is rounded toward zero.</p>
+<div class="admonition-example admonition">
+<p class="first admonition-title">Example</p>
+<p>We would like to convert a number in two&#8217;s complement representation to a signed number.</p>
+<div class="last highlight-python"><div class="highlight"><pre>unmask(0xFFFF; 16) = -1
+unmask(0x1FFF; 16) = 0x1FFF
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="radix-change">
+<h2>Radix Change</h2>
+<dl class="function">
+<dt id="sc.bin">
+<code class="descname">bin</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span></dt>
+<dd><p>Displays the number <cite>n</cite> in binary.</p>
+<p>Note that the change of radix only affects the current result; after applying any operation to the result of <a class="reference internal" href="#sc.bin" title="bin"><code class="xref sc sc-func docutils literal"><span class="pre">bin()</span></code></a>, the output will again be displayed in the default radix.</p>
+<p>To permanently change the radix, you need to change the according setting.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Avertissement</p>
+<p class="last">TODO: Link to how to do that.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.oct">
+<code class="descname">oct</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span></dt>
+<dd><p>Displays the number <cite>n</cite> in octal.</p>
+<p>Note that the change of radix only affects the current result; after applying any operation to the result of <a class="reference internal" href="#sc.oct" title="oct"><code class="xref sc sc-func docutils literal"><span class="pre">oct()</span></code></a>, the output will again be displayed in the default radix.</p>
+<p>To permanently change the radix, you need to change the according setting.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Avertissement</p>
+<p class="last">TODO: Link to how to do that.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.dec">
+<code class="descname">dec</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span></dt>
+<dd><p>Displays the number <cite>n</cite> in decimal.</p>
+<p>Note that the change of radix only affects the current result; after applying any operation to the result of <a class="reference internal" href="#sc.dec" title="dec"><code class="xref sc sc-func docutils literal"><span class="pre">dec()</span></code></a>, the output will again be displayed in the default radix.</p>
+<p>To permanently change the radix, you need to change the according setting.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Avertissement</p>
+<p class="last">TODO: Link to how to do that.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.hex">
+<code class="descname">hex</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span></dt>
+<dd><p>Displays the number <cite>n</cite> in hexadecimal.</p>
+<p>Note that the change of radix only affects the current result; after applying any operation to the result of <a class="reference internal" href="#sc.hex" title="hex"><code class="xref sc sc-func docutils literal"><span class="pre">hex()</span></code></a>, the output will again be displayed in the default radix.</p>
+<p>To permanently change the radix, you need to change the according setting.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Avertissement</p>
+<p class="last">TODO: Link to how to do that.</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="rounding">
+<h2>Rounding</h2>
+<p>Beware of rounding errors! Although SpeedCrunch performs all computations internally with ~78 significant digits (which is <em>much</em> more than regular calculators), any arguments beyond that limit are subject to rounding errors.</p>
+<dl class="function">
+<dt id="sc.ceil">
+<code class="descname">ceil</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span></dt>
+<dd><p>Rounds <cite>x</cite> to the next largest integer.</p>
+<p>Only real, dimensionless arguments are allowed.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.floor">
+<code class="descname">floor</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span></dt>
+<dd><p>Rounds <cite>x</cite> to the next smallest integer.</p>
+<p>Only real, dimensionless arguments are allowed.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.round">
+<code class="descname">round</code><span class="sig-paren">(</span><em>x</em><span class="optional">[</span>; <em>n</em><span class="optional">]</span><span class="sig-paren">)</span></dt>
+<dd><p>Rounds <cite>x</cite> to the nearest <cite>n</cite>-digit number. <cite>n</cite> may be omitted, in which case <cite>x</cite> is rounded to the closest integer.</p>
+<p>Only real, dimensionless arguments are allowed.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.trunc">
+<code class="descname">trunc</code><span class="sig-paren">(</span><em>x</em><span class="optional">[</span>; <em>n</em><span class="optional">]</span><span class="sig-paren">)</span></dt>
+<dd><p>Truncates (rounds toward zero) <cite>x</cite> to the next <cite>n</cite>-digit number. <cite>n</cite> may be omitted, in which case <cite>x</cite> is rounded to integer.</p>
+<p>Only real, dimensionless arguments are allowed.</p>
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="first admonition-title">Voir aussi</p>
+<ul class="last simple">
+<li><a class="reference internal" href="basic.html#sc.int" title="int"><code class="xref sc sc-func docutils literal"><span class="pre">int()</span></code></a></li>
+<li><a class="reference internal" href="basic.html#sc.frac" title="frac"><code class="xref sc sc-func docutils literal"><span class="pre">frac()</span></code></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="integer-division">
+<h2>Integer Division</h2>
+<dl class="function">
+<dt id="sc.idiv">
+<code class="descname">idiv</code><span class="sig-paren">(</span><em>a</em>; <em>b</em><span class="sig-paren">)</span></dt>
+<dd><p>Computes the integer part of the division <cite>a/b</cite>. The result of <a class="reference internal" href="#sc.idiv" title="idiv"><code class="xref sc sc-func docutils literal"><span class="pre">idiv()</span></code></a> is guaranteed to be exact. While <code class="docutils literal"><span class="pre">int(a/b)</span></code> covers a larger range of arguments, the result is computed via floating point arithmetics, and may be subject to rounding errors. <a class="reference internal" href="#sc.idiv" title="idiv"><code class="xref sc sc-func docutils literal"><span class="pre">idiv()</span></code></a> will instead yield and error if the parameters exceed the safe bounds.</p>
+<p>It is possible to apply the idiv function to non-integers as well, but be aware that rounding errors might be lead to off-by-one errors. If idiv detects, that a result depends on the validity of the guard digits, it returns a NaN as a warning.</p>
+<p>Only real, dimensionless arguments are allowed.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.mod">
+<code class="descname">mod</code><span class="sig-paren">(</span><em>a</em>; <em>n</em><span class="sig-paren">)</span></dt>
+<dd><p>Computes the remainder of the integer division <cite>a/n</cite>. The divisor <cite>n</cite> must be non-zero, and the result takes the sign of <cite>a</cite>.</p>
+<p>This function always returns an exact result, provided that the parameters are exact.</p>
+<p>You can use this function with non-integers as well, but rounding errors might lead to off-by-one errors. Evaluating <a class="reference internal" href="#sc.mod" title="mod"><code class="xref sc sc-func docutils literal"><span class="pre">mod()</span></code></a> can potentially be computationally expensive, so the function is internally restricted to 250 division loops.</p>
+<p>Only real, dimensionless arguments are allowed.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sc.gcd">
+<code class="descname">gcd</code><span class="sig-paren">(</span><em>n1</em>; <em>n2</em>; <em>...</em><span class="sig-paren">)</span></dt>
+<dd><p>Returns the greatest common divisor of the integers <cite>n1</cite>, <cite>n2</cite>, ... (2 or more). You can use this function to reduce a rational number. If a rational number is given as <cite>p/q</cite>, its reduced form is <cite>(p/gcd(p;q))/(q/gcd(p;q))</cite>. Closely related to <a class="reference internal" href="#sc.gcd" title="gcd"><code class="xref sc sc-func docutils literal"><span class="pre">gcd()</span></code></a> is the <code class="docutils literal"><span class="pre">lcm()</span></code> function (least common multiple). While <code class="docutils literal"><span class="pre">lcm()</span></code> is not defined by default in SpeedCrunch, you may want to define it yourself by:</p>
+<div class="highlight-python"><div class="highlight"><pre>lcm(n1; n2) = n1*n2/gcd(n1; n2)
+</pre></div>
+</div>
+<p>Only real, integer arguments are allowed by <a class="reference internal" href="#sc.gcd" title="gcd"><code class="xref sc sc-func docutils literal"><span class="pre">gcd()</span></code></a>.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <table class="navbar navbar-bottom">
+    
+  <tr>
+    <td width="50%">
+      <a class="nav-item nav-item-0" 
+         href="../index.html">documentation SpeedCrunch 0.12</a> &raquo; <a class="nav-item nav-item-1"
+             href="index.html">Reference</a>
+          
+    </td>
+
+    <td align="right" width="50%">
+      <a class="rel-item rel-item-1"
+           href="basic.html"
+           title="Basic Math Functions"
+           >précédent</a>
+         | 
+      <a class="rel-item rel-item-2"
+           href="statistical.html"
+           title="Statistical Functions"
+           >suivant</a>
+         | 
+      <a class="rel-item rel-item-3"
+           href="../sc-functionindex.html"
+           title="Function Index"
+           >functions</a>
+         | 
+      <a class="rel-item rel-item-4"
+           href="../genindex.html"
+           title="Index général"
+           >index</a>
+        
+      
+    </td>
+
+  </tr>
+
+    <tr>
+      <td colspan="2" align="center">
+        
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, The SpeedCrunch Developers.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+      </td>
+    </tr>
+  </table>
+
+  </body>
+</html>

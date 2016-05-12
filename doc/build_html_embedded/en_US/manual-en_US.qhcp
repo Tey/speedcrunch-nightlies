@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<QHelpCollectionProject version="1.0">
+    <assistant>
+        <title>SpeedCrunch 0.12 documentation</title>
+        <homePage>qthelp://org.sphinx.manualenus.0.12/doc/index.html</homePage>
+        <startPage>qthelp://org.sphinx.manualenus.0.12/doc/index.html</startPage>
+    </assistant>
+    <docFiles>
+        <generate>
+            <file>
+                <input>manual-en_US.qhp</input>
+                <output>manual-en_US.qch</output>
+            </file>
+        </generate>
+        <register>
+            <file>manual-en_US.qch</file>
+        </register>
+    </docFiles>
+</QHelpCollectionProject>

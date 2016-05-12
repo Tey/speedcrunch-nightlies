@@ -1,0 +1,97 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016, The SpeedCrunch Developers
+# This file is distributed under the same license as the SpeedCrunch package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: test\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-23 19:32+0100\n"
+"PO-Revision-Date: 2016-02-23 18:39+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: French (France) (http://www.transifex.com/polwel/test-439/language/fr_FR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ..\installation.rst:2
+msgid "Installation"
+msgstr ""
+
+#: ..\installation.rst:5
+msgid "Microsoft Windows"
+msgstr ""
+
+#: ..\installation.rst:6
+msgid ""
+"SpeedCrunch for Windows requires Windows Vista or newer (32-bit and 64-bit "
+"versions). You can use choose either to use either the installer or the "
+"portable version of SpeedCrunch. Both of these are available from `the "
+"SpeedCrunch website`_."
+msgstr ""
+
+#: ..\installation.rst:12
+msgid ""
+"The installer installs SpeedCrunch on your system and creates an entry in "
+"the menu to launch it. This process requires administrator rights."
+msgstr ""
+
+#: ..\installation.rst:15
+msgid ""
+"Alternatively, you may use the portable version of SpeedCrunch, which is "
+"distributed as a ``.zip`` archive. This version requires no installation, "
+"simply extract it to a folder of your choice and run ``speedcrunch.exe``. In"
+" addition, this version of the software is fully portable: it stores all its"
+" settings and user data next to the executable so the entire directory can "
+"be copied to e.g. another computer and run there."
+msgstr ""
+
+#: ..\installation.rst:24
+msgid "Apple OS X"
+msgstr ""
+
+#: ..\installation.rst:29
+msgid "Linux"
+msgstr ""
+
+#: ..\installation.rst:30
+msgid ""
+"Since the large number and variety of Linux distributions makes it "
+"impossible to consider all of them here, this section only describes the "
+"SpeedCrunch installation process for the most popular ones. If you use "
+"another distribution, we expect that you will know better than us how to get"
+" software for your system."
+msgstr ""
+
+#: ..\installation.rst:36
+msgid "Ubuntu & Debian"
+msgstr ""
+
+#: ..\installation.rst:37
+msgid ""
+"SpeedCrunch is available from the package repositories on both Ubuntu and "
+"Debian. It can be installed from the Ubuntu Software Centre or using the "
+"command line::"
+msgstr ""
+
+#: ..\installation.rst:42
+msgid ""
+"If you wish to use bleeding-edge development versions of SpeedCrunch on "
+"Ubuntu, you can install these from the `SpeedCrunch Daily PPA`_. This PPA "
+"contains SpeedCrunch packages that are regularly built from the SpeedCrunch "
+"development branch."
+msgstr ""
+
+#: ..\installation.rst:50
+msgid ""
+"Development builds of SpeedCrunch may not be as stable or well-tested as "
+"release version and may contain changes that break your session history. Use"
+" them at your own risk."
+msgstr ""
+
+#: ..\installation.rst:55
+msgid "Building from Source"
+msgstr ""

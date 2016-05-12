@@ -1,0 +1,10 @@
+[main]
+host = https://www.transifex.com
+
+[speedcrunch.desktop-appdata]
+source_file=desktop-appdata.pot
+source_lang=en
+file_filter=<lang>.po
+type=PO
+lang_map = ca_ES:ca, cs_CZ:cs, de_DE:de, en_US:en, es_ES:es, et_EE:et, eu_ES:eu, fa_IR:fa, fi_FI:fi, fr_FR:fr, he_IL:he, hu_HU:hu, id_ID:id, it_IT:it, ja_JP:ja, ko_KR:ko, lv_LV:lv, nb_NO:nb, nl_NL:nl, pl_PL:pl, pt_BR:pt, ro_RO:ro, ru_RU:ru, sl_SI:sl, sv_SE:sv, tr_TR:tr, zh_CN:zh
+

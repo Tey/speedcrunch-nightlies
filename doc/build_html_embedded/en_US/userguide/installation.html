@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation</title>
+    
+    <link rel="stylesheet" href="../_static/quark.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../" type="text/css" />
+    <link rel="top" title="SpeedCrunch 0.12 documentation" href="../index.html" />
+    <link rel="up" title="User Guide" href="index.html" />
+    <link rel="next" title="Reference" href="../reference/index.html" />
+    <link rel="prev" title="User Guide" href="index.html" /> 
+  </head>
+  <body role="document">
+  <table class="navbar navbar-top">
+    
+  <tr>
+    <td width="50%">
+      <a class="nav-item nav-item-0" 
+         href="../index.html">SpeedCrunch 0.12 documentation</a> &raquo; <a class="nav-item nav-item-1"
+             href="index.html">User Guide</a>
+          
+    </td>
+
+    <td align="right" width="50%">
+      <a class="rel-item rel-item-1"
+           href="index.html"
+           title="User Guide"
+           accesskey="P">previous</a>
+         | 
+      <a class="rel-item rel-item-2"
+           href="../reference/index.html"
+           title="Reference"
+           accesskey="N">next</a>
+         | 
+      <a class="rel-item rel-item-3"
+           href="../sc-functionindex.html"
+           title="Function Index"
+           >functions</a>
+         | 
+      <a class="rel-item rel-item-4"
+           href="../genindex.html"
+           title="General Index"
+           accesskey="I">index</a>
+        
+      
+    </td>
+
+  </tr>
+
+  </table>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="installation">
+<h1>Installation</h1>
+<div class="section" id="microsoft-windows">
+<h2>Microsoft Windows</h2>
+<p>SpeedCrunch for Windows requires Windows Vista or newer (32-bit and 64-bit versions).
+You can use choose either to use either the installer or the portable
+version of SpeedCrunch. Both of these are available from <a class="reference external" href="http://speedcrunch.org">the SpeedCrunch website</a>.</p>
+<p>The installer installs SpeedCrunch on your system and creates an entry in the menu
+to launch it. This process requires administrator rights.</p>
+<p>Alternatively, you may use the portable version of SpeedCrunch, which is distributed
+as a <code class="docutils literal"><span class="pre">.zip</span></code> archive. This version requires no installation, simply extract it to
+a folder of your choice and run <strong class="program">speedcrunch.exe</strong>. In addition, this version of
+the software is fully portable: it stores all its settings and user data next to the
+executable so the entire directory can be copied to e.g. another computer and run
+there.</p>
+</div>
+<div class="section" id="apple-os-x">
+<h2>Apple OS X</h2>
+<p>TODO: OSX installation instructions</p>
+</div>
+<div class="section" id="linux">
+<h2>Linux</h2>
+<p>Since the large number and variety of Linux distributions makes it impossible to
+consider all of them here, this section only describes the installation
+process for the most popular ones. If you use another distribution, we expect that
+you will know better than us how to get software for your system.</p>
+<div class="section" id="ubuntu-debian">
+<h3>Ubuntu &amp; Debian</h3>
+<p>SpeedCrunch is available from the package repositories on both Ubuntu and Debian. It can be installed
+from the Ubuntu Software Centre or using the command line:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install speedcrunch
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="development-builds">
+<h2>Development Builds</h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Development builds of SpeedCrunch may not be as stable or well-tested as release version
+and may contain changes that break your session history. Use them at your own risk.</p>
+</div>
+<p>Pre-built development versions of SpeedCrunch are available allow you to use newer features
+and bugfixes before they become available in a release, without having to build SpeedCrunch
+from the development source yourself. Currently, regularly updated
+development builds of SpeedCrunch are available for the following platforms:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/Tey/speedcrunch-nightlies/tree/master/win32">Windows</a></li>
+<li><a class="reference external" href="https://code.launchpad.net/~fkrull/+archive/ubuntu/speedcrunch-daily">Ubuntu</a> (14.04 and later)</li>
+</ul>
+</div>
+<div class="section" id="building-from-source">
+<h2>Building from Source</h2>
+<p>The SpeedCrunch source code is maintained on <a class="reference external" href="https://bitbucket.org/heldercorreia/speedcrunch">Bitbucket</a> in a Git repository. Clone
+the repository onto your machine by running the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>git clone https://bitbucket.org/heldercorreia/speedcrunch.git
+</pre></div>
+</div>
+<div class="section" id="dependencies">
+<h3>Dependencies</h3>
+<p>The following software is required to compile SpeedCrunch from source:</p>
+<blockquote>
+<div><ul class="simple">
+<li>a supported C++ compiler, for example:<ul>
+<li><a class="reference external" href="https://gcc.gnu.org">GCC</a>, version 4.8 or later</li>
+<li><a class="reference external" href="http://visualstudio.com">Microsoft Visual C++</a> 2013 or later</li>
+</ul>
+</li>
+<li><a class="reference external" href="http://qt.io">Qt</a>, version 5.2 or later</li>
+<li><a class="reference external" href="http://cmake.org">CMake</a>, version 2.8.12 or later</li>
+<li><a class="reference external" href="http://python.org">Python</a>, either version 2.7 or version 3.4 or later</li>
+<li><a class="reference external" href="http://sphinx-doc.org">Sphinx</a>, version 1.3 or later</li>
+<li>the <a class="reference external" href="https://pypi.python.org/pypi/quark-sphinx-theme">Quark Sphinx theme</a>, version 0.2 or later</li>
+</ul>
+</div></blockquote>
+<p>On Ubuntu or Debian, the following set of commands will install these dependencies:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install build-essential cmake python3 python3-pip \
+    qtbase5-dev qttools5-dev qttools5-dev-tools
+sudo pip3 install sphinx&gt;=1.3 quark-sphinx-theme&gt;=0.2
+</pre></div>
+</div>
+</div>
+<div class="section" id="building">
+<h3>Building</h3>
+<p>At a high level, the build process consists of these steps:</p>
+<div class="highlight-python"><div class="highlight"><pre>cd &lt;build directory&gt;
+cmake &lt;SpeedCrunch source directory&gt;/src
+make
+</pre></div>
+</div>
+<p>The build directory can be any empty directory. While it is possible to build SpeedCrunch
+inside the source tree, it is discouraged.</p>
+<p>On Windows, it will usually be necessary to run these commands from a command prompt
+that is set up for the compiler you&#8217;re using. In addition, the final <code class="docutils literal"><span class="pre">make</span></code> command
+to invoke may be different depending on the compiler; for MSVC, it is <code class="docutils literal"><span class="pre">nmake</span></code>.</p>
+<p>When building against a Qt version that is not the system default Qt installation,
+it will be necessary to point CMake towards the
+Qt installation to use. This can be achieved by setting the <code class="docutils literal"><span class="pre">CMAKE_PREFIX_PATH</span></code>
+environment variable to the root directory of the Qt installation you want to use. <a class="footnote-reference" href="#f1" id="id1">[1]</a></p>
+<p>The SpeedCrunch build supports several additional configuration variables. These can
+either be set when invoking CMake using the form <code class="docutils literal"><span class="pre">cmake</span> <span class="pre">-D&lt;VAR&gt;=&lt;VALUE&gt;</span></code> or interactively
+via the CMake GUI tool.</p>
+<span class="target" id="index-0"></span><dl class="describe">
+<dt>
+<code class="descname">PORTABLE_SPEEDCRUNCH</code></dt>
+<dd><p>When set to <code class="docutils literal"><span class="pre">on</span></code>, SpeedCrunch is built in portable mode: all settings will be
+stored in the same directory as the executable.</p>
+</dd></dl>
+
+<span class="target" id="index-1"></span><dl class="describe">
+<dt>
+<code class="descname">PYTHON_EXECUTABLE</code></dt>
+<dd><p>The path of the Python executable used for running additional build scripts. Normally,
+this is determined automatically and doesn&#8217;t need to be changed.</p>
+</dd></dl>
+
+<span class="target" id="index-2"></span><dl class="describe">
+<dt>
+<code class="descname">QCOLLECTIONGENERATOR_EXECUTABLE</code></dt>
+<dd><p>The path to the <strong class="program">qcollectiongenerator</strong> program used to generate the bundled
+documentation. Normally, this is automatically set to the <strong class="program">qcollectiongenerator</strong>
+binary included with Qt and doesn&#8217;t need to be changed.</p>
+</dd></dl>
+
+<span class="target" id="index-3"></span><dl class="describe">
+<dt>
+<code class="descname">SPHINX_EXECUTABLE</code></dt>
+<dd><p>The path to the <strong class="program">sphinx-build</strong> executable. This can often be determined
+automatically, but it may be necessary to override it in some cases.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="installing">
+<h3>Installing</h3>
+<p>To install SpeedCrunch after building, run <code class="docutils literal"><span class="pre">make</span> <span class="pre">install</span></code> (or equivalent) in the
+build directory. Note that this step may require administrator/root privileges.</p>
+<p>To customize the installation directory, set the following CMake variable at configuration
+time:</p>
+<span class="target" id="index-4"></span><dl class="describe">
+<dt>
+<code class="descname">CMAKE_INSTALL_PREFIX</code></dt>
+<dd><p>Set the installation prefix for the <code class="docutils literal"><span class="pre">install</span></code> target.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="creating-windows-installers">
+<h3>Creating Windows Installers</h3>
+<p>On Windows, an installer can be generated after building by running <code class="docutils literal"><span class="pre">make</span> <span class="pre">package</span></code>
+from the build directory. This will create a fully self-contained installer program.
+For this to work, <a class="reference external" href="http://nsis.sourceforge.net">NSIS</a> needs to be installed.</p>
+</div>
+<div class="section" id="using-qt-creator">
+<h3>Using Qt Creator</h3>
+<p>To build SpeedCrunch with <a class="reference external" href="http://qt.io/ide">Qt Creator</a>, simply open <code class="file docutils literal"><span class="pre">src/CMakeLists.txt</span></code> in the
+IDE. Configuration variables can be specified in the <span class="guilabel">Run CMake</span> dialog,
+using the <code class="docutils literal"><span class="pre">-D&lt;VAR&gt;=&lt;VALUE&gt;</span></code> syntax. Since Qt Creator handles the Qt setup for you,
+you don&#8217;t have to point the build system at a Qt installation and compiler; simply select
+the desired toolchain and Qt version in Qt Creator.</p>
+<p class="rubric">Footnotes</p>
+<div id="f1" class="-x-quark-footnote-wrapper"><table class="docutils footnote" frame="void" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>For example, on Windows this is often a path like <code class="docutils literal"><span class="pre">C:/Qt/&lt;Qt</span> <span class="pre">version&gt;/&lt;compiler&gt;</span></code>, depending
+on where you installed Qt.</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <table class="navbar navbar-bottom">
+    
+  <tr>
+    <td width="50%">
+      <a class="nav-item nav-item-0" 
+         href="../index.html">SpeedCrunch 0.12 documentation</a> &raquo; <a class="nav-item nav-item-1"
+             href="index.html">User Guide</a>
+          
+    </td>
+
+    <td align="right" width="50%">
+      <a class="rel-item rel-item-1"
+           href="index.html"
+           title="User Guide"
+           >previous</a>
+         | 
+      <a class="rel-item rel-item-2"
+           href="../reference/index.html"
+           title="Reference"
+           >next</a>
+         | 
+      <a class="rel-item rel-item-3"
+           href="../sc-functionindex.html"
+           title="Function Index"
+           >functions</a>
+         | 
+      <a class="rel-item rel-item-4"
+           href="../genindex.html"
+           title="General Index"
+           >index</a>
+        
+      
+    </td>
+
+  </tr>
+
+    <tr>
+      <td colspan="2" align="center">
+        
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, The SpeedCrunch Developers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+      </td>
+    </tr>
+  </table>
+
+  </body>
+</html>

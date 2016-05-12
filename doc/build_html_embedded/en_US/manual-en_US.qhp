@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<QtHelpProject version="1.0">
+    <namespace>org.sphinx.manualenus.0.12</namespace>
+    <virtualFolder>doc</virtualFolder>
+    <customFilter name="SpeedCrunch 0.12">
+        <filterAttribute>manual-en_US</filterAttribute>
+        <filterAttribute>0.12</filterAttribute>
+    </customFilter>
+    <filterSection>
+        <filterAttribute>manual-en_US</filterAttribute>
+        <filterAttribute>0.12</filterAttribute>
+        <toc>
+            <section title="SpeedCrunch 0.12 documentation" ref="index.html">
+                <section title="User Guide" ref="userguide/index.html">
+                    <section title="Installation" ref="userguide/installation.html">
+                        <section title="Microsoft Windows" ref="userguide/installation.html#microsoft-windows"/>
+                        <section title="Apple OS X" ref="userguide/installation.html#apple-os-x"/>
+                        <section title="Linux" ref="userguide/installation.html#linux">
+                            <section title="Ubuntu &amp; Debian" ref="userguide/installation.html#ubuntu-debian"/>
+                        </section>
+                        <section title="Development Builds" ref="userguide/installation.html#development-builds"/>
+                        <section title="Building from Source" ref="userguide/installation.html#building-from-source">
+                            <section title="Dependencies" ref="userguide/installation.html#dependencies"/>
+                            <section title="Building" ref="userguide/installation.html#building"/>
+                            <section title="Installing" ref="userguide/installation.html#installing"/>
+                            <section title="Creating Windows Installers" ref="userguide/installation.html#creating-windows-installers"/>
+                            <section title="Using Qt Creator" ref="userguide/installation.html#using-qt-creator"/>
+                        </section>
+                    </section>
+                </section>
+                <section title="Reference" ref="reference/index.html">
+                    <section title="Basic Math Functions" ref="reference/basic.html">
+                        <section title="General" ref="reference/basic.html#general"/>
+                        <section title="Trigonometric &amp; Inverse Trigonometric" ref="reference/basic.html#trigonometric-inverse-trigonometric"/>
+                        <section title="Hyperbolic &amp; Inverse Hyperbolic" ref="reference/basic.html#hyperbolic-inverse-hyperbolic"/>
+                        <section title="Special" ref="reference/basic.html#special"/>
+                        <section title="Various" ref="reference/basic.html#various"/>
+                    </section>
+                    <section title="Integer &amp; Bitwise Arithmetic Functions" ref="reference/integer.html">
+                        <section title="Bitwise Operations" ref="reference/integer.html#bitwise-operations"/>
+                        <section title="Radix Change" ref="reference/integer.html#radix-change"/>
+                        <section title="Rounding" ref="reference/integer.html#rounding"/>
+                        <section title="Integer Division" ref="reference/integer.html#integer-division"/>
+                    </section>
+                    <section title="Statistical Functions" ref="reference/statistical.html">
+                        <section title="General" ref="reference/statistical.html#general"/>
+                        <section title="Binomial Distribution" ref="reference/statistical.html#binomial-distribution"/>
+                        <section title="Hypergeometric Distribution" ref="reference/statistical.html#hypergeometric-distribution"/>
+                        <section title="Poisson Distribution" ref="reference/statistical.html#poisson-distribution"/>
+                    </section>
+                    <section title="IEEE-754 Functions" ref="reference/ieee754.html"/>
+                    <section title="Constants" ref="reference/constants.html"/>
+                </section>
+                <section title="Developer Guide" ref="devguide/index.html">
+                    <section title="Color Scheme File Format" ref="devguide/colorschemeformat.html">
+                        <section title="Supported Color Roles" ref="devguide/colorschemeformat.html#supported-color-roles"/>
+                    </section>
+                    <section title="Documentation Guide" ref="devguide/docguide.html">
+                        <section title="Sphinx Intro" ref="devguide/docguide.html#sphinx-intro"/>
+                        <section title="Style Guide" ref="devguide/docguide.html#style-guide"/>
+                        <section title="The SpeedCrunch Domain" ref="devguide/docguide.html#the-speedcrunch-domain"/>
+                        <section title="Tooling" ref="devguide/docguide.html#tooling"/>
+                    </section>
+                </section>
+                <section title="Function Index" ref="sc-functionindex.html"/>
+            </section>
+        </toc>
+        <keywords>
+            <keyword name="abs() (function)" ref="reference/basic.html#sc.abs"/>
+            <keyword id="home" ref="index.html#kw-0"/>
+            <keyword id="abs" ref="reference/basic.html#sc.abs"/>
+            <keyword id="sqrt" ref="reference/basic.html#sc.sqrt"/>
+            <keyword id="cbrt" ref="reference/basic.html#sc.cbrt"/>
+            <keyword id="exp" ref="reference/basic.html#sc.exp"/>
+            <keyword id="ln" ref="reference/basic.html#sc.ln"/>
+            <keyword id="lb" ref="reference/basic.html#sc.lb"/>
+            <keyword id="lg" ref="reference/basic.html#sc.lg"/>
+            <keyword id="log" ref="reference/basic.html#sc.log"/>
+            <keyword id="sin" ref="reference/basic.html#sc.sin"/>
+            <keyword id="cos" ref="reference/basic.html#sc.cos"/>
+            <keyword id="tan" ref="reference/basic.html#sc.tan"/>
+            <keyword id="cot" ref="reference/basic.html#sc.cot"/>
+            <keyword id="sec" ref="reference/basic.html#sc.sec"/>
+            <keyword id="csc" ref="reference/basic.html#sc.csc"/>
+            <keyword id="arccos" ref="reference/basic.html#sc.arccos"/>
+            <keyword id="arcsin" ref="reference/basic.html#sc.arcsin"/>
+            <keyword id="arctan" ref="reference/basic.html#sc.arctan"/>
+            <keyword id="sinh" ref="reference/basic.html#sc.sinh"/>
+            <keyword id="cosh" ref="reference/basic.html#sc.cosh"/>
+            <keyword id="tanh" ref="reference/basic.html#sc.tanh"/>
+            <keyword id="arsinh" ref="reference/basic.html#sc.arsinh"/>
+            <keyword id="arcosh" ref="reference/basic.html#sc.arcosh"/>
+            <keyword id="artanh" ref="reference/basic.html#sc.artanh"/>
+            <keyword id="erf" ref="reference/basic.html#sc.erf"/>
+            <keyword id="erfc" ref="reference/basic.html#sc.erfc"/>
+            <keyword id="gamma" ref="reference/basic.html#sc.gamma"/>
+            <keyword id="lngamma" ref="reference/basic.html#sc.lngamma"/>
+            <keyword id="sgn" ref="reference/basic.html#sc.sgn"/>
+            <keyword id="radians" ref="reference/basic.html#sc.radians"/>
+            <keyword id="degrees" ref="reference/basic.html#sc.degrees"/>
+            <keyword id="int" ref="reference/basic.html#sc.int"/>
+            <keyword id="frac" ref="reference/basic.html#sc.frac"/>
+            <keyword id="pi" ref="reference/constants.html#sc.pi"/>
+            <keyword id="e" ref="reference/constants.html#sc.e"/>
+            <keyword id="j" ref="reference/constants.html#sc.j"/>
+            <keyword id="ieee754_encode" ref="reference/ieee754.html#sc.ieee754_encode"/>
+            <keyword id="ieee754_decode" ref="reference/ieee754.html#sc.ieee754_decode"/>
+            <keyword id="ieee754_half_encode" ref="reference/ieee754.html#sc.ieee754_half_encode"/>
+            <keyword id="ieee754_half_decode" ref="reference/ieee754.html#sc.ieee754_half_decode"/>
+            <keyword id="ieee754_single_encode" ref="reference/ieee754.html#sc.ieee754_single_encode"/>
+            <keyword id="ieee754_single_decode" ref="reference/ieee754.html#sc.ieee754_single_decode"/>
+            <keyword id="ieee754_double_encode" ref="reference/ieee754.html#sc.ieee754_double_encode"/>
+            <keyword id="ieee754_double_decode" ref="reference/ieee754.html#sc.ieee754_double_decode"/>
+            <keyword id="ieee754_quad_encode" ref="reference/ieee754.html#sc.ieee754_quad_encode"/>
+            <keyword id="ieee754_quad_decode" ref="reference/ieee754.html#sc.ieee754_quad_decode"/>
+            <keyword id="and" ref="reference/integer.html#sc.and"/>
+            <keyword id="or" ref="reference/integer.html#sc.or"/>
+            <keyword id="xor" ref="reference/integer.html#sc.xor"/>
+            <keyword id="not" ref="reference/integer.html#sc.not"/>
+            <keyword id="shl" ref="reference/integer.html#sc.shl"/>
+            <keyword id="shr" ref="reference/integer.html#sc.shr"/>
+            <keyword id="mask" ref="reference/integer.html#sc.mask"/>
+            <keyword id="unmask" ref="reference/integer.html#sc.unmask"/>
+            <keyword id="bin" ref="reference/integer.html#sc.bin"/>
+            <keyword id="oct" ref="reference/integer.html#sc.oct"/>
+            <keyword id="dec" ref="reference/integer.html#sc.dec"/>
+            <keyword id="hex" ref="reference/integer.html#sc.hex"/>
+            <keyword id="ceil" ref="reference/integer.html#sc.ceil"/>
+            <keyword id="floor" ref="reference/integer.html#sc.floor"/>
+            <keyword id="round" ref="reference/integer.html#sc.round"/>
+            <keyword id="trunc" ref="reference/integer.html#sc.trunc"/>
+            <keyword id="idiv" ref="reference/integer.html#sc.idiv"/>
+            <keyword id="mod" ref="reference/integer.html#sc.mod"/>
+            <keyword id="gcd" ref="reference/integer.html#sc.gcd"/>
+            <keyword id="average" ref="reference/statistical.html#sc.average"/>
+            <keyword id="geomean" ref="reference/statistical.html#sc.geomean"/>
+            <keyword id="min" ref="reference/statistical.html#sc.min"/>
+            <keyword id="max" ref="reference/statistical.html#sc.max"/>
+            <keyword id="sum" ref="reference/statistical.html#sc.sum"/>
+            <keyword id="product" ref="reference/statistical.html#sc.product"/>
+            <keyword id="variance" ref="reference/statistical.html#sc.variance"/>
+            <keyword id="stddev" ref="reference/statistical.html#sc.stddev"/>
+            <keyword id="absdev" ref="reference/statistical.html#sc.absdev"/>
+            <keyword id="binomcdf" ref="reference/statistical.html#sc.binomcdf"/>
+            <keyword id="binompmf" ref="reference/statistical.html#sc.binompmf"/>
+            <keyword id="binommean" ref="reference/statistical.html#sc.binommean"/>
+            <keyword id="binomvar" ref="reference/statistical.html#sc.binomvar"/>
+            <keyword id="ncr" ref="reference/statistical.html#sc.ncr"/>
+            <keyword id="npr" ref="reference/statistical.html#sc.npr"/>
+            <keyword id="hyperpmf" ref="reference/statistical.html#sc.hyperpmf"/>
+            <keyword id="hypercdf" ref="reference/statistical.html#sc.hypercdf"/>
+            <keyword id="hypermean" ref="reference/statistical.html#sc.hypermean"/>
+            <keyword id="hypervar" ref="reference/statistical.html#sc.hypervar"/>
+            <keyword id="poipmf" ref="reference/statistical.html#sc.poipmf"/>
+            <keyword id="poicdf" ref="reference/statistical.html#sc.poicdf"/>
+            <keyword id="poimean" ref="reference/statistical.html#sc.poimean"/>
+            <keyword id="poivar" ref="reference/statistical.html#sc.poivar"/>
+            <keyword name="absdev() (function)" ref="reference/statistical.html#sc.absdev"/>
+            <keyword name="and() (function)" ref="reference/integer.html#sc.and"/>
+            <keyword name="arccos() (function)" ref="reference/basic.html#sc.arccos"/>
+            <keyword name="arcosh() (function)" ref="reference/basic.html#sc.arcosh"/>
+            <keyword name="arcsin() (function)" ref="reference/basic.html#sc.arcsin"/>
+            <keyword name="arctan() (function)" ref="reference/basic.html#sc.arctan"/>
+            <keyword name="arsinh() (function)" ref="reference/basic.html#sc.arsinh"/>
+            <keyword name="artanh() (function)" ref="reference/basic.html#sc.artanh"/>
+            <keyword name="average() (function)" ref="reference/statistical.html#sc.average"/>
+            <keyword name="bin() (function)" ref="reference/integer.html#sc.bin"/>
+            <keyword name="binomcdf() (function)" ref="reference/statistical.html#sc.binomcdf"/>
+            <keyword name="binommean() (function)" ref="reference/statistical.html#sc.binommean"/>
+            <keyword name="binompmf() (function)" ref="reference/statistical.html#sc.binompmf"/>
+            <keyword name="binomvar() (function)" ref="reference/statistical.html#sc.binomvar"/>
+            <keyword name="cbrt() (function)" ref="reference/basic.html#sc.cbrt"/>
+            <keyword name="ceil() (function)" ref="reference/integer.html#sc.ceil"/>
+            <keyword name="CMAKE_INSTALL_PREFIX" ref="userguide/installation.html#index-4"/>
+            <keyword name="PORTABLE_SPEEDCRUNCH" ref="userguide/installation.html#index-0"/>
+            <keyword name="PYTHON_EXECUTABLE" ref="userguide/installation.html#index-1"/>
+            <keyword name="QCOLLECTIONGENERATOR_EXECUTABLE" ref="userguide/installation.html#index-2"/>
+            <keyword name="SPHINX_EXECUTABLE" ref="userguide/installation.html#index-3"/>
+            <keyword name="CMake variable" ref="userguide/installation.html#index-4"/>
+            <keyword name="cos() (function)" ref="reference/basic.html#sc.cos"/>
+            <keyword name="cosh() (function)" ref="reference/basic.html#sc.cosh"/>
+            <keyword name="cot() (function)" ref="reference/basic.html#sc.cot"/>
+            <keyword name="csc() (function)" ref="reference/basic.html#sc.csc"/>
+            <keyword name="dec() (function)" ref="reference/integer.html#sc.dec"/>
+            <keyword name="degrees() (function)" ref="reference/basic.html#sc.degrees"/>
+            <keyword name="e (constant)" ref="reference/constants.html#sc.e"/>
+            <keyword name="erf() (function)" ref="reference/basic.html#sc.erf"/>
+            <keyword name="erfc() (function)" ref="reference/basic.html#sc.erfc"/>
+            <keyword name="exp() (function)" ref="reference/basic.html#sc.exp"/>
+            <keyword name="floor() (function)" ref="reference/integer.html#sc.floor"/>
+            <keyword name="frac() (function)" ref="reference/basic.html#sc.frac"/>
+            <keyword name="gamma() (function)" ref="reference/basic.html#sc.gamma"/>
+            <keyword name="gcd() (function)" ref="reference/integer.html#sc.gcd"/>
+            <keyword name="geomean() (function)" ref="reference/statistical.html#sc.geomean"/>
+            <keyword name="hex() (function)" ref="reference/integer.html#sc.hex"/>
+            <keyword name="hypercdf() (function)" ref="reference/statistical.html#sc.hypercdf"/>
+            <keyword name="hypermean() (function)" ref="reference/statistical.html#sc.hypermean"/>
+            <keyword name="hyperpmf() (function)" ref="reference/statistical.html#sc.hyperpmf"/>
+            <keyword name="hypervar() (function)" ref="reference/statistical.html#sc.hypervar"/>
+            <keyword name="idiv() (function)" ref="reference/integer.html#sc.idiv"/>
+            <keyword name="ieee754_decode() (function)" ref="reference/ieee754.html#sc.ieee754_decode"/>
+            <keyword name="ieee754_double_decode() (function)" ref="reference/ieee754.html#sc.ieee754_double_decode"/>
+            <keyword name="ieee754_double_encode() (function)" ref="reference/ieee754.html#sc.ieee754_double_encode"/>
+            <keyword name="ieee754_encode() (function)" ref="reference/ieee754.html#sc.ieee754_encode"/>
+            <keyword name="ieee754_half_decode() (function)" ref="reference/ieee754.html#sc.ieee754_half_decode"/>
+            <keyword name="ieee754_half_encode() (function)" ref="reference/ieee754.html#sc.ieee754_half_encode"/>
+            <keyword name="ieee754_quad_decode() (function)" ref="reference/ieee754.html#sc.ieee754_quad_decode"/>
+            <keyword name="ieee754_quad_encode() (function)" ref="reference/ieee754.html#sc.ieee754_quad_encode"/>
+            <keyword name="ieee754_single_decode() (function)" ref="reference/ieee754.html#sc.ieee754_single_decode"/>
+            <keyword name="ieee754_single_encode() (function)" ref="reference/ieee754.html#sc.ieee754_single_encode"/>
+            <keyword name="int() (function)" ref="reference/basic.html#sc.int"/>
+            <keyword name="j (constant)" ref="reference/constants.html#sc.j"/>
+            <keyword name="lb() (function)" ref="reference/basic.html#sc.lb"/>
+            <keyword name="lg() (function)" ref="reference/basic.html#sc.lg"/>
+            <keyword name="ln() (function)" ref="reference/basic.html#sc.ln"/>
+            <keyword name="lngamma() (function)" ref="reference/basic.html#sc.lngamma"/>
+            <keyword name="log() (function)" ref="reference/basic.html#sc.log"/>
+            <keyword name="mask() (function)" ref="reference/integer.html#sc.mask"/>
+            <keyword name="max() (function)" ref="reference/statistical.html#sc.max"/>
+            <keyword name="min() (function)" ref="reference/statistical.html#sc.min"/>
+            <keyword name="mod() (function)" ref="reference/integer.html#sc.mod"/>
+            <keyword name="ncr() (function)" ref="reference/statistical.html#sc.ncr"/>
+            <keyword name="not() (function)" ref="reference/integer.html#sc.not"/>
+            <keyword name="npr() (function)" ref="reference/statistical.html#sc.npr"/>
+            <keyword name="oct() (function)" ref="reference/integer.html#sc.oct"/>
+            <keyword name="or() (function)" ref="reference/integer.html#sc.or"/>
+            <keyword name="pi (constant)" ref="reference/constants.html#sc.pi"/>
+            <keyword name="poicdf() (function)" ref="reference/statistical.html#sc.poicdf"/>
+            <keyword name="poimean() (function)" ref="reference/statistical.html#sc.poimean"/>
+            <keyword name="poipmf() (function)" ref="reference/statistical.html#sc.poipmf"/>
+            <keyword name="poivar() (function)" ref="reference/statistical.html#sc.poivar"/>
+            <keyword name="CMake variable" ref="userguide/installation.html#index-0"/>
+            <keyword name="product() (function)" ref="reference/statistical.html#sc.product"/>
+            <keyword name="CMake variable" ref="userguide/installation.html#index-1"/>
+            <keyword name="CMake variable" ref="userguide/installation.html#index-2"/>
+            <keyword name="radians() (function)" ref="reference/basic.html#sc.radians"/>
+            <keyword name="round() (function)" ref="reference/integer.html#sc.round"/>
+            <keyword name="sc:const (role)" ref="devguide/docguide.html#role-sc:const"/>
+            <keyword name="sc:constant (directive)" ref="devguide/docguide.html#directive-sc:constant"/>
+            <keyword name="sc:func (role)" ref="devguide/docguide.html#role-sc:func"/>
+            <keyword name="sc:function (directive)" ref="devguide/docguide.html#directive-sc:function"/>
+            <keyword name="sec() (function)" ref="reference/basic.html#sc.sec"/>
+            <keyword name="sgn() (function)" ref="reference/basic.html#sc.sgn"/>
+            <keyword name="shl() (function)" ref="reference/integer.html#sc.shl"/>
+            <keyword name="shr() (function)" ref="reference/integer.html#sc.shr"/>
+            <keyword name="sin() (function)" ref="reference/basic.html#sc.sin"/>
+            <keyword name="sinh() (function)" ref="reference/basic.html#sc.sinh"/>
+            <keyword name="CMake variable" ref="userguide/installation.html#index-3"/>
+            <keyword name="sqrt() (function)" ref="reference/basic.html#sc.sqrt"/>
+            <keyword name="stddev() (function)" ref="reference/statistical.html#sc.stddev"/>
+            <keyword name="sum() (function)" ref="reference/statistical.html#sc.sum"/>
+            <keyword name="tan() (function)" ref="reference/basic.html#sc.tan"/>
+            <keyword name="tanh() (function)" ref="reference/basic.html#sc.tanh"/>
+            <keyword name="trunc() (function)" ref="reference/integer.html#sc.trunc"/>
+            <keyword name="unmask() (function)" ref="reference/integer.html#sc.unmask"/>
+            <keyword name="variance() (function)" ref="reference/statistical.html#sc.variance"/>
+            <keyword name="xor() (function)" ref="reference/integer.html#sc.xor"/>
+        </keywords>
+        <files>
+            <file>genindex.html</file>
+            <file>index.html</file>
+            <file>README.html</file>
+            <file>sc-functionindex.html</file>
+            <file>devguide\colorschemeformat.html</file>
+            <file>devguide\docguide.html</file>
+            <file>devguide\index.html</file>
+            <file>reference\basic.html</file>
+            <file>reference\constants.html</file>
+            <file>reference\ieee754.html</file>
+            <file>reference\index.html</file>
+            <file>reference\integer.html</file>
+            <file>reference\statistical.html</file>
+            <file>userguide\index.html</file>
+            <file>userguide\installation.html</file>
+            <file>_static\ajax-loader.gif</file>
+            <file>_static\basic.css</file>
+            <file>_static\comment-bright.png</file>
+            <file>_static\comment-close.png</file>
+            <file>_static\comment.png</file>
+            <file>_static\down-pressed.png</file>
+            <file>_static\down.png</file>
+            <file>_static\file.png</file>
+            <file>_static\minus.png</file>
+            <file>_static\plus.png</file>
+            <file>_static\pygments.css</file>
+            <file>_static\quark.css</file>
+            <file>_static\up-pressed.png</file>
+            <file>_static\up.png</file>
+        </files>
+    </filterSection>
+</QtHelpProject>

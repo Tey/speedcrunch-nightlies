@@ -1,0 +1,73 @@
+{% extends "entrance.html" %}
+
+
+{%- block content %}
+{{ entranceNavBar() }}
+<div class="container">
+    <ul class="breadcrumb">
+      <li><a href="{{ pathto('index') }}">{{ _('Home') }} </a></li>
+      <li class="active">{{ _('Download')}} </li>
+    </ul>
+    
+    
+{% macro downloads(version, win_inst=None, win_port=None, osx=None, linux=None) -%}
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+    {% if not (win_inst is none() and win_port is none()) %}
+      <div align="center"><p><i class="fa fa-windows" style="vertical-align:middle; font-size:8em;"></i></p><p><b>Windows</b></p> </div>
+      {% if not win_inst is none() %}<div align="center"><p><a class="btn btn-primary btn-md" href="{{ win_inst }}" role="button"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;&nbsp;{{ _('Installer') }}</a> {% endif %}
+      {% if not win_port is none() %}
+        &nbsp;&nbsp;<a class="btn btn-primary btn-md " href="{{ win_port }}" role="button"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;&nbsp;{{ _('Portable') }}</a></p></div>
+        <p>{% trans %}A portable version of SpeedCrunch is available. It needs not be installed. Just take it anywhere (e.g. on a thumb drive), and run the file to start SpeedCrunch.{% endtrans %}</p>
+      {% endif %}
+    {% endif %}
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">{% if not osx is none() %}
+      <div align="center"><p><i class="fa fa-apple" style="vertical-align:middle; font-size:8em;"></i></p><p><b>OS X</b></p> </div>
+      <div align="center"><p><a class="btn btn-primary btn-md" href="{{ osx }}" role="button"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;&nbsp;{{ _('Download') }}</a>&nbsp;</p></div>
+     {% endif %}</div><!-- /.col-lg-4 --> 
+    <div class="col-lg-4">
+      <div align="center"><p><i class="fa fa-linux" style="vertical-align:middle; font-size:8em;"></i></p><p><b>Linux</b></p> </div>
+    {% if not linux is none() %}
+      <div align="center"><p><a class="btn btn-primary btn-md" href="{{ linux }}" role="button"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;&nbsp;{{ _('Download') }}</a>&nbsp;</p></div>
+    {% endif %}
+      <p>{% trans %}If available, we recommend to install SpeeCrunch directly via your distribution's package manager.{% endtrans %}</p>
+     </div><!-- /.col-lg-4 -->
+  </div><!-- /.row -->
+  </div>
+{%- endmacro %}
+  
+  <div class="container">
+  <h1>{% trans %}Version 0.12{% endtrans %}</h1>
+    {{ downloads('0.12', '#', '#', '#', '#') }}
+  <hr>
+  <p>{% trans %}Unsure about the installation?{% endtrans %} <a href="{{ pathto('userguide/installation') }}">{% trans %}Have a look at the instructions.{% endtrans %}</a></p>
+  
+  <hr>
+  {% macro oldVersion(version, id, win_inst=None, win_port=None, osx=None, linux=None) -%}
+    <div class="panel panel-default">
+    <div class="panel-heading" role="tab">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{id}}" aria-expanded="false" aria-controls="collapse{{id}}">
+          {{ _('Version') }} {{version}}
+        </a>
+      </h4>
+    </div>
+    <div id="collapse{{id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{id}}">
+      {{ downloads(version, win_inst, win_port, osx, linux) }}
+    </div>
+  </div>
+  {%- endmacro %}
+  
+  <h1>{% trans %}Older Versions{% endtrans %}</h1>
+ <div id="accordion" role="tablist" aria-multiselectable="true">
+    {{ oldVersion('0.11', '011', 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.11.exe', 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.11.zip', 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.11.dmg') }}
+    {{ oldVersion('0.10.1', '0101', 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.10.1.exe', 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.10.1.zip', 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.10.1.dmg') }}
+</div>
+  
+  </div><!-- /.container -->
+ 
+  
+</div>
+{%- endblock %}

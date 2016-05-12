@@ -1,0 +1,45 @@
+.dropdown-submenu{position:relative;}
+.dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
+.dropdown-submenu:hover>.dropdown-menu{display:block;}
+.dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
+.dropdown-submenu:hover>a:after{border-left-color:#ffffff;}
+.dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
+
+
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>span>img {
+  height: 100%;
+  padding: 7px 15px;
+  width: auto;
+}
+
+.affix {
+    top: 50px;
+}
+
+.alert-warning .admonition-title:before {
+    content: "\f071";
+    font-family: FontAwesome;
+    margin-right: 10px;
+    font-size: 120%;
+    vertical-align: middle;
+}
+.admonition-example .admonition-title:before {
+    content: "\f0eb";
+    font-family: FontAwesome;
+    margin-right: 10px;
+    font-size: 120%;
+}
+
+body { 
+    padding-top: 65px; 
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  width: 70%;
+  margin: auto;
+  max-width: 700px
+}
