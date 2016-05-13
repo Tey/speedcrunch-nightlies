@@ -840,7 +840,7 @@ char* formatGeneral(cfloatnum x, int prec, int base = 10)
         str = formatScientific(x, prec, base);
     else if (expd < -4)
         str = formatScientific(x, prec, base);
-    else if ((expd < 0) && (prec>0) && (expd < -prec))
+    else if ((expd < 0) && (prec >= 0) && (expd < -prec))
         str = formatScientific(x, prec, base);
     else
         str = formatFixed(x, prec, base);
