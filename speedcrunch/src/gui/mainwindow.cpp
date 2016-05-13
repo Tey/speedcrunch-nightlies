@@ -154,6 +154,7 @@ void MainWindow::createActions()
     m_actions.settingsRadixCharComma = new QAction(this);
     m_actions.settingsRadixCharDefault = new QAction(this);
     m_actions.settingsRadixCharDot = new QAction(this);
+    m_actions.settingsResultFormat0Digits = new QAction(this);
     m_actions.settingsResultFormat15Digits = new QAction(this);
     m_actions.settingsResultFormat2Digits = new QAction(this);
     m_actions.settingsResultFormat3Digits = new QAction(this);
@@ -200,6 +201,7 @@ void MainWindow::createActions()
     m_actions.settingsRadixCharComma->setCheckable(true);
     m_actions.settingsRadixCharDefault->setCheckable(true);
     m_actions.settingsRadixCharDot->setCheckable(true);
+    m_actions.settingsResultFormat0Digits->setCheckable(true);
     m_actions.settingsResultFormat15Digits->setCheckable(true);
     m_actions.settingsResultFormat2Digits->setCheckable(true);
     m_actions.settingsResultFormat3Digits->setCheckable(true);
@@ -330,6 +332,7 @@ void MainWindow::setActionsText()
     m_actions.settingsRadixCharComma->setText(MainWindow::tr("&Comma"));
     m_actions.settingsRadixCharDefault->setText(MainWindow::tr("&System Default"));
     m_actions.settingsRadixCharDot->setText(MainWindow::tr("&Dot"));
+    m_actions.settingsResultFormat0Digits->setText(MainWindow::tr("&0 Digits"));
     m_actions.settingsResultFormat15Digits->setText(MainWindow::tr("&15 Digits"));
     m_actions.settingsResultFormat2Digits->setText(MainWindow::tr("&2 Digits"));
     m_actions.settingsResultFormat3Digits->setText(MainWindow::tr("&3 Digits"));
@@ -373,6 +376,7 @@ void MainWindow::createActionGroups()
 
     m_actionGroups.digits = new QActionGroup(this);
     m_actionGroups.digits->addAction(m_actions.settingsResultFormatAutoPrecision);
+    m_actionGroups.digits->addAction(m_actions.settingsResultFormat0Digits);
     m_actionGroups.digits->addAction(m_actions.settingsResultFormat2Digits);
     m_actionGroups.digits->addAction(m_actions.settingsResultFormat3Digits);
     m_actionGroups.digits->addAction(m_actions.settingsResultFormat8Digits);
@@ -486,6 +490,7 @@ void MainWindow::createMenus()
 
     m_menus.precision = m_menus.resultFormat->addMenu("");
     m_menus.precision->addAction(m_actions.settingsResultFormatAutoPrecision);
+    m_menus.precision->addAction(m_actions.settingsResultFormat0Digits);
     m_menus.precision->addAction(m_actions.settingsResultFormat2Digits);
     m_menus.precision->addAction(m_actions.settingsResultFormat3Digits);
     m_menus.precision->addAction(m_actions.settingsResultFormat8Digits);
@@ -883,6 +888,7 @@ void MainWindow::createFixedConnections()
     connect(m_actions.settingsRadixCharDefault, SIGNAL(triggered()), SLOT(setRadixCharacterAutomatic()));
     connect(m_actions.settingsRadixCharDot, SIGNAL(triggered()), SLOT(setRadixCharacterDot()));
 
+    connect(m_actions.settingsResultFormat0Digits, &QAction::triggered, [this]() { this->setResultPrecision(0); });
     connect(m_actions.settingsResultFormat15Digits, SIGNAL(triggered()), SLOT(setResultPrecision15Digits()));
     connect(m_actions.settingsResultFormat2Digits, SIGNAL(triggered()), SLOT(setResultPrecision2Digits()));
     connect(m_actions.settingsResultFormat3Digits, SIGNAL(triggered()), SLOT(setResultPrecision3Digits()));
@@ -1102,6 +1108,7 @@ void MainWindow::checkInitialResultFormat()
 void MainWindow::checkInitialResultPrecision()
 {
     switch (m_settings->resultPrecision) {
+        case 0: m_actions.settingsResultFormat0Digits->setChecked(true); break;
         case 2: m_actions.settingsResultFormat2Digits->setChecked(true); break;
         case 3: m_actions.settingsResultFormat3Digits->setChecked(true); break;
         case 8: m_actions.settingsResultFormat8Digits->setChecked(true); break;

@@ -117,6 +117,11 @@ void Editor::doBackspace()
     setTextCursor(cursor);
 }
 
+char Editor::radixChar() const
+{
+    return Settings::instance()->radixCharacter();
+}
+
 int Editor::cursorPosition() const
 {
     return textCursor().position();
@@ -606,7 +611,7 @@ void Editor::autoCalcSelection(const QString& custom)
 void Editor::insertConstant(const QString& constant)
 {
     QString formattedConstant = constant;
-    if (Settings::instance()->radixCharacter() == ',')
+    if (radixChar() == ',')
         formattedConstant.replace('.', ',');
     if (!constant.isNull())
         insert(formattedConstant);
@@ -771,6 +776,16 @@ void Editor::keyPressEvent(QKeyEvent* event)
             event->accept();
             return;
         }
+        break;
+
+    case Qt::Key_Period:
+    case Qt::Key_Comma:
+        if (event->modifiers() == Qt::KeypadModifier) {
+            insert(QChar(this->radixChar()));
+            event->accept();
+            return;
+        }
+        break;
 
     case Qt::Key_P:
         if (event->modifiers() == Qt::ControlModifier) {
@@ -792,6 +807,7 @@ void Editor::keyPressEvent(QKeyEvent* event)
             event->accept();
             return;
         }
+        break;
 
     default:;
     }
