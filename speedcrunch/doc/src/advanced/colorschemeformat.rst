@@ -1,3 +1,5 @@
+.. _color_schemes:
+
 Color Scheme File Format
 ========================
 
@@ -20,7 +22,7 @@ are loaded from the following directory:
 .. TODO: Unsure on the OSX path, can't really check.
 
 All color scheme files must have the extension ``.json``. The file name without the extension
-will be displayed in the color scheme menu (:guilabel:`Settings -> Display -> Color Scheme`).
+will be displayed in the color scheme menu (:menuselection:`Settings --> Display --> Color Scheme`).
 The color scheme directory is only listed when SpeedCrunch is launched, so to have it pick up
 a newly-added color scheme file, it is necessary to restart the application. However, color scheme
 files are always reloaded when a color scheme is selected in the menu; that means after making

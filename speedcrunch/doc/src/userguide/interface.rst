@@ -36,11 +36,13 @@ Special Features of the Expression Editor
 
 * Autocompletion
     If you start typing a name (for instance of a variable, function or unit), a list will pop up, suggesting possible names. You may press :kbd:`Tab` or :kbd:`Enter` on your keyboard to automatically insert the first suggestion. Alternatively, use the arrow keys to select a different suggestion, or continue typing to refine the list.
-
 * Constant quick insertion
     Press :kbd:`Ctrl` + :kbd:`Space` to open the *constant quick insertion* box. It allows access to the same constants as the constants dock (see above). Use the keyboard arrows to navigate the list.
 * Context help
     Pressing :kbd:`F1` will show the manual page for the function under the cursor. This is extremely convenient when you need help to look up the usage of a function. Just press :kbd:`Esc` to dismiss the manual window again.
+* Selection results
+    If :menuselection:`Settings --> Behavior --> Partial Results` is enabled, selecting a partial expression in the expression editor will show
+    you the result of the selected expression.
 
 
 
@@ -56,6 +58,115 @@ You can save the session as HTML (:menuselection:`Session --> Export --> HTML`).
 The last (and most basic) option is to export your session a text file (:menuselection:`Session --> Export --> Plain text`). In contrast to the HTML export, formatting like syntax highlighting and font will be lost.
 
 SpeedCrunch also offers capabilities to *import* a session (:menuselection:`Session --> Import`). Select any plain text file, and SpeedCrunch will try to evaluate each line of the file as if the user entered it directly.
+
+
+Settings
+--------
+
+Result Format
++++++++++++++
+
+This section allows selecting the result format to use. You can select one of the following
+formats:
+
+* :menuselection:`Decimal --> General`
+    Use fixed decimal form for most results; for very large (more than six integer places) or very small results (less than 0.0001),
+    scientific notation will be used.
+* :menuselection:`Decimal --> Fixed Decimal`
+    Display results in decimal form, i.e. as ``<integer>.<fraction>``. For excessively
+    large or small numbers, this format may still fall back to scientific notation.
+* :menuselection:`Decimal --> Engineering`
+    Display results in engineering notation. This is a variant of :ref:`scientific notation <scientific_notation>` in which
+    the exponent is divisible by three.
+* :menuselection:`Decimal --> Scientific`
+    Display results in :ref:`normalized scientific notation <scientific_notation>`.
+* :menuselection:`Binary`
+    Display results as binary numbers, i.e. in base-2.
+* :menuselection:`Octal`
+    Display all results as octal numbers, i.e. in base-8.
+* :menuselection:`Hexadecimal`
+    Display all results as hexadecimal numbers, i.e. in base-16.
+
+In addition to the primary result format, some other options are available that are independent
+of the chosen format:
+
+* :menuselection:`Precision`
+    Select the number of fractional digits to display.
+    **Automatic** always displays as many digits as are necessary to represent the number
+    precisely. The other settings explicitly specify a certain number of digits and will
+    append additional zeroes to the fraction to reach that number of digits, if necessary.
+* :menuselection:`Radix Character`
+    Select the decimal separator to use in results. If :menuselection:`Settings --> Behavior --> Detect All Radix Characters` is
+    disabled, this is also the radix character that needs to be used when entering numbers.
+    This can either be explicitly set to period (``.``) or comma (``,``), or the system default
+    setting can be used.
+
+
+Angle Unit
+++++++++++
+
+Select the angular unit to be used in calculations. For functions that operate on angles, notably the
+:ref:`trigonometric functions <trigonometric>` like :func:`sin` or :func:`cos`, this setting
+determines the angle format of the arguments.
+
+* :menuselection:`Radian`
+    Use radians for angles. A full circle corresponds to an angle of 2π radians.
+* :menuselection:`Degree`
+    Use degrees for angles. A full circle corresponds to an angle of 360°.
+
+
+Behavior
+++++++++
+
+This section contains several settings that allow you to configure SpeedCrunch's behavior.
+
+* :menuselection:`Save History on Exit`
+    Controls if the calculation history is automatically saved when SpeedCrunch exits
+    and restored when it is launched again.
+* :menuselection:`Save Window Position on Exit`
+    Controls if the window position is saved and restored.
+* :menuselection:`Partial Results`
+    If set, SpeedCrunch will display partial results as you type your expression as well
+    as results when selecting a partial expression in the editor.
+* :menuselection:`Automatic Result Reuse`
+    This setting allows you to quickly continue typing after evaluating an expression
+    by inserting `ans` into the editor if necessary.
+* :menuselection:`Automatic Completion`
+    Completely enables or disables autocompletion.
+* :menuselection:`Syntax Highlighting`
+    Enables or disables syntax highlighting.
+* :menuselection:`Digit Grouping`
+    Visually group digits in long numbers. Requires :menuselection:`Settings --> Behavior --> Syntax Highlighting` to be
+    enabled.
+* :menuselection:`Leave Last Expression`
+    If selected, the entered expression remains in the editor after evaluating it.
+* :menuselection:`Detect All Radix Characters`
+    If enabled, both periods (``.``) and commas (``,``) are interpreted as decimal separators.
+    If disabled, only the radix character set in :menuselection:`Settings --> Result Format --> Radix Character`
+    is accepted.
+* :menuselection:`Strict Digit Groups Detection`
+    If enabled, only known digit grouping characters are allowed. If disabled, any non-alphanumeric character
+    that's not an operator can be used for digit grouping.
+* :menuselection:`Enable Complex Numbers`
+    Enable or disable support for :ref:`complex numbers <complex_numbers>`. If disabled, :const:`j` will be undefined
+    and expressions that would return complex results (like ``sqrt(-1)``) will fail.
+* :menuselection:`Always on Top`
+    Keep the SpeedCrunch window on top of other windows.
+* :menuselection:`Automatic Result to Clipboard`
+    Automatically copy the result to the clipboard whenever an expression is evaluated.
+
+
+User Interface Settings
++++++++++++++++++++++++
+
+* :menuselection:`Settings --> Display --> Color Scheme`
+    Select a color scheme. See :ref:`color_schemes` for information on how to install
+    additional color schemes so they are displayed in this menu.
+* :menuselection:`Settings --> Display --> Font`
+    Select the font to use for the expression editor and result display.
+* :menuselection:`Settings --> Language`
+    Select the user interface language.
+
 
 Keyboard Shortcuts
 ------------------
