@@ -63,6 +63,8 @@ General
     Computes the logarithm of base *n* . In **complex mode** the same rules apply as for :func:`ln`.
      
 
+.. _trigonometric:
+
 Trigonometric & Inverse Trigonometric
 -------------------------------------
 

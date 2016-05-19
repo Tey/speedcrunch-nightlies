@@ -313,7 +313,7 @@ void MainWindow::setActionsText()
 
     m_actions.settingsAngleUnitDegree->setText(MainWindow::tr("&Degree"));
     m_actions.settingsAngleUnitRadian->setText(MainWindow::tr("&Radian"));
-    m_actions.settingsBehaviorAlwaysOnTop->setText(MainWindow::tr("Always On &Top"));
+    m_actions.settingsBehaviorAlwaysOnTop->setText(MainWindow::tr("Always on &Top"));
     m_actions.settingsBehaviorAutoAns->setText(MainWindow::tr("Automatic Result &Reuse"));
     m_actions.settingsBehaviorAutoCompletion->setText(MainWindow::tr("Automatic &Completion"));
     m_actions.settingsBehaviorPartialResults->setText(MainWindow::tr("&Partial Results"));
@@ -328,7 +328,7 @@ void MainWindow::setActionsText()
     m_actions.settingsBehaviorAutoResultToClipboard->setText(MainWindow::tr("Automatic &Result to Clipboard"));
     m_actions.settingsBehaviorParseAllRadixChar->setText(MainWindow::tr("Detect &All Radix Characters"));
     m_actions.settingsBehaviorStrictDigitGrouping->setText(MainWindow::tr("&Strict Digit Groups Detection"));
-    m_actions.settingsBehaviorComplexNumbers->setText(MainWindow::tr("Enable complex numbers"));
+    m_actions.settingsBehaviorComplexNumbers->setText(MainWindow::tr("Enable Complex Numbers"));
     m_actions.settingsRadixCharComma->setText(MainWindow::tr("&Comma"));
     m_actions.settingsRadixCharDefault->setText(MainWindow::tr("&System Default"));
     m_actions.settingsRadixCharDot->setText(MainWindow::tr("&Dot"));

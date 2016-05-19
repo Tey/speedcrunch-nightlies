@@ -50,12 +50,13 @@ Functions with more arguments are allowed as well, just separate the parameters 
     = 8
 
 
+.. _complex_numbers:
 
 Complex numbers
 ===============
 .. versionadded :: 0.12
 
-SpeedCrunch supports calculations involving complex numbers. To enable them, make sure that the menu item :menuselection:`Settings --> Behaviour --> Enable complex numbers` is checked. The imaginary unit is now available under the name :const:`j`. Try it out::
+SpeedCrunch supports calculations involving complex numbers. To enable them, make sure that the menu item :menuselection:`Settings --> Behaviour --> Enable Complex Numbers` is checked. The imaginary unit is now available under the name :const:`j`. Try it out::
 
     j^2
     = -1

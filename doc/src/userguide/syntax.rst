@@ -12,6 +12,9 @@ When you would like to specify a non-integer value, simply enter the number as y
 
 Trailing zeros after the decimal point (like in ``12.300``), or leading zeros before it (``0012.3``) are redundant, and can be included or omitted to the user's preference. Expressions like ``.5`` as a shorthand notation for ``0.5`` are also permitted.
 
+
+.. _scientific_notation:
+
 Scientific notation (floating point)
 ------------------------------------
 When dealing with very small or very large numbers (think size of an atom, or a galaxy) the notation above is most inconvenient. Commonly these are expressed in scientific notation, for instance instead of writing 0.000000001234, one prefers 1.234*10\ :sup:`-9`.
