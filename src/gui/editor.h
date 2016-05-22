@@ -58,6 +58,7 @@ public:
     void setText(const QString&);
     void stopAutoCalc();
     void stopAutoComplete();
+    void wrapSelection();
     QString text() const;
     QStringList matchFragment(const QString & id) const;
     QString getKeyword() const;

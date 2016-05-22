@@ -84,6 +84,7 @@ private slots:
     void copyResultToClipboard();
     void cycleAngleUnits();
     void cycleResultFormats();
+    void decreaseDisplayFontPointSize();
     void decreaseOpacity();
     void deleteVariables();
     void deleteUserFunctions();
@@ -98,6 +99,7 @@ private slots:
     void handleEditorSelectionChange();
     void handleManualClosed();
     void hideStateLabel();
+    void increaseDisplayFontPointSize();
     void increaseOpacity();
     void insertConstantIntoEditor(const QString&);
     void insertFunctionIntoEditor(const QString&);
@@ -166,8 +168,7 @@ private slots:
     void showResultFormatContextMenu(const QPoint&);
     void showSessionImportDialog();
     void showSessionLoadDialog();
-    void increaseDisplayFontPointSize();
-    void decreaseDisplayFontPointSize();
+    void wrapSelection();
 
 protected:
     virtual void closeEvent(QCloseEvent*);
@@ -234,6 +235,7 @@ private:
         QAction* editDeleteUserFunction;
         QAction* editClearExpression;
         QAction* editClearHistory;
+        QAction* editWrapSelection;
         QAction* viewKeypad;
         QAction* viewFormulaBook;
         QAction* viewConstants;

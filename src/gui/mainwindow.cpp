@@ -121,6 +121,7 @@ void MainWindow::createActions()
     m_actions.editCopy = new QAction(this);
     m_actions.editPaste = new QAction(this);
     m_actions.editSelectExpression = new QAction(this);
+    m_actions.editWrapSelection = new QAction(this);
     m_actions.viewConstants = new QAction(this);
     m_actions.viewFullScreenMode = new QAction(this);
     m_actions.viewFunctions = new QAction(this);
@@ -299,6 +300,7 @@ void MainWindow::setActionsText()
     m_actions.editCopy->setText(MainWindow::tr("&Copy"));
     m_actions.editPaste->setText(MainWindow::tr("&Paste"));
     m_actions.editSelectExpression->setText(MainWindow::tr("&Select Expression"));
+    m_actions.editWrapSelection->setText(MainWindow::tr("&Wrap Selection in Parentheses"));
 
     m_actions.viewConstants->setText(MainWindow::tr("&Constants"));
     m_actions.viewFullScreenMode->setText(MainWindow::tr("F&ull Screen Mode"));
@@ -409,6 +411,7 @@ void MainWindow::createActionShortcuts()
     m_actions.editCopy->setShortcut(Qt::CTRL + Qt::Key_C);
     m_actions.editPaste->setShortcut(Qt::CTRL + Qt::Key_V);
     m_actions.editSelectExpression->setShortcut(Qt::CTRL + Qt::Key_A);
+    m_actions.editWrapSelection->setShortcut(Qt::CTRL + Qt::Key_P);
     m_actions.viewBitfield->setShortcut(Qt::CTRL + Qt::Key_6);
     m_actions.viewConstants->setShortcut(Qt::CTRL + Qt::Key_2);
     m_actions.viewFullScreenMode->setShortcut(Qt::Key_F11);
@@ -455,6 +458,7 @@ void MainWindow::createMenus()
     m_menus.edit->addAction(m_actions.editSelectExpression);
     m_menus.edit->addAction(m_actions.editClearExpression);
     m_menus.edit->addAction(m_actions.editClearHistory);
+    m_menus.edit->addAction(m_actions.editWrapSelection);
 
     m_menus.view = new QMenu("", this);
     menuBar()->addMenu(m_menus.view);
@@ -855,6 +859,7 @@ void MainWindow::createFixedConnections()
     connect(m_actions.editCopy, SIGNAL(triggered()), SLOT(copy()));
     connect(m_actions.editPaste, SIGNAL(triggered()), m_widgets.editor, SLOT(paste()));
     connect(m_actions.editSelectExpression, SIGNAL(triggered()), SLOT(selectEditorExpression()));
+    connect(m_actions.editWrapSelection, SIGNAL(triggered()), SLOT(wrapSelection()));
 
     connect(m_actions.viewConstants, SIGNAL(toggled(bool)), SLOT(setConstantsDockVisible(bool)));
     connect(m_actions.viewFullScreenMode, SIGNAL(toggled(bool)), SLOT(setFullScreenEnabled(bool)));
@@ -1372,6 +1377,11 @@ void MainWindow::showSessionLoadDialog()
     emit variablesChanged();
     emit functionsChanged();
 
+}
+
+void MainWindow::wrapSelection()
+{
+    m_widgets.editor->wrapSelection();
 }
 
 void MainWindow::saveSessionDialog()
