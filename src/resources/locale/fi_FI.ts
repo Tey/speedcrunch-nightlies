@@ -1,204 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="fi_FI">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fi_FI" version="2.1">
 <context>
     <name>AboutBox</name>
     <message>
-        <location filename="../../gui/aboutbox.cpp" line="34"/>
-        <location filename="../../gui/aboutbox.cpp" line="194"/>
+        <location filename="../../gui/aboutbox.cpp" line="35"/>
+        <location filename="../../gui/aboutbox.cpp" line="149"/>
         <source>About SpeedCrunch</source>
-        <translation>Tietoja SpeedCrunchista</translation>
+        <translation>Tietoa SpeedCrunchista</translation>
     </message>
     <message>
         <location filename="../../gui/aboutbox.cpp" line="46"/>
+        <source>Maintainer</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/aboutbox.cpp" line="48"/>
+        <source>Core developers</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/aboutbox.cpp" line="56"/>
         <source>Original author</source>
         <translation>Alkuperäinen tekijä</translation>
     </message>
     <message>
-        <location filename="../../gui/aboutbox.cpp" line="49"/>
-        <source>Former maintainer</source>
-        <translation>Entinen ylläpitäjä</translation>
+        <location filename="../../gui/aboutbox.cpp" line="118"/>
+        <source>Copyright (C) 2004-2016 The SpeedCrunch developers</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../gui/aboutbox.cpp" line="45"/>
-        <source>Maintainer, core developer, designer, translator</source>
-        <translation>Ylläpitäjä, keskeinen kehittäjä, suunnittelija, kääntäjä</translation>
+        <location filename="../../gui/aboutbox.cpp" line="141"/>
+        <source>Close</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../gui/aboutbox.cpp" line="47"/>
+        <location filename="../../gui/aboutbox.cpp" line="57"/>
         <source>Math engine</source>
         <translation>Matematiikkamoottori</translation>
     </message>
     <message>
-        <location filename="../../gui/aboutbox.cpp" line="48"/>
-        <source>Packager</source>
-        <translation>Paketoija</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="51"/>
+        <location filename="../../gui/aboutbox.cpp" line="59"/>
         <source>Thanks</source>
         <translation>Kiitokset</translation>
     </message>
     <message>
-        <location filename="../../gui/aboutbox.cpp" line="103"/>
-        <source>Translations</source>
-        <translation>Käännökset</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="105"/>
-        <source>Arabic</source>
-        <translation>Arabia</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="107"/>
-        <source>Argentinian Spanish</source>
-        <translation>Argentiinan espanja</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="109"/>
-        <source>Basque</source>
-        <translation>Baski</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="111"/>
-        <source>Brazilian Portuguese</source>
-        <translation>Brasilian portugali</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="113"/>
-        <source>Catalan</source>
-        <translation>Katalaani</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="115"/>
-        <source>Czech</source>
-        <translation>Tšekki</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="117"/>
-        <source>Dutch</source>
-        <translation>Hollanti</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="119"/>
-        <source>Estonian</source>
-        <translation>Viro</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="121"/>
-        <source>French</source>
-        <translation>Ranska</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="123"/>
-        <source>Finnish</source>
-        <translation>Suomi</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="125"/>
-        <source>German</source>
-        <translation>Saksa</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="127"/>
-        <source>Hebrew</source>
-        <translation>Heprea</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="131"/>
-        <source>Indonesian</source>
-        <translation>Indonesia</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="133"/>
-        <source>Italian</source>
-        <translation>Italia</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="139"/>
-        <source>Latvian</source>
-        <translation>Latvia</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="141"/>
-        <source>Norwegian</source>
-        <translation>Norja</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="143"/>
-        <source>Polish</source>
-        <translation>Puola</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="145"/>
-        <source>Portuguese</source>
-        <translation>Portugali</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="147"/>
-        <source>Romanian</source>
-        <translation>Romania</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="149"/>
-        <source>Russian</source>
-        <translation>Venäjä</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="151"/>
-        <source>Simplified Chinese</source>
-        <translation>Yksinkertaistettu kiina</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="153"/>
-        <source>Spanish</source>
-        <translation>Espanja</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="155"/>
-        <source>Swedish</source>
-        <translation>Ruotsi</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="157"/>
-        <source>Turkish</source>
-        <translation>Turkki</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="163"/>
-        <location filename="../../gui/aboutbox.cpp" line="164"/>
-        <location filename="../../gui/aboutbox.cpp" line="165"/>
-        <location filename="../../gui/aboutbox.cpp" line="166"/>
-        <location filename="../../gui/aboutbox.cpp" line="167"/>
-        <location filename="../../gui/aboutbox.cpp" line="168"/>
-        <location filename="../../gui/aboutbox.cpp" line="169"/>
-        <source>Copyright (C)</source>
-        <translation>Copyright ©</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="173"/>
+        <location filename="../../gui/aboutbox.cpp" line="122"/>
         <source>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version</source>
         <translation>Tämä ohjelma on vapaa; tätä ohjelmaa on sallittu levittää edelleen ja muuttaa GNU yleisen lisenssin (GPL lisenssin) ehtojen mukaan sellaisina kuin Free Software Foundation on ne julkaissut; joko Lisenssin version 2, tai (valinnan mukaan) minkä tahansa myöhemmän version mukaisesti</translation>
     </message>
     <message>
-        <location filename="../../gui/aboutbox.cpp" line="179"/>
+        <location filename="../../gui/aboutbox.cpp" line="128"/>
         <source>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</source>
         <translation>Tätä ohjelmaa levitetään siinä toivossa, että se olisi hyödyllinen, mutta ilman mitään takuuta; ilman edes hiljaista takuuta kaupallisesti hyväksyttävästä laadusta tai soveltuvuudesta tiettyyn tarkoitukseen. Katso GPL lisenssistä lisää yksityiskohtia.</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="135"/>
-        <source>Japanese</source>
-        <translation>Japani</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="129"/>
-        <source>Hungarian</source>
-        <translation>Unkari</translation>
-    </message>
-    <message>
-        <location filename="../../gui/aboutbox.cpp" line="137"/>
-        <source>Korean</source>
-        <translation>Korea</translation>
     </message>
 </context>
 <context>
@@ -274,7 +126,7 @@
     </message>
     <message>
         <location filename="../../core/book.cpp" line="96"/>
-        <location filename="../../core/book.cpp" line="423"/>
+        <location filename="../../core/book.cpp" line="418"/>
         <source>Temperature</source>
         <translation>Lämpötila</translation>
     </message>
@@ -320,25 +172,25 @@
     </message>
     <message>
         <location filename="../../core/book.cpp" line="104"/>
-        <location filename="../../core/book.cpp" line="349"/>
+        <location filename="../../core/book.cpp" line="344"/>
         <source>Characteristic Impedance (coax)</source>
         <translation>Ominaisimpedanssi (koaksaali)</translation>
     </message>
     <message>
         <location filename="../../core/book.cpp" line="105"/>
-        <location filename="../../core/book.cpp" line="364"/>
+        <location filename="../../core/book.cpp" line="359"/>
         <source>Velocity of Propagation (coax)</source>
         <translation>Äänennopeus (koaksaali)</translation>
     </message>
     <message>
         <location filename="../../core/book.cpp" line="106"/>
-        <location filename="../../core/book.cpp" line="381"/>
+        <location filename="../../core/book.cpp" line="376"/>
         <source>Standing Wave Ratio &amp; Return Loss</source>
         <translation>Seisovan aallon suhde &amp; heijastushäviö</translation>
     </message>
     <message>
         <location filename="../../core/book.cpp" line="107"/>
-        <location filename="../../core/book.cpp" line="407"/>
+        <location filename="../../core/book.cpp" line="402"/>
         <source>Free Space Wavelength</source>
         <translation>Vapaan tilan aallonpituus</translation>
     </message>
@@ -448,7 +300,7 @@
     <message>
         <location filename="../../core/book.cpp" line="245"/>
         <source>slant height</source>
-        <translation type="unfinished"></translation>
+        <translation>sivujanan pituus</translation>
     </message>
     <message>
         <location filename="../../core/book.cpp" line="263"/>
@@ -476,73 +328,70 @@
         <translation>keskuskulma (asteina)</translation>
     </message>
     <message>
-        <location filename="../../core/book.cpp" line="337"/>
-        <location filename="../../core/book.cpp" line="338"/>
-        <location filename="../../core/book.cpp" line="339"/>
-        <location filename="../../core/book.cpp" line="429"/>
-        <location filename="../../core/book.cpp" line="430"/>
-        <location filename="../../core/book.cpp" line="431"/>
+        <location filename="../../core/book.cpp" line="424"/>
+        <location filename="../../core/book.cpp" line="425"/>
+        <location filename="../../core/book.cpp" line="426"/>
         <source>temperature</source>
         <translation>lämpötila</translation>
     </message>
     <message>
-        <location filename="../../core/book.cpp" line="391"/>
+        <location filename="../../core/book.cpp" line="386"/>
         <source>input power</source>
         <translation>ottoteho</translation>
     </message>
     <message>
-        <location filename="../../core/book.cpp" line="392"/>
+        <location filename="../../core/book.cpp" line="387"/>
         <source>reflected power</source>
-        <translation type="unfinished"></translation>
+        <translation>heijastunut teho</translation>
     </message>
     <message>
-        <location filename="../../core/book.cpp" line="393"/>
+        <location filename="../../core/book.cpp" line="388"/>
         <source>transmitted power</source>
         <translation>siirretty teho</translation>
     </message>
     <message>
-        <location filename="../../core/book.cpp" line="394"/>
+        <location filename="../../core/book.cpp" line="389"/>
         <source>return loss</source>
         <translation>heijastushäviö</translation>
     </message>
     <message>
-        <location filename="../../core/book.cpp" line="352"/>
-        <location filename="../../core/book.cpp" line="371"/>
+        <location filename="../../core/book.cpp" line="347"/>
+        <location filename="../../core/book.cpp" line="366"/>
         <source>dielectric constant</source>
         <translation>dielektrinen vakio</translation>
     </message>
     <message>
-        <location filename="../../core/book.cpp" line="353"/>
+        <location filename="../../core/book.cpp" line="348"/>
         <source>outer conductor&apos;s inner diameter</source>
         <translation>ulomman johteen sisähalkaisija</translation>
     </message>
     <message>
-        <location filename="../../core/book.cpp" line="354"/>
+        <location filename="../../core/book.cpp" line="349"/>
         <source>inner conductor&apos;s outer diameter</source>
         <translation>sisemmän johteen ulkohalkaisija</translation>
     </message>
     <message>
-        <location filename="../../core/book.cpp" line="370"/>
+        <location filename="../../core/book.cpp" line="365"/>
         <source>speed of light</source>
         <translation>valonnopeus</translation>
     </message>
     <message>
-        <location filename="../../core/book.cpp" line="395"/>
+        <location filename="../../core/book.cpp" line="390"/>
         <source>reflection coefficient</source>
         <translation>heijastuskerroin</translation>
     </message>
     <message>
-        <location filename="../../core/book.cpp" line="396"/>
+        <location filename="../../core/book.cpp" line="391"/>
         <source>standing wave ratio</source>
         <translation>seisovan aallon suhde</translation>
     </message>
     <message>
-        <location filename="../../core/book.cpp" line="397"/>
+        <location filename="../../core/book.cpp" line="392"/>
         <source>normalized impedance</source>
         <translation>normalisoitu impedanssi</translation>
     </message>
     <message>
-        <location filename="../../core/book.cpp" line="413"/>
+        <location filename="../../core/book.cpp" line="408"/>
         <source>frequency (Hz)</source>
         <translation>taajuus (Hz)</translation>
     </message>
@@ -550,7 +399,7 @@
 <context>
     <name>BookDock</name>
     <message>
-        <location filename="../../gui/bookdock.cpp" line="67"/>
+        <location filename="../../gui/bookdock.cpp" line="71"/>
         <source>Formula Book</source>
         <translation>Kaavakirja</translation>
     </message>
@@ -558,9 +407,9 @@
 <context>
     <name>ConstantCompletion</name>
     <message>
-        <location filename="../../gui/editor.cpp" line="1017"/>
-        <location filename="../../gui/editor.cpp" line="1027"/>
-        <location filename="../../gui/editor.cpp" line="1086"/>
+        <location filename="../../gui/editor.cpp" line="1071"/>
+        <location filename="../../gui/editor.cpp" line="1081"/>
+        <location filename="../../gui/editor.cpp" line="1140"/>
         <source>All</source>
         <translation>Kaikki</translation>
     </message>
@@ -568,799 +417,849 @@
 <context>
     <name>Constants</name>
     <message>
-        <location filename="../../core/constants.cpp" line="250"/>
+        <location filename="../../core/constants.cpp" line="560"/>
         <source>Universal</source>
         <translation>Yleiset</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="252"/>
+        <location filename="../../core/constants.cpp" line="562"/>
         <source>Archimedes&apos; constant Pi</source>
         <translation>Arkhimedeen vakio Pii</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="253"/>
+        <location filename="../../core/constants.cpp" line="563"/>
         <source>Euler&apos;s number</source>
         <translation>Eulerin luku</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="254"/>
+        <location filename="../../core/constants.cpp" line="564"/>
         <source>Golden ratio</source>
         <translation>Kultainen leikkaus</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="257"/>
+        <location filename="../../core/constants.cpp" line="567"/>
         <source>General Physics</source>
         <translation>Yleinen fysiikka</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="259"/>
+        <location filename="../../core/constants.cpp" line="569"/>
         <source>Characteristic Impedance of Vacuum</source>
         <translation>Tyhjiön ominaisimpedanssi</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="260"/>
+        <location filename="../../core/constants.cpp" line="570"/>
         <source>Dirac&apos;s Constant</source>
         <translation>Diracin vakio</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="261"/>
+        <location filename="../../core/constants.cpp" line="571"/>
         <source>Electric Constant</source>
         <translation>Sähkövakio</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="262"/>
+        <location filename="../../core/constants.cpp" line="572"/>
         <source>Gravitation Constant</source>
         <translation>Gravitaatiovakio</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="263"/>
+        <location filename="../../core/constants.cpp" line="573"/>
         <source>Magnetic Constant</source>
         <translation>Magneettivakio</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="264"/>
+        <location filename="../../core/constants.cpp" line="574"/>
         <source>Planck&apos;s Constant</source>
         <translation>Planckin vakio</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="265"/>
+        <location filename="../../core/constants.cpp" line="575"/>
         <source>Speed of Light in Vacuum</source>
         <translation>Valon nopeus tyhjiössä</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="266"/>
+        <location filename="../../core/constants.cpp" line="576"/>
         <source>Standard Gravity</source>
-        <translation type="unfinished"></translation>
+        <translation>Normaaliputoamiskiihtyvyys</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="270"/>
+        <location filename="../../core/constants.cpp" line="580"/>
         <source>Electromagnetic</source>
         <translation>Sähkömagnetiikka</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="272"/>
+        <location filename="../../core/constants.cpp" line="582"/>
         <source>Bohr-Procopiu Magneton</source>
         <translation>Bohrin-Procopiun magnetoni</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="273"/>
+        <location filename="../../core/constants.cpp" line="583"/>
         <source>Conductance Quantum</source>
         <translation>Konduktanssin kvanttiluku</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="274"/>
+        <location filename="../../core/constants.cpp" line="584"/>
         <source>Coulomb&apos;s Constant</source>
         <translation>Coulombin vakio</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="275"/>
+        <location filename="../../core/constants.cpp" line="585"/>
         <source>Elementary Charge</source>
         <translation>Alkeisvaraus</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="276"/>
+        <location filename="../../core/constants.cpp" line="586"/>
+        <source>Conventional value of Josephson Constant</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/constants.cpp" line="587"/>
         <source>Josephson Constant</source>
         <translation>Josephsonin vakio</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="277"/>
+        <location filename="../../core/constants.cpp" line="588"/>
         <source>Magnetic Flux Quantum</source>
         <translation>Magneettisen sähkövuon kvanttiluku</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="278"/>
+        <location filename="../../core/constants.cpp" line="589"/>
         <source>Nuclear Magneton</source>
         <translation>Ydinmagnetoni</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="279"/>
+        <location filename="../../core/constants.cpp" line="590"/>
         <source>Resistance Quantum</source>
         <translation>Resistanssin kvanttiluku</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="280"/>
+        <location filename="../../core/constants.cpp" line="591"/>
+        <source>Conventional value of von Klitzing Constant</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/constants.cpp" line="592"/>
         <source>von Klitzing Constant</source>
         <translation>von Klitzingin vakio</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="283"/>
+        <location filename="../../core/constants.cpp" line="595"/>
         <source>Atomic &amp; Nuclear</source>
-        <translation>Atomi- &amp; ydinfysiikka</translation>
+        <translation>Atomi- ja ydinfysiikka</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="285"/>
+        <location filename="../../core/constants.cpp" line="597"/>
         <source>Bohr Radius</source>
         <translation>Bohrin säde</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="286"/>
+        <location filename="../../core/constants.cpp" line="598"/>
         <source>Fermi Coupling Constant</source>
         <translation>Fermin kytkentävakio</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="287"/>
+        <location filename="../../core/constants.cpp" line="599"/>
         <source>Fine-structure Constant</source>
         <translation>Hienorakennevakio</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="288"/>
+        <location filename="../../core/constants.cpp" line="600"/>
         <source>Hartree Energy</source>
         <translation>Hartreen energia</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="289"/>
+        <location filename="../../core/constants.cpp" line="601"/>
+        <source>Hartree Energy in eV</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/constants.cpp" line="602"/>
         <source>Quantum of Circulation</source>
         <translation>Kiertokvanttiluku</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="290"/>
+        <location filename="../../core/constants.cpp" line="603"/>
+        <source>Quantum of Circulation times 2</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/constants.cpp" line="604"/>
         <source>Rydberg Constant</source>
         <translation>Rydbergin vakio</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="291"/>
+        <location filename="../../core/constants.cpp" line="605"/>
         <source>Thomson Cross Section</source>
         <translation>Thomsonin poikkileikkaus</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="292"/>
+        <location filename="../../core/constants.cpp" line="606"/>
         <source>Weak Mixing Angle</source>
         <translation>Weinbergin kulma</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="295"/>
+        <location filename="../../core/constants.cpp" line="609"/>
         <source>Physico-chemical</source>
         <translation>Fysikaalinen kemia</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="297"/>
+        <location filename="../../core/constants.cpp" line="611"/>
         <source>Atomic Mass Unit</source>
         <translation>Atomimassayksikkö</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="298"/>
+        <location filename="../../core/constants.cpp" line="612"/>
         <source>Avogadro&apos;s Number</source>
         <translation>Avogadron vakio</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="299"/>
+        <location filename="../../core/constants.cpp" line="613"/>
         <source>Boltzmann Constant</source>
         <translation>Boltzmannin vakio</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="300"/>
+        <location filename="../../core/constants.cpp" line="614"/>
+        <source>Compton wavelength</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/constants.cpp" line="615"/>
+        <source>Compton wavelength over 2 pi</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/constants.cpp" line="616"/>
+        <source>Electron volt</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/constants.cpp" line="617"/>
         <source>Faraday Constant</source>
         <translation>Faradayn vakio</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="301"/>
+        <location filename="../../core/constants.cpp" line="618"/>
         <source>First Radiation Constant</source>
         <translation>Ensimmäinen säteilyvakio</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="302"/>
+        <location filename="../../core/constants.cpp" line="619"/>
+        <source>First Radiation Constant for Spectral Radiance</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/constants.cpp" line="620"/>
         <source>Gas Constant</source>
         <translation>Kaasuvakio</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="303"/>
-        <source>Loschmidt Constant</source>
-        <translation>Loschmidtin vakio</translation>
+        <location filename="../../core/constants.cpp" line="621"/>
+        <source>Loschmidt constant (273.15 K, 100 kPa)</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="304"/>
+        <location filename="../../core/constants.cpp" line="622"/>
+        <source>Loschmidt constant (273.15 K, 101.325 kPa)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/constants.cpp" line="623"/>
         <source>Molar Planck Constant</source>
         <translation>Planckin moolivakio</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="305"/>
+        <location filename="../../core/constants.cpp" line="624"/>
         <source>Second Radiation Constant</source>
         <translation>Toinen säteilyvakio</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="306"/>
+        <location filename="../../core/constants.cpp" line="625"/>
         <source>Stefan-Boltzmann Constant</source>
         <translation>Stefanin-Boltzmannin vakio</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="309"/>
+        <location filename="../../core/constants.cpp" line="626"/>
+        <source>{220} Lattice Spacing of Silicon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/constants.cpp" line="629"/>
         <source>Astronomy</source>
         <translation>Tähtitiede</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="311"/>
+        <location filename="../../core/constants.cpp" line="631"/>
         <source>Astronomical Unit</source>
         <translation>Astronominen yksikkö</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="312"/>
+        <location filename="../../core/constants.cpp" line="632"/>
         <source>Light Year</source>
         <translation>Valovuosi</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="313"/>
+        <location filename="../../core/constants.cpp" line="633"/>
         <source>Parsec</source>
         <translation>Parsek</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="315"/>
+        <location filename="../../core/constants.cpp" line="635"/>
         <source>days</source>
         <translation>päivää</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="317"/>
+        <location filename="../../core/constants.cpp" line="637"/>
         <source>Gregorian Year</source>
         <translation>Gregoriaaninen vuosi</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="318"/>
+        <location filename="../../core/constants.cpp" line="638"/>
         <source>Julian Year</source>
         <translation>Juliaaninen vuosi</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="319"/>
+        <location filename="../../core/constants.cpp" line="639"/>
         <source>Sidereal Year</source>
         <translation>Sideerinen vuosi</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="320"/>
+        <location filename="../../core/constants.cpp" line="640"/>
         <source>Tropical Year</source>
         <translation>Trooppinen vuosi</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="322"/>
+        <location filename="../../core/constants.cpp" line="642"/>
         <source>Earth Mass</source>
         <translation>Maan massa</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="323"/>
+        <location filename="../../core/constants.cpp" line="643"/>
         <source>Mean Earth Radius</source>
         <translation>Maan keskisäde</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="324"/>
+        <location filename="../../core/constants.cpp" line="644"/>
         <source>Sun Mass</source>
         <translation>Auringon massa</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="325"/>
+        <location filename="../../core/constants.cpp" line="645"/>
         <source>Sun Radius</source>
         <translation>Auringon säde</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="326"/>
+        <location filename="../../core/constants.cpp" line="646"/>
         <source>Sun Luminosity</source>
         <translation>Auringon luminositeetti</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="330"/>
+        <location filename="../../core/constants.cpp" line="650"/>
         <source>Molar Mass</source>
         <translation>Moolimassa</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="332"/>
+        <location filename="../../core/constants.cpp" line="652"/>
         <source>Aluminium</source>
         <translation>Alumiini</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="333"/>
+        <location filename="../../core/constants.cpp" line="653"/>
         <source>Antimony</source>
         <translation>Antimoni</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="334"/>
+        <location filename="../../core/constants.cpp" line="654"/>
         <source>Argon</source>
         <translation>Argon</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="335"/>
+        <location filename="../../core/constants.cpp" line="655"/>
         <source>Arsenic</source>
         <translation>Arseeni</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="336"/>
+        <location filename="../../core/constants.cpp" line="656"/>
         <source>Barium</source>
         <translation>Barium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="337"/>
+        <location filename="../../core/constants.cpp" line="657"/>
         <source>Beryllium</source>
         <translation>Beryllium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="338"/>
+        <location filename="../../core/constants.cpp" line="658"/>
         <source>Bismuth</source>
         <translation>Vismutti</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="339"/>
+        <location filename="../../core/constants.cpp" line="659"/>
         <source>Boron</source>
         <translation>Boori</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="340"/>
+        <location filename="../../core/constants.cpp" line="660"/>
         <source>Bromine</source>
         <translation>Bromi</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="341"/>
+        <location filename="../../core/constants.cpp" line="661"/>
         <source>Cadmium</source>
         <translation>Kadmium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="342"/>
+        <location filename="../../core/constants.cpp" line="662"/>
         <source>Caesium</source>
         <translation>Cesium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="343"/>
+        <location filename="../../core/constants.cpp" line="663"/>
         <source>Calcium</source>
         <translation>Kalsium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="344"/>
+        <location filename="../../core/constants.cpp" line="664"/>
         <source>Carbon</source>
         <translation>Hiili</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="345"/>
+        <location filename="../../core/constants.cpp" line="665"/>
         <source>Cerium</source>
         <translation>Cerium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="346"/>
+        <location filename="../../core/constants.cpp" line="666"/>
         <source>Chlorine</source>
         <translation>Kloori</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="347"/>
+        <location filename="../../core/constants.cpp" line="667"/>
         <source>Chromium</source>
         <translation>Kromi</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="348"/>
+        <location filename="../../core/constants.cpp" line="668"/>
         <source>Cobalt</source>
         <translation>Koboltti</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="349"/>
+        <location filename="../../core/constants.cpp" line="669"/>
         <source>Copper</source>
         <translation>Kupari</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="350"/>
+        <location filename="../../core/constants.cpp" line="670"/>
         <source>Dysprosium</source>
         <translation>Dysprosium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="351"/>
+        <location filename="../../core/constants.cpp" line="671"/>
         <source>Erbium</source>
         <translation>Erbium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="352"/>
+        <location filename="../../core/constants.cpp" line="672"/>
         <source>Europium</source>
         <translation>Europium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="353"/>
+        <location filename="../../core/constants.cpp" line="673"/>
         <source>Fluorine</source>
         <translation>Fluori</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="354"/>
+        <location filename="../../core/constants.cpp" line="674"/>
         <source>Gadolinium</source>
         <translation>Gadolinium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="355"/>
+        <location filename="../../core/constants.cpp" line="675"/>
         <source>Gallium</source>
         <translation>Gallium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="356"/>
+        <location filename="../../core/constants.cpp" line="676"/>
         <source>Germanium</source>
         <translation>Germanium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="357"/>
+        <location filename="../../core/constants.cpp" line="677"/>
         <source>Gold</source>
         <translation>Kulta</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="358"/>
+        <location filename="../../core/constants.cpp" line="678"/>
         <source>Hafnium</source>
         <translation>Hafnium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="359"/>
+        <location filename="../../core/constants.cpp" line="679"/>
         <source>Helium</source>
         <translation>Helium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="360"/>
+        <location filename="../../core/constants.cpp" line="680"/>
         <source>Holmium</source>
         <translation>Holmium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="361"/>
+        <location filename="../../core/constants.cpp" line="681"/>
         <source>Hydrogen</source>
         <translation>Vety</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="362"/>
+        <location filename="../../core/constants.cpp" line="682"/>
         <source>Indium</source>
         <translation>Indium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="363"/>
+        <location filename="../../core/constants.cpp" line="683"/>
         <source>Iodine</source>
         <translation>Jodi</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="364"/>
+        <location filename="../../core/constants.cpp" line="684"/>
         <source>Iridium</source>
         <translation>Iridium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="365"/>
+        <location filename="../../core/constants.cpp" line="685"/>
         <source>Iron</source>
         <translation>Rauta</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="366"/>
+        <location filename="../../core/constants.cpp" line="686"/>
         <source>Krypton</source>
         <translation>Krypton</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="367"/>
+        <location filename="../../core/constants.cpp" line="687"/>
         <source>Lanthanum</source>
         <translation>Lantaani</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="368"/>
+        <location filename="../../core/constants.cpp" line="688"/>
         <source>Lead</source>
         <translation>Lyijy</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="369"/>
+        <location filename="../../core/constants.cpp" line="689"/>
         <source>Lithium</source>
         <translation>Litium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="370"/>
+        <location filename="../../core/constants.cpp" line="690"/>
         <source>Lutetium</source>
         <translation>Lutetium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="371"/>
+        <location filename="../../core/constants.cpp" line="691"/>
         <source>Magnesium</source>
         <translation>Magnesium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="372"/>
+        <location filename="../../core/constants.cpp" line="692"/>
         <source>Manganese</source>
         <translation>Mangaani</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="373"/>
+        <location filename="../../core/constants.cpp" line="693"/>
         <source>Mercury</source>
         <translation>Elohopea</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="374"/>
+        <location filename="../../core/constants.cpp" line="694"/>
         <source>Molybdenum</source>
         <translation>Molybdeeni</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="375"/>
+        <location filename="../../core/constants.cpp" line="695"/>
         <source>Neodymium</source>
         <translation>Neodyymi</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="376"/>
+        <location filename="../../core/constants.cpp" line="696"/>
         <source>Neon</source>
         <translation>Neon</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="377"/>
+        <location filename="../../core/constants.cpp" line="697"/>
         <source>Nickel</source>
         <translation>Nikkeli</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="378"/>
+        <location filename="../../core/constants.cpp" line="698"/>
         <source>Niobium</source>
         <translation>Niobium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="379"/>
+        <location filename="../../core/constants.cpp" line="699"/>
         <source>Nitrogen</source>
         <translation>Typpi</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="380"/>
+        <location filename="../../core/constants.cpp" line="700"/>
         <source>Osmium</source>
         <translation>Osmium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="381"/>
+        <location filename="../../core/constants.cpp" line="701"/>
         <source>Oxygen</source>
         <translation>Happi</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="382"/>
+        <location filename="../../core/constants.cpp" line="702"/>
         <source>Palladium</source>
         <translation>Palladium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="383"/>
+        <location filename="../../core/constants.cpp" line="703"/>
         <source>Phosphorus</source>
         <translation>Fosfori</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="384"/>
+        <location filename="../../core/constants.cpp" line="704"/>
         <source>Platinum</source>
         <translation>Platina</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="385"/>
+        <location filename="../../core/constants.cpp" line="705"/>
         <source>Potassium</source>
         <translation>Kalium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="386"/>
+        <location filename="../../core/constants.cpp" line="706"/>
         <source>Praseodymium</source>
         <translation>Praseodyymi</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="387"/>
+        <location filename="../../core/constants.cpp" line="707"/>
         <source>Protactinium</source>
         <translation>Protaktinium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="388"/>
+        <location filename="../../core/constants.cpp" line="708"/>
         <source>Rhenium</source>
         <translation>Renium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="389"/>
+        <location filename="../../core/constants.cpp" line="709"/>
         <source>Rubidium</source>
         <translation>Rubidium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="390"/>
+        <location filename="../../core/constants.cpp" line="710"/>
         <source>Ruthenium</source>
         <translation>Rutenium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="391"/>
+        <location filename="../../core/constants.cpp" line="711"/>
         <source>Samarium</source>
         <translation>Samarium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="392"/>
+        <location filename="../../core/constants.cpp" line="712"/>
         <source>Scandium</source>
         <translation>Skandium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="393"/>
+        <location filename="../../core/constants.cpp" line="713"/>
         <source>Selenium</source>
         <translation>Seleeni</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="394"/>
+        <location filename="../../core/constants.cpp" line="714"/>
         <source>Silicon</source>
         <translation>Pii</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="395"/>
+        <location filename="../../core/constants.cpp" line="715"/>
         <source>Silver</source>
         <translation>Hopea</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="396"/>
+        <location filename="../../core/constants.cpp" line="716"/>
         <source>Sodium</source>
         <translation>Natrium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="397"/>
+        <location filename="../../core/constants.cpp" line="717"/>
         <source>Strontium</source>
         <translation>Strontium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="398"/>
+        <location filename="../../core/constants.cpp" line="718"/>
         <source>Sulfur</source>
         <translation>Rikki</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="399"/>
+        <location filename="../../core/constants.cpp" line="719"/>
         <source>Tantalum</source>
         <translation>Tantaali</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="400"/>
+        <location filename="../../core/constants.cpp" line="720"/>
         <source>Tellurium</source>
         <translation>Telluuri</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="401"/>
+        <location filename="../../core/constants.cpp" line="721"/>
         <source>Terbium</source>
         <translation>Terbium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="402"/>
+        <location filename="../../core/constants.cpp" line="722"/>
         <source>Thallium</source>
         <translation>Tallium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="403"/>
+        <location filename="../../core/constants.cpp" line="723"/>
         <source>Thorium</source>
         <translation>Torium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="404"/>
+        <location filename="../../core/constants.cpp" line="724"/>
         <source>Thulium</source>
         <translation>Tulium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="405"/>
+        <location filename="../../core/constants.cpp" line="725"/>
         <source>Tin</source>
         <translation>Tina</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="406"/>
+        <location filename="../../core/constants.cpp" line="726"/>
         <source>Titanium</source>
         <translation>Titaani</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="407"/>
+        <location filename="../../core/constants.cpp" line="727"/>
         <source>Tungsten</source>
         <translation>Volframi</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="408"/>
+        <location filename="../../core/constants.cpp" line="728"/>
         <source>Uranium</source>
         <translation>Uraani</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="409"/>
+        <location filename="../../core/constants.cpp" line="729"/>
         <source>Vanadium</source>
         <translation>Vanadiini</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="410"/>
+        <location filename="../../core/constants.cpp" line="730"/>
         <source>Xenon</source>
         <translation>Ksenon</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="411"/>
+        <location filename="../../core/constants.cpp" line="731"/>
         <source>Ytterbium</source>
         <translation>Ytterbium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="412"/>
+        <location filename="../../core/constants.cpp" line="732"/>
         <source>Yttrium</source>
         <translation>Yttrium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="413"/>
+        <location filename="../../core/constants.cpp" line="733"/>
         <source>Zinc</source>
         <translation>Sinkki</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="414"/>
+        <location filename="../../core/constants.cpp" line="734"/>
         <source>Zirconium</source>
         <translation>Zirkonium</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="417"/>
+        <location filename="../../core/constants.cpp" line="739"/>
         <source>Particle Masses</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiukkasten massat</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="419"/>
+        <location filename="../../core/constants.cpp" line="741"/>
         <source>Electron Mass</source>
-        <translation type="unfinished"></translation>
+        <translation>Elektronin massa</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="420"/>
+        <location filename="../../core/constants.cpp" line="742"/>
         <source>Muon Mass</source>
-        <translation type="unfinished"></translation>
+        <translation>Myonin massa</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="421"/>
+        <location filename="../../core/constants.cpp" line="743"/>
         <source>Tau Mass</source>
-        <translation type="unfinished"></translation>
+        <translation>Taun massa</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="422"/>
+        <location filename="../../core/constants.cpp" line="744"/>
         <source>Up-Quark Mass</source>
-        <translation type="unfinished"></translation>
+        <translation>Ylöskvarkin massa</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="423"/>
+        <location filename="../../core/constants.cpp" line="745"/>
         <source>Down-Quark Mass</source>
-        <translation type="unfinished"></translation>
+        <translation>Alaskvarkin massa</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="424"/>
+        <location filename="../../core/constants.cpp" line="746"/>
         <source>Charm-Quark Mass</source>
-        <translation type="unfinished"></translation>
+        <translation>Lumokvarkin massa</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="425"/>
+        <location filename="../../core/constants.cpp" line="747"/>
         <source>Strange-Quark Mass</source>
-        <translation type="unfinished"></translation>
+        <translation>Outokvarkin massa</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="426"/>
+        <location filename="../../core/constants.cpp" line="748"/>
         <source>Top-Quark Mass</source>
-        <translation type="unfinished"></translation>
+        <translation>Huippukvarkin massa</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="427"/>
+        <location filename="../../core/constants.cpp" line="749"/>
         <source>Bottom-Quark Mass</source>
-        <translation type="unfinished"></translation>
+        <translation>Pohjakvarkin massa</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="428"/>
+        <location filename="../../core/constants.cpp" line="750"/>
         <source>W-Boson Mass</source>
-        <translation type="unfinished"></translation>
+        <translation>W-bosonin massa</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="429"/>
+        <location filename="../../core/constants.cpp" line="751"/>
         <source>Z-Boson Mass</source>
-        <translation type="unfinished"></translation>
+        <translation>Z-bosonin massa</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="430"/>
+        <location filename="../../core/constants.cpp" line="752"/>
         <source>Higgs-Boson Mass</source>
-        <translation type="unfinished"></translation>
+        <translation>Higgsin bosonin massa</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="431"/>
+        <location filename="../../core/constants.cpp" line="753"/>
         <source>Proton Mass</source>
-        <translation type="unfinished"></translation>
+        <translation>Protonin massa</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="432"/>
+        <location filename="../../core/constants.cpp" line="754"/>
         <source>Neutron Mass</source>
-        <translation type="unfinished"></translation>
+        <translation>Neutronin massa</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="433"/>
+        <location filename="../../core/constants.cpp" line="755"/>
         <source>Electron Mass (SI)</source>
-        <translation type="unfinished"></translation>
+        <translation>Elektronin massa (SI)</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="434"/>
+        <location filename="../../core/constants.cpp" line="756"/>
         <source>Proton Mass (SI)</source>
-        <translation type="unfinished"></translation>
+        <translation>Protonin massa (SI)</translation>
     </message>
     <message>
-        <location filename="../../core/constants.cpp" line="435"/>
+        <location filename="../../core/constants.cpp" line="757"/>
         <source>Neutron Mass (SI)</source>
-        <translation type="unfinished"></translation>
+        <translation>Neutronin massa (SI)</translation>
     </message>
 </context>
 <context>
@@ -1413,17 +1312,27 @@
 <context>
     <name>Editor</name>
     <message>
-        <location filename="../../gui/editor.cpp" line="519"/>
+        <location filename="../../gui/editor.cpp" line="360"/>
+        <source>User function</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/editor.cpp" line="440"/>
+        <source>Argument</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/editor.cpp" line="545"/>
         <source>Current result: &lt;b&gt;%1&lt;/b&gt;</source>
         <translation>Tämänhetkinen tulos: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../../gui/editor.cpp" line="574"/>
+        <location filename="../../gui/editor.cpp" line="601"/>
         <source>Selection result: n/a</source>
-        <translation type="unfinished"></translation>
+        <translation>Valinnan tulos: –</translation>
     </message>
     <message>
-        <location filename="../../gui/editor.cpp" line="577"/>
+        <location filename="../../gui/editor.cpp" line="604"/>
         <source>Selection result: &lt;b&gt;%1&lt;/b&gt;</source>
         <translation>Valinnan tulos: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
@@ -1431,560 +1340,668 @@
 <context>
     <name>Evaluator</name>
     <message>
-        <location filename="../../core/evaluator.cpp" line="1120"/>
-        <location filename="../../core/evaluator.cpp" line="1208"/>
-        <location filename="../../core/evaluator.cpp" line="1219"/>
-        <location filename="../../core/evaluator.cpp" line="1230"/>
-        <location filename="../../core/evaluator.cpp" line="1241"/>
-        <location filename="../../core/evaluator.cpp" line="1252"/>
-        <location filename="../../core/evaluator.cpp" line="1263"/>
-        <location filename="../../core/evaluator.cpp" line="1274"/>
-        <location filename="../../core/evaluator.cpp" line="1284"/>
-        <location filename="../../core/evaluator.cpp" line="1295"/>
-        <location filename="../../core/evaluator.cpp" line="1306"/>
-        <location filename="../../core/evaluator.cpp" line="1317"/>
-        <location filename="../../core/evaluator.cpp" line="1328"/>
-        <location filename="../../core/evaluator.cpp" line="1339"/>
-        <location filename="../../core/evaluator.cpp" line="1395"/>
-        <location filename="../../core/evaluator.cpp" line="1444"/>
+        <location filename="../../core/evaluator.cpp" line="1331"/>
+        <location filename="../../core/evaluator.cpp" line="1421"/>
+        <location filename="../../core/evaluator.cpp" line="1432"/>
+        <location filename="../../core/evaluator.cpp" line="1443"/>
+        <location filename="../../core/evaluator.cpp" line="1454"/>
+        <location filename="../../core/evaluator.cpp" line="1465"/>
+        <location filename="../../core/evaluator.cpp" line="1476"/>
+        <location filename="../../core/evaluator.cpp" line="1487"/>
+        <location filename="../../core/evaluator.cpp" line="1497"/>
+        <location filename="../../core/evaluator.cpp" line="1508"/>
+        <location filename="../../core/evaluator.cpp" line="1519"/>
+        <location filename="../../core/evaluator.cpp" line="1530"/>
+        <location filename="../../core/evaluator.cpp" line="1541"/>
+        <location filename="../../core/evaluator.cpp" line="1552"/>
+        <location filename="../../core/evaluator.cpp" line="1563"/>
+        <location filename="../../core/evaluator.cpp" line="1627"/>
+        <location filename="../../core/evaluator.cpp" line="1676"/>
         <source>invalid expression</source>
         <translation>virheellinen lauseke</translation>
     </message>
     <message>
-        <location filename="../../core/evaluator.cpp" line="65"/>
+        <location filename="../../core/evaluator.cpp" line="75"/>
+        <location filename="../../core/evaluator.cpp" line="128"/>
         <source>division by zero</source>
         <translation>jako nollalla</translation>
     </message>
     <message>
-        <location filename="../../core/evaluator.cpp" line="1368"/>
-        <location filename="../../core/evaluator.cpp" line="1390"/>
+        <location filename="../../core/evaluator.cpp" line="84"/>
+        <source>too time consuming - computation was rejected</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/evaluator.cpp" line="87"/>
+        <location filename="../../core/evaluator.cpp" line="143"/>
+        <source>dimension mismatch - quantities with different dimensions cannot be compared, added, etc.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/evaluator.cpp" line="90"/>
+        <source>invalid dimension - operation might require dimensionless arguments</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/evaluator.cpp" line="93"/>
+        <location filename="../../core/evaluator.cpp" line="131"/>
+        <source>Computation aborted - encountered numerical instability</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/evaluator.cpp" line="140"/>
+        <source>invalid dimension - function might require dimensionless arguments</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/evaluator.cpp" line="152"/>
+        <source>error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/evaluator.cpp" line="1383"/>
+        <source>compile error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/evaluator.cpp" line="1569"/>
+        <source>unit must not be zero</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/evaluator.cpp" line="1573"/>
+        <source>Conversion failed - dimension mismatch</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/evaluator.cpp" line="1600"/>
+        <location filename="../../core/evaluator.cpp" line="1622"/>
         <source>unknown function or variable</source>
         <translation>tuntematon funktio tai muuttuja</translation>
     </message>
     <message>
-        <location filename="../../core/evaluator.cpp" line="56"/>
+        <location filename="../../core/evaluator.cpp" line="1693"/>
+        <source>recursion not supported</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/evaluator.cpp" line="66"/>
         <source>cannot operate on a NaN</source>
         <translation>toimintoa ei voi suorittaa NaN:llä (ei-luvulla)</translation>
     </message>
     <message>
-        <location filename="../../core/evaluator.cpp" line="59"/>
+        <location filename="../../core/evaluator.cpp" line="69"/>
+        <location filename="../../core/evaluator.cpp" line="119"/>
         <source>underflow - tiny result is out of SpeedCrunch&apos;s number range</source>
         <translation>alivuoto - pienen pieni tulos on SpeedCrunchin lukualueen ulkopuolella</translation>
     </message>
     <message>
-        <location filename="../../core/evaluator.cpp" line="62"/>
+        <location filename="../../core/evaluator.cpp" line="72"/>
+        <location filename="../../core/evaluator.cpp" line="116"/>
         <source>overflow - huge result is out of SpeedCrunch&apos;s number range</source>
         <translation>ylivuoto - valtava tulos on SpeedCrunchin lukualueen ulkopuolella</translation>
     </message>
     <message>
-        <location filename="../../core/evaluator.cpp" line="68"/>
+        <location filename="../../core/evaluator.cpp" line="78"/>
+        <location filename="../../core/evaluator.cpp" line="122"/>
         <source>overflow - logic result exceeds maximum of 256 bits</source>
         <translation>ylivuoto - looginen tulos ylittää 256-bitin ylärajan</translation>
     </message>
     <message>
-        <location filename="../../core/evaluator.cpp" line="71"/>
+        <location filename="../../core/evaluator.cpp" line="81"/>
         <source>overflow - integer result exceeds maximum limit for integers</source>
         <translation>ylivuoto - kokonaislukutulos ylittää suurimman mahdollisen kokonaislukuarvon</translation>
     </message>
     <message>
-        <location filename="../../core/evaluator.cpp" line="74"/>
-        <source>too time consuming computation was rejected</source>
-        <translation>liian paljon aikaa vievä lasku hylättiin</translation>
-    </message>
-    <message>
-        <location filename="../../core/evaluator.cpp" line="90"/>
-        <location filename="../../core/evaluator.cpp" line="1461"/>
+        <location filename="../../core/evaluator.cpp" line="110"/>
+        <location filename="../../core/evaluator.cpp" line="1687"/>
         <source>wrong number of arguments</source>
         <translation>väärä määrä parametreja</translation>
     </message>
     <message>
-        <location filename="../../core/evaluator.cpp" line="93"/>
+        <location filename="../../core/evaluator.cpp" line="113"/>
         <source>does not take NaN as an argument</source>
         <translation>ei ota epälukua (NaN) parametrikseen</translation>
     </message>
     <message>
-        <location filename="../../core/evaluator.cpp" line="99"/>
+        <location filename="../../core/evaluator.cpp" line="125"/>
         <source>result out of range</source>
         <translation>tulos lukualueen ulkopuolella</translation>
     </message>
     <message>
-        <location filename="../../core/evaluator.cpp" line="104"/>
+        <location filename="../../core/evaluator.cpp" line="134"/>
         <source>undefined for argument domain</source>
         <translation>funktio on määrittelemättä parametrin määrittelyjoukolle</translation>
     </message>
     <message>
-        <location filename="../../core/evaluator.cpp" line="107"/>
+        <location filename="../../core/evaluator.cpp" line="137"/>
         <source>computation too expensive</source>
         <translation>lasku liian raskas</translation>
     </message>
     <message>
-        <location filename="../../core/evaluator.cpp" line="112"/>
+        <location filename="../../core/evaluator.cpp" line="149"/>
         <source>internal error, please report a bug</source>
         <translation>sisäinen virhe; ilmoita viasta</translation>
     </message>
     <message>
-        <location filename="../../core/evaluator.cpp" line="1466"/>
-        <source>user function recursion is not supported</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../core/evaluator.cpp" line="1525"/>
-        <location filename="../../core/evaluator.cpp" line="1547"/>
+        <location filename="../../core/evaluator.cpp" line="1755"/>
+        <location filename="../../core/evaluator.cpp" line="1776"/>
         <source>%1 is a reserved name, please choose another</source>
-        <translation>%1 on varattu sana, ole hyvä ja käytä jotain toista</translation>
+        <translation>%1 on varattu sana; ole hyvä ja käytä jotain toista</translation>
     </message>
     <message>
-        <location filename="../../core/evaluator.cpp" line="1533"/>
+        <location filename="../../core/evaluator.cpp" line="1762"/>
         <source>%1 is a variable name, please choose another or delete the variable</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 on muuttujan nimi; ole hyvä ja käytä jotain toista tai poista muuttuja</translation>
     </message>
     <message>
-        <location filename="../../core/evaluator.cpp" line="1542"/>
+        <location filename="../../core/evaluator.cpp" line="1771"/>
         <source>argument %1 is used more than once</source>
-        <translation type="unfinished"></translation>
+        <translation>parametria %1 on käytetty useammin kuin kerran</translation>
     </message>
     <message>
-        <location filename="../../core/evaluator.cpp" line="1560"/>
+        <location filename="../../core/evaluator.cpp" line="1792"/>
         <source>%1 is a user function name, please choose another or delete the function</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 on käyttäjän funktion nimi; ole hyvä ja käytä jotain toista tai poista funktio</translation>
     </message>
 </context>
 <context>
     <name>FunctionRepo</name>
     <message>
-        <location filename="../../core/functions.cpp" line="820"/>
+        <location filename="../../core/functions.cpp" line="992"/>
         <source>max; trials; probability</source>
-        <translation type="unfinished"></translation>
+        <translation>maksimi; kokeita; todennäköisyys</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="821"/>
-        <location filename="../../core/functions.cpp" line="823"/>
+        <location filename="../../core/functions.cpp" line="993"/>
+        <location filename="../../core/functions.cpp" line="995"/>
         <source>trials; probability</source>
-        <translation type="unfinished"></translation>
+        <translation>kokeita; todennäköisyys</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="822"/>
+        <location filename="../../core/functions.cpp" line="994"/>
         <source>hits; trials; probability</source>
-        <translation type="unfinished"></translation>
+        <translation>onnistumisia; kokeita; todennäköisyys</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="824"/>
+        <location filename="../../core/functions.cpp" line="996"/>
         <source>max; total; hits; trials</source>
-        <translation type="unfinished"></translation>
+        <translation>maksimi; yhteensä; onnistumisia; kokeita</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="825"/>
-        <location filename="../../core/functions.cpp" line="827"/>
+        <location filename="../../core/functions.cpp" line="997"/>
+        <location filename="../../core/functions.cpp" line="999"/>
         <source>total; hits; trials</source>
-        <translation type="unfinished"></translation>
+        <translation>yhteensä; onnistumisia; kokeita</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="826"/>
+        <location filename="../../core/functions.cpp" line="998"/>
         <source>count; total; hits; trials</source>
-        <translation type="unfinished"></translation>
+        <translation>lukumäärä; yhteensä; onnistumisia; kokeita</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="828"/>
+        <location filename="../../core/functions.cpp" line="1000"/>
         <source>dividend; divisor</source>
         <translation>jaettava; jakaja</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="829"/>
-        <source>base; x</source>
-        <translation type="unfinished"></translation>
+        <location filename="../../core/functions.cpp" line="1001"/>
+        <location filename="../../core/functions.cpp" line="1002"/>
+        <source>x; exponent_bits; significand_bits [; exponent_bias]</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="830"/>
-        <location filename="../../core/functions.cpp" line="836"/>
-        <location filename="../../core/functions.cpp" line="837"/>
-        <location filename="../../core/functions.cpp" line="838"/>
+        <location filename="../../core/functions.cpp" line="1003"/>
+        <source>base; x</source>
+        <translation>kanta; x</translation>
+    </message>
+    <message>
+        <location filename="../../core/functions.cpp" line="1004"/>
+        <location filename="../../core/functions.cpp" line="1011"/>
+        <location filename="../../core/functions.cpp" line="1012"/>
+        <location filename="../../core/functions.cpp" line="1013"/>
         <source>n; bits</source>
         <translation>n; bittiä</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="831"/>
+        <location filename="../../core/functions.cpp" line="1005"/>
         <source>value; modulo</source>
         <translation>arvo; modulo</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="832"/>
-        <location filename="../../core/functions.cpp" line="834"/>
+        <location filename="../../core/functions.cpp" line="1006"/>
+        <location filename="../../core/functions.cpp" line="1008"/>
         <source>events; average_events</source>
-        <translation type="unfinished"></translation>
+        <translation>tapahtumia; tapahtumia_keskimäärin</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="833"/>
-        <location filename="../../core/functions.cpp" line="835"/>
+        <location filename="../../core/functions.cpp" line="1007"/>
+        <location filename="../../core/functions.cpp" line="1009"/>
         <source>average_events</source>
-        <translation type="unfinished"></translation>
+        <translation>tapahtumia_keskimäärin</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="843"/>
+        <location filename="../../core/functions.cpp" line="1010"/>
+        <source>x [; precision]</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/functions.cpp" line="1018"/>
         <source>Absolute Value</source>
         <translation>Itseisarvo</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="844"/>
+        <location filename="../../core/functions.cpp" line="1019"/>
         <source>Absolute Deviation</source>
         <translation>Absoluuttinen poikkeama</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="845"/>
+        <location filename="../../core/functions.cpp" line="1020"/>
         <source>Arc Cosine</source>
         <translation>Arkuskosini</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="846"/>
+        <location filename="../../core/functions.cpp" line="1021"/>
         <source>Logical AND</source>
         <translation>Looginen JA</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="847"/>
+        <location filename="../../core/functions.cpp" line="1022"/>
         <source>Area Hyperbolic Cosine</source>
         <translation>Hyperbolinen arkuskosini</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="848"/>
+        <location filename="../../core/functions.cpp" line="1023"/>
         <source>Area Hyperbolic Sine</source>
         <translation>Hyperbolinen arkussini</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="849"/>
+        <location filename="../../core/functions.cpp" line="1024"/>
         <source>Area Hyperbolic Tangent</source>
         <translation>Hyperbolinen arkustangentti</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="850"/>
+        <location filename="../../core/functions.cpp" line="1025"/>
         <source>Arc Sine</source>
         <translation>Arkussini</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="851"/>
+        <location filename="../../core/functions.cpp" line="1026"/>
         <source>Arc Tangent</source>
         <translation>Arkustangentti</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="852"/>
+        <location filename="../../core/functions.cpp" line="1027"/>
         <source>Average (Arithmetic Mean)</source>
         <translation>Aritmeettinen keskiarvo</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="854"/>
+        <location filename="../../core/functions.cpp" line="1029"/>
         <source>Binomial Cumulative Distribution Function</source>
         <translation>Binomijakauman kertymäfunktio</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="855"/>
+        <location filename="../../core/functions.cpp" line="1030"/>
         <source>Binomial Distribution Mean</source>
         <translation>Binomijakauman keskiarvo</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="856"/>
+        <location filename="../../core/functions.cpp" line="1031"/>
         <source>Binomial Probability Mass Function</source>
         <translation>Binomijakauman pistetodennäköisyysfunktio</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="857"/>
+        <location filename="../../core/functions.cpp" line="1032"/>
         <source>Binomial Distribution Variance</source>
         <translation>Binomijakauman varianssi</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="858"/>
+        <location filename="../../core/functions.cpp" line="1033"/>
         <source>Cube Root</source>
         <translation>Kuutiojuuri</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="859"/>
+        <location filename="../../core/functions.cpp" line="1034"/>
         <source>Ceiling</source>
         <translation>Kattofunktio</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="860"/>
+        <location filename="../../core/functions.cpp" line="1035"/>
         <source>Cosine</source>
         <translation>Kosini</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="861"/>
+        <location filename="../../core/functions.cpp" line="1036"/>
         <source>Hyperbolic Cosine</source>
         <translation>Hyperbolinen kosini</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="862"/>
+        <location filename="../../core/functions.cpp" line="1037"/>
         <source>Cotangent</source>
         <translation>Kotangentti</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="863"/>
+        <location filename="../../core/functions.cpp" line="1038"/>
         <source>Cosecant</source>
         <translation>Kosekantti</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="865"/>
+        <location filename="../../core/functions.cpp" line="1040"/>
         <source>Degrees of Arc</source>
         <translation>Radiaanit asteina</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="866"/>
+        <location filename="../../core/functions.cpp" line="1041"/>
         <source>Error Function</source>
         <translation>Virhefunktio</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="867"/>
+        <location filename="../../core/functions.cpp" line="1042"/>
         <source>Complementary Error Function</source>
         <translation>Virhefunktion komplementti</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="868"/>
+        <location filename="../../core/functions.cpp" line="1043"/>
         <source>Exponential</source>
         <translation>Eksponentti</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="869"/>
+        <location filename="../../core/functions.cpp" line="1044"/>
         <source>Floor</source>
         <translation>Lattiafunktio</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="870"/>
+        <location filename="../../core/functions.cpp" line="1045"/>
         <source>Fractional Part</source>
         <translation>Murto-osa</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="871"/>
+        <location filename="../../core/functions.cpp" line="1046"/>
         <source>Extension of Factorials [= (x-1)!]</source>
         <translation>Kertoman yleistys [= (x-1)!]</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="872"/>
+        <location filename="../../core/functions.cpp" line="1047"/>
         <source>Greatest Common Divisor</source>
         <translation>Suurin yhteinen tekijä</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="873"/>
+        <location filename="../../core/functions.cpp" line="1048"/>
         <source>Geometric Mean</source>
         <translation>Geometrinen keskiarvo</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="875"/>
+        <location filename="../../core/functions.cpp" line="1050"/>
         <source>Hypergeometric Cumulative Distribution Function</source>
-        <translation>Hypergeometrinen kertymäfunktio</translation>
+        <translation>Hypergeometrisen jakauman kertymäfunktio</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="876"/>
+        <location filename="../../core/functions.cpp" line="1051"/>
         <source>Hypergeometric Distribution Mean</source>
         <translation>Hypergeometrisen jakauman keskiarvo</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="877"/>
+        <location filename="../../core/functions.cpp" line="1052"/>
         <source>Hypergeometric Probability Mass Function</source>
-        <translation>Hypergeometrinen pistetodennäköisyysfunktio</translation>
+        <translation>Hypergeometrisen jakauman pistetodennäköisyysfunktio</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="878"/>
+        <location filename="../../core/functions.cpp" line="1053"/>
         <source>Hypergeometric Distribution Variance</source>
         <translation>Hypergeometrisen jakauman varianssi</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="879"/>
+        <location filename="../../core/functions.cpp" line="1054"/>
         <source>Integer Quotient</source>
         <translation>Osamäärä kokonaislukuna</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="880"/>
+        <location filename="../../core/functions.cpp" line="1055"/>
         <source>Integer Part</source>
         <translation>Kokonaisosa</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="881"/>
+        <location filename="../../core/functions.cpp" line="1056"/>
+        <source>Decode IEEE-754 Binary Value</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/functions.cpp" line="1057"/>
+        <source>Encode IEEE-754 Binary Value</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/functions.cpp" line="1058"/>
+        <source>Decode 16-bit Half-Precision Value</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/functions.cpp" line="1059"/>
+        <source>Encode 16-bit Half-Precision Value</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/functions.cpp" line="1060"/>
+        <source>Decode 32-bit Single-Precision Value</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/functions.cpp" line="1061"/>
+        <source>Encode 32-bit Single-Precision Value</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/functions.cpp" line="1062"/>
+        <source>Decode 64-bit Double-Precision Value</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/functions.cpp" line="1063"/>
+        <source>Encode 64-bit Double-Precision Value</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/functions.cpp" line="1064"/>
+        <source>Decode 128-bit Quad-Precision Value</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/functions.cpp" line="1065"/>
+        <source>Encode 128-bit Quad-Precision Value</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../core/functions.cpp" line="1066"/>
         <source>Binary Logarithm</source>
-        <translation type="unfinished"></translation>
+        <translation>2-kantainen logaritmi</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="882"/>
+        <location filename="../../core/functions.cpp" line="1067"/>
         <source>Common Logarithm</source>
-        <translation type="unfinished"></translation>
+        <translation>10-kantainen logaritmi</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="883"/>
+        <location filename="../../core/functions.cpp" line="1068"/>
         <source>Natural Logarithm</source>
         <translation>Luonnollinen logaritmi</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="885"/>
+        <location filename="../../core/functions.cpp" line="1070"/>
         <source>Logarithm to Arbitrary Base</source>
-        <translation type="unfinished"></translation>
+        <translation>Logaritmi</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="886"/>
+        <location filename="../../core/functions.cpp" line="1071"/>
         <source>Mask to a bit size</source>
-        <translation type="unfinished"></translation>
+        <translation>Maskaa bittikokoon</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="887"/>
+        <location filename="../../core/functions.cpp" line="1072"/>
         <source>Maximum</source>
         <translation>Maksimi</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="888"/>
+        <location filename="../../core/functions.cpp" line="1073"/>
         <source>Median Value (50th Percentile)</source>
         <translation>Mediaani (50. prosenttipiste)</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="889"/>
+        <location filename="../../core/functions.cpp" line="1074"/>
         <source>Minimum</source>
         <translation>Minimi</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="890"/>
+        <location filename="../../core/functions.cpp" line="1075"/>
         <source>Modulo</source>
         <translation>Modulo</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="891"/>
+        <location filename="../../core/functions.cpp" line="1076"/>
         <source>Combination (Binomial Coefficient)</source>
         <translation>Kombinaatio (binomikerroin)</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="892"/>
+        <location filename="../../core/functions.cpp" line="1077"/>
         <source>Logical NOT</source>
         <translation>Looginen EI</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="893"/>
+        <location filename="../../core/functions.cpp" line="1078"/>
         <source>Permutation (Arrangement)</source>
         <translation>Permutaatio (järjestäminen)</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="853"/>
+        <location filename="../../core/functions.cpp" line="1028"/>
         <source>Convert to Binary Representation</source>
-        <translation type="unfinished"></translation>
+        <translation>Muunna binäärimerkintään</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="864"/>
+        <location filename="../../core/functions.cpp" line="1039"/>
         <source>Convert to Decimal Representation</source>
-        <translation type="unfinished"></translation>
+        <translation>Muunna desimaalimerkintään</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="874"/>
+        <location filename="../../core/functions.cpp" line="1049"/>
         <source>Convert to Hexadecimal Representation</source>
-        <translation type="unfinished"></translation>
+        <translation>Muunna heksadesimaalimerkintään</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="894"/>
+        <location filename="../../core/functions.cpp" line="1079"/>
         <source>Convert to Octal Representation</source>
-        <translation type="unfinished"></translation>
+        <translation>Muunna oktaalimerkintään</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="895"/>
+        <location filename="../../core/functions.cpp" line="1080"/>
         <source>Logical OR</source>
         <translation>Looginen TAI</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="896"/>
+        <location filename="../../core/functions.cpp" line="1081"/>
         <source>Poissonian Cumulative Distribution Function</source>
         <translation>Poissonin jakauman kertymäfunktio</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="897"/>
+        <location filename="../../core/functions.cpp" line="1082"/>
         <source>Poissonian Distribution Mean</source>
         <translation>Poissonin jakauman keskiarvo</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="898"/>
+        <location filename="../../core/functions.cpp" line="1083"/>
         <source>Poissonian Probability Mass Function</source>
         <translation>Poissonin jakauman pistetodennäköisyysfunktio</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="899"/>
+        <location filename="../../core/functions.cpp" line="1084"/>
         <source>Poissonian Distribution Variance</source>
         <translation>Poissonin jakauman varianssi</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="900"/>
+        <location filename="../../core/functions.cpp" line="1085"/>
         <source>Product</source>
         <translation>Tulo</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="901"/>
+        <location filename="../../core/functions.cpp" line="1086"/>
         <source>Radians</source>
         <translation>Radiaanit</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="902"/>
+        <location filename="../../core/functions.cpp" line="1087"/>
         <source>Rounding</source>
         <translation>Pyöristys</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="903"/>
+        <location filename="../../core/functions.cpp" line="1088"/>
         <source>Secant</source>
         <translation>Sekantti</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="904"/>
+        <location filename="../../core/functions.cpp" line="1089"/>
         <source>Arithmetic Shift Left</source>
         <translation>Aritmeettinen siirto vasemmalle</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="905"/>
+        <location filename="../../core/functions.cpp" line="1090"/>
         <source>Arithmetic Shift Right</source>
         <translation>Aritmeettinen siirto oikealle</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="906"/>
+        <location filename="../../core/functions.cpp" line="1091"/>
         <source>Signum</source>
         <translation>Etumerkki</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="907"/>
+        <location filename="../../core/functions.cpp" line="1092"/>
         <source>Sine</source>
         <translation>Sini</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="908"/>
+        <location filename="../../core/functions.cpp" line="1093"/>
         <source>Hyperbolic Sine</source>
         <translation>Hyperbolinen sini</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="909"/>
+        <location filename="../../core/functions.cpp" line="1094"/>
         <source>Square Root</source>
         <translation>Neliöjuuri</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="910"/>
+        <location filename="../../core/functions.cpp" line="1095"/>
         <source>Standard Deviation (Square Root of Variance)</source>
         <translation>Keskihajonta (varianssin neliöjuuri)</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="911"/>
+        <location filename="../../core/functions.cpp" line="1096"/>
         <source>Sum</source>
         <translation>Summa</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="912"/>
+        <location filename="../../core/functions.cpp" line="1097"/>
         <source>Tangent</source>
         <translation>Tangentti</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="913"/>
+        <location filename="../../core/functions.cpp" line="1098"/>
         <source>Hyperbolic Tangent</source>
         <translation>Hyperbolinen tangentti</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="914"/>
+        <location filename="../../core/functions.cpp" line="1099"/>
         <source>Truncation</source>
         <translation>Katkaisu</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="915"/>
+        <location filename="../../core/functions.cpp" line="1100"/>
         <source>Sign-extend a value</source>
-        <translation type="unfinished"></translation>
+        <translation>Pidennä arvo etumerkillä</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="916"/>
+        <location filename="../../core/functions.cpp" line="1101"/>
         <source>Variance</source>
         <translation>Varianssi</translation>
     </message>
     <message>
-        <location filename="../../core/functions.cpp" line="917"/>
+        <location filename="../../core/functions.cpp" line="1102"/>
         <source>Logical XOR</source>
         <translation>Looginen poissulkeva TAI</translation>
     </message>
@@ -2029,654 +2046,690 @@
     </message>
 </context>
 <context>
+    <name>Keypad</name>
+    <message>
+        <location filename="../../gui/keypad.cpp" line="167"/>
+        <source>Inverse cosine</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/keypad.cpp" line="168"/>
+        <source>The last result</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/keypad.cpp" line="169"/>
+        <source>Inverse sine</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/keypad.cpp" line="170"/>
+        <source>Inverse tangent</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/keypad.cpp" line="171"/>
+        <source>Clear expression</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/keypad.cpp" line="172"/>
+        <source>Cosine</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/keypad.cpp" line="173"/>
+        <source>Scientific notation</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/keypad.cpp" line="174"/>
+        <source>Exponential</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/keypad.cpp" line="175"/>
+        <source>Natural logarithm</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/keypad.cpp" line="176"/>
+        <source>Sine</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/keypad.cpp" line="177"/>
+        <source>Square root</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/keypad.cpp" line="178"/>
+        <source>Tangent</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/keypad.cpp" line="179"/>
+        <source>Assign variable x</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/keypad.cpp" line="180"/>
+        <source>The variable x</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="280"/>
-        <location filename="../../gui/mainwindow.cpp" line="1760"/>
+        <location filename="../../gui/mainwindow.cpp" line="266"/>
+        <location filename="../../gui/mainwindow.cpp" line="1585"/>
         <source>Radian</source>
         <translation>Radiaanit</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="280"/>
-        <location filename="../../gui/mainwindow.cpp" line="1327"/>
+        <location filename="../../gui/mainwindow.cpp" line="266"/>
+        <location filename="../../gui/mainwindow.cpp" line="1259"/>
         <source>Degree</source>
         <translation>Asteet</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="284"/>
-        <location filename="../../gui/mainwindow.cpp" line="2191"/>
+        <location filename="../../gui/mainwindow.cpp" line="270"/>
+        <location filename="../../gui/mainwindow.cpp" line="1924"/>
         <source>Binary</source>
         <translation>Binääri</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="285"/>
-        <location filename="../../gui/mainwindow.cpp" line="2236"/>
+        <location filename="../../gui/mainwindow.cpp" line="271"/>
+        <location filename="../../gui/mainwindow.cpp" line="1963"/>
         <source>Octal</source>
         <translation>Oktaali</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="286"/>
-        <location filename="../../gui/mainwindow.cpp" line="2227"/>
+        <location filename="../../gui/mainwindow.cpp" line="272"/>
+        <location filename="../../gui/mainwindow.cpp" line="1955"/>
         <source>Hexadecimal</source>
         <translation>Heksadesimaali</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="287"/>
-        <location filename="../../gui/mainwindow.cpp" line="2209"/>
+        <location filename="../../gui/mainwindow.cpp" line="273"/>
+        <location filename="../../gui/mainwindow.cpp" line="1940"/>
         <source>Fixed decimal</source>
         <translation>Kiintopistedesimaali</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="288"/>
-        <location filename="../../gui/mainwindow.cpp" line="2200"/>
+        <location filename="../../gui/mainwindow.cpp" line="274"/>
+        <location filename="../../gui/mainwindow.cpp" line="1932"/>
         <source>Engineering decimal</source>
         <translation>Tekninen desimaali</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="289"/>
-        <location filename="../../gui/mainwindow.cpp" line="2245"/>
+        <location filename="../../gui/mainwindow.cpp" line="275"/>
+        <location filename="../../gui/mainwindow.cpp" line="1971"/>
         <source>Scientific decimal</source>
         <translation>Tieteellinen desimaali</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="290"/>
-        <location filename="../../gui/mainwindow.cpp" line="2218"/>
+        <location filename="../../gui/mainwindow.cpp" line="276"/>
+        <location filename="../../gui/mainwindow.cpp" line="1947"/>
         <source>General decimal</source>
         <translation>Yleinen desimaali</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="297"/>
+        <location filename="../../gui/mainwindow.cpp" line="283"/>
         <source>Angle unit</source>
         <translation>Kulmayksikkö</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="298"/>
+        <location filename="../../gui/mainwindow.cpp" line="284"/>
         <source>Result format</source>
         <translation>Tuloksen muoto</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="318"/>
+        <location filename="../../gui/mainwindow.cpp" line="292"/>
         <source>&amp;Import...</source>
         <translation>T&amp;uo…</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="319"/>
+        <location filename="../../gui/mainwindow.cpp" line="293"/>
         <source>&amp;Load...</source>
         <translation>&amp;Avaa…</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="320"/>
+        <location filename="../../gui/mainwindow.cpp" line="294"/>
         <source>&amp;Quit</source>
         <translation>&amp;Lopeta</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="321"/>
+        <location filename="../../gui/mainwindow.cpp" line="295"/>
         <source>&amp;Save...</source>
         <translation>&amp;Tallenna…</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="323"/>
+        <location filename="../../gui/mainwindow.cpp" line="297"/>
         <source>Clear E&amp;xpression</source>
         <translation>Tyhjennä l&amp;auseke</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="324"/>
+        <location filename="../../gui/mainwindow.cpp" line="298"/>
         <source>Clear &amp;History</source>
         <translation>Tyhjennä &amp;historia</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="325"/>
+        <location filename="../../gui/mainwindow.cpp" line="299"/>
         <source>Copy Last &amp;Result</source>
         <translation>Kopioi &amp;tulos</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="326"/>
+        <location filename="../../gui/mainwindow.cpp" line="300"/>
         <source>&amp;Copy</source>
         <translation>&amp;Kopioi</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="327"/>
+        <location filename="../../gui/mainwindow.cpp" line="301"/>
         <source>&amp;Paste</source>
         <translation>&amp;Liitä</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="328"/>
+        <location filename="../../gui/mainwindow.cpp" line="302"/>
         <source>&amp;Select Expression</source>
         <translation>&amp;Valitse lauseke</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="330"/>
+        <location filename="../../gui/mainwindow.cpp" line="303"/>
+        <source>&amp;Wrap Selection in Parentheses</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/mainwindow.cpp" line="305"/>
         <source>&amp;Constants</source>
         <translation>&amp;Vakiot</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="331"/>
+        <location filename="../../gui/mainwindow.cpp" line="306"/>
         <source>F&amp;ull Screen Mode</source>
         <translation>Koko &amp;näytön tila</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="332"/>
+        <location filename="../../gui/mainwindow.cpp" line="307"/>
         <source>&amp;Functions</source>
         <translation>&amp;Funktiot</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="333"/>
+        <location filename="../../gui/mainwindow.cpp" line="308"/>
         <source>&amp;History</source>
         <translation>&amp;Historia</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="337"/>
-        <source>&amp;Menu Bar</source>
-        <translation>V&amp;alikkorivi</translation>
-    </message>
-    <message>
-        <location filename="../../gui/mainwindow.cpp" line="339"/>
+        <location filename="../../gui/mainwindow.cpp" line="311"/>
         <source>&amp;Status Bar</source>
         <translation>&amp;Tilarivi</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="340"/>
+        <location filename="../../gui/mainwindow.cpp" line="312"/>
         <source>&amp;Variables</source>
         <translation>&amp;Muuttujat</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="341"/>
+        <location filename="../../gui/mainwindow.cpp" line="313"/>
         <source>Bitfield</source>
-        <translation type="unfinished"></translation>
+        <translation>Bittikenttä</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="342"/>
+        <location filename="../../gui/mainwindow.cpp" line="314"/>
         <source>Use&amp;r Functions</source>
-        <translation type="unfinished"></translation>
+        <translation>Käyttäjän f&amp;unktiot</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="344"/>
+        <location filename="../../gui/mainwindow.cpp" line="316"/>
         <source>&amp;Degree</source>
         <translation>&amp;Asteet</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="345"/>
+        <location filename="../../gui/mainwindow.cpp" line="317"/>
         <source>&amp;Radian</source>
         <translation>&amp;Radiaanit</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="346"/>
-        <source>Always On &amp;Top</source>
-        <translation>Aina &amp;päällimmäisenä</translation>
-    </message>
-    <message>
-        <location filename="../../gui/mainwindow.cpp" line="347"/>
+        <location filename="../../gui/mainwindow.cpp" line="319"/>
         <source>Automatic Result &amp;Reuse</source>
         <translation>&amp;Automaattinen tuloksen uudelleenkäyttö</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="348"/>
+        <location filename="../../gui/mainwindow.cpp" line="320"/>
         <source>Automatic &amp;Completion</source>
         <translation>Automaattinen &amp;täydennys</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="349"/>
-        <source>&amp;Minimize To System Tray</source>
-        <translation>Pienennä &amp;ilmoitusalueelle</translation>
-    </message>
-    <message>
-        <location filename="../../gui/mainwindow.cpp" line="350"/>
+        <location filename="../../gui/mainwindow.cpp" line="321"/>
         <source>&amp;Partial Results</source>
         <translation>&amp;Osittaiset tulokset</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="351"/>
+        <location filename="../../gui/mainwindow.cpp" line="322"/>
         <source>Save &amp;History on Exit</source>
         <translation>Tallenna &amp;historia lopetettaessa</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="352"/>
-        <source>Save &amp;Variables on Exit</source>
-        <translation>Tallenna &amp;muuttujat lopetettaessa</translation>
-    </message>
-    <message>
-        <location filename="../../gui/mainwindow.cpp" line="353"/>
-        <source>Save User &amp;Functions on Exit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../gui/mainwindow.cpp" line="354"/>
+        <location filename="../../gui/mainwindow.cpp" line="323"/>
         <source>Save &amp;Window Positon on Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Tallenna ikk&amp;unan sijainti lopetettaessa</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="355"/>
+        <location filename="../../gui/mainwindow.cpp" line="324"/>
         <source>Syntax &amp;Highlighting</source>
         <translation>&amp;Syntaksin merkkaus</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="360"/>
+        <location filename="../../gui/mainwindow.cpp" line="329"/>
         <source>Leave &amp;Last Expression</source>
         <translation>&amp;Jätä viimeisin lauseke kenttään</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="361"/>
+        <location filename="../../gui/mainwindow.cpp" line="330"/>
         <source>Automatic &amp;Result to Clipboard</source>
         <translation>&amp;Kopioi tulos automaattisesti leikepöydälle</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="364"/>
+        <location filename="../../gui/mainwindow.cpp" line="334"/>
         <source>&amp;Comma</source>
         <translation>Pil&amp;kku</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="365"/>
+        <location filename="../../gui/mainwindow.cpp" line="335"/>
         <source>&amp;System Default</source>
         <translation>Järjestelmän &amp;oletus</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="366"/>
+        <location filename="../../gui/mainwindow.cpp" line="336"/>
         <source>&amp;Dot</source>
         <translation>Pi&amp;ste</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="367"/>
-        <source>&amp;15 Decimal Digits</source>
-        <translation>&amp;15 desimaalia</translation>
-    </message>
-    <message>
-        <location filename="../../gui/mainwindow.cpp" line="368"/>
-        <source>&amp;2 Decimal Digits</source>
-        <translation>&amp;2 desimaalia</translation>
-    </message>
-    <message>
-        <location filename="../../gui/mainwindow.cpp" line="369"/>
-        <source>&amp;3 Decimal Digits</source>
-        <translation>&amp;3 desimaalia</translation>
-    </message>
-    <message>
-        <location filename="../../gui/mainwindow.cpp" line="370"/>
-        <source>&amp;50 Decimal Digits</source>
-        <translation>&amp;50 desimaalia</translation>
-    </message>
-    <message>
-        <location filename="../../gui/mainwindow.cpp" line="371"/>
-        <source>&amp;8 Decimal Digits</source>
-        <translation>&amp;8 desimaalia</translation>
-    </message>
-    <message>
-        <location filename="../../gui/mainwindow.cpp" line="373"/>
+        <location filename="../../gui/mainwindow.cpp" line="344"/>
         <source>&amp;Binary</source>
         <translation>&amp;Binääri</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="374"/>
+        <location filename="../../gui/mainwindow.cpp" line="345"/>
         <source>&amp;Engineering</source>
         <translation>T&amp;ekninen</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="375"/>
+        <location filename="../../gui/mainwindow.cpp" line="346"/>
         <source>&amp;Fixed Decimal</source>
         <translation>&amp;Kiintopiste</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="376"/>
+        <location filename="../../gui/mainwindow.cpp" line="347"/>
         <source>&amp;General</source>
         <translation>&amp;Yleinen</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="377"/>
+        <location filename="../../gui/mainwindow.cpp" line="348"/>
         <source>&amp;Hexadecimal</source>
         <translation>&amp;Heksadesimaali</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="378"/>
+        <location filename="../../gui/mainwindow.cpp" line="349"/>
         <source>&amp;Octal</source>
         <translation>&amp;Oktaali</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="379"/>
+        <location filename="../../gui/mainwindow.cpp" line="350"/>
         <source>&amp;Scientific</source>
         <translation>&amp;Tieteellinen</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="388"/>
+        <location filename="../../gui/mainwindow.cpp" line="354"/>
         <source>User &amp;Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Käyttöopas</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="1134"/>
+        <location filename="../../gui/mainwindow.cpp" line="1097"/>
         <source>Type an expression here</source>
         <translation>Kirjoita lauseke tähän</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="2178"/>
-        <source>The menu bar is now hidden. To make it visible again, press Ctrl+M.</source>
-        <translation>Valikkorivi on nyt piilotettu. Voit tuoda sen uudelleen näkyviin painamalla Ctrl+M.</translation>
-    </message>
-    <message>
-        <location filename="../../gui/mainwindow.cpp" line="385"/>
+        <location filename="../../gui/mainwindow.cpp" line="351"/>
         <source>&amp;Font...</source>
         <translation>&amp;Fontti…</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="386"/>
+        <location filename="../../gui/mainwindow.cpp" line="352"/>
         <source>&amp;Language...</source>
         <translation>Ki&amp;eli…</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="606"/>
+        <location filename="../../gui/mainwindow.cpp" line="566"/>
         <source>&amp;Session</source>
         <translation>&amp;Istunto</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="608"/>
+        <location filename="../../gui/mainwindow.cpp" line="568"/>
         <source>&amp;Edit</source>
         <translation>&amp;Muokkaa</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="609"/>
+        <location filename="../../gui/mainwindow.cpp" line="569"/>
         <source>&amp;View</source>
         <translation>&amp;Näytä</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="610"/>
+        <location filename="../../gui/mainwindow.cpp" line="570"/>
         <source>Se&amp;ttings</source>
         <translation>&amp;Asetukset</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="611"/>
+        <location filename="../../gui/mainwindow.cpp" line="571"/>
         <source>Result &amp;Format</source>
         <translation>Tuloksen &amp;muoto</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="613"/>
+        <location filename="../../gui/mainwindow.cpp" line="573"/>
         <source>&amp;Decimal</source>
         <translation>&amp;Desimaali</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="615"/>
+        <location filename="../../gui/mainwindow.cpp" line="575"/>
         <source>&amp;Angle Unit</source>
         <translation>&amp;Kulmayksikkö</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="616"/>
+        <location filename="../../gui/mainwindow.cpp" line="576"/>
         <source>&amp;Behavior</source>
         <translation>&amp;Toiminta</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="612"/>
+        <location filename="../../gui/mainwindow.cpp" line="572"/>
         <source>Radix &amp;Character</source>
         <translation>Desimaali&amp;erotin</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="356"/>
+        <location filename="../../gui/mainwindow.cpp" line="309"/>
+        <source>&amp;Keypad</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/mainwindow.cpp" line="318"/>
+        <source>Always on &amp;Top</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/mainwindow.cpp" line="325"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Ei käytössä</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="357"/>
+        <location filename="../../gui/mainwindow.cpp" line="326"/>
         <source>Small Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Pieni väli</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="358"/>
+        <location filename="../../gui/mainwindow.cpp" line="327"/>
         <source>Medium Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Keskisuuri väli</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="359"/>
+        <location filename="../../gui/mainwindow.cpp" line="328"/>
         <source>Large Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Suuri väli</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="362"/>
+        <location filename="../../gui/mainwindow.cpp" line="331"/>
         <source>Detect &amp;All Radix Characters</source>
-        <translation type="unfinished"></translation>
+        <translation>Tunnista kaikki &amp;desimaalierottimet</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="363"/>
+        <location filename="../../gui/mainwindow.cpp" line="332"/>
         <source>&amp;Strict Digit Groups Detection</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiukka numeroiden &amp;ryhmittelyn tunnistus</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="393"/>
+        <location filename="../../gui/mainwindow.cpp" line="333"/>
+        <source>Enable Complex Numbers</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/mainwindow.cpp" line="337"/>
+        <source>&amp;0 Digits</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/mainwindow.cpp" line="338"/>
+        <source>&amp;15 Digits</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/mainwindow.cpp" line="339"/>
+        <source>&amp;2 Digits</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/mainwindow.cpp" line="340"/>
+        <source>&amp;3 Digits</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/mainwindow.cpp" line="341"/>
+        <source>&amp;50 Digits</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/mainwindow.cpp" line="342"/>
+        <source>&amp;8 Digits</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/mainwindow.cpp" line="355"/>
+        <source>Context Help</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/mainwindow.cpp" line="360"/>
         <source>About &amp;SpeedCrunch</source>
-        <translation>Tietoja &amp;SpeedCrunchista</translation>
+        <translation>Tietoa &amp;SpeedCrunchista</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="617"/>
+        <location filename="../../gui/mainwindow.cpp" line="577"/>
         <source>&amp;Display</source>
         <translation>&amp;Näyttö</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="619"/>
+        <location filename="../../gui/mainwindow.cpp" line="579"/>
         <source>&amp;Help</source>
-        <translation>&amp;Ohje</translation>
+        <translation>O&amp;hje</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="620"/>
+        <location filename="../../gui/mainwindow.cpp" line="580"/>
         <source>Digit Grouping</source>
-        <translation type="unfinished"></translation>
+        <translation>Numeroiden ryhmittely</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="1410"/>
+        <location filename="../../gui/mainwindow.cpp" line="1343"/>
         <source>File %1 is not a valid session</source>
         <translation>Tiedosto %1 ei ole kelvollinen istunto</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="1411"/>
-        <location filename="../../gui/mainwindow.cpp" line="1767"/>
-        <source>SpeedCrunch Sessions (*.sch);;All Files (*)</source>
-        <translation>SpeedCrunch-istunnot (*.sch);;Kaikki tiedostot (*)</translation>
-    </message>
-    <message>
-        <location filename="../../gui/mainwindow.cpp" line="1412"/>
+        <location filename="../../gui/mainwindow.cpp" line="1345"/>
         <source>Load Session</source>
         <translation>Avaa istunto</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="1418"/>
-        <location filename="../../gui/mainwindow.cpp" line="1427"/>
-        <location filename="../../gui/mainwindow.cpp" line="1435"/>
-        <location filename="../../gui/mainwindow.cpp" line="1466"/>
-        <location filename="../../gui/mainwindow.cpp" line="1488"/>
-        <location filename="../../gui/mainwindow.cpp" line="1495"/>
-        <location filename="../../gui/mainwindow.cpp" line="1517"/>
-        <location filename="../../gui/mainwindow.cpp" line="1525"/>
-        <location filename="../../gui/mainwindow.cpp" line="1549"/>
-        <location filename="../../gui/mainwindow.cpp" line="1586"/>
-        <location filename="../../gui/mainwindow.cpp" line="1774"/>
-        <location filename="../../gui/mainwindow.cpp" line="1874"/>
-        <location filename="../../gui/mainwindow.cpp" line="1895"/>
+        <location filename="../../gui/mainwindow.cpp" line="1351"/>
+        <location filename="../../gui/mainwindow.cpp" line="1396"/>
+        <location filename="../../gui/mainwindow.cpp" line="1417"/>
+        <location filename="../../gui/mainwindow.cpp" line="1453"/>
+        <location filename="../../gui/mainwindow.cpp" line="1610"/>
+        <location filename="../../gui/mainwindow.cpp" line="1631"/>
         <source>Error</source>
         <translation>Virhe</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="1418"/>
-        <location filename="../../gui/mainwindow.cpp" line="1549"/>
+        <location filename="../../gui/mainwindow.cpp" line="1351"/>
+        <location filename="../../gui/mainwindow.cpp" line="1417"/>
         <source>Can&apos;t read from file %1</source>
         <translation>Tiedoston %1 lukeminen ei onnistunut</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="1440"/>
+        <location filename="../../gui/mainwindow.cpp" line="1357"/>
         <source>Merge session being loaded with current session?
 If no, current variables and display will be cleared.</source>
         <translation>Yhdistetäänkö avattava istunto nykyiseen istuntoon?
 Jos ei, nykyiset muuttujat ja näyttö tyhjennetään.</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="1446"/>
-        <location filename="../../gui/mainwindow.cpp" line="1560"/>
-        <source>Question</source>
-        <translation>Kysymys</translation>
-    </message>
-    <message>
-        <location filename="../../gui/mainwindow.cpp" line="1542"/>
+        <location filename="../../gui/mainwindow.cpp" line="1410"/>
         <source>All Files (*)</source>
         <translation>Kaikki tiedostot (*)</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="1543"/>
+        <location filename="../../gui/mainwindow.cpp" line="1411"/>
         <source>Import Session</source>
         <translation>Tuo istunto</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="1554"/>
+        <location filename="../../gui/mainwindow.cpp" line="1422"/>
         <source>Merge session being imported with current session?
 If no, current variables and display will be cleared.</source>
         <translation>Yhdistetäänkö tuotava istunto nykyiseen istuntoon?
 Jos ei, nykyiset muuttujat ja näyttö tyhjennetään.</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="1586"/>
+        <location filename="../../gui/mainwindow.cpp" line="1453"/>
         <source>Ignore error?</source>
         <translation>Sivuuta virhe?</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="1768"/>
+        <location filename="../../gui/mainwindow.cpp" line="1390"/>
         <source>Save Session</source>
         <translation>Tallenna istunto</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="1774"/>
-        <location filename="../../gui/mainwindow.cpp" line="1874"/>
-        <location filename="../../gui/mainwindow.cpp" line="1895"/>
+        <location filename="../../gui/mainwindow.cpp" line="1396"/>
+        <location filename="../../gui/mainwindow.cpp" line="1610"/>
+        <location filename="../../gui/mainwindow.cpp" line="1631"/>
         <source>Can&apos;t write to file %1</source>
         <translation>Tiedostoon %1 ei voitu kirjoittaa</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="1926"/>
+        <location filename="../../gui/mainwindow.cpp" line="1624"/>
+        <source>Text file (*.txt);;Any file (*.*)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/mainwindow.cpp" line="1662"/>
         <source>Display font</source>
         <translation>Näyttöfontti</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="2181"/>
-        <source>Warning</source>
-        <translation>Varoitus</translation>
-    </message>
-    <message>
-        <location filename="../../gui/mainwindow.cpp" line="2471"/>
-        <source>SpeedCrunch is minimized.
-Left click the icon to restore it or right click for options.</source>
-        <translation>SpeedCrunch on pienennetty.
-Palauta kuvakkeesta vasemmalla painikkeella tai näytä valikko oikealla painikkeella.</translation>
-    </message>
-    <message>
-        <location filename="../../gui/mainwindow.cpp" line="2689"/>
+        <location filename="../../gui/mainwindow.cpp" line="2324"/>
         <source>System Default</source>
         <translation>Järjestelmän oletus</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="2693"/>
+        <location filename="../../gui/mainwindow.cpp" line="2328"/>
         <source>Language</source>
         <translation>Kieli</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="2693"/>
+        <location filename="../../gui/mainwindow.cpp" line="2328"/>
         <source>Select the language:</source>
         <translation>Valitse kieli:</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="372"/>
+        <location filename="../../gui/mainwindow.cpp" line="343"/>
         <source>&amp;Automatic</source>
         <translation>&amp;Automaattinen</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="614"/>
+        <location filename="../../gui/mainwindow.cpp" line="574"/>
         <source>&amp;Precision</source>
         <translation>T&amp;arkkuus</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="316"/>
+        <location filename="../../gui/mainwindow.cpp" line="290"/>
         <source>&amp;HTML</source>
         <translation>&amp;HTML</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="317"/>
+        <location filename="../../gui/mainwindow.cpp" line="291"/>
         <source>Plain &amp;text</source>
         <translation>Pelkkä &amp;teksti</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="334"/>
+        <location filename="../../gui/mainwindow.cpp" line="310"/>
         <source>Formula &amp;Book</source>
         <translation>&amp;Kaavakirja</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="389"/>
+        <location filename="../../gui/mainwindow.cpp" line="356"/>
         <source>Check &amp;Updates</source>
         <translation>&amp;Tarkista päivitykset</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="390"/>
+        <location filename="../../gui/mainwindow.cpp" line="357"/>
         <source>Send &amp;Feedback</source>
         <translation>Lähetä &amp;palautetta</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="391"/>
+        <location filename="../../gui/mainwindow.cpp" line="358"/>
         <source>Join &amp;Community</source>
         <translation>&amp;Liity yhteisöön</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="392"/>
+        <location filename="../../gui/mainwindow.cpp" line="359"/>
         <source>&amp;News Feed</source>
         <translation>&amp;Uutissyöte</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="607"/>
+        <location filename="../../gui/mainwindow.cpp" line="567"/>
         <source>&amp;Export</source>
         <translation>&amp;Vie</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="618"/>
+        <location filename="../../gui/mainwindow.cpp" line="578"/>
         <source>Color Scheme</source>
         <translation>Väriteema</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="1866"/>
+        <location filename="../../gui/mainwindow.cpp" line="1344"/>
+        <location filename="../../gui/mainwindow.cpp" line="1389"/>
+        <source>SpeedCrunch Sessions (*.json);;All Files (*)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/mainwindow.cpp" line="1362"/>
+        <location filename="../../gui/mainwindow.cpp" line="1428"/>
+        <source>Merge?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/mainwindow.cpp" line="1602"/>
         <source>Export session as HTML</source>
         <translation>Vie istunto HTML:nä</translation>
     </message>
     <message>
-        <location filename="../../gui/mainwindow.cpp" line="1887"/>
+        <location filename="../../gui/mainwindow.cpp" line="1603"/>
+        <source>HTML file (*.html)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/mainwindow.cpp" line="1623"/>
         <source>Export session as plain text</source>
         <translation>Vie istunto pelkkänä tekstinä</translation>
     </message>
 </context>
 <context>
-    <name>Manual</name>
-    <message>
-        <location filename="../../core/manual.cpp" line="51"/>
-        <location filename="../../core/manual.cpp" line="63"/>
-        <source>Index</source>
-        <translation>Hakemisto</translation>
-    </message>
-    <message>
-        <location filename="../../core/manual.cpp" line="64"/>
-        <location filename="../../core/manual.cpp" line="75"/>
-        <source>Keyboard shortcuts</source>
-        <translation>Pikanäppäimet</translation>
-    </message>
-    <message>
-        <location filename="../../core/manual.cpp" line="65"/>
-        <location filename="../../core/manual.cpp" line="83"/>
-        <source>Built-in functions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../core/manual.cpp" line="66"/>
-        <location filename="../../core/manual.cpp" line="91"/>
-        <source>Named constants</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../core/manual.cpp" line="67"/>
-        <location filename="../../core/manual.cpp" line="99"/>
-        <source>User-defined variables</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ManualWindow</name>
     <message>
-        <location filename="../../gui/manualwindow.cpp" line="43"/>
-        <source>User Manual</source>
-        <translation type="unfinished"></translation>
+        <location filename="../../gui/manualwindow.cpp" line="69"/>
+        <source>SpeedCrunch Manual</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../../gui/manualwindow.cpp" line="71"/>
+        <source>%1 - SpeedCrunch Manual</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2699,7 +2752,7 @@ Palauta kuvakkeesta vasemmalla painikkeella tai näytä valikko oikealla painikk
     <message>
         <location filename="../../gui/userfunctionlistwidget.cpp" line="153"/>
         <source>No match found</source>
-        <translation type="unfinished">Ei tuloksia</translation>
+        <translation>Ei tuloksia</translation>
     </message>
     <message>
         <location filename="../../gui/userfunctionlistwidget.cpp" line="155"/>
@@ -2727,43 +2780,43 @@ Palauta kuvakkeesta vasemmalla painikkeella tai näytä valikko oikealla painikk
     <message>
         <location filename="../../gui/userfunctionsdock.cpp" line="60"/>
         <source>User Functions</source>
-        <translation type="unfinished"></translation>
+        <translation>Käyttäjän funktiot</translation>
     </message>
 </context>
 <context>
     <name>VariableListWidget</name>
     <message>
-        <location filename="../../gui/variablelistwidget.cpp" line="147"/>
+        <location filename="../../gui/variablelistwidget.cpp" line="148"/>
         <source>Name</source>
         <translation>Nimi</translation>
     </message>
     <message>
-        <location filename="../../gui/variablelistwidget.cpp" line="147"/>
+        <location filename="../../gui/variablelistwidget.cpp" line="148"/>
         <source>Value</source>
         <translation>Arvo</translation>
     </message>
     <message>
-        <location filename="../../gui/variablelistwidget.cpp" line="150"/>
+        <location filename="../../gui/variablelistwidget.cpp" line="151"/>
         <source>Search</source>
         <translation>Etsi</translation>
     </message>
     <message>
-        <location filename="../../gui/variablelistwidget.cpp" line="151"/>
+        <location filename="../../gui/variablelistwidget.cpp" line="152"/>
         <source>No match found</source>
         <translation>Ei tuloksia</translation>
     </message>
     <message>
-        <location filename="../../gui/variablelistwidget.cpp" line="153"/>
+        <location filename="../../gui/variablelistwidget.cpp" line="154"/>
         <source>Insert</source>
         <translation>Lisää</translation>
     </message>
     <message>
-        <location filename="../../gui/variablelistwidget.cpp" line="154"/>
+        <location filename="../../gui/variablelistwidget.cpp" line="155"/>
         <source>Delete</source>
         <translation>Poista</translation>
     </message>
     <message>
-        <location filename="../../gui/variablelistwidget.cpp" line="155"/>
+        <location filename="../../gui/variablelistwidget.cpp" line="156"/>
         <source>Delete All</source>
         <translation>Poista kaikki</translation>
     </message>
