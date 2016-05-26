@@ -40,7 +40,7 @@ needs_sphinx = '1.3'
 # ones.
 sys.path.append(os.path.abspath('extensions'))
 
-extensions = ['qtkeyword', 'speedcrunch_domain', 'sc_post_config']
+extensions = ['qtkeyword', 'speedcrunch_domain', 'sc_post_config', 'sc_lexer']
 ignore_qtkeywords = not bundled
 primary_domain = 'sc'
 
@@ -90,7 +90,7 @@ language = None
 # directories to ignore when looking for source files.
 exclude_patterns = ['_build']
 
-#highlight_language = 'text'
+highlight_language = 'speedcrunch'
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.

@@ -99,6 +99,10 @@ ConstantsWidget::ConstantsWidget(QWidget *parent)
     m_noMatchLabel->hide();
 
     retranslateText();
+
+    setFocusProxy(m_filter);
+
+    filter();
 }
 
 ConstantsWidget::~ConstantsWidget()

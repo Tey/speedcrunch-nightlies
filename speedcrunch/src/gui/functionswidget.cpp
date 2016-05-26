@@ -72,12 +72,15 @@ FunctionsWidget::FunctionsWidget(QWidget* parent)
     setLayout(layout);
 
     QWidget::setTabOrder(m_searchFilter, m_functions);
+    setFocusProxy(m_searchFilter);
 
     retranslateText();
 
-    connect(m_filterTimer, SIGNAL(timeout()), SLOT(fillTable()));
+    connect(m_filterTimer, SIGNAL(timeout()), SLOT(updateList()));
     connect(m_functions, SIGNAL(itemActivated(QTreeWidgetItem*, int)), SLOT(handleItemActivated(QTreeWidgetItem*, int)));
     connect(m_searchFilter, SIGNAL(textChanged(const QString &)), SLOT(triggerFilter()));
+
+    updateList();
 }
 
 FunctionsWidget::~FunctionsWidget()
@@ -85,7 +88,7 @@ FunctionsWidget::~FunctionsWidget()
     m_filterTimer->stop();
 }
 
-void FunctionsWidget::fillTable()
+void FunctionsWidget::updateList()
 {
     setUpdatesEnabled(false);
 
@@ -130,7 +133,6 @@ void FunctionsWidget::fillTable()
         m_noMatchLabel->raise();
     }
 
-    m_searchFilter->setFocus();
     setUpdatesEnabled(true);
 }
 
@@ -145,7 +147,7 @@ void FunctionsWidget::retranslateText()
     m_searchLabel->setText(tr("Search"));
     m_noMatchLabel->setText(tr("No match found"));
 
-    fillTable();
+    updateList();
 }
 
 QList<QTreeWidgetItem*> FunctionsWidget::selectedItems() const

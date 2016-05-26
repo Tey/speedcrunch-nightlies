@@ -180,6 +180,14 @@ void Settings::load()
     else
         resultFormat = format.at(0).toLatin1();
 
+    // Complex format special case.
+    QString cmplxFormat;
+    cmplxFormat = settings->value(key + QLatin1String("ComplexForm"), 'c').toString();
+    if (cmplxFormat != "c" && cmplxFormat != "p")
+        resultFormatComplex = 'c';
+    else
+        resultFormatComplex = cmplxFormat.at(0).toLatin1();
+
     resultPrecision = settings->value(key + QLatin1String("Precision"), -1).toInt();
 
     if (resultPrecision > DECPRECISION)
@@ -243,6 +251,7 @@ void Settings::save()
     key = KEY + QLatin1String("/Format/");
 
     settings->setValue(key + QLatin1String("Type"), QString(QChar(resultFormat)));
+    settings->setValue(key + QLatin1String("ComplexForm"), QString(QChar(resultFormatComplex)));
     settings->setValue(key + QLatin1String("Precision"), resultPrecision);
 
     key = KEY + QLatin1String("/Layout/");

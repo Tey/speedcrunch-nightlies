@@ -85,16 +85,19 @@ UserFunctionListWidget::UserFunctionListWidget(QWidget* parent)
     m_userFunctions->addAction(m_deleteAllAction);
 
     QWidget::setTabOrder(m_searchFilter, m_userFunctions);
+    setFocusProxy(m_searchFilter);
 
     retranslateText();
 
-    connect(m_filterTimer, SIGNAL(timeout()), SLOT(fillTable()));
+    connect(m_filterTimer, SIGNAL(timeout()), SLOT(updateList()));
     connect(m_searchFilter, SIGNAL(textChanged(const QString&)), SLOT(triggerFilter()));
     connect(m_userFunctions, SIGNAL(itemActivated(QTreeWidgetItem*, int)), SLOT(activateItem()));
     connect(m_insertAction, SIGNAL(triggered()), SLOT(activateItem()));
     connect(m_editAction, SIGNAL(triggered()), SLOT(editItem()));
     connect(m_deleteAction, SIGNAL(triggered()), SLOT(deleteItem()));
     connect(m_deleteAllAction, SIGNAL(triggered()), SLOT(deleteAllItems()));
+
+    updateList();
 }
 
 UserFunctionListWidget::~UserFunctionListWidget()
@@ -102,7 +105,7 @@ UserFunctionListWidget::~UserFunctionListWidget()
     m_filterTimer->stop();
 }
 
-void UserFunctionListWidget::fillTable()
+void UserFunctionListWidget::updateList()
 {
     setUpdatesEnabled(false);
 
@@ -139,7 +142,6 @@ void UserFunctionListWidget::fillTable()
         m_noMatchLabel->raise();
     }
 
-    m_searchFilter->setFocus();
     setUpdatesEnabled(true);
 }
 
@@ -157,7 +159,7 @@ void UserFunctionListWidget::retranslateText()
     m_deleteAction->setText(tr("Delete"));
     m_deleteAllAction->setText(tr("Delete All"));
 
-    QTimer::singleShot(0, this, SLOT(fillTable()));
+    QTimer::singleShot(0, this, SLOT(updateList()));
 }
 
 QTreeWidgetItem* UserFunctionListWidget::currentItem() const
@@ -174,14 +176,14 @@ void UserFunctionListWidget::activateItem()
 {
     if (!currentItem() || m_userFunctions->selectedItems().isEmpty())
         return;
-    emit itemActivated(currentItem()->text(0));
+    emit userFunctionSelected(currentItem()->text(0));
 }
 
 void UserFunctionListWidget::editItem()
 {
     if (!currentItem() || m_userFunctions->selectedItems().isEmpty())
         return;
-    emit itemEdited(currentItem()->text(0) + " = " + currentItem()->text(1));
+    emit userFunctionEdited(currentItem()->text(0) + " = " + currentItem()->text(1));
 }
 
 void UserFunctionListWidget::deleteItem()
@@ -189,13 +191,13 @@ void UserFunctionListWidget::deleteItem()
     if (!currentItem() || m_userFunctions->selectedItems().isEmpty())
         return;
     Evaluator::instance()->unsetUserFunction(getUserFunctionName(currentItem()));
-    fillTable();
+    updateList();
 }
 
 void UserFunctionListWidget::deleteAllItems()
 {
     Evaluator::instance()->unsetAllUserFunctions();
-    fillTable();
+    updateList();
 }
 
 void UserFunctionListWidget::triggerFilter()

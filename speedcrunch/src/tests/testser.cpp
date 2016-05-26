@@ -121,6 +121,11 @@ int main(int, char**)
     const char q_json_blob[] = "{\"dimension\":{\"length\":\"1\"},\"format\":{\"base\":\"Binary\",\"mode\":\"Fixed\"},\"numeric_value\":{\"value\":\"3.000000000000000000000000000000000000000000000000000000000000000000000000000000\"},\"unit\":{\"value\":\"0.300000000000000000000000000000000000000000000000000000000000000000000000000000\"},\"unit_name\":\"foot\"}";
     CHECK_SER(a, q_json_blob);
 
+    Quantity b(CNumber("1+1j"));
+    b.setFormat(Format::Polar());
+    const char q_json_blob2[] = "{\"format\":{\"form\":\"Polar\"},\"numeric_value\":{\"value\":\"1.000000000000000000000000000000000000000000000000000000000000000000000000000000+1.000000000000000000000000000000000000000000000000000000000000000000000000000000j\"}}";
+    CHECK_SER(b, q_json_blob2);
+
     /* HNumber deserialization tests */
     CHECK_DESER_HNUMBER("{\"format\": \"g\",\"value\": \"1\"}", "1");
     CHECK_DESER_HNUMBER("{\"format\": \"g\",""\"value\": \"0.1\"}", "0.1");
@@ -130,6 +135,7 @@ int main(int, char**)
     CHECK_DESER_CNUMBER("{\"format\": \"g\",\"value\": \"0.0+1.0j\"}", "1j");
     /* Quantity deserialization tests */
     CHECK_DESER_QUANTITY(q_json_blob, "0b1010 foot");
+    CHECK_DESER_QUANTITY(q_json_blob2, "1.4142135623730950488 * exp(j*0.78539816339744830962)");
 
     /* Serialization + deserialization tests */
     CHECK_SER_DESER_HNUMBER(HNumber("3"), "3.00000000000000000000000000000000000000000000000000");

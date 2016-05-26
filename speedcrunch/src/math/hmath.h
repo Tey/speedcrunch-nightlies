@@ -108,20 +108,20 @@ public:
         Format(const Format&);
         Format operator+(const Format&) const;
 
-        static const Format Binary();
-        static const Format Octal();
-        static const Format Decimal();
-        static const Format Hexadecimal();
+        static Format Binary();
+        static Format Octal();
+        static Format Decimal();
+        static Format Hexadecimal();
 
-        static const Format Precision(int);
+        static Format Precision(int);
 
-        static const Format Point();
-        static const Format Comma();
+        static Format Point();
+        static Format Comma();
 
-        static const Format General();
-        static const Format Fixed();
-        static const Format Scientific();
-        static const Format Engineering();
+        static Format General();
+        static Format Fixed();
+        static Format Scientific();
+        static Format Engineering();
     };
 };
 
@@ -177,6 +177,7 @@ public:
     static HNumber arcsin(const HNumber&);
     static HNumber arccos(const HNumber&);
     static HNumber arctan(const HNumber&);
+    static HNumber arctan2(const HNumber&, const HNumber&);
     // HIGHER MATH FUNCTIONS
     static HNumber factorial(const HNumber&, const HNumber& base = HNumber(1));
     static HNumber gamma(const HNumber&);

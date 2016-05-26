@@ -33,17 +33,18 @@
 #include "gui/aboutbox.h"
 #include "gui/bitfieldwidget.h"
 #include "gui/bookdock.h"
-#include "gui/constantsdock.h"
+#include "gui/genericdock.h"
+#include "gui/constantswidget.h"
+#include "gui/functionswidget.h"
+#include "gui/historywidget.h"
+#include "gui/userfunctionlistwidget.h"
+#include "gui/variablelistwidget.h"
 #include "gui/editor.h"
-#include "gui/functionsdock.h"
-#include "gui/historydock.h"
 #include "gui/historywidget.h"
 #include "gui/manualwindow.h"
 #include "core/manualserver.h"
 #include "gui/resultdisplay.h"
 #include "gui/syntaxhighlighter.h"
-#include "gui/variablesdock.h"
-#include "gui/userfunctionsdock.h"
 #include "math/floatconfig.h"
 
 #include <QLatin1String>
@@ -169,6 +170,8 @@ void MainWindow::createActions()
     m_actions.settingsResultFormatHexadecimal = new QAction(this);
     m_actions.settingsResultFormatOctal = new QAction(this);
     m_actions.settingsResultFormatScientific = new QAction(this);
+    m_actions.settingsResultFormatCartesian= new QAction(this);
+    m_actions.settingsResultFormatPolar = new QAction(this);
     m_actions.helpManual = new QAction(this);
     m_actions.helpUpdates = new QAction(this);
     m_actions.helpFeedback = new QAction(this);
@@ -210,11 +213,13 @@ void MainWindow::createActions()
     m_actions.settingsResultFormat8Digits->setCheckable(true);
     m_actions.settingsResultFormatAutoPrecision->setCheckable(true);
     m_actions.settingsResultFormatBinary->setCheckable(true);
+    m_actions.settingsResultFormatCartesian->setCheckable(true);
     m_actions.settingsResultFormatEngineering->setCheckable(true);
     m_actions.settingsResultFormatFixed->setCheckable(true);
     m_actions.settingsResultFormatGeneral->setCheckable(true);
     m_actions.settingsResultFormatHexadecimal->setCheckable(true);
     m_actions.settingsResultFormatOctal->setCheckable(true);
+    m_actions.settingsResultFormatPolar->setCheckable(true);
     m_actions.settingsResultFormatScientific->setCheckable(true);
     m_actions.viewConstants->setCheckable(true);
     m_actions.viewFullScreenMode->setCheckable(true);
@@ -348,6 +353,8 @@ void MainWindow::setActionsText()
     m_actions.settingsResultFormatHexadecimal->setText(MainWindow::tr("&Hexadecimal"));
     m_actions.settingsResultFormatOctal->setText(MainWindow::tr("&Octal"));
     m_actions.settingsResultFormatScientific->setText(MainWindow::tr("&Scientific"));
+    m_actions.settingsResultFormatCartesian->setText(MainWindow::tr("&Cartesian"));
+    m_actions.settingsResultFormatPolar->setText(MainWindow::tr("&Polar"));
     m_actions.settingsDisplayFont->setText(MainWindow::tr("&Font..."));
     m_actions.settingsLanguage->setText(MainWindow::tr("&Language..."));
 
@@ -370,6 +377,10 @@ void MainWindow::createActionGroups()
     m_actionGroups.resultFormat->addAction(m_actions.settingsResultFormatScientific);
     m_actionGroups.resultFormat->addAction(m_actions.settingsResultFormatOctal);
     m_actionGroups.resultFormat->addAction(m_actions.settingsResultFormatHexadecimal);
+
+    m_actionGroups.complexFormat = new QActionGroup(this);
+    m_actionGroups.complexFormat->addAction(m_actions.settingsResultFormatCartesian);
+    m_actionGroups.complexFormat->addAction(m_actions.settingsResultFormatPolar);
 
     m_actionGroups.radixChar = new QActionGroup(this);
     m_actionGroups.radixChar->addAction(m_actions.settingsRadixCharDefault);
@@ -501,9 +512,9 @@ void MainWindow::createMenus()
     m_menus.precision->addAction(m_actions.settingsResultFormat15Digits);
     m_menus.precision->addAction(m_actions.settingsResultFormat50Digits);
 
-
-
-    m_menus.resultFormat->addSeparator();
+    m_menus.complexFormat = m_menus.resultFormat->addMenu("");
+    m_menus.complexFormat->addAction(m_actions.settingsResultFormatCartesian);
+    m_menus.complexFormat->addAction(m_actions.settingsResultFormatPolar);
 
     m_menus.radixChar = m_menus.resultFormat->addMenu("");
     m_menus.radixChar->addAction(m_actions.settingsRadixCharDefault);
@@ -573,6 +584,7 @@ void MainWindow::setMenusText()
     m_menus.decimal->setTitle(MainWindow::tr("&Decimal"));
     m_menus.precision->setTitle(MainWindow::tr("&Precision"));
     m_menus.angleUnit->setTitle(MainWindow::tr("&Angle Unit"));
+    m_menus.complexFormat->setTitle(MainWindow::tr("Comple&x Format"));
     m_menus.behavior->setTitle(MainWindow::tr("&Behavior"));
     m_menus.display->setTitle(MainWindow::tr("&Display"));
     m_menus.colorScheme->setTitle(MainWindow::tr("Color Scheme"));
@@ -586,6 +598,9 @@ void MainWindow::createStatusBar()
 
     m_status.angleUnit = new QPushButton(bar);
     m_status.resultFormat = new QPushButton(bar);
+
+    m_status.angleUnit->setFocusPolicy(Qt::NoFocus);
+    m_status.resultFormat->setFocusPolicy(Qt::NoFocus);
 
     m_status.angleUnit->setFlat(true);
     m_status.resultFormat->setFlat(true);
@@ -665,183 +680,129 @@ void MainWindow::createKeypad()
     m_settings->keypadVisible = true;
 }
 
-void MainWindow::createBookDock()
+void MainWindow::createBookDock(bool)
 {
     m_docks.book = new BookDock(this);
     m_docks.book->setObjectName("BookDock");
     m_docks.book->installEventFilter(this);
     m_docks.book->setAllowedAreas(Qt::AllDockWidgetAreas);
-    addDockWidget(Qt::RightDockWidgetArea, m_docks.book);
 
-    connect(m_docks.book, SIGNAL(expressionSelected(const QString&)),
-        SLOT(insertTextIntoEditor(const QString&)));
+    connect(m_docks.book,
+            SIGNAL(expressionSelected(const QString&)),
+            SLOT(insertTextIntoEditor(const QString&)));
 
-    if (m_docks.functions)
-        tabifyDockWidget(m_docks.functions, m_docks.book);
-    else if (m_docks.variables)
-        tabifyDockWidget(m_docks.variables, m_docks.book);
-    else if (m_docks.userFunctions)
-        tabifyDockWidget(m_docks.userFunctions, m_docks.book);
-    else if (m_docks.history)
-        tabifyDockWidget(m_docks.history, m_docks.book);
-    else if (m_docks.constants)
-        tabifyDockWidget(m_docks.constants, m_docks.book);
-
-    m_docks.book->show();
-    m_docks.book->raise();
-
+    // No focus for this dock.
+    addTabifiedDock(m_docks.book, false);
     m_settings->formulaBookDockVisible = true;
 }
 
-void MainWindow::createConstantsDock()
+void MainWindow::createConstantsDock(bool takeFocus)
 {
-    m_docks.constants = new ConstantsDock(this);
+    m_docks.constants = new GenericDock<ConstantsWidget>("MainWindow", QT_TR_NOOP("Constants"), this);
     m_docks.constants->setObjectName("ConstantsDock");
     m_docks.constants->installEventFilter(this);
     m_docks.constants->setAllowedAreas(Qt::AllDockWidgetAreas);
-    addDockWidget(Qt::RightDockWidgetArea, m_docks.constants);
 
-    connect(m_docks.constants->widget(), SIGNAL(constantSelected(const QString&)),
-        SLOT(insertConstantIntoEditor(const QString&)));
-    connect(this, SIGNAL(radixCharacterChanged()), m_docks.constants->widget(),
-        SLOT(handleRadixCharacterChange()));
+    connect(m_docks.constants->widget(), &ConstantsWidget::constantSelected,
+            this, &MainWindow::insertConstantIntoEditor);
+    connect(this, &MainWindow::radixCharacterChanged,
+            m_docks.constants->widget(), &ConstantsWidget::handleRadixCharacterChange);
 
-    if (m_docks.functions)
-        tabifyDockWidget(m_docks.functions, m_docks.constants);
-    else if (m_docks.variables)
-        tabifyDockWidget(m_docks.variables, m_docks.constants);
-    else if (m_docks.userFunctions)
-        tabifyDockWidget(m_docks.userFunctions, m_docks.constants);
-    else if (m_docks.history)
-        tabifyDockWidget(m_docks.history, m_docks.constants);
-    else if (m_docks.book)
-        tabifyDockWidget(m_docks.book, m_docks.constants);
-
-    m_docks.constants->show();
-    m_docks.constants->raise();
-
+    addTabifiedDock(m_docks.constants, takeFocus);
     m_settings->constantsDockVisible = true;
 }
 
-void MainWindow::createFunctionsDock()
+void MainWindow::createFunctionsDock(bool takeFocus)
 {
-    m_docks.functions = new FunctionsDock(this);
+    m_docks.functions = new GenericDock<FunctionsWidget>("MainWindow", QT_TR_NOOP("Functions"), this);
     m_docks.functions->setObjectName("FunctionsDock");
     m_docks.functions->installEventFilter(this);
     m_docks.functions->setAllowedAreas(Qt::AllDockWidgetAreas);
-    addDockWidget(Qt::RightDockWidgetArea, m_docks.functions);
 
-    connect(m_docks.functions->widget(), SIGNAL(functionSelected(const QString&)), SLOT(insertFunctionIntoEditor(const QString&)));
+    connect(m_docks.functions->widget(), &FunctionsWidget::functionSelected,
+            this, &MainWindow::insertFunctionIntoEditor);
 
-    if (m_docks.history)
-        tabifyDockWidget(m_docks.history, m_docks.functions);
-    else if (m_docks.variables)
-        tabifyDockWidget(m_docks.variables, m_docks.functions);
-    else if (m_docks.userFunctions)
-        tabifyDockWidget(m_docks.userFunctions, m_docks.functions);
-    else if (m_docks.constants)
-        tabifyDockWidget(m_docks.constants, m_docks.functions);
-    else if (m_docks.book)
-        tabifyDockWidget(m_docks.book, m_docks.functions);
-
-    m_docks.functions->show();
-    m_docks.functions->raise();
-
+    addTabifiedDock(m_docks.functions, takeFocus);
     m_settings->functionsDockVisible = true;
 }
 
-void MainWindow::createHistoryDock()
+void MainWindow::createHistoryDock(bool)
 {
-    m_docks.history = new HistoryDock(this);
+    m_docks.history = new GenericDock<HistoryWidget>("MainWindow", QT_TR_NOOP("History"), this);
     m_docks.history->setObjectName("HistoryDock");
     m_docks.history->installEventFilter(this);
     m_docks.history->setAllowedAreas(Qt::AllDockWidgetAreas);
-    addDockWidget(Qt::RightDockWidgetArea, m_docks.history);
 
-    HistoryWidget* historyWidget = qobject_cast<HistoryWidget *>(m_docks.history->widget());
-    connect(historyWidget, SIGNAL(expressionSelected(const QString&)), SLOT(insertTextIntoEditor(const QString&)));
-    connect(this, SIGNAL(historyChanged()), historyWidget, SLOT(updateHistory()));
-    historyWidget->updateHistory();
+    connect(m_docks.history->widget(), &HistoryWidget::expressionSelected,
+            this, &MainWindow::insertTextIntoEditor);
+    connect(this, &MainWindow::historyChanged,
+            m_docks.history->widget(), &HistoryWidget::updateHistory);
 
-    if (m_docks.functions)
-        tabifyDockWidget(m_docks.functions, m_docks.history);
-    else if (m_docks.variables)
-        tabifyDockWidget(m_docks.variables, m_docks.history);
-    else if (m_docks.userFunctions)
-        tabifyDockWidget(m_docks.userFunctions, m_docks.history);
-    else if (m_docks.constants)
-        tabifyDockWidget(m_docks.constants, m_docks.history);
-    else if (m_docks.book)
-        tabifyDockWidget(m_docks.book, m_docks.history);
-
-    m_docks.history->show();
-    m_docks.history->raise();
-
+    // No focus for this dock.
+    addTabifiedDock(m_docks.history, false);
     m_settings->historyDockVisible = true;
-
 }
 
-void MainWindow::createVariablesDock()
+void MainWindow::createVariablesDock(bool takeFocus)
 {
-    m_docks.variables = new VariablesDock(this);
+    m_docks.variables = new GenericDock<VariableListWidget>("MainWindow", QT_TR_NOOP("Variables"), this);
     m_docks.variables->setObjectName("VariablesDock");
     m_docks.variables->installEventFilter(this);
     m_docks.variables->setAllowedAreas(Qt::AllDockWidgetAreas);
-    addDockWidget(Qt::RightDockWidgetArea, m_docks.variables);
 
-    connect(m_docks.variables, SIGNAL(variableSelected(const QString&)), SLOT(insertVariableIntoEditor(const QString&)));
-    connect(this, SIGNAL(radixCharacterChanged()), m_docks.variables, SLOT(handleRadixCharacterChange()));
-    connect(this, SIGNAL(variablesChanged()), m_docks.variables, SLOT(updateList()));
+    connect(m_docks.variables->widget(), &VariableListWidget::variableSelected,
+            this, &MainWindow::insertVariableIntoEditor);
+    connect(this, &MainWindow::radixCharacterChanged,
+            m_docks.variables->widget(), &VariableListWidget::updateList);
+    connect(this, &MainWindow::variablesChanged,
+            m_docks.variables->widget(), &VariableListWidget::updateList);
 
-    m_docks.variables->updateList();
-
-    if (m_docks.functions)
-        tabifyDockWidget(m_docks.functions, m_docks.variables);
-    else if (m_docks.userFunctions)
-        tabifyDockWidget(m_docks.userFunctions, m_docks.variables);
-    else if (m_docks.history)
-        tabifyDockWidget(m_docks.history, m_docks.variables);
-    else if (m_docks.constants)
-        tabifyDockWidget(m_docks.constants, m_docks.variables);
-    else if (m_docks.book)
-        tabifyDockWidget(m_docks.book, m_docks.variables);
-
-    m_docks.variables->show();
-    m_docks.variables->raise();
-
+    addTabifiedDock(m_docks.variables, takeFocus);
     m_settings->variablesDockVisible = true;
 }
 
-void MainWindow::createUserFunctionsDock()
+void MainWindow::createUserFunctionsDock(bool takeFocus)
 {
-    m_docks.userFunctions = new UserFunctionsDock(this);
+    m_docks.userFunctions = new GenericDock<UserFunctionListWidget>("MainWindow", QT_TR_NOOP("User Functions"), this);
     m_docks.userFunctions->setObjectName("UserFunctionsDock");
     m_docks.userFunctions->installEventFilter(this);
     m_docks.userFunctions->setAllowedAreas(Qt::AllDockWidgetAreas);
-    addDockWidget(Qt::RightDockWidgetArea, m_docks.userFunctions);
 
-    connect(m_docks.userFunctions, SIGNAL(userFunctionSelected(const QString&)), SLOT(insertUserFunctionIntoEditor(const QString&)));
-    connect(m_docks.userFunctions, SIGNAL(userFunctionEdited(const QString&)), SLOT(insertUserFunctionIntoEditor(const QString&)));
-    connect(this, SIGNAL(radixCharacterChanged()), m_docks.userFunctions, SLOT(handleRadixCharacterChange()));
-    connect(this, SIGNAL(functionsChanged()), m_docks.userFunctions, SLOT(updateList()));
+    connect(m_docks.userFunctions->widget(), &UserFunctionListWidget::userFunctionSelected,
+            this, &MainWindow::insertUserFunctionIntoEditor);
+    connect(m_docks.userFunctions->widget(), &UserFunctionListWidget::userFunctionEdited,
+            this, &MainWindow::insertUserFunctionIntoEditor);
+    connect(this, &MainWindow::radixCharacterChanged,
+            m_docks.userFunctions->widget(), &UserFunctionListWidget::updateList);
+    connect(this, &MainWindow::functionsChanged,
+            m_docks.userFunctions->widget(), &UserFunctionListWidget::updateList);
 
-    m_docks.userFunctions->updateList();
-
-    if (m_docks.functions)
-        tabifyDockWidget(m_docks.functions, m_docks.userFunctions);
-    else if (m_docks.variables)
-        tabifyDockWidget(m_docks.variables, m_docks.userFunctions);
-    else if (m_docks.history)
-        tabifyDockWidget(m_docks.history, m_docks.userFunctions);
-    else if (m_docks.constants)
-        tabifyDockWidget(m_docks.constants, m_docks.userFunctions);
-    else if (m_docks.book)
-        tabifyDockWidget(m_docks.book, m_docks.userFunctions);
-
-    m_docks.userFunctions->show();
-    m_docks.userFunctions->raise();
-
+    addTabifiedDock(m_docks.userFunctions, takeFocus);
     m_settings->userFunctionsDockVisible = true;
+}
+
+void MainWindow::addTabifiedDock(QDockWidget* newDock, bool takeFocus, Qt::DockWidgetArea area)
+{
+    connect(newDock, &QDockWidget::visibilityChanged, this, &MainWindow::handleDockWidgetVisibilityChanged);
+    addDockWidget(area, newDock);
+    // Try to find an existing dock we can tabify with.
+    for (QDockWidget* d : m_allDocks) {
+        if (dockWidgetArea(d) == area)
+            tabifyDockWidget(d, newDock);
+    }
+    m_allDocks.append(newDock);
+    newDock->show();
+    newDock->raise();
+    if (takeFocus)
+        newDock->setFocus();
+}
+
+void MainWindow::deleteDock(QDockWidget* dock)
+{
+    removeDockWidget(dock);
+    m_allDocks.removeAll(dock);
+    disconnect(dock);
+    dock->deleteLater();
 }
 
 void MainWindow::createFixedConnections()
@@ -861,16 +822,17 @@ void MainWindow::createFixedConnections()
     connect(m_actions.editSelectExpression, SIGNAL(triggered()), SLOT(selectEditorExpression()));
     connect(m_actions.editWrapSelection, SIGNAL(triggered()), SLOT(wrapSelection()));
 
-    connect(m_actions.viewConstants, SIGNAL(toggled(bool)), SLOT(setConstantsDockVisible(bool)));
     connect(m_actions.viewFullScreenMode, SIGNAL(toggled(bool)), SLOT(setFullScreenEnabled(bool)));
-    connect(m_actions.viewFunctions, SIGNAL(toggled(bool)), SLOT(setFunctionsDockVisible(bool)));
-    connect(m_actions.viewHistory, SIGNAL(toggled(bool)), SLOT(setHistoryDockVisible(bool)));
     connect(m_actions.viewKeypad, SIGNAL(toggled(bool)), SLOT(setKeypadVisible(bool)));
-    connect(m_actions.viewFormulaBook, SIGNAL(toggled(bool)), SLOT(setFormulaBookDockVisible(bool)));
     connect(m_actions.viewStatusBar, SIGNAL(toggled(bool)), SLOT(setStatusBarVisible(bool)));
-    connect(m_actions.viewVariables, SIGNAL(toggled(bool)), SLOT(setVariablesDockVisible(bool)));
     connect(m_actions.viewBitfield, SIGNAL(toggled(bool)), SLOT(setBitfieldVisible(bool)));
-    connect(m_actions.viewUserFunctions, SIGNAL(toggled(bool)), SLOT(setUserFunctionsDockVisible(bool)));
+
+    connect(m_actions.viewConstants, SIGNAL(triggered(bool)), SLOT(setConstantsDockVisible(bool)));
+    connect(m_actions.viewFunctions, SIGNAL(triggered(bool)), SLOT(setFunctionsDockVisible(bool)));
+    connect(m_actions.viewHistory, SIGNAL(triggered(bool)), SLOT(setHistoryDockVisible(bool)));
+    connect(m_actions.viewFormulaBook, SIGNAL(triggered(bool)), SLOT(setFormulaBookDockVisible(bool)));
+    connect(m_actions.viewVariables, SIGNAL(triggered(bool)), SLOT(setVariablesDockVisible(bool)));
+    connect(m_actions.viewUserFunctions, SIGNAL(triggered(bool)), SLOT(setUserFunctionsDockVisible(bool)));
 
     connect(m_actions.settingsAngleUnitDegree, SIGNAL(triggered()), SLOT(setAngleModeDegree()));
     connect(m_actions.settingsAngleUnitRadian, SIGNAL(triggered()), SLOT(setAngleModeRadian()));
@@ -901,11 +863,13 @@ void MainWindow::createFixedConnections()
     connect(m_actions.settingsResultFormat8Digits, SIGNAL(triggered()), SLOT(setResultPrecision8Digits()));
     connect(m_actions.settingsResultFormatAutoPrecision, SIGNAL(triggered()), SLOT(setResultPrecisionAutomatic()));
     connect(m_actions.settingsResultFormatBinary, SIGNAL(triggered()), SLOT(setResultFormatBinary()));
+    connect(m_actions.settingsResultFormatCartesian, SIGNAL(triggered()), SLOT(setResultFormatCartesian()));
     connect(m_actions.settingsResultFormatEngineering, SIGNAL(triggered()), SLOT(setResultFormatEngineering()));
     connect(m_actions.settingsResultFormatFixed, SIGNAL(triggered()), SLOT(setResultFormatFixed()));
     connect(m_actions.settingsResultFormatGeneral, SIGNAL(triggered()), SLOT(setResultFormatGeneral()));
     connect(m_actions.settingsResultFormatHexadecimal, SIGNAL(triggered()), SLOT(setResultFormatHexadecimal()));
     connect(m_actions.settingsResultFormatOctal, SIGNAL(triggered()), SLOT(setResultFormatOctal()));
+    connect(m_actions.settingsResultFormatPolar, SIGNAL(triggered()), SLOT(setResultFormatPolar()));
     connect(m_actions.settingsResultFormatScientific, SIGNAL(triggered()), SLOT(setResultFormatScientific()));
 
     connect(m_actions.settingsLanguage, SIGNAL(triggered()), SLOT(showLanguageChooserDialog()));
@@ -966,13 +930,27 @@ void MainWindow::applySettings()
 {
     emit languageChanged();
 
+    setFormulaBookDockVisible(m_settings->formulaBookDockVisible, false);
     m_actions.viewFormulaBook->setChecked(m_settings->formulaBookDockVisible);
+
+    setConstantsDockVisible(m_settings->constantsDockVisible, false);
     m_actions.viewConstants->setChecked(m_settings->constantsDockVisible);
+
+    setFunctionsDockVisible(m_settings->functionsDockVisible, false);
     m_actions.viewFunctions->setChecked(m_settings->functionsDockVisible);
+
+    setHistoryDockVisible(m_settings->historyDockVisible, false);
     m_actions.viewHistory->setChecked(m_settings->historyDockVisible);
+
+    setVariablesDockVisible(m_settings->variablesDockVisible, false);
     m_actions.viewVariables->setChecked(m_settings->variablesDockVisible);
-    m_actions.viewBitfield->setChecked(m_settings->bitfieldVisible);
+
+    setUserFunctionsDockVisible(m_settings->userFunctionsDockVisible, false);
     m_actions.viewUserFunctions->setChecked(m_settings->userFunctionsDockVisible);
+
+    m_actions.viewBitfield->setChecked(m_settings->bitfieldVisible);
+    m_actions.viewKeypad->setChecked(m_settings->keypadVisible);
+    m_actions.viewStatusBar->setChecked(m_settings->statusBarVisible);
 
     if (!restoreGeometry(m_settings->windowGeometry)) {
         // We couldn't restore the saved geometry; that means it was either empty
@@ -1003,6 +981,7 @@ void MainWindow::applySettings()
 
     checkInitialResultFormat();
     checkInitialResultPrecision();
+    checkInitialComplexFormat();
 
     if (m_settings->isRadixCharacterAuto())
         m_actions.settingsRadixCharDefault->setChecked(true);
@@ -1010,8 +989,6 @@ void MainWindow::applySettings()
         m_actions.settingsRadixCharDot->setChecked(true);
     else if (m_settings->radixCharacter() == ',')
         m_actions.settingsRadixCharComma->setChecked(true);
-
-    m_actions.viewKeypad->setChecked(m_settings->keypadVisible);
 
     if (m_settings->autoAns)
         m_actions.settingsBehaviorAutoAns->setChecked(true);
@@ -1054,12 +1031,8 @@ void MainWindow::applySettings()
             action->setChecked(true);
     }
 
-    m_actions.viewStatusBar->setChecked(m_settings->statusBarVisible);
-
     if (m_widgets.display->isEmpty())
         QTimer::singleShot(0, this, SLOT(showReadyMessage()));
-
-    QTimer::singleShot(100, m_widgets.editor, SLOT(setFocus()));
 }
 
 void MainWindow::showManualWindow()
@@ -1107,6 +1080,18 @@ void MainWindow::checkInitialResultFormat()
         case 'o': m_actions.settingsResultFormatOctal->setChecked(true); break;
         case 'b': m_actions.settingsResultFormatBinary->setChecked(true); break;
         default : m_actions.settingsResultFormatFixed->setChecked(true);
+    }
+}
+
+void MainWindow::checkInitialComplexFormat()
+{
+    switch (m_settings->resultFormatComplex) {
+    case 'c':
+        m_actions.settingsResultFormatCartesian->setChecked(true);
+        break;
+    case 'p':
+        m_actions.settingsResultFormatPolar->setChecked(true);
+        break;
     }
 }
 
@@ -1197,7 +1182,6 @@ MainWindow::MainWindow()
 
     createUi();
     applySettings();
-    QTimer::singleShot(0, m_widgets.editor, SLOT(setFocus()));
 
     m_manualServer = ManualServer::instance();
     connect(this, SIGNAL(languageChanged()), m_manualServer, SLOT(ensureCorrectLanguage()));
@@ -1237,7 +1221,7 @@ void MainWindow::clearHistory()
 void MainWindow::clearEditor()
 {
     m_widgets.editor->clear();
-    QTimer::singleShot(0, m_widgets.editor, SLOT(setFocus()));
+    m_widgets.editor->setFocus();
 }
 
 void MainWindow::copyResultToClipboard()
@@ -1279,7 +1263,7 @@ void MainWindow::deleteVariables()
     m_session->clearVariables();
 
     if (m_settings->variablesDockVisible)
-        m_docks.variables->updateList();
+        m_docks.variables->widget()->updateList();
 }
 
 void MainWindow::deleteUserFunctions()
@@ -1287,7 +1271,7 @@ void MainWindow::deleteUserFunctions()
     m_session->clearUserFunctions();
 
     if (m_settings->userFunctionsDockVisible)
-        m_docks.userFunctions->updateList();
+        m_docks.userFunctions->widget()->updateList();
 }
 
 void MainWindow::setResultPrecision2Digits()
@@ -1476,8 +1460,6 @@ void MainWindow::showSessionImportDialog()
     emit historyChanged();
     emit variablesChanged();
     emit functionsChanged();
-
-    QTimer::singleShot(0, m_widgets.editor, SLOT(setFocus()));
 
     if (!isActiveWindow())
         activateWindow();
@@ -1757,6 +1739,7 @@ void MainWindow::deleteKeypad()
 
 void MainWindow::deleteStatusBar()
 {
+    statusBar()->hide();
     m_status.angleUnit->deleteLater();
     m_status.angleUnit = 0;
 
@@ -1778,132 +1761,114 @@ void MainWindow::deleteBitField()
 
 void MainWindow::deleteBookDock()
 {
-    Q_ASSERT(m_docks.book);
+    if (!m_docks.book)
+        return;
 
-    removeDockWidget(m_docks.book);
-    disconnect(m_docks.book);
-    m_docks.book->deleteLater();
-    m_docks.book = 0;
-    m_actions.viewFormulaBook->blockSignals(true);
+    deleteDock(m_docks.book);
+    m_docks.book = nullptr;
     m_actions.viewFormulaBook->setChecked(false);
-    m_actions.viewFormulaBook->blockSignals(false);
     m_settings->formulaBookDockVisible = false;
 }
 
 void MainWindow::deleteConstantsDock()
 {
-    Q_ASSERT(m_docks.constants);
+    if (!m_docks.constants)
+        return;
 
-    removeDockWidget(m_docks.constants);
-    disconnect(m_docks.constants);
-    m_docks.constants->deleteLater();
-    m_docks.constants = 0;
-    m_actions.viewConstants->blockSignals(true);
+    deleteDock(m_docks.constants);
+    m_docks.constants = nullptr;
     m_actions.viewConstants->setChecked(false);
-    m_actions.viewConstants->blockSignals(false);
     m_settings->constantsDockVisible = false;
 }
 
 void MainWindow::deleteFunctionsDock()
 {
-    Q_ASSERT(m_docks.functions);
+    if (!m_docks.functions)
+        return;
 
-    removeDockWidget(m_docks.functions);
-    disconnect(m_docks.functions);
-    m_docks.functions->deleteLater();
-    m_docks.functions = 0;
-    m_actions.viewFunctions->blockSignals(true);
+    deleteDock(m_docks.functions);
+    m_docks.functions = nullptr;
     m_actions.viewFunctions->setChecked(false);
-    m_actions.viewFunctions->blockSignals(false);
     m_settings->functionsDockVisible = false;
 }
 
 void MainWindow::deleteHistoryDock()
 {
-    Q_ASSERT(m_docks.history);
+    if (!m_docks.history)
+        return;
 
-    removeDockWidget(m_docks.history);
-    disconnect(m_docks.history);
-    m_docks.history->deleteLater();
-    m_docks.history = 0;
-    m_actions.viewHistory->blockSignals(true);
+    deleteDock(m_docks.history);
+    m_docks.history = nullptr;
     m_actions.viewHistory->setChecked(false);
-    m_actions.viewHistory->blockSignals(false);
     m_settings->historyDockVisible = false;
 }
 
 void MainWindow::deleteVariablesDock()
 {
-    Q_ASSERT(m_docks.variables);
+    if (!m_docks.variables)
+        return;
 
-    removeDockWidget(m_docks.variables);
-    disconnect(m_docks.variables);
-    m_docks.variables->deleteLater();
-    m_docks.variables = 0;
-    m_actions.viewVariables->blockSignals(true);
+    deleteDock(m_docks.variables);
+    m_docks.variables = nullptr;
     m_actions.viewVariables->setChecked(false);
-    m_actions.viewVariables->blockSignals(false);
     m_settings->variablesDockVisible = false;
 }
 
 void MainWindow::deleteUserFunctionsDock()
 {
-    Q_ASSERT(m_docks.userFunctions);
+    if (!m_docks.userFunctions)
+        return;
 
-    removeDockWidget(m_docks.userFunctions);
-    disconnect(m_docks.userFunctions);
-    m_docks.userFunctions->deleteLater();
-    m_docks.userFunctions = 0;
-    m_actions.viewUserFunctions->blockSignals(true);
+    deleteDock(m_docks.userFunctions);
+    m_docks.userFunctions = nullptr;
     m_actions.viewUserFunctions->setChecked(false);
-    m_actions.viewUserFunctions->blockSignals(false);
     m_settings->userFunctionsDockVisible = false;
 }
 
-void MainWindow::setFunctionsDockVisible(bool b)
+void MainWindow::setFunctionsDockVisible(bool b, bool takeFocus)
 {
     if (b)
-        createFunctionsDock();
+        createFunctionsDock(takeFocus);
     else
         deleteFunctionsDock();
 }
 
-void MainWindow::setFormulaBookDockVisible(bool b)
+void MainWindow::setFormulaBookDockVisible(bool b, bool takeFocus)
 {
     if (b)
-        createBookDock();
+        createBookDock(takeFocus);
     else
         deleteBookDock();
 }
 
-void MainWindow::setConstantsDockVisible(bool b)
+void MainWindow::setConstantsDockVisible(bool b, bool takeFocus)
 {
     if (b)
-        createConstantsDock();
+        createConstantsDock(takeFocus);
     else
         deleteConstantsDock();
 }
 
-void MainWindow::setHistoryDockVisible(bool b)
+void MainWindow::setHistoryDockVisible(bool b, bool takeFocus)
 {
     if (b)
-        createHistoryDock();
+        createHistoryDock(takeFocus);
     else
         deleteHistoryDock();
 }
 
-void MainWindow::setVariablesDockVisible(bool b)
+void MainWindow::setVariablesDockVisible(bool b, bool takeFocus)
 {
     if (b)
-        createVariablesDock();
+        createVariablesDock(takeFocus);
     else
         deleteVariablesDock();
 }
 
-void MainWindow::setUserFunctionsDockVisible(bool b)
+void MainWindow::setUserFunctionsDockVisible(bool b, bool takeFocus)
 {
     if (b)
-        createUserFunctionsDock();
+        createUserFunctionsDock(takeFocus);
     else
         deleteUserFunctionsDock();
 }
@@ -1922,6 +1887,15 @@ void MainWindow::setResultFormatBinary()
 
     if (m_status.resultFormat)
         m_status.resultFormat->setText(tr("Binary"));
+}
+
+void MainWindow::setResultFormatCartesian()
+{
+    if (m_settings->resultFormatComplex == 'c')
+        return;
+
+    m_settings->resultFormatComplex = 'c';
+    emit resultFormatChanged();
 }
 
 void MainWindow::setResultFormatEngineering()
@@ -1963,20 +1937,21 @@ void MainWindow::setResultFormatOctal()
         m_status.resultFormat->setText(tr("Octal"));
 }
 
+void MainWindow::setResultFormatPolar()
+{
+    if (m_settings->resultFormatComplex == 'p')
+        return;
+
+    m_settings->resultFormatComplex = 'p';
+    emit resultFormatChanged();
+}
+
 void MainWindow::setResultFormatScientific()
 {
     setResultFormat('e');
 
     if (m_status.resultFormat)
         m_status.resultFormat->setText(tr("Scientific decimal"));
-}
-
-void MainWindow::activate()
-{
-    show();
-    raise();
-    activateWindow();
-    m_widgets.editor->setFocus();
 }
 
 void MainWindow::insertConstantIntoEditor(const QString& c)
@@ -2001,7 +1976,7 @@ void MainWindow::insertTextIntoEditor(const QString& s)
 
     if (!isActiveWindow())
         activateWindow();
-    QTimer::singleShot(0, m_widgets.editor, SLOT(setFocus()));
+    m_widgets.editor->setFocus();
 }
 
 void MainWindow::insertFunctionIntoEditor(const QString& f)
@@ -2220,6 +2195,18 @@ void MainWindow::handleEditorTextChange()
             }
         }
     }
+}
+
+void MainWindow::handleDockWidgetVisibilityChanged(bool visible)
+{
+    QDockWidget* dock = qobject_cast<QDockWidget*>(sender());
+    if (!dock)
+        return;
+
+    // Pass the focus back to the editor if the dock that is being hidden has the focus.
+    QWidget* focusWidget = dock->focusWidget();
+    if (focusWidget && !visible && focusWidget->hasFocus())
+        m_widgets.editor->setFocus();
 }
 
 void MainWindow::insertVariableIntoEditor(const QString& v)

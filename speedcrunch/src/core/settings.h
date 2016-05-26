@@ -47,8 +47,9 @@ public:
 
     char angleUnit; // 'r': radian; 'd': degree.
 
-    char resultFormat; // See HMath documentation.
-    int resultPrecision; // Ditto.
+    char resultFormat;
+    int resultPrecision; // See HMath documentation.
+    char resultFormatComplex; // 'c' cartesian; 'p' polar.
 
     bool autoAns;
     bool autoCalc;

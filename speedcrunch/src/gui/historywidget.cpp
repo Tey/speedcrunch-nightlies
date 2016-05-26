@@ -42,6 +42,8 @@ HistoryWidget::HistoryWidget(QWidget *parent)
     setLayout(layout);
 
     connect(m_list, SIGNAL(itemActivated(QListWidgetItem *)), SLOT(handleItem(QListWidgetItem *)));
+
+    updateHistory();
 }
 
 void HistoryWidget::updateHistory()

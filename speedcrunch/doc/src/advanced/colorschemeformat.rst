@@ -23,11 +23,11 @@ are loaded from the following directory:
 
 All color scheme files must have the extension ``.json``. The file name without the extension
 will be displayed in the color scheme menu (:menuselection:`Settings --> Display --> Color Scheme`).
-The color scheme directory is only listed when SpeedCrunch is launched, so to have it pick up
+The contents of the color scheme directory are retrieved when SpeedCrunch is launched, so to have it pick up
 a newly-added color scheme file, it is necessary to restart the application. However, color scheme
 files are always reloaded when a color scheme is selected in the menu; that means after making
-changes to a color scheme file, re-selecting in SpeedCrunch will reload the color scheme and show
-the fresh changes. This allows for quick feedback when editing color schemes.
+changes to a color scheme file, re-selecting it in SpeedCrunch will reload the color scheme and show
+the changes. This allows for quick feedback when editing color schemes.
 
 The files themselves are simple `JSON <json_>`_ files containing a single JSON object mapping
 role names to color values. By way of example, this is the color scheme definition for
@@ -54,7 +54,7 @@ the "Terminal" scheme that ships with SpeedCrunch:
 Here, the keys are *roles*, each referring to elements in the SpeedCrunch history view
 and expression editor that can be colored. The values specify the colors for these
 roles. Color values may be any valid argument to the method |setNamedColor|_; the
-recommended form are simple simple HTML-style ``#RRGGBB`` definitions, using two
+recommended form are simple HTML-style ``#RRGGBB`` definitions, using two
 hexadecimal digits per color component as in the example.
 
 .. |setNamedColor| replace:: ``QColor::setNamedColor``
@@ -118,7 +118,7 @@ The following role names are supported by SpeedCrunch:
 
 .. describe:: separator
 
-   Separators; notably, the ``;`` used for defining and using multi-argument functions.
+   Separators; notably, the semicolon (``;``) used for defining and using multi-argument functions.
 
 .. describe:: background
 
@@ -126,4 +126,4 @@ The following role names are supported by SpeedCrunch:
 
 .. describe:: editorbackground
 
-   The background color of the expression editor below the history.
+   The background color of the expression editor.

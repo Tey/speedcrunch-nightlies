@@ -20,21 +20,17 @@ core/userfunction.h
 gui/aboutbox.h
 gui/bitfieldwidget.h
 gui/bookdock.h
-gui/constantsdock.h
 gui/constantswidget.h
 gui/editor.h
-gui/functionsdock.h
 gui/functionswidget.h
-gui/historydock.h
 gui/historywidget.h
+gui/genericdock.h
 gui/keypad.h
 gui/mainwindow.h
 gui/manualwindow.h
 gui/resultdisplay.h
 gui/tipwidget.h
 gui/variablelistwidget.h
-gui/variablesdock.h
-gui/userfunctionsdock.h
 gui/userfunctionlistwidget.h
 gui/syntaxhighlighter.h
 math/floatcommon.h
@@ -80,13 +76,12 @@ core/opcode.cpp
 gui/aboutbox.cpp
 gui/bitfieldwidget.cpp
 gui/bookdock.cpp
-gui/constantsdock.cpp
 gui/constantswidget.cpp
 gui/editor.cpp
-gui/functionsdock.cpp
 gui/functionswidget.cpp
-gui/historydock.cpp
 gui/historywidget.cpp
+# added here explicitly so it shows up in QtCreator
+gui/genericdock.h
 gui/keypad.cpp
 gui/mainwindow.cpp
 gui/manualwindow.cpp
@@ -94,8 +89,6 @@ gui/resultdisplay.cpp
 gui/syntaxhighlighter.cpp
 gui/tipwidget.cpp
 gui/variablelistwidget.cpp
-gui/variablesdock.cpp
-gui/userfunctionsdock.cpp
 gui/userfunctionlistwidget.cpp
 math/floatcommon.c
 math/floatconst.c
