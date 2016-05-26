@@ -250,7 +250,7 @@ void test_radix_char()
     CHECK_EVAL("-0x.f + 1", "0.0625");
 }
 
-void test_thoushand_sep()
+void test_thousand_sep()
 {
     CHECK_EVAL("12'345.678'9", "12345.6789");
     CHECK_EVAL("1234'5.67'89", "12345.6789");
@@ -272,7 +272,7 @@ void test_thoushand_sep()
     CHECK_EVAL("12`345.678@9", "12345.6789");
 }
 
-void test_thoushand_sep_strict()
+void test_thousand_sep_strict()
 {
     CHECK_EVAL("12'345.678'9", "12345.6789");
     CHECK_EVAL("1234'5.67'89", "12345.6789");
@@ -783,7 +783,22 @@ void test_implicit_multiplication()
     CHECK_EVAL("f() = 123", "123");
     CHECK_EVAL("2f()", "246");
     CHECK_EVAL("5   5", "55");
-    CHECK_EVAL("10.   0.2", "2");
+
+    // Check implicit multiplication between numbers fails
+    CHECK_EVAL_FAIL("10.   0.2");
+    CHECK_EVAL_FAIL("10 0x10");
+    CHECK_EVAL_FAIL("10 #10");
+    CHECK_EVAL_FAIL("0b104");
+    CHECK_EVAL_FAIL("0b10 4");
+    CHECK_EVAL_FAIL("0b10 0x4");
+    CHECK_EVAL_FAIL("0o109");
+    CHECK_EVAL_FAIL("0o10 9");
+    CHECK_EVAL_FAIL("0o10 0x9");
+    CHECK_EVAL_FAIL("12.12.12");
+    CHECK_EVAL_FAIL("12e12.12");
+    CHECK_EVAL("0b10a", "10");
+    CHECK_EVAL("0o2a", "10");
+    CHECK_EVAL("5(5)", "25");
 
     CHECK_EVAL("a sin(pi/2)", "5");
     CHECK_EVAL("a sqrt(4)",   "10");
@@ -799,6 +814,15 @@ void test_implicit_multiplication()
 
     /* Tests issue 598 */
     CHECK_EVAL("2(a)^3", "250");
+}
+
+void test_format()
+{
+    CHECK_EVAL("bin(123)", "0b1111011");
+    CHECK_EVAL("oct(123)", "0o173");
+    CHECK_EVAL("hex(123)", "0x7B");
+
+    CHECK_EVAL("polar(3+4j)", "5 * exp(j*0.92729521800161223243)");
 }
 
 
@@ -826,9 +850,9 @@ int main(int argc, char* argv[])
     test_radix_char();
 
     settings->strictDigitGrouping = false;
-    test_thoushand_sep();
+    test_thousand_sep();
     settings->strictDigitGrouping = true;
-    test_thoushand_sep_strict();
+    test_thousand_sep_strict();
 
     test_function_basic();
     test_function_trig();
@@ -853,6 +877,7 @@ int main(int argc, char* argv[])
     DMath::complexMode = true;
     eval->initializeBuiltInVariables();
     test_complex();
+    test_format();
 
     test_angle_mode(settings);
 

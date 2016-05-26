@@ -112,6 +112,9 @@ public:
         Format(const Format&);
         Format(const HNumber::Format&);
         Format operator+(const Format&) const;
+
+        static Format Polar();
+        static Format Cartesian();
     };
 };
 
@@ -154,6 +157,10 @@ public:
     static CNumber arsinh(const CNumber&);
     static CNumber arcosh(const CNumber&);
     static CNumber artanh(const CNumber&);
+    // COMPLEX SPECIFIC
+    static CNumber real(const CNumber& x) {return x.real;}
+    static CNumber imag(const CNumber& x) {return x.imag;}
+    static CNumber phase(const CNumber&);
     // TRIGONOMETRY
     static CNumber sin(const CNumber&);
     static CNumber cos(const CNumber&);
@@ -164,6 +171,7 @@ public:
     static CNumber arcsin(const CNumber&);
     static CNumber arccos(const CNumber&);
     static CNumber arctan(const CNumber&);
+    static CNumber arctan2(const CNumber&, const CNumber&);
     // HIGHER MATH FUNCTIONS
     static CNumber factorial(const CNumber&, const CNumber& base = CNumber(1));
     static CNumber gamma(const CNumber&);

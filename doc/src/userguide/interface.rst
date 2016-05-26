@@ -1,67 +1,105 @@
 User Interface
 ==============
-.. _context-help :
 
 Widgets
 -------
 
-Apart from the main display, SpeedCrunch offers a number of extra panels and tools, here simply referred to as *widgets*. They may be enabled and disabled via the menu :menuselection:`View`.
+Apart from the main display, SpeedCrunch offers a number of extra panels, referred to as *widgets* here.
+They can be enabled and disabled via the :menuselection:`View` menu.
 
-* Formula book
-    The formula book serves as a library for commonly used formulas and calculations. You can insert any formula into the expression editor by clicking on it.
-    
+* Formula Book
+    The formula book provides access to commonly used formulas and calculations. Simply insert
+    a formula into the expression editor by clicking on it.
+
     You can help expanding the formula book by posting your requests to the `issue tracker <tracker_>`_.
+
 * Constants
-    The constants dock allows the insertion of one out of over 150 scientific constants. Just double click on an entry to paste it into the editor.
-    
-    As of version 0.12, the constants have not yet been adapted to make use of the new unit system. All the inserted values thus lack a unit. This is likely to change in a future version.
+    The constants widget shows a list of over 150 scientific constants. Just double-click on an entry
+    to paste it into the editor.
+
+    .. note::
+       As of version 0.12, the constants have not yet been adapted to make use of the new unit system.
+       All the inserted values thus lack a unit. This is likely to change in a future version.
+
 * Variables
-    The variables panel lists all the user-defined variables. Again, any of them may be inserted by double clicking. Additionally, it is possible to delete a variable by selecting it, and pressing the delete button :kbd:`DELETE` on your keyboard.
-* (User-) Functions
-    Very similar to the variables widget, a widget exists for built-in respectively for user-defined functions.
+    The variables widget lists all :ref:`user-defined variables <variables>`. Any of them can be inserted into the editor by double-clicking it.
+    Additionally, it is possible to delete a variable by selecting it and pressing the :kbd:`Delete` key on your keyboard.
+
+* Functions and User Functions
+    Similar to the variables widget, these show built-in and :ref:`user-defined functions <user_functions>` respectively.
+
 * Bit Field
-    The bit field widget serves to facilitate calculations with binary numbers. Each of the squares represents a bit. You may toggle the corresponding bit by clicking it. The resulting number is automatically inserted into the editor. Additional buttons allow you to shift, invert and reset all the bits at once.
-    
-    If the mouse cursor is hovered over the bit field widget, scrolling the mouse wheel will also shift the bits.
+    The bit field widget is designed to make working with binary numbers easier. It shows a field of 64 squares,
+    each representing a bit in the current result. Any bit can be toggled by clicking its square; the resulting
+    number is automatically inserted into the editor. Additional buttons allow you to shift, invert and reset all the bits at once.
+    While the mouse cursor is hovering over the bit field, scrolling the mouse wheel will also shift the bits.
+
+  .. _keypad:
 * Keypad
-    Except for version 0.11, an on-screen keypad is available. It allows the input of numbers even without a physical keyboard. The use of the keypad is discouraged, as most of SpeedCrunch's more advanced features cannot be accessed by it.
-    
+    The on-screen keypad allows inputting numbers without using the keyboard. However, it is very limited and doesn't provide
+    access to many of SpeedCrunch's more advanced features. For that reason, using SpeedCrunch's keyboard interface is recommended
+    in place of using the keypad.
+
+    .. versionchanged:: 0.11
+       The keypad was removed in SpeedCrunch 0.11; however, it was added back in 0.12.
+
 * History
-    The history dock lists all previous inputs. Double click a line to recall it. Note that the main result display also supports this functionality.
-    
+    The history widget lists all previous inputs. Double-click a line to recall it. Note that the main result display also provides this functionality.
+
 .. _tracker: https://bitbucket.org/heldercorreia/speedcrunch/issues
-    
-Special Features of the Expression Editor
------------------------------------------
+
+
+Expression Editor Features
+--------------------------
+
+The expression editor provides some advanced features:
 
 * Autocompletion
-    If you start typing a name (for instance of a variable, function or unit), a list will pop up, suggesting possible names. You may press :kbd:`Tab` or :kbd:`Enter` on your keyboard to automatically insert the first suggestion. Alternatively, use the arrow keys to select a different suggestion, or continue typing to refine the list.
-* Constant quick insertion
-    Press :kbd:`Ctrl` + :kbd:`Space` to open the *constant quick insertion* box. It allows access to the same constants as the constants dock (see above). Use the keyboard arrows to navigate the list.
+    If you start typing a name (e.g. of a variable, function, or unit), a pop-up with matching names will appear. Pressing :kbd:`Tab` or :kbd:`Enter`
+    will automatically insert the first suggestion. Alternatively, you can use the arrow keys or the mouse to select a different suggestion, or continue
+    typing to refine the list.
+
+* Quick constant insertion
+    Press :kbd:`Control+Space` to open a list of constants that allows quick access to the same constants as the constants widget (see above).
+    Use the arrow keys to navigate the list.
+
+  .. _context-help:
 * Context help
-    Pressing :kbd:`F1` will show the manual page for the function under the cursor. This is extremely convenient when you need help to look up the usage of a function. Just press :kbd:`Esc` to dismiss the manual window again.
+    Pressing :kbd:`F1` will show the manual page for the function under the cursor, providing quick access to detailed
+    usage information for a function. Pressing :kbd:`Escape` will dismiss the manual window again.
+
 * Selection results
     If :menuselection:`Settings --> Behavior --> Partial Results` is enabled, selecting a partial expression in the expression editor will show
     you the result of the selected expression.
 
 
-
 Import/Export
 -------------
 
-SpeedCrunch can save/export your session in a number of ways. The :menuselection:`Session --> Save` and :menuselection:`Session --> Load` allow you to easily save and restore your entire SpeedCrunch session. The data is stored in a JSON file.
+SpeedCrunch can save/export your session in a number of ways. The :menuselection:`Session --> Save` and :menuselection:`Session --> Load` menu entries
+allow you to easily save and restore your entire SpeedCrunch session. The data is stored in a SpeedCrunch-specific file format. [#f1]_
+While the session files are human-readable, they are designed for use by SpeedCrunch. If you want to export your
+calculations to work on them in another program or hand them to a colleague, the other export options are preferable.
 
-The JSON file presents one major inconvenience: while it is human readable, it is very complete and contains many infromation specific to SpeedCrunch that are not necessarily interesting to another application or user. If you want to export your calculations for e.g. working on them in another program, or handing them to a colleague, it is easier to use on of the alternative export options.
+You can save the session as HTML (:menuselection:`Session --> Export --> HTML`). The resulting file will consist of the contents of the result
+display and can be viewed in any web browser. This feature can also be used to print a SpeedCrunch session by printing the exported
+HTML document. Since the syntax highlighting and color scheme are maintained in the HTML output, it is recommended to select a color scheme
+with a white background (e.g. *Standard*) prior to exporting if you intend to print the document.
 
-You can save the session as HTML (:menuselection:`Session --> Export --> HTML`). The file created this way can be viewed in any web browser. It shows whatever was visible in the result display at the time the export was performed. Note that although SpeedCrunch currently does not offer a print feature, you may print the exported HTML documents. Note that since the colorscheme is maintained upon export, it is wise to enable a colorscheme with a white background (e.g. *Standard*) if you inted to print the document.
+The final, most basic option is to export your session as a plain text file (:menuselection:`Session --> Export --> Plain text`).
+In contrast to the HTML export option, the syntax highlighting will be lost.
 
-The last (and most basic) option is to export your session a text file (:menuselection:`Session --> Export --> Plain text`). In contrast to the HTML export, formatting like syntax highlighting and font will be lost.
-
-SpeedCrunch also offers capabilities to *import* a session (:menuselection:`Session --> Import`). Select any plain text file, and SpeedCrunch will try to evaluate each line of the file as if the user entered it directly.
+SpeedCrunch also offers capabilities to *import* a session from a text file (:menuselection:`Session --> Import`).
+Select any plain text file and SpeedCrunch will try to evaluate each line of the file as if the user entered it directly.
 
 
 Settings
 --------
+
+SpeedCrunch's behavior can be customized to a large degree using the configuration options in the
+:menuselection:`Settings` menu. This section explains the settings that are available.
+
+.. _result_format:
 
 Result Format
 +++++++++++++
@@ -73,7 +111,7 @@ formats:
     Use fixed decimal form for most results; for very large (more than six integer places) or very small results (less than 0.0001),
     scientific notation will be used.
 * :menuselection:`Decimal --> Fixed Decimal`
-    Display results in decimal form, i.e. as ``<integer>.<fraction>``. For excessively
+    Display results in fixed decimal form. For excessively
     large or small numbers, this format may still fall back to scientific notation.
 * :menuselection:`Decimal --> Engineering`
     Display results in engineering notation. This is a variant of :ref:`scientific notation <scientific_notation>` in which
@@ -87,14 +125,16 @@ formats:
 * :menuselection:`Hexadecimal`
     Display all results as hexadecimal numbers, i.e. in base-16.
 
-In addition to the primary result format, some other options are available that are independent
-of the chosen format:
+In addition to the main result format, some further options are available to customize
+the result output:
 
 * :menuselection:`Precision`
     Select the number of fractional digits to display.
     **Automatic** always displays as many digits as are necessary to represent the number
     precisely. The other settings explicitly specify a certain number of digits and will
     append additional zeroes to the fraction to reach that number of digits, if necessary.
+
+  .. _radix_character:
 * :menuselection:`Radix Character`
     Select the decimal separator to use in results. If :menuselection:`Settings --> Behavior --> Detect All Radix Characters` is
     disabled, this is also the radix character that needs to be used when entering numbers.
@@ -118,7 +158,7 @@ determines the angle format of the arguments.
 Behavior
 ++++++++
 
-This section contains several settings that allow you to configure SpeedCrunch's behavior.
+This section contains several settings that allow you to further configure SpeedCrunch's behavior.
 
 * :menuselection:`Save History on Exit`
     Controls if the calculation history is automatically saved when SpeedCrunch exits
@@ -128,6 +168,8 @@ This section contains several settings that allow you to configure SpeedCrunch's
 * :menuselection:`Partial Results`
     If set, SpeedCrunch will display partial results as you type your expression as well
     as results when selecting a partial expression in the editor.
+
+  .. _automatic_result_reuse:
 * :menuselection:`Automatic Result Reuse`
     This setting allows you to quickly continue typing after evaluating an expression
     by inserting `ans` into the editor if necessary.
@@ -145,7 +187,7 @@ This section contains several settings that allow you to configure SpeedCrunch's
     If disabled, only the radix character set in :menuselection:`Settings --> Result Format --> Radix Character`
     is accepted.
 * :menuselection:`Strict Digit Groups Detection`
-    If enabled, only known digit grouping characters are allowed. If disabled, any non-alphanumeric character
+    If enabled, only known digit grouping characters are allowed [#f2]_. If disabled, any non-alphanumeric character
     that's not an operator can be used for digit grouping.
 * :menuselection:`Enable Complex Numbers`
     Enable or disable support for :ref:`complex numbers <complex_numbers>`. If disabled, :const:`j` will be undefined
@@ -173,62 +215,60 @@ Keyboard Shortcuts
 
 Editing
 +++++++
-* :kbd:`Ctrl` + :kbd:`L`
+* :kbd:`Control+L`
     Load session.
-* :kbd:`Ctrl` + :kbd:`S`
+* :kbd:`Control+S`
     Save session.
-* :kbd:`Ctrl` + :kbd:`Q`
+* :kbd:`Control+Q`
     Quit SpeedCrunch.
-* :kbd:`ESC`
+* :kbd:`Escape`
     Clear expression.
-* :kbd:`Ctrl` + :kbd:`N`
+* :kbd:`Control+N`
     Clear history.
-* :kbd:`Ctrl` + :kbd:`R`
-    Copy last result to clipboard.
-* :kbd:`Ctrl` + :kbd:`C`
+* :kbd:`Control+C`
     Copy selected text to clipboard.
-* :kbd:`Ctrl` + :kbd:`V`
+* :kbd:`Control+R`
+    Copy last result to clipboard.
+* :kbd:`Control+V`
     Paste from clipboard.
-* :kbd:`Ctrl` + :kbd:`A`
+* :kbd:`Control+A`
     Select entire expression.
-* :kbd:`Ctrl` + :kbd:`V`
-    Paste from clipboard.
-* :kbd:`Ctrl` + :kbd:`P`
+* :kbd:`Control+P`
     Wrap the current selection in parentheses. If no text is selected, the entire expression is wrapped.
 
 Widgets and Docks
 +++++++++++++++++
 
-* :kbd:`Ctrl` + :kbd:`1`
+* :kbd:`Control+1`
     Show/hide formula book.
-* :kbd:`Ctrl` + :kbd:`2`
-    Show/hide constants dock.
-* :kbd:`Ctrl` + :kbd:`3`
-    Show/hide functions dock.
-* :kbd:`Ctrl` + :kbd:`4`
-    Show/hide variables dock.
-* :kbd:`Ctrl` + :kbd:`5`
-    Show/hide user functions dock.
-* :kbd:`Ctrl` + :kbd:`6`
+* :kbd:`Control+2`
+    Show/hide constants widget.
+* :kbd:`Control+3`
+    Show/hide functions widgets.
+* :kbd:`Control+4`
+    Show/hide variables widget.
+* :kbd:`Control+5`
+    Show/hide user functions widget.
+* :kbd:`Control+6`
     Show/hide bit field widget.
-* :kbd:`Ctrl` + :kbd:`7`
-    Show/hide history dock.
-* :kbd:`Ctrl` + :kbd:`B`
+* :kbd:`Control+7`
+    Show/hide history widget.
+* :kbd:`Control+B`
     Show/hide the status bar.
-* :kbd:`Ctrl` + :kbd:`K`
+* :kbd:`Control+K`
     Show/hide the keypad.
-    
+
 Scrolling
 +++++++++
 
-* :kbd:`PageUp` and :kbd:`PageDown`
-    Scroll the result window, page by page.
-* :kbd:`Shift` + :kbd:`PageUp` and :kbd:`Shift` + :kbd:`PageDown`
-    Scroll the result window, line by line.
-* :kbd:`Ctrl` + :kbd:`PageUp` and :kbd:`Ctrl` + :kbd:`PageDown`
+* :kbd:`Page Up` and :kbd:`Page Down`
+    Scroll the result window page-wise.
+* :kbd:`Shift+Page Up` and :kbd:`Shift+Page Down`
+    Scroll the result window line-wise.
+* :kbd:`Control+Page Up` and :kbd:`Control+Page Down`
     Scroll to the top or bottom of the result window.
-    
-    
+
+
 Format
 ++++++
 
@@ -250,19 +290,45 @@ Format
     Set angle unit to radian.
 * :kbd:`F10`
     Set angle unit to degree.
-* :kbd:`Ctrl` + :kbd:`.`
-    Use a point as decimal separator.
-* :kbd:`Ctrl` + :kbd:`,`
-    Use a comma as decimal separator. 
-    
+* :kbd:`Control+.`
+    Use a period as decimal separator.
+* :kbd:`Control+,`
+    Use a comma as decimal separator.
+
 Various
 +++++++
 
 * :kbd:`F1`
-    Show context help (dismiss with :kbd:`Esc`).
+    Show context help (dismiss with :kbd:`Escape`).
+
+    .. versionadded:: 0.12
+
 * :kbd:`F11`
-    Enable fullscreen. Press again to exit.
-* :kbd:`Ctrl` + mouse wheel or :kbd:`Shift` + mouse wheel or :kbd:`Shift` + :kbd:`Up`/\ :kbd:`Down`
-    Change the font size (zoom).
-* :kbd:`Ctrl` + :kbd:`Shift` + mouse wheel
+    Toggle full screen.
+* :kbd:`Control` + mouse wheel, :kbd:`Shift` + mouse wheel, or :kbd:`Shift+Up` and :kbd:`Shift+Down`
+    Change the font size.
+* :kbd:`Control+Shift` + mouse wheel
     Change the window opacity.
+
+    .. versionadded:: 0.12
+
+
+.. rubric:: Footnotes
+
+.. [#f1] Starting with SpeedCrunch 0.12, the session format is based on `JSON <json_>`_. Previous
+         versions used a simple custom text format.
+.. [#f2] As of SpeedCrunch 0.12, the following characters are recognized as digit separators
+         if :menuselection:`Strict Digit Groups Detection` is enabled:
+
+         * Space (Unicode U+0020)
+         * Apostrophe ``'`` (Unicode U+0027)
+         * Comma ``,`` (Unicode U+002C)
+         * Full stop ``.`` (Unicode U+002E)
+         * Low line ``_`` (Unicode U+005F)
+         * Middle dot ``·`` (Unicode U+00B7)
+         * Arabic decimal separator ``٫`` (Unicode U+066B)
+         * Arabic thousands separator ``٬`` (Unicode U+066C)
+         * Dot above ``˙`` (Unicode U+02D9)
+         * Decimal separator key symbol ``⎖`` (Unicode U+2396)
+
+.. _json: http://json.org/

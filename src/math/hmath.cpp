@@ -654,77 +654,77 @@ HNumber::Format HNumber::Format::operator+(const HNumber::Format& other) const
     return result;
 }
 
-const HNumber::Format HNumber::Format::Binary()
+HNumber::Format HNumber::Format::Binary()
 {
     Format result;
     result.base = Base::Binary;
     return result;
 }
 
-const HNumber::Format HNumber::Format::Octal()
+HNumber::Format HNumber::Format::Octal()
 {
     Format result;
     result.base = Base::Octal;
     return result;
 }
 
-const HNumber::Format HNumber::Format::Decimal()
+HNumber::Format HNumber::Format::Decimal()
 {
     Format result;
     result.base = Base::Decimal;
     return result;
 }
 
-const HNumber::Format HNumber::Format::Hexadecimal()
+HNumber::Format HNumber::Format::Hexadecimal()
 {
     Format result;
     result.base = Base::Hexadecimal;
     return result;
 }
 
-const HNumber::Format HNumber::Format::Precision(int prec)
+HNumber::Format HNumber::Format::Precision(int prec)
 {
     Format result;
     result.precision = prec;
     return result;
 }
 
-const HNumber::Format HNumber::Format::Point()
+HNumber::Format HNumber::Format::Point()
 {
     Format result;
     result.radixChar = RadixChar::Point;
     return result;
 }
 
-const HNumber::Format HNumber::Format::Comma()
+HNumber::Format HNumber::Format::Comma()
 {
     Format result;
     result.radixChar = RadixChar::Comma;
     return result;
 }
 
-const HNumber::Format HNumber::Format::General()
+HNumber::Format HNumber::Format::General()
 {
     Format result;
     result.mode = Mode::General;
     return result;
 }
 
-const HNumber::Format HNumber::Format::Fixed()
+HNumber::Format HNumber::Format::Fixed()
 {
     Format result;
     result.mode = Mode::Fixed;
     return result;
 }
 
-const HNumber::Format HNumber::Format::Scientific()
+HNumber::Format HNumber::Format::Scientific()
 {
     Format result;
     result.mode = Mode::Scientific;
     return result;
 }
 
-const HNumber::Format HNumber::Format::Engineering()
+HNumber::Format HNumber::Format::Engineering()
 {
     Format result;
     result.mode = Mode::Engineering;
@@ -1366,7 +1366,28 @@ HNumber HMath::arctan(const HNumber& x)
     HNumber result;
     call1Arg(result.d, x.d, float_arctan);
     return result;
-};
+}
+
+/**
+ * Returns the angle formed by the vector (x, y) and the x-axis.
+ */
+HNumber HMath::arctan2(const HNumber& x, const HNumber& y)
+{
+    if (y.isZero()) {
+        if (x.isNegative())
+            return HMath::pi();
+        if (x.isZero())
+            return HMath::nan(OutOfDomain);
+        return HNumber(0);
+    } else {
+        HNumber phi = HMath::arctan(HMath::abs(y / x));
+        if (x.isNegative())
+            return (HMath::pi() - phi) * HMath::sgn(y);
+        if (x.isZero())
+            return HMath::pi()/HNumber(2)*HMath::sgn(y);
+        return phi * HMath::sgn(y);
+    }
+}
 
 /**
  * Returns the arc sine of x.

@@ -663,7 +663,7 @@ Tokens Evaluator::scan(const QString& expr) const
 
     // Parsing state.
     enum { Init, Start, Finish, Bad, InNumber, InHexa, InOctal, InBinary, InDecimal, InExpIndicator,
-           InExponent, InIdentifier } state;
+           InExponent, InIdentifier, InNumberEnd } state;
 
     // Initialize variables.
     state = Init;
@@ -809,9 +809,7 @@ Tokens Evaluator::scan(const QString& expr) const
             } else if (isSeparatorChar(ch)) // Ignore thousand separators
                 ++i;
             else { // We're done with integer number.
-                int tokenSize = i - tokenStart;
-                tokens.append(Token(Token::stxNumber, tokenText, tokenStart, tokenSize));
-                state = Init;
+                state = InNumberEnd;
             }
             break;
 
@@ -826,9 +824,7 @@ Tokens Evaluator::scan(const QString& expr) const
             } else if (isSeparatorChar(ch)) // Ignore thousand separators
                 ++i;
             else { // We're done with hexadecimal number.
-                int tokenSize = i - tokenStart;
-                tokens.append(Token(Token::stxNumber, tokenText, tokenStart, tokenSize));
-                state = Init;
+                state = InNumberEnd;
             }
             break;
 
@@ -843,9 +839,7 @@ Tokens Evaluator::scan(const QString& expr) const
             } else if (isSeparatorChar(ch)) // Ignore thousand separators
                 ++i;
             else { // We're done with binary number.
-                int tokenSize = i - tokenStart;
-                tokens.append(Token(Token::stxNumber, tokenText, tokenStart, tokenSize));
-                state = Init;
+                state = InNumberEnd;
             }
             break;
 
@@ -860,9 +854,7 @@ Tokens Evaluator::scan(const QString& expr) const
             } else if (isSeparatorChar(ch)) // Ignore thousand separators
                 ++i;
             else { // We're done with octal number.
-                int tokenSize = i - tokenStart;
-                tokens.append(Token(Token::stxNumber, tokenText, tokenStart, tokenSize));
-                state = Init;
+                state = InNumberEnd;
             }
             break;
 
@@ -877,9 +869,7 @@ Tokens Evaluator::scan(const QString& expr) const
             } else if (isSeparatorChar(ch)) // Ignore thousand separators
                 ++i;
             else { // We're done with floating-point number.
-                int tokenSize = i - tokenStart;
-                tokens.append(Token(Token::stxNumber, tokenText, tokenStart, tokenSize));
-                state = Init;
+                state = InNumberEnd;
             };
             break;
 
@@ -894,9 +884,7 @@ Tokens Evaluator::scan(const QString& expr) const
             else {// Invalid thing here.
                 // Rollback: might be an identifier used in implicit multiplication
                 i = expStart;
-                int tokenSize = i - tokenStart;
-                tokens.append(Token(Token::stxNumber, tokenText, tokenStart, tokenSize));
-                state = Init;
+                state = InNumberEnd;
             }
             break;
 
@@ -906,11 +894,21 @@ Tokens Evaluator::scan(const QString& expr) const
             else if (isSeparatorChar(ch)) // Ignore thousand separators
                 ++i;
             else { // We're done with floating-point number.
-                int tokenSize = i - tokenStart;
-                tokens.append(Token(Token::stxNumber, tokenText, tokenStart, tokenSize));
-                state = Init;
+                state = InNumberEnd;
             };
             break;
+
+        case InNumberEnd: {
+            int tokenSize = i - tokenStart;
+            tokens.append(Token(Token::stxNumber, tokenText, tokenStart, tokenSize));
+
+            // Make sure a number cannot be followed by another number
+            if (ch.isDigit() || isRadixChar(ch) || ch == '#')
+                state = Bad;
+            else
+                state = Init;
+            break;
+        }
 
         case Bad:
             tokens.setValid(false);

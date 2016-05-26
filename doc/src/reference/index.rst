@@ -1,11 +1,9 @@
-.. _reference:
-
 Reference
 =========
 
 SpeedCrunch includes a large number of built-in math functions and constants. They
-are documented in this reference, organized by categories. For an alphabetical list,
-consult the :ref:`genindex` and the :ref:`sc:functionindex`.
+are documented in this reference, organized by categories. There is also an
+:ref:`alphabetical list of all functions <sc:functionindex>`.
 
 
 Built-in Functions

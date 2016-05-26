@@ -82,19 +82,15 @@ HEADERS += core/book.h \
            gui/aboutbox.h \
            gui/bitfieldwidget.h \
            gui/bookdock.h \
-           gui/constantsdock.h \
            gui/constantswidget.h \
            gui/resultdisplay.h \
            gui/editor.h \
-           gui/functionsdock.h \
            gui/functionswidget.h \
-           gui/historydock.h \
            gui/historywidget.h \
+           gui/genericdock.h \
            gui/keypad.h \
            gui/tipwidget.h \
-           gui/variablesdock.h \
            gui/variablelistwidget.h \
-           gui/userfunctionsdock.h \
            gui/userfunctionlistwidget.h \
            gui/manualwindow.h \
            gui/mainwindow.h \
@@ -141,20 +137,15 @@ SOURCES += main.cpp \
            gui/aboutbox.cpp \
            gui/bitfieldwidget.cpp \
            gui/bookdock.cpp \
-           gui/constantsdock.cpp \
            gui/constantswidget.cpp \
            gui/resultdisplay.cpp \
            gui/editor.cpp \
-           gui/functionsdock.cpp \
            gui/functionswidget.cpp \
-           gui/historydock.cpp \
            gui/historywidget.cpp \
            gui/keypad.cpp \
            gui/syntaxhighlighter.cpp \
            gui/tipwidget.cpp \
-           gui/variablesdock.cpp \
            gui/variablelistwidget.cpp \
-           gui/userfunctionsdock.cpp \
            gui/userfunctionlistwidget.cpp \
            gui/mainwindow.cpp \
            gui/manualwindow.cpp \

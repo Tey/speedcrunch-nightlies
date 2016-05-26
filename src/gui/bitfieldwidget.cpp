@@ -126,19 +126,16 @@ BitFieldWidget::BitFieldWidget(QWidget* parent) :
     shiftRightButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     connect(shiftRightButton, SIGNAL(clicked()), this, SLOT(shiftBitsRight()));
 
-    QVBoxLayout* buttonsLayout = new QVBoxLayout;
-    buttonsLayout->addWidget(resetButton);
-    buttonsLayout->addWidget(shiftLeftButton);
-
-    QVBoxLayout* buttonsLayout2 = new QVBoxLayout;
-    buttonsLayout2->addWidget(invertButton);
-    buttonsLayout2->addWidget(shiftRightButton);
+    QGridLayout* buttonsLayout = new QGridLayout;
+    buttonsLayout->addWidget(resetButton, 0, 0);
+    buttonsLayout->addWidget(invertButton, 0, 1);
+    buttonsLayout->addWidget(shiftLeftButton, 1, 0);
+    buttonsLayout->addWidget(shiftRightButton, 1, 1);
 
     QHBoxLayout* mainLayout = new QHBoxLayout(this);
     mainLayout->addStretch();
     mainLayout->addLayout(fieldLayout);
     mainLayout->addLayout(buttonsLayout);
-    mainLayout->addLayout(buttonsLayout2);
     mainLayout->addStretch();
 }
 

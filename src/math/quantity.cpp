@@ -610,6 +610,18 @@ void Quantity::Format::serialize(QJsonObject& json) const
         break;
     }
 
+    switch (notation) {
+    case Notation::Cartesian:
+        json["form"] = QStringLiteral("Cartesian");
+        break;
+    case Notation::Polar:
+        json["form"] = QStringLiteral("Polar");
+        break;
+    case Notation::Null:
+    default:
+        break;
+    }
+
     if (precision != PrecisionNull)
         json["precision"] = precision;
 }
@@ -647,13 +659,25 @@ Quantity::Format Quantity::Format::deSerialize(const QJsonObject& json)
     } else
         result.base = Base::Null;
 
+    if (json.contains("form")) {
+        auto strNotation = json["form"].toString();
+        if (strNotation == "Cartesian")
+            result.notation = Notation::Cartesian;
+        else if (strNotation == "Polar")
+            result.notation = Notation::Polar;
+        else
+            result.notation = Notation::Null;
+    } else
+        result.notation = Notation::Null;
+
+
     result.precision = json.contains("precision") ? json["precision"].toInt() : PrecisionNull;
     return result;
 }
 
 bool Quantity::Format::isNull() const
 {
-    return (mode == Mode::Null && base == Base::Null && precision == PrecisionNull);
+    return (mode == Mode::Null && base == Base::Null && precision == PrecisionNull && notation == Notation::Null);
 }
 
 // DMath
@@ -719,7 +743,7 @@ bool DMath::complexMode = true;
         ENSURE_DIMENSIONLESS(arg3); \
         ENSURE_DIMENSIONLESS(arg4); \
         return Quantity(COMPLEX_WRAP_4(fct, arg1.m_numericValue, arg2.m_numericValue, arg3.m_numericValue, \
-                                       arg4.m_numericValue));   \
+                                       arg4.m_numericValue)); \
     }
 
 WRAPPER_DMATH_0(e)
@@ -758,6 +782,7 @@ WRAPPER_DMATH_1(csc)
 WRAPPER_DMATH_1(arcsin)
 WRAPPER_DMATH_1(arccos)
 WRAPPER_DMATH_1(arctan)
+WRAPPER_DMATH_2(arctan2)
 
 WRAPPER_DMATH_2(factorial)
 WRAPPER_DMATH_1(gamma)
@@ -855,6 +880,11 @@ Quantity DMath::abs(const Quantity& n)
     return result;
 }
 
+Quantity DMath::phase(const Quantity& n)
+{
+    return CMath::phase(n.numericValue());
+}
+
 Quantity DMath::sqrt(const Quantity& n)
 {
     Quantity result(COMPLEX_WRAP_1(sqrt, n.m_numericValue));
@@ -915,7 +945,7 @@ Quantity DMath::raise(const Quantity& n1, const Quantity& n2)
     // For negative bases only allow odd denominators.
     Rational exponent(n2.m_numericValue.real);
     if (abs(exponent.toHNumber() - n2.m_numericValue.real) >= RATIONAL_TOL
-        || (n1.isNegative() && exponent.denominator()%2 == 0))
+       || (n1.isNegative() && exponent.denominator() % 2 == 0))
         return DMath::nan(OutOfDomain);
 
     // Compute new dimension.
@@ -943,7 +973,7 @@ Quantity DMath::encodeIeee754(const Quantity& val, const Quantity& exp_bits, con
     return result;
 }
 
-Quantity DMath::encodeIeee754(const Quantity &val, const Quantity& exp_bits, const Quantity& significand_bits,
+Quantity DMath::encodeIeee754(const Quantity& val, const Quantity& exp_bits, const Quantity& significand_bits,
                               const Quantity& exp_bias)
 {
     ENSURE_DIMENSIONLESS(val);

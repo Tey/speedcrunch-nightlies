@@ -115,9 +115,6 @@ public:
 
     class Format : public CNumber::Format {
     public:
-        static const Format Cartesian();
-        static const Format Polar();
-
         Format();
         Format(const CNumber::Format&);
         Format(const HNumber::Format&);
@@ -148,9 +145,6 @@ public:
 
     static QString format(const Quantity, Quantity::Format = Quantity::Format());
 
-    static Quantity real(const Quantity&);
-    static Quantity imag(const Quantity&);
-
     // CONSTANTS
     static Quantity e();
     static Quantity phi();
@@ -179,13 +173,17 @@ public:
     static Quantity ln(const Quantity&);
     static Quantity lg(const Quantity&);
     static Quantity lb(const Quantity&);
-    static Quantity log(const Quantity& base, const Quantity& x);
+    static Quantity log(const Quantity& base, const Quantity&);
     static Quantity sinh(const Quantity&);
     static Quantity cosh(const Quantity&);
     static Quantity tanh(const Quantity&);
     static Quantity arsinh(const Quantity&);
     static Quantity arcosh(const Quantity&);
     static Quantity artanh(const Quantity&);
+    // COMPLEX
+    static Quantity real(const Quantity&);
+    static Quantity imag(const Quantity&);
+    static Quantity phase(const Quantity&);
     // TRIGONOMETRY
     static Quantity sin(const Quantity&);
     static Quantity cos(const Quantity&);
@@ -196,6 +194,7 @@ public:
     static Quantity arcsin(const Quantity&);
     static Quantity arccos(const Quantity&);
     static Quantity arctan(const Quantity&);
+    static Quantity arctan2(const Quantity&, const Quantity & y);
     // HIGHER MATH FUNCTIONS
     static Quantity factorial(const Quantity& x, const Quantity& base = CNumber(1));
     static Quantity gamma(const Quantity&);

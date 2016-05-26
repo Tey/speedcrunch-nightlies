@@ -46,7 +46,7 @@ protected slots:
     void handleItemActivated(QTreeWidgetItem*, int);
     virtual void changeEvent(QEvent*);
     void clearSelection(QTreeWidgetItem*);
-    void fillTable();
+    void updateList();
     void retranslateText();
     void triggerFilter();
 

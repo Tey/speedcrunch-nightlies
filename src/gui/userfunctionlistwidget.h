@@ -43,11 +43,11 @@ public:
     QString getUserFunctionName(const QTreeWidgetItem *);
 
 signals:
-    void itemActivated(const QString&);
-    void itemEdited(const QString&);
+    void userFunctionSelected(const QString&);
+    void userFunctionEdited(const QString&);
 
 public slots:
-    void fillTable();
+    void updateList();
     void retranslateText();
 
 protected slots:

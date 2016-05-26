@@ -1,5 +1,3 @@
-.. _userguide:
-
 User Guide
 ==========
 
@@ -15,13 +13,3 @@ read in order or simply used to look up the details of a feature.
    syntax
    advanced
    interface
-   
-
-
-.. TODO: Potential further topics:
-..  - first steps
-..  - interface guide
-..  - particular topics:
-..    - units/dimensions
-..    - complex numbers
-..  - ?

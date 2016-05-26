@@ -152,10 +152,11 @@ void SyntaxHighlighter::setColorScheme(ColorScheme&& colorScheme) {
 
 void SyntaxHighlighter::highlightBlock(const QString& text)
 {
-    if (!Settings::instance()->syntaxHighlighting) {
-        setFormat(0, text.length(), colorForRole(ColorScheme::Number));
+    // Default color for the text
+    setFormat(0, text.length(), colorForRole(ColorScheme::Number));
+
+    if (!Settings::instance()->syntaxHighlighting)
         return;
-    }
 
     if (text.startsWith(QLatin1String("="))) {
         setFormat(0, 1, colorForRole(ColorScheme::Operator));
@@ -209,23 +210,9 @@ void SyntaxHighlighter::highlightBlock(const QString& text)
             break;
         };
 
-        Q_ASSERT(token.pos() >= 0); // Why would pos() ever return a negative value?
-
-        // The token text might be a modified version of the displayed text,
-        // so we must not rely on it to find out the number of character to highlight.
-        int end = (questionMarkIndex != -1) ? questionMarkIndex : text.length();
-        if (i + 1 < tokens.size())
-        {
-            const Token& nextToken = tokens.at(i + 1);
-
-            Q_ASSERT(nextToken.pos() >= 0);
-
-            end = nextToken.pos();
-        }
-
-        setFormat(token.pos(), end - token.pos(), color);
+        setFormat(token.pos(), token.size(), color);
         if (token.type() == Token::stxNumber && Settings::instance()->digitGrouping > 0)
-            groupDigits(text, token.pos(), end - token.pos());
+            groupDigits(text, token.pos(), token.size());
     }
 }
 

@@ -85,15 +85,18 @@ VariableListWidget::VariableListWidget(QWidget* parent)
     m_variables->addAction(m_deleteAllAction);
 
     QWidget::setTabOrder(m_searchFilter, m_variables);
+    setFocusProxy(m_searchFilter);
 
     retranslateText();
 
-    connect(m_filterTimer, SIGNAL(timeout()), SLOT(fillTable()));
+    connect(m_filterTimer, SIGNAL(timeout()), SLOT(updateList()));
     connect(m_searchFilter, SIGNAL(textChanged(const QString&)), SLOT(triggerFilter()));
     connect(m_variables, SIGNAL(itemActivated(QTreeWidgetItem*, int)), SLOT(activateItem()));
     connect(m_insertAction, SIGNAL(triggered()), SLOT(activateItem()));
     connect(m_deleteAction, SIGNAL(triggered()), SLOT(deleteItem()));
     connect(m_deleteAllAction, SIGNAL(triggered()), SLOT(deleteAllItems()));
+
+    updateList();
 }
 
 VariableListWidget::~VariableListWidget()
@@ -101,7 +104,7 @@ VariableListWidget::~VariableListWidget()
     m_filterTimer->stop();
 }
 
-void VariableListWidget::fillTable()
+void VariableListWidget::updateList()
 {
     setUpdatesEnabled(false);
 
@@ -138,7 +141,6 @@ void VariableListWidget::fillTable()
         m_noMatchLabel->raise();
     }
 
-    m_searchFilter->setFocus();
     setUpdatesEnabled(true);
 }
 
@@ -155,7 +157,7 @@ void VariableListWidget::retranslateText()
     m_deleteAction->setText(tr("Delete"));
     m_deleteAllAction->setText(tr("Delete All"));
 
-    QTimer::singleShot(0, this, SLOT(fillTable()));
+    QTimer::singleShot(0, this, SLOT(updateList()));
 }
 
 QTreeWidgetItem* VariableListWidget::currentItem() const
@@ -167,7 +169,7 @@ void VariableListWidget::activateItem()
 {
     if (!currentItem() || m_variables->selectedItems().isEmpty())
         return;
-    emit itemActivated(currentItem()->text(0));
+    emit variableSelected(currentItem()->text(0));
 }
 
 void VariableListWidget::deleteItem()
@@ -175,13 +177,13 @@ void VariableListWidget::deleteItem()
     if (!currentItem() || m_variables->selectedItems().isEmpty())
         return;
     Evaluator::instance()->unsetVariable(currentItem()->text(0));
-    fillTable();
+    updateList();
 }
 
 void VariableListWidget::deleteAllItems()
 {
     Evaluator::instance()->unsetAllUserDefinedVariables();
-    fillTable();
+    updateList();
 }
 
 void VariableListWidget::triggerFilter()

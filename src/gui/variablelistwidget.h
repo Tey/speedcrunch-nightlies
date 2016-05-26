@@ -43,11 +43,10 @@ public:
     QTreeWidgetItem* currentItem() const;
 
 signals:
-    void itemActivated(const QString&);
-    void itemDeleted(const QString&);
+    void variableSelected(const QString&);
 
 public slots:
-    void fillTable();
+    void updateList();
     void retranslateText();
 
 protected slots:

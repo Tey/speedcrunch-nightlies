@@ -45,8 +45,8 @@ CNumber::CNumber()
  * Creates a new complex number from one real number
  */
 CNumber::CNumber(const HNumber& hn) :
-  real(hn),
-  imag(0)
+    real(hn),
+    imag(0)
 {
 }
 
@@ -399,6 +399,20 @@ CNumber::Format CNumber::Format::operator+(const CNumber::Format& other) const
     return result;
 }
 
+CNumber::Format CNumber::Format::Polar()
+{
+    Format result;
+    result.notation = Format::Notation::Polar;
+    return result;
+}
+
+CNumber::Format CNumber::Format::Cartesian()
+{
+    Format result;
+    result.notation = Format::Notation::Cartesian;
+    return result;
+}
+
 /**
  * Returns the constant e (Euler's number).
  */
@@ -442,7 +456,14 @@ QString CMath::format(const CNumber& cn, CNumber::Format format)
         return "NaN";
     else if (cn.imag.isNearZero()) // Number is real.
         return HMath::format(cn.real, format);
-    else {
+    if (format.notation == CNumber::Format::Notation::Polar) {
+        QString strRadius = HMath::format(CMath::abs(cn).real, format);
+        HNumber phase = CMath::phase(cn).real;
+        if (phase.isZero())
+            return strRadius;
+        QString strPhase = HMath::format(phase, format);
+        return QString("%1 * exp(j*%2)").arg(strRadius).arg(strPhase);
+    } else {
         QString real_part = cn.real.isZero()? "" : HMath::format(cn.real, format);
         QString imag_part = "";
         QString separator = "";
@@ -456,7 +477,6 @@ QString CMath::format(const CNumber& cn, CNumber::Format format)
             separator = "-";
             imag_part = HMath::format(-cn.imag, format);
         }
-
         return real_part + separator + prefix + imag_part + postfix;
     }
 }
@@ -478,7 +498,7 @@ CNumber CMath::sqrt(const CNumber& n)
     HNumber s = (n.imag.isPositive() || n.imag.isZero()) ? 1 : -1;
 
     // cf https://en.wikipedia.org/wiki/Square_root#Square_roots_of_negative_and_complex_numbers.
-    result.real = HMath::sqrt((abs(n).real + n.real) / 2);
+    result.real =     HMath::sqrt((abs(n).real + n.real) / 2);
     result.imag = s * HMath::sqrt((abs(n).real - n.real) / 2);
 
     return result;
@@ -537,7 +557,7 @@ CNumber CMath::lg(const CNumber& x)
  */
 CNumber CMath::lb(const CNumber& x)
 {
-  return CMath::ln(x) / HMath::ln(2);
+    return CMath::ln(x) / HMath::ln(2);
 }
 
 /**
@@ -596,7 +616,7 @@ CNumber CMath::cosh(const CNumber& x)
  */
 CNumber CMath::tanh(const CNumber& x)
 {
-  return sinh(x) / cosh(x);
+    return sinh(x) / cosh(x);
 }
 
 /**
@@ -604,7 +624,7 @@ CNumber CMath::tanh(const CNumber& x)
  */
 CNumber CMath::cot(const CNumber& x)
 {
-  return cos(x) / sin(x);
+    return cos(x) / sin(x);
 }
 
 /**
@@ -620,7 +640,7 @@ CNumber CMath::sec(const CNumber& x)
  */
 CNumber CMath::csc(const CNumber& x)
 {
-  return CNumber(1) / sin(x);
+    return CNumber(1) / sin(x);
 }
 
 /**
@@ -628,7 +648,7 @@ CNumber CMath::csc(const CNumber& x)
  */
 CNumber CMath::arsinh(const CNumber& x)
 {
-  return CMath::ln(x + CMath::sqrt(x * x + CNumber(1)));
+    return CMath::ln(x + CMath::sqrt(x * x + CNumber(1)));
 }
 
 /**
@@ -646,6 +666,15 @@ CNumber CMath::artanh(const CNumber& x)
 {
     return (CNumber("0.5") * CMath::ln(CNumber(1) + x)) - (CNumber("0.5") * CMath::ln(CNumber(1) - x));
 }
+
+/**
+ * Returns the phase of x.
+ */
+CNumber CMath::phase(const CNumber& x)
+{
+    return HMath::arctan2(x.real, x.imag);
+}
+
 
 /**
  * Returns the arc tangent of x.
@@ -682,8 +711,8 @@ CNumber CMath::arccos(const CNumber& x)
 #define REAL_WRAPPER_CNUMBER_1(fct, error) \
     CNumber CNumber::fct() const \
     { \
-        ENSURE_REAL(*this, error); \
-        return CNumber(this->real.fct()); \
+    ENSURE_REAL(*this, error); \
+    return CNumber(this->real.fct()); \
     }
 
 #define REAL_WRAPPER_CNUMBER_2(fct, error) \
@@ -698,8 +727,8 @@ CNumber CMath::arccos(const CNumber& x)
     CNumber& CNumber::fct(const CNumber& x) \
     { \
         if(!this->isReal()) { \
-          *this = CMath::nan(error); \
-          return *this; \
+            *this = CMath::nan(error); \
+            return *this; \
         } \
         if (!x.isReal()) { \
             *this = CMath::nan(error); \
@@ -707,7 +736,7 @@ CNumber CMath::arccos(const CNumber& x)
         } \
         this->real.fct(x.real); \
         return *this; \
-    }
+  }
 
 #define REAL_WRAPPER_CNUMBER_4(fct, error) \
     int CNumber::fct() const \
@@ -721,10 +750,10 @@ CNumber CMath::arccos(const CNumber& x)
     CNumber CMath::fct(const CNumber& x) \
     { \
         ENSURE_REAL(x, error); \
-        return CNumber(HMath::fct(x.real));	\
+        return CNumber(HMath::fct(x.real)); \
     }
 
-#define REAL_WRAPPER_CMATH_NUM_NUM(fct, error)		\
+#define REAL_WRAPPER_CMATH_NUM_NUM(fct, error) \
     CNumber CMath::fct(const CNumber& x1, const CNumber& x2) \
     { \
         ENSURE_REAL(x1, error); \
@@ -742,19 +771,19 @@ CNumber CMath::arccos(const CNumber& x)
 #define REAL_WRAPPER_CMATH_NUM_NUM_NUM(fct, error) \
     CNumber CMath::fct(const CNumber& x1, const CNumber& x2, const CNumber& x3) \
     { \
-        ENSURE_REAL(x1, error);	\
-        ENSURE_REAL(x2, error);	\
-        ENSURE_REAL(x3, error);	\
+        ENSURE_REAL(x1, error); \
+        ENSURE_REAL(x2, error); \
+        ENSURE_REAL(x3, error); \
         return CNumber(HMath::fct(x1.real, x2.real, x3.real)); \
     }
 
 #define REAL_WRAPPER_CMATH_NUM_NUM_NUM_NUM(fct, error) \
     CNumber CMath::fct(const CNumber& x1, const CNumber& x2, const CNumber& x3, const CNumber& x4) \
     { \
-        ENSURE_REAL(x1, error);	\
-        ENSURE_REAL(x2, error);	\
-        ENSURE_REAL(x3, error);	\
-        ENSURE_REAL(x4, error);	\
+        ENSURE_REAL(x1, error); \
+        ENSURE_REAL(x2, error); \
+        ENSURE_REAL(x3, error); \
+        ENSURE_REAL(x4, error); \
         return CNumber(HMath::fct(x1.real, x2.real, x3.real, x4.real)); \
     }
 
@@ -784,9 +813,7 @@ REAL_WRAPPER_CMATH_NUM_INT(trunc, OutOfDomain)
 REAL_WRAPPER_CMATH_NUM(cbrt, OutOfDomain)
 REAL_WRAPPER_CMATH_NUM(sgn, OutOfDomain)
 // CMath EXPONENTIAL FUNCTION AND RELATED
-// REAL_WRAPPER_CMATH_NUM(arcsin, NotImplemented);
-// REAL_WRAPPER_CMATH_NUM(arccos, NotImplemented);
-// REAL_WRAPPER_CMATH_NUM(arctan, NotImplemented);
+REAL_WRAPPER_CMATH_NUM_NUM(arctan2, OutOfDomain)
 // CMath TRIGONOMETRY
 /* All trigonometry functions accept complex numbers */
 // CMath HIGHER MATH FUNCTIONS

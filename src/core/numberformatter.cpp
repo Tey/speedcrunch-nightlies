@@ -62,8 +62,14 @@ QString NumberFormatter::format(Quantity q)
     }
     if (format.mode == Quantity::Format::Mode::Null)
         format.mode = Quantity::Format::Mode::General;
-    if (format.precision == format.PrecisionNull)
+    if (format.precision == Quantity::Format::PrecisionNull)
         format.precision = settings->resultPrecision;
+    if (format.notation == Quantity::Format::Notation::Null) {
+        if (settings->resultFormatComplex == 'c')
+            format.notation = Quantity::Format::Notation::Cartesian;
+        else if (settings->resultFormatComplex == 'p')
+            format.notation = Quantity::Format::Notation::Polar;
+    }
 
     QString result = DMath::format(q, format);
 

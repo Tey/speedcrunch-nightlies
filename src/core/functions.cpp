@@ -293,6 +293,28 @@ Quantity function_log(Function* f, const Function::ArgumentList& args)
      return DMath::log(args.at(0), args.at(1));
 }
 
+Quantity function_real(Function* f, const Function::ArgumentList& args)
+{
+    ENSURE_ARGUMENT_COUNT(1);
+    return DMath::real(args.at(0));
+}
+
+Quantity function_imag(Function* f, const Function::ArgumentList& args)
+{
+    ENSURE_ARGUMENT_COUNT(1);
+    return DMath::imag(args.at(0));
+}
+
+
+Quantity function_phase(Function* f, const Function::ArgumentList& args)
+{
+    ENSURE_ARGUMENT_COUNT(1);
+    Quantity angle = DMath::phase(args.at(0));
+    CONVERT_RESULT_ANGLE(angle);
+    return angle;
+}
+
+
 Quantity function_sin(Function* f, const Function::ArgumentList& args)
 {
     ENSURE_ARGUMENT_COUNT(1);
@@ -364,6 +386,15 @@ Quantity function_arctan(Function* f, const Function::ArgumentList& args)
     ENSURE_ARGUMENT_COUNT(1);
     Quantity result;
     result = DMath::arctan(args.at(0));
+    CONVERT_RESULT_ANGLE(result);
+    return result;
+}
+
+Quantity function_arctan2(Function* f, const Function::ArgumentList& args)
+{
+    ENSURE_ARGUMENT_COUNT(2);
+    Quantity result;
+    result = DMath::arctan2(args.at(0), args.at(1));
     CONVERT_RESULT_ANGLE(result);
     return result;
 }
@@ -547,6 +578,18 @@ Quantity function_bin(Function* f, const Function::ArgumentList& args)
 {
     ENSURE_ARGUMENT_COUNT(1);
     return Quantity(args.at(0)).setFormat(Quantity::Format::Fixed() + Quantity::Format::Binary() + Quantity(args.at(0)).format());
+}
+
+Quantity function_cart(Function* f, const Function::ArgumentList& args)
+{
+    ENSURE_ARGUMENT_COUNT(1);
+    return Quantity(args.at(0)).setFormat(Quantity::Format::Cartesian() + Quantity(args.at(0)).format());
+}
+
+Quantity function_polar(Function* f, const Function::ArgumentList& args)
+{
+    ENSURE_ARGUMENT_COUNT(1);
+    return Quantity(args.at(0)).setFormat(Quantity::Format::Polar() + Quantity(args.at(0)).format());
 }
 
 Quantity function_binompmf(Function* f, const Function::ArgumentList& args)
@@ -812,6 +855,13 @@ void FunctionRepo::createFunctions()
     FUNCTION_INSERT(trunc);
     FUNCTION_INSERT(variance);
 
+    // Complex.
+    FUNCTION_INSERT(real);
+    FUNCTION_INSERT(imag);
+    FUNCTION_INSERT(phase);
+    FUNCTION_INSERT(polar);
+    FUNCTION_INSERT(cart);
+
     // Discrete.
     FUNCTION_INSERT(gcd);
     FUNCTION_INSERT(ncr);
@@ -841,6 +891,7 @@ void FunctionRepo::createFunctions()
     FUNCTION_INSERT(artanh);
     FUNCTION_INSERT(arcsin);
     FUNCTION_INSERT(arctan);
+    FUNCTION_INSERT(arctan2);
     FUNCTION_INSERT(cos);
     FUNCTION_INSERT(cosh);
     FUNCTION_INSERT(cot);
@@ -931,8 +982,10 @@ void FunctionRepo::setNonTranslatableFunctionUsages()
     FUNCTION_USAGE(artanh, "x");
     FUNCTION_USAGE(arcsin, "x");
     FUNCTION_USAGE(arctan, "x");
+    FUNCTION_USAGE(arctan2, "x, y");
     FUNCTION_USAGE(average, "x<sub>1</sub>; x<sub>2</sub>; ...");
     FUNCTION_USAGE(bin, "n");
+    FUNCTION_USAGE(cart, "x");
     FUNCTION_USAGE(cbrt, "x");
     FUNCTION_USAGE(ceil, "x");
     FUNCTION_USAGE(cos, "x");
@@ -959,6 +1012,7 @@ void FunctionRepo::setNonTranslatableFunctionUsages()
     FUNCTION_USAGE(ieee754_quad_decode, "x");
     FUNCTION_USAGE(ieee754_quad_encode, "x");
     FUNCTION_USAGE(int, "x");
+    FUNCTION_USAGE(imag, "x");
     FUNCTION_USAGE(lb, "x");
     FUNCTION_USAGE(lg, "x");
     FUNCTION_USAGE(ln, "x");
@@ -971,8 +1025,11 @@ void FunctionRepo::setNonTranslatableFunctionUsages()
     FUNCTION_USAGE(npr, "x<sub>1</sub>; x<sub>2</sub>");
     FUNCTION_USAGE(oct, "n");
     FUNCTION_USAGE(or, "x<sub>1</sub>; x<sub>2</sub>; ...");
+    FUNCTION_USAGE(polar, "x");
     FUNCTION_USAGE(product, "x<sub>1</sub>; x<sub>2</sub>; ...");
+    FUNCTION_USAGE(phase, "x");
     FUNCTION_USAGE(radians, "x");
+    FUNCTION_USAGE(real, "x");
     FUNCTION_USAGE(sec, "x)");
     FUNCTION_USAGE(sgn, "x");
     FUNCTION_USAGE(sin, "x");
@@ -1024,12 +1081,14 @@ void FunctionRepo::setFunctionNames()
     FUNCTION_NAME(artanh, tr("Area Hyperbolic Tangent"));
     FUNCTION_NAME(arcsin, tr("Arc Sine"));
     FUNCTION_NAME(arctan, tr("Arc Tangent"));
+    FUNCTION_NAME(arctan2, tr("Arc Tangent with two Arguments"));
     FUNCTION_NAME(average, tr("Average (Arithmetic Mean)"));
     FUNCTION_NAME(bin, tr("Convert to Binary Representation"));
     FUNCTION_NAME(binomcdf, tr("Binomial Cumulative Distribution Function"));
     FUNCTION_NAME(binommean, tr("Binomial Distribution Mean"));
     FUNCTION_NAME(binompmf, tr("Binomial Probability Mass Function"));
     FUNCTION_NAME(binomvar, tr("Binomial Distribution Variance"));
+    FUNCTION_NAME(cart, tr("Convert to Cartesian Notation"));
     FUNCTION_NAME(cbrt, tr("Cube Root"));
     FUNCTION_NAME(ceil, tr("Ceiling"));
     FUNCTION_NAME(cos, tr("Cosine"));
@@ -1053,6 +1112,7 @@ void FunctionRepo::setFunctionNames()
     FUNCTION_NAME(hypervar, tr("Hypergeometric Distribution Variance"));
     FUNCTION_NAME(idiv, tr("Integer Quotient"));
     FUNCTION_NAME(int, tr("Integer Part"));
+    FUNCTION_NAME(imag, tr("Imaginary Part"));
     FUNCTION_NAME(ieee754_decode, tr("Decode IEEE-754 Binary Value"));
     FUNCTION_NAME(ieee754_encode, tr("Encode IEEE-754 Binary Value"));
     FUNCTION_NAME(ieee754_half_decode, tr("Decode 16-bit Half-Precision Value"));
@@ -1078,12 +1138,15 @@ void FunctionRepo::setFunctionNames()
     FUNCTION_NAME(npr, tr("Permutation (Arrangement)"));
     FUNCTION_NAME(oct, tr("Convert to Octal Representation"));
     FUNCTION_NAME(or, tr("Logical OR"));
+    FUNCTION_NAME(phase, tr("Phase of Complex Number"));
     FUNCTION_NAME(poicdf, tr("Poissonian Cumulative Distribution Function"));
     FUNCTION_NAME(poimean, tr("Poissonian Distribution Mean"));
     FUNCTION_NAME(poipmf, tr("Poissonian Probability Mass Function"));
     FUNCTION_NAME(poivar, tr("Poissonian Distribution Variance"));
+    FUNCTION_NAME(polar, tr("Convert to Polar Notation"));
     FUNCTION_NAME(product, tr("Product"));
     FUNCTION_NAME(radians, tr("Radians"));
+    FUNCTION_NAME(real, tr("Real Part"));
     FUNCTION_NAME(round, tr("Rounding"));
     FUNCTION_NAME(sec, tr("Secant"));
     FUNCTION_NAME(shl, tr("Arithmetic Shift Left"));
