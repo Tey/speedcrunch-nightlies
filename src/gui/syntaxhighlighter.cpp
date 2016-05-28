@@ -238,7 +238,6 @@ void SyntaxHighlighter::formatDigitsGroup(const QString& text, int start, int en
 
     qreal spacing = 100; // Size of the space between groups (100 means no space).
     spacing += 40 * Settings::instance()->digitGrouping;
-    Evaluator *evaluator = Evaluator::instance();
     int inc = !invert ? -1 : 1;
     if(!invert)
     {
@@ -247,7 +246,7 @@ void SyntaxHighlighter::formatDigitsGroup(const QString& text, int start, int en
         end = tmp - 1;
 
         // Skip the first digit so that we add the spacing to the first digit of the next group.
-        while (start != end && evaluator->isSeparatorChar(text[start].unicode()))
+        while (start != end && Evaluator::isSeparatorChar(text[start].unicode()))
             --start;
         if (start == end)
             return; // Bug ?
@@ -257,7 +256,7 @@ void SyntaxHighlighter::formatDigitsGroup(const QString& text, int start, int en
     for (int count = 0 ; start != end ; start += inc)
     {
         // When there are separators in the number, we must not count them as part of the group.
-        if (!evaluator->isSeparatorChar(text[start].unicode()))
+        if (!Evaluator::isSeparatorChar(text[start].unicode()))
         {
             ++count;
             if (count == size)
@@ -311,7 +310,6 @@ void SyntaxHighlighter::groupDigits(const QString& text, int pos, int length)
     bool invertGroup = false; // If true, group digits from the most significant digit.
     int groupSize = 3; // Number of digits to group (depends on the radix).
     int allowedChars = DEC_CHAR; // Allowed characters for the radix of the current number being parsed.
-    Evaluator *evaluator = Evaluator::instance();
 
     int endPos = pos + length;
     if (endPos > text.length())
@@ -325,10 +323,10 @@ void SyntaxHighlighter::groupDigits(const QString& text, int pos, int length)
                 bool endOfNumber = true;
                 // If this is a separator and next character is a digit or a separator,
                 // the next character is part of the same number expression
-                if (evaluator->isSeparatorChar(c) && i<endPos-1) {
+                if (Evaluator::isSeparatorChar(c) && i<endPos-1) {
                     ushort nextC = text[i+1].unicode();
                     if ((nextC < 128 && (charType[nextC] & allowedChars))
-                         || evaluator->isSeparatorChar(nextC))
+                         || Evaluator::isSeparatorChar(nextC))
                         endOfNumber = false;
                 }
 
@@ -344,10 +342,10 @@ void SyntaxHighlighter::groupDigits(const QString& text, int pos, int length)
         }
 
         if (!isDigit) {
-            if (evaluator->isRadixChar(c)) {
+            if (Evaluator::isRadixChar(c)) {
                 // Invert the grouping for the fractional part.
                 invertGroup = true;
-            } else if (!evaluator->isSeparatorChar(c)){
+            } else if (!Evaluator::isSeparatorChar(c)){
                 // Look for a radix prefix.
                 invertGroup = false;
                 if (i > 0 && text[i - 1] == '0') {
