@@ -134,13 +134,18 @@ the result output:
     precisely. The other settings explicitly specify a certain number of digits and will
     append additional zeroes to the fraction to reach that number of digits, if necessary.
 
+Input Format
++++++++++++++
+
+This section allows selecting the input format to use.
+
   .. _radix_character:
 * :menuselection:`Radix Character`
-    Select the decimal separator to use in results. If :menuselection:`Settings --> Behavior --> Detect All Radix Characters` is
-    disabled, this is also the radix character that needs to be used when entering numbers.
-    This can either be explicitly set to period (``.``) or comma (``,``), or the system default
-    setting can be used.
-
+    Select the decimal separator to use in inputs and results. This can either be explicitly set
+    to dot (``.``), or comma (``,``), or both, or system default. When both dot and comma are used,
+    the decimal separator is detected automatically in inputs and the system default is used
+    in results. With that latter mode, mixing both dot and comma in a same number to express the
+    decimal separator and digit group separators is supported, but might lead to unexpected results.
 
 Angle Unit
 ++++++++++
@@ -182,13 +187,6 @@ This section contains several settings that allow you to further configure Speed
     enabled.
 * :menuselection:`Leave Last Expression`
     If selected, the entered expression remains in the editor after evaluating it.
-* :menuselection:`Detect All Radix Characters`
-    If enabled, both periods (``.``) and commas (``,``) are interpreted as decimal separators.
-    If disabled, only the radix character set in :menuselection:`Settings --> Result Format --> Radix Character`
-    is accepted.
-* :menuselection:`Strict Digit Groups Detection`
-    If enabled, only known digit grouping characters are allowed [#f2]_. If disabled, any non-alphanumeric character
-    that's not an operator can be used for digit grouping.
 * :menuselection:`Enable Complex Numbers`
     Enable or disable support for :ref:`complex numbers <complex_numbers>`. If disabled, :const:`j` will be undefined
     and expressions that would return complex results (like ``sqrt(-1)``) will fail.
@@ -317,18 +315,5 @@ Various
 
 .. [#f1] Starting with SpeedCrunch 0.12, the session format is based on `JSON <json_>`_. Previous
          versions used a simple custom text format.
-.. [#f2] As of SpeedCrunch 0.12, the following characters are recognized as digit separators
-         if :menuselection:`Strict Digit Groups Detection` is enabled:
-
-         * Space (Unicode U+0020)
-         * Apostrophe ``'`` (Unicode U+0027)
-         * Comma ``,`` (Unicode U+002C)
-         * Full stop ``.`` (Unicode U+002E)
-         * Low line ``_`` (Unicode U+005F)
-         * Middle dot ``·`` (Unicode U+00B7)
-         * Arabic decimal separator ``٫`` (Unicode U+066B)
-         * Arabic thousands separator ``٬`` (Unicode U+066C)
-         * Dot above ``˙`` (Unicode U+02D9)
-         * Decimal separator key symbol ``⎖`` (Unicode U+2396)
 
 .. _json: http://json.org/

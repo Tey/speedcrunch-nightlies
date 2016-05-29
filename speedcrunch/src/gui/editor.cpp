@@ -237,10 +237,12 @@ void Editor::doMatchingLeft()
     Token lastToken = tokens.at(tokens.count() - 1);
 
     // Right par?
-    if (lastToken.type() == Token::stxClosePar && lastToken.pos() == currentPosition - 1) {
+    if (lastToken.type() == Token::stxClosePar
+        && (lastToken.pos() + lastToken.size()) == currentPosition) {
         // Find the matching left par.
         unsigned par = 1;
         int matchPosition = -1;
+        int closeParPos = lastToken.pos() + lastToken.size() - 1;
 
         for (int i = tokens.count() - 2; i >= 0 && par > 0; --i) {
             Token matchToken = tokens.at(i);
@@ -249,7 +251,7 @@ void Editor::doMatchingLeft()
                 case Token::stxClosePar: ++par; break;
                 default:;
             }
-            matchPosition = matchToken.pos();
+            matchPosition = matchToken.pos() + matchToken.size() - 1;
         }
 
         if (par == 0) {
@@ -261,8 +263,8 @@ void Editor::doMatchingLeft()
 
             QTextEdit::ExtraSelection hilite2;
             hilite2.cursor = textCursor();
-            hilite2.cursor.setPosition(lastToken.pos());
-            hilite2.cursor.setPosition(lastToken.pos() + 1, QTextCursor::KeepAnchor);
+            hilite2.cursor.setPosition(closeParPos);
+            hilite2.cursor.setPosition(closeParPos + 1, QTextCursor::KeepAnchor);
             hilite2.format.setBackground(m_highlighter->colorForRole(ColorScheme::Matched));
 
             QList<QTextEdit::ExtraSelection> extras;
@@ -286,12 +288,14 @@ void Editor::doMatchingRight()
     Token firstToken = tokens.at(0);
 
     // Left par?
-    if (firstToken.type() == Token::stxOpenPar && firstToken.pos() == 0) {
+    if (firstToken.type() == Token::stxOpenPar
+        && (firstToken.pos() + firstToken.size()) == 1) {
         // Find the matching right par.
         unsigned par = 1;
         int k = 0;
         Token matchToken;
         int matchPosition = -1;
+        int openParPos = firstToken.pos() + firstToken.size() - 1;
 
         for (k = 1; k < tokens.count() && par > 0; ++k) {
             const Token matchToken = tokens.at(k);
@@ -300,7 +304,7 @@ void Editor::doMatchingRight()
                 case Token::stxClosePar: --par; break;
                 default:;
             }
-            matchPosition = matchToken.pos();
+            matchPosition = matchToken.pos() + matchToken.size() - 1;
         }
 
         if (par == 0) {
@@ -312,8 +316,8 @@ void Editor::doMatchingRight()
 
             QTextEdit::ExtraSelection hilite2;
             hilite2.cursor = textCursor();
-            hilite2.cursor.setPosition(currentPosition+firstToken.pos());
-            hilite2.cursor.setPosition(currentPosition+firstToken.pos() + 1, QTextCursor::KeepAnchor);
+            hilite2.cursor.setPosition(currentPosition+openParPos);
+            hilite2.cursor.setPosition(currentPosition+openParPos + 1, QTextCursor::KeepAnchor);
             hilite2.format.setBackground(m_highlighter->colorForRole(ColorScheme::Matched));
 
             QList<QTextEdit::ExtraSelection> extras;

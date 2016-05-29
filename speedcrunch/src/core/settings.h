@@ -37,12 +37,11 @@ public:
     void load();
     void save();
 
-    char radixCharacter() const; // 0: Automatic.
+    char radixCharacter() const; // 0 or '*': Automatic.
     void setRadixCharacter(char c = 0);
     bool isRadixCharacterAuto() const;
+    bool isRadixCharacterBoth() const;
 
-    bool parseAllRadixChar;
-    bool strictDigitGrouping;
     bool complexNumbers;
 
     char angleUnit; // 'r': radian; 'd': degree.

@@ -151,7 +151,7 @@ void Settings::load()
 
     // Radix character special case.
     QString radixCharStr;
-    radixCharStr = settings->value(key + QLatin1String("RadixCharacter"), 0).toString();
+    radixCharStr = settings->value(key + QLatin1String("RadixCharacter"), "*").toString();
     setRadixCharacter(radixCharStr.at(0).toLatin1());
 
     autoAns = settings->value(key + QLatin1String("AutoAns"), true).toBool();
@@ -163,8 +163,6 @@ void Settings::load()
     syntaxHighlighting = settings->value(key + QLatin1String("SyntaxHighlighting"), true).toBool();
     autoResultToClipboard = settings->value(key + QLatin1String("AutoResultToClipboard"), false).toBool();
     windowPositionSave = settings->value(key + QLatin1String("WindowPositionSave"), true).toBool();
-    parseAllRadixChar = settings->value(key + QLatin1String("ParseAllRadixChar"), true).toBool();
-    strictDigitGrouping = settings->value(key + QLatin1String("StrictDigitGrouping"), true).toBool();
     complexNumbers = settings->value(key + QLatin1String("ComplexNumbers"), false).toBool();
 
     digitGrouping = settings->value(key + QLatin1String("DigitGrouping"), 0).toInt();
@@ -237,8 +235,6 @@ void Settings::save()
     settings->setValue(key + QLatin1String("AutoResultToClipboard"), autoResultToClipboard);
     settings->setValue(key + QLatin1String("Language"), language);
     settings->setValue(key + QLatin1String("WindowPositionSave"), windowPositionSave);
-    settings->setValue(key + QLatin1String("ParseAllRadixChar"), parseAllRadixChar);
-    settings->setValue(key + QLatin1String("StrictDigitGrouping"), strictDigitGrouping);
     settings->setValue(key + QLatin1String("ComplexNumbers"), complexNumbers);
 
     settings->setValue(key + QLatin1String("AngleMode"), QString(QChar(angleUnit)));
@@ -282,7 +278,10 @@ void Settings::save()
 
 char Settings::radixCharacter() const
 {
-    return s_radixCharacter == 0 ? QLocale().decimalPoint().toLatin1() : s_radixCharacter;
+    if (isRadixCharacterAuto() || isRadixCharacterBoth())
+        return QLocale().decimalPoint().toLatin1();
+
+    return s_radixCharacter;
 }
 
 bool Settings::isRadixCharacterAuto() const
@@ -290,10 +289,15 @@ bool Settings::isRadixCharacterAuto() const
     return s_radixCharacter == 0;
 }
 
+bool Settings::isRadixCharacterBoth() const
+{
+    return s_radixCharacter == '*';
+}
+
 void Settings::setRadixCharacter(char c)
 {
-    s_radixCharacter = (c != ',' && c != '.') ? 0 : c;
-};
+    s_radixCharacter = (c != ',' && c != '.' && c != '*') ? 0 : c;
+}
 
 
 // Settings migration from legacy (0.11 and before) to 0.12 (ConfigVersion 1200).
