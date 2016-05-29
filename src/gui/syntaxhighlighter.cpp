@@ -183,7 +183,6 @@ void SyntaxHighlighter::highlightBlock(const QString& text)
         case Token::stxUnknown:
             color = colorForRole(ColorScheme::Number);
             // TODO: color thousand separators differently? It might help troubleshooting issues
-            //       in non-strict mode where more than 95k characters are valid separators.
             break;
 
         case Token::stxOperator:

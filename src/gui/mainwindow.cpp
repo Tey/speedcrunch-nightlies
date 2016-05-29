@@ -148,14 +148,13 @@ void MainWindow::createActions()
     m_actions.settingsBehaviorDigitGroupingTwoSpaces = new QAction(this);
     m_actions.settingsBehaviorDigitGroupingThreeSpaces = new QAction(this);
     m_actions.settingsBehaviorAutoResultToClipboard = new QAction(this);
-    m_actions.settingsBehaviorParseAllRadixChar = new QAction(this);
-    m_actions.settingsBehaviorStrictDigitGrouping = new QAction(this);
     m_actions.settingsBehaviorComplexNumbers = new QAction(this);
     m_actions.settingsDisplayFont = new QAction(this);
     m_actions.settingsLanguage = new QAction(this);
     m_actions.settingsRadixCharComma = new QAction(this);
     m_actions.settingsRadixCharDefault = new QAction(this);
     m_actions.settingsRadixCharDot = new QAction(this);
+    m_actions.settingsRadixCharBoth = new QAction(this);
     m_actions.settingsResultFormat0Digits = new QAction(this);
     m_actions.settingsResultFormat15Digits = new QAction(this);
     m_actions.settingsResultFormat2Digits = new QAction(this);
@@ -199,12 +198,11 @@ void MainWindow::createActions()
     m_actions.settingsBehaviorDigitGroupingThreeSpaces->setCheckable(true);
     m_actions.settingsBehaviorDigitGroupingThreeSpaces->setData(3);
     m_actions.settingsBehaviorAutoResultToClipboard->setCheckable(true);
-    m_actions.settingsBehaviorParseAllRadixChar->setCheckable(true);
-    m_actions.settingsBehaviorStrictDigitGrouping->setCheckable(true);
     m_actions.settingsBehaviorComplexNumbers->setCheckable(true);
     m_actions.settingsRadixCharComma->setCheckable(true);
     m_actions.settingsRadixCharDefault->setCheckable(true);
     m_actions.settingsRadixCharDot->setCheckable(true);
+    m_actions.settingsRadixCharBoth->setCheckable(true);
     m_actions.settingsResultFormat0Digits->setCheckable(true);
     m_actions.settingsResultFormat15Digits->setCheckable(true);
     m_actions.settingsResultFormat2Digits->setCheckable(true);
@@ -333,12 +331,11 @@ void MainWindow::setActionsText()
     m_actions.settingsBehaviorDigitGroupingThreeSpaces->setText(MainWindow::tr("Large Space"));
     m_actions.settingsBehaviorLeaveLastExpression->setText(MainWindow::tr("Leave &Last Expression"));
     m_actions.settingsBehaviorAutoResultToClipboard->setText(MainWindow::tr("Automatic &Result to Clipboard"));
-    m_actions.settingsBehaviorParseAllRadixChar->setText(MainWindow::tr("Detect &All Radix Characters"));
-    m_actions.settingsBehaviorStrictDigitGrouping->setText(MainWindow::tr("&Strict Digit Groups Detection"));
     m_actions.settingsBehaviorComplexNumbers->setText(MainWindow::tr("Enable Complex Numbers"));
     m_actions.settingsRadixCharComma->setText(MainWindow::tr("&Comma"));
     m_actions.settingsRadixCharDefault->setText(MainWindow::tr("&System Default"));
     m_actions.settingsRadixCharDot->setText(MainWindow::tr("&Dot"));
+    m_actions.settingsRadixCharBoth->setText(MainWindow::tr("Dot &And Comma"));
     m_actions.settingsResultFormat0Digits->setText(MainWindow::tr("&0 Digits"));
     m_actions.settingsResultFormat15Digits->setText(MainWindow::tr("&15 Digits"));
     m_actions.settingsResultFormat2Digits->setText(MainWindow::tr("&2 Digits"));
@@ -386,6 +383,7 @@ void MainWindow::createActionGroups()
     m_actionGroups.radixChar->addAction(m_actions.settingsRadixCharDefault);
     m_actionGroups.radixChar->addAction(m_actions.settingsRadixCharDot);
     m_actionGroups.radixChar->addAction(m_actions.settingsRadixCharComma);
+    m_actionGroups.radixChar->addAction(m_actions.settingsRadixCharBoth);
 
     m_actionGroups.digits = new QActionGroup(this);
     m_actionGroups.digits->addAction(m_actions.settingsResultFormatAutoPrecision);
@@ -516,11 +514,14 @@ void MainWindow::createMenus()
     m_menus.complexFormat->addAction(m_actions.settingsResultFormatCartesian);
     m_menus.complexFormat->addAction(m_actions.settingsResultFormatPolar);
 
-    m_menus.radixChar = m_menus.resultFormat->addMenu("");
+    m_menus.inputFormat = m_menus.settings->addMenu("");
+
+    m_menus.radixChar = m_menus.inputFormat->addMenu("");
     m_menus.radixChar->addAction(m_actions.settingsRadixCharDefault);
     m_menus.radixChar->addSeparator();
     m_menus.radixChar->addAction(m_actions.settingsRadixCharDot);
     m_menus.radixChar->addAction(m_actions.settingsRadixCharComma);
+    m_menus.radixChar->addAction(m_actions.settingsRadixCharBoth);
 
     m_menus.angleUnit = m_menus.settings->addMenu("");
     m_menus.angleUnit->addAction(m_actions.settingsAngleUnitRadian);
@@ -542,8 +543,6 @@ void MainWindow::createMenus()
     m_menus.digitGrouping->addAction(m_actions.settingsBehaviorDigitGroupingThreeSpaces);
 
     m_menus.behavior->addAction(m_actions.settingsBehaviorLeaveLastExpression);
-    m_menus.behavior->addAction(m_actions.settingsBehaviorParseAllRadixChar);
-    m_menus.behavior->addAction(m_actions.settingsBehaviorStrictDigitGrouping);
     m_menus.behavior->addAction(m_actions.settingsBehaviorComplexNumbers);
     m_menus.behavior->addSeparator();
     m_menus.behavior->addAction(m_actions.settingsBehaviorAlwaysOnTop);
@@ -580,6 +579,7 @@ void MainWindow::setMenusText()
     m_menus.view->setTitle(MainWindow::tr("&View"));
     m_menus.settings->setTitle(MainWindow::tr("Se&ttings"));
     m_menus.resultFormat->setTitle(MainWindow::tr("Result &Format"));
+    m_menus.inputFormat->setTitle(MainWindow::tr("&Input Format"));
     m_menus.radixChar->setTitle(MainWindow::tr("Radix &Character"));
     m_menus.decimal->setTitle(MainWindow::tr("&Decimal"));
     m_menus.precision->setTitle(MainWindow::tr("&Precision"));
@@ -847,13 +847,12 @@ void MainWindow::createFixedConnections()
     connect(m_actionGroups.digitGrouping, SIGNAL(triggered(QAction*)), SLOT(setDigitGrouping(QAction*)));
     connect(m_actions.settingsBehaviorLeaveLastExpression, SIGNAL(toggled(bool)), SLOT(setLeaveLastExpressionEnabled(bool)));
     connect(m_actions.settingsBehaviorAutoResultToClipboard, SIGNAL(toggled(bool)), SLOT(setAutoResultToClipboardEnabled(bool)));
-    connect(m_actions.settingsBehaviorParseAllRadixChar, SIGNAL(toggled(bool)), SLOT(setParseAllRadixChar(bool)));
-    connect(m_actions.settingsBehaviorStrictDigitGrouping, SIGNAL(toggled(bool)), SLOT(setStrictDigitGrouping(bool)));
     connect(m_actions.settingsBehaviorComplexNumbers, SIGNAL(toggled(bool)), SLOT(setComplexNumbers(bool)));
 
     connect(m_actions.settingsRadixCharComma, SIGNAL(triggered()), SLOT(setRadixCharacterComma()));
     connect(m_actions.settingsRadixCharDefault, SIGNAL(triggered()), SLOT(setRadixCharacterAutomatic()));
     connect(m_actions.settingsRadixCharDot, SIGNAL(triggered()), SLOT(setRadixCharacterDot()));
+    connect(m_actions.settingsRadixCharBoth, SIGNAL(triggered()), SLOT(setRadixCharacterBoth()));
 
     connect(m_actions.settingsResultFormat0Digits, &QAction::triggered, [this]() { this->setResultPrecision(0); });
     connect(m_actions.settingsResultFormat15Digits, SIGNAL(triggered()), SLOT(setResultPrecision15Digits()));
@@ -985,6 +984,8 @@ void MainWindow::applySettings()
 
     if (m_settings->isRadixCharacterAuto())
         m_actions.settingsRadixCharDefault->setChecked(true);
+    else if (m_settings->isRadixCharacterBoth())
+        m_actions.settingsRadixCharBoth->setChecked(true);
     else if (m_settings->radixCharacter() == '.')
         m_actions.settingsRadixCharDot->setChecked(true);
     else if (m_settings->radixCharacter() == ',')
@@ -1017,8 +1018,6 @@ void MainWindow::applySettings()
     else
         setAutoResultToClipboardEnabled(false);
 
-    m_actions.settingsBehaviorParseAllRadixChar->setChecked(m_settings->parseAllRadixChar);
-    m_actions.settingsBehaviorStrictDigitGrouping->setChecked(m_settings->strictDigitGrouping);
     m_actions.settingsBehaviorComplexNumbers->setChecked(m_settings->complexNumbers);
 
     QFont font;
@@ -1534,18 +1533,6 @@ void MainWindow::setDigitGrouping(QAction *action)
 void MainWindow::setAutoResultToClipboardEnabled(bool b)
 {
     m_settings->autoResultToClipboard = b;
-}
-
-void MainWindow::setParseAllRadixChar(bool b)
-{
-    m_settings->parseAllRadixChar = b;
-    emit radixCharacterChanged();
-}
-
-void MainWindow::setStrictDigitGrouping(bool b)
-{
-    m_settings->strictDigitGrouping = b;
-    emit radixCharacterChanged();   // FIXME?
 }
 
 void MainWindow::setComplexNumbers(bool b)
@@ -2232,6 +2219,11 @@ void MainWindow::setRadixCharacterDot()
 void MainWindow::setRadixCharacterComma()
 {
     setRadixCharacter(',');
+}
+
+void MainWindow::setRadixCharacterBoth()
+{
+    setRadixCharacter('*');
 }
 
 void MainWindow::closeEvent(QCloseEvent* e)

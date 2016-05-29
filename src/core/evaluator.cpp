@@ -485,6 +485,14 @@ void TokenStack::reduce(QList<Token> tokens, Token&& top, int minPrecedence)
     push(top);
 }
 
+#ifdef EVALUATOR_DEBUG
+void Tokens::append(const Token &token)
+{
+    qDebug() << QString("tokens.append: type=%1 text=%2").arg(token.type()).arg(token.text());
+    QVector<Token>::append(token);
+}
+#endif  /* EVALUATOR_DEBUG */    
+
 // Helper function: return true for valid identifier character.
 static bool isIdentifier(QChar ch)
 {
@@ -494,7 +502,7 @@ static bool isIdentifier(QChar ch)
 // Helper function: return true for valid radix characters.
 bool Evaluator::isRadixChar(const QChar &ch)
 {
-    if (Settings::instance()->parseAllRadixChar)
+    if (Settings::instance()->isRadixCharacterBoth())
         return ch.unicode() == '.' || ch.unicode() == ',';
     // There exist more than 2 radix characters actually:
     //   U+0027 ' apostrophe
@@ -507,33 +515,66 @@ bool Evaluator::isRadixChar(const QChar &ch)
     return ch.unicode() == Settings::instance()->radixCharacter();
 }
 
-/* Only match known thousand separators: 
- *   U+0020   space
- *   U+0027 ' apostrophe
- *   U+002C , comma
- *   U+002E . full stop
- *   U+005F _ low line
- *   U+00B7 · middle dot
- *   U+066B ٫ arabic decimal separator
- *   U+066C ٬ arabic thousands separator
- *   U+02D9 ˙ dot above
- *   U+2396 ⎖ decimal separator key symbol
- */
-static QRegExp s_separatorStrictRE("[ ',\\._\\x00B7\\x066B\\x066C\\x02D9\\x2396]");
-
-// Match everything that is not alphanumeric or an operator or NUL.
-static QRegExp s_separatorRE("[^a-zA-Z0-9\\+\\-\\*/\\^;\\(\\)%!=\\\\&\\|<>\\?#\\x0000]");
-
 // Helper function: return true for valid thousand separator characters.
 bool Evaluator::isSeparatorChar(const QChar &ch)
 {
+    // Match everything that is not alphanumeric or an operator or NUL.
+    static QRegExp s_separatorRE("[^a-zA-Z0-9\\+\\-\\*/\\^;\\(\\)%!=\\\\&\\|<>\\?#\\x0000]");
+
     if (isRadixChar(ch))
         return false;
 
-    if (Settings::instance()->strictDigitGrouping)
-        return s_separatorStrictRE.exactMatch(ch);
-    else
-        return s_separatorRE.exactMatch(ch);
+    return s_separatorRE.exactMatch(ch);
+}
+
+QString Evaluator::fixNumberRadix(const QString& number)
+{
+    int dotCount = 0;
+    int commaCount = 0;
+    QChar lastRadixChar;
+
+    // First pass: count the number of dot and comma characters
+    for (int i = 0 ; i < number.size() ; ++i) {
+        QChar c = number[i];
+        if (isRadixChar(c)) {
+            lastRadixChar = c;
+
+            if (c == '.')
+                ++dotCount;
+            else if (c == ',')
+                ++commaCount;
+            else
+                return QString(); // should not happen
+        }
+    }
+
+    // Decide which radix characters to ignore based on their occurence count
+    bool ignoreDot = dotCount != 1;
+    bool ignoreComma = commaCount != 1;
+    if (!ignoreDot && !ignoreComma) {
+        // If both radix characters are present once, consider the last one as the radix point
+        ignoreDot = lastRadixChar != '.';
+        ignoreComma = lastRadixChar != ',';
+    }
+
+    QChar radixChar;  // Nul character by default
+    if (!ignoreDot)
+        radixChar = '.';
+    else if (!ignoreComma)
+        radixChar = ',';
+
+    // Second pass: write the result
+    QString result = "";
+    for (int i = 0 ; i < number.size() ; ++i) {
+        QChar c = number[i];
+        if (isRadixChar(c)) {
+            if (c == radixChar)
+                result.append('.');
+        } else
+          result.append(c);
+    }
+
+    return result;
 }
 
 Evaluator* Evaluator::instance()
@@ -658,11 +699,24 @@ Tokens Evaluator::tokens() const
 
 Tokens Evaluator::scan(const QString& expr) const
 {
+    // Associate character codes with the highest number base they might belong to
+#define DIGIT_MAP_COUNT 128
+    static unsigned char s_digitMap[DIGIT_MAP_COUNT] = {0};
+
+    if (s_digitMap[0] == 0) {
+        // Initialize the digits map
+        std::fill_n(s_digitMap, DIGIT_MAP_COUNT, 255);
+
+        for(int i = '0' ; i <= '9' ; ++i) s_digitMap[i] = i - '0' + 1;
+        for(int i = 'a' ; i <= 'z' ; ++i) s_digitMap[i] = i - 'a' + 11;
+        for(int i = 'A' ; i <= 'Z' ; ++i) s_digitMap[i] = i - 'A' + 11;
+    }
+
     // Result.
     Tokens tokens;
 
     // Parsing state.
-    enum { Init, Start, Finish, Bad, InNumber, InHexa, InOctal, InBinary, InDecimal, InExpIndicator,
+    enum { Init, Start, Finish, Bad, InNumberPrefix, InNumber, InExpIndicator,
            InExponent, InIdentifier, InNumberEnd } state;
 
     // Initialize variables.
@@ -672,16 +726,25 @@ Tokens Evaluator::scan(const QString& expr) const
     QString tokenText;
     int tokenStart = 0; // includes leading spaces
     Token::Type type;
-    bool numberFrac = false;
+    int numberBase;
     int expStart = -1;  // index of the exponent part in the expression
     QString expText;    // start of the exponent text matching /E[\+\-]*/
 
     // Force a terminator.
     ex.append(QChar());
 
+#ifdef EVALUATOR_DEBUG
+        qDebug() << "Scanning" << ex;
+#endif  /* EVALUATOR_DEBUG */
+
     // Main loop.
     while (state != Bad && state != Finish && i < ex.length()) {
         QChar ch = ex.at(i);
+
+#ifdef EVALUATOR_DEBUG
+        qDebug() << QString("state=%1 ch=%2 i=%3 tokenText=%4")
+                            .arg(state).arg(ch).arg(i).arg(tokenText);
+#endif  /* EVALUATOR_DEBUG */
 
         switch (state) {
         case Init:
@@ -690,7 +753,6 @@ Tokens Evaluator::scan(const QString& expr) const
             state = Start;
 
             // State variables reset
-            numberFrac = false;
             expStart = -1;
             expText = "";
 
@@ -702,16 +764,24 @@ Tokens Evaluator::scan(const QString& expr) const
                 ++i;
             else if (ch == '?') // Comment.
                 state = Finish;
-            else if (ch.isDigit()) // Check for number.
-                state = InNumber;
-            else if (ch == '#') { // Simple hexadecimal notation.
+            else if (ch.isDigit()) {
+                // Check for number
+                state = InNumberPrefix;
+            } else if (ch == '#') {
+                // Simple hexadecimal notation
                 tokenText.append("0x");
-                state = InHexa;
+                numberBase = 16;
+                state = InNumber;
                 ++i;
-            } else if (isRadixChar(ch)) { // Radix character?
-                tokenText.append('.');  // Issue 151.
-                state = InDecimal;
+            } else if (isRadixChar(ch)) {
+                // Radix character?
+                tokenText.append(ch);
+                numberBase = 10;
+                state = InNumber;
                 ++i;
+            } else if (isSeparatorChar(ch)) {
+                // Leading separator, probably a number
+                state = InNumberPrefix;
             } else if (ch.isNull()) // Terminator character.
                 state = Finish;
             else if (isIdentifier(ch)) // Identifier or alphanumeric operator
@@ -780,98 +850,114 @@ Tokens Evaluator::scan(const QString& expr) const
             }
             break;
 
-        case InNumber:
-            if (ch.isDigit()) // Consume as long as it's a digit.
+        /* Find out the number base */
+        case InNumberPrefix:
+            if (ch.isDigit()) {
+                // Only consume the first digit and the second digit if the first was 0
                 tokenText.append(ex.at(i++));
-            else if (isRadixChar(ch)) { // Convert to '.'.
-                tokenText.append('.');
+                if (tokenText != "0") {
+                    numberBase = 10;
+                    state = InNumber;
+                }
+            } else if (ch.toUpper() == 'E') {
+                if (tokenText.endsWith("0")) {
+                    // Maybe exponent (tokenText is "0" or "-0")
+                    numberBase = 10;
+                    expText = "E";
+                    expStart = i;
+                    ++i;
+                    state = InExpIndicator;
+                } else {
+                    // Only leading separators
+                    state = Bad;
+                }
+            } else if (isRadixChar(ch)) {
+                // Might be a radix point or a separator, collect it and decide later
+                tokenText.append(ch);
+                numberBase = 10;
+                state = InNumber;
                 ++i;
-                state = InDecimal;
-            }
-            else if (ch.toUpper() == 'E') { // Exponent?
-                expText = "E";
-                expStart = i;
-                ++i;
-                state = InExpIndicator;
-            } else if (ch.toUpper() == 'X' && tokenText == "0") { // Normal hexadecimal notation.
+            } else if (ch.toUpper() == 'X' && tokenText == "0") {
+                // Hexadecimal number
+                numberBase = 16;
                 tokenText.append('x');
                 ++i;
-                state = InHexa;
-            } else if (ch.toUpper() == 'B' && tokenText == "0") { // Binary notation.
+                state = InNumber;
+            } else if (ch.toUpper() == 'B' && tokenText == "0") {
+                // Binary number
+                numberBase = 2;
                 tokenText.append('b');
                 ++i;
-                state = InBinary;
-            } else if (ch.toUpper() == 'O' && tokenText == "0") { // Octal notation.
-                tokenText.append('o'); ++i; state = InOctal;
-            } else if (ch.toUpper() == 'D' && tokenText == "0") { // Explicit decimal notation.
-                tokenText = ""; // We also need to get rid of the leading zero.
+                state = InNumber;
+            } else if (ch.toUpper() == 'O' && tokenText == "0") {
+                // Octal number
+                numberBase = 8;
+                tokenText.append('o');
                 ++i;
-            } else if (isSeparatorChar(ch)) // Ignore thousand separators
+                state = InNumber;
+            } else if (ch.toUpper() == 'D' && tokenText == "0") {
+                // Decimal number (with prefix)
+                numberBase = 10;
+                tokenText.append('d');
                 ++i;
-            else { // We're done with integer number.
-                state = InNumberEnd;
+                state = InNumber;
+            } else if (isSeparatorChar(ch)) {
+                // Ignore thousand separators
+                ++i;
+            } else if (tokenText.isEmpty() && (ch == '+' || ch == '-')) {
+                // Allow expressions like "$-10" or "$+10"
+                if (ch == '-')
+                    tokenText.append('-');
+                ++i;
+            } else {
+                if (tokenText.endsWith("0")) {
+                    // We're done with integer number (tokenText is "0" or "-0")
+                    numberBase = 10;
+                    state = InNumberEnd;
+                } else {
+                    // Only leading separators
+                    state = Bad;
+                }
             }
+
             break;
 
-        case InHexa:
-            if (ch.isDigit() || (ch >= 'A' && ch < 'G') || (ch >= 'a' && ch < 'g'))
+        /* Parse the number digits */
+        case InNumber: {
+            ushort c = ch.unicode();
+            bool isDigit = c < DIGIT_MAP_COUNT && (s_digitMap[c] <= numberBase);
+
+            if (isDigit) {
+                // Consume as long as it's a digit
                 tokenText.append(ex.at(i++).toUpper());
-            else if (!numberFrac && (isRadixChar(ch))) {
-                // Allow a unique fractionnal part.
-                tokenText.append('.');
-                ++i;
-                numberFrac = true;
-            } else if (isSeparatorChar(ch)) // Ignore thousand separators
-                ++i;
-            else { // We're done with hexadecimal number.
-                state = InNumberEnd;
-            }
-            break;
-
-        case InBinary:
-            if (ch == '0' || ch == '1')
-                tokenText.append(ex.at(i++));
-            else if (!numberFrac && (isRadixChar(ch))) {
-                // Allow a unique fractionnal part.
-                tokenText.append('.');
-                ++i;
-                numberFrac = true;
-            } else if (isSeparatorChar(ch)) // Ignore thousand separators
-                ++i;
-            else { // We're done with binary number.
-                state = InNumberEnd;
-            }
-            break;
-
-        case InOctal:
-            if (ch >= '0' && ch < '8')
-                tokenText.append(ex.at(i++));
-            else if (!numberFrac && (isRadixChar(ch))) {
-                // Allow a unique fractionnal part.
-                tokenText.append('.');
-                ++i;
-                numberFrac = true;
-            } else if (isSeparatorChar(ch)) // Ignore thousand separators
-                ++i;
-            else { // We're done with octal number.
-                state = InNumberEnd;
-            }
-            break;
-
-        case InDecimal:
-            if (ch.isDigit()) // Consume as long as it's a digit.
-                tokenText.append(ex.at(i++));
-            else if (ch.toUpper() == 'E') { // Exponent?
+            } else if (numberBase == 10 && ch.toUpper() == 'E') {
+                // Maybe exponent (only for decimal numbers)
                 expText = "E";
                 expStart = i;
                 ++i;
-                state = InExpIndicator;
-            } else if (isSeparatorChar(ch)) // Ignore thousand separators
+                tokenText = fixNumberRadix(tokenText);
+                if (!tokenText.isNull())
+                    state = InExpIndicator;
+                else
+                    state = Bad;
+            } else if (isRadixChar(ch)) {
+                // Might be a radix point or a separator, collect it and decide later
+                tokenText.append(ch);
                 ++i;
-            else { // We're done with floating-point number.
-                state = InNumberEnd;
-            };
+            } else if (isSeparatorChar(ch)) {
+                // Ignore thousand separators
+                ++i;
+            } else {
+                // We're done with number
+                tokenText = fixNumberRadix(tokenText);
+                if (!tokenText.isNull())
+                    state = InNumberEnd;
+                else
+                    state = Bad;
+            }
+
             break;
+        }
 
         case InExpIndicator:
             if (ch == '+' || ch == '-') // Possible + or - right after E.
@@ -1386,6 +1472,8 @@ Quantity Evaluator::evalNoAssign()
     result = exec(m_codes, m_constants, m_identifiers);
 
     return result;
+
+#undef DIGIT_MAP_COUNT
 }
 
 Quantity Evaluator::exec(const QVector<Opcode>& opcodes, const QVector<Quantity>& constants,

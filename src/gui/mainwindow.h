@@ -133,6 +133,7 @@ private slots:
     void setRadixCharacter(char);
     void setRadixCharacterComma();
     void setRadixCharacterDot();
+    void setRadixCharacterBoth();
     void setResultFormatBinary();
     void setResultFormatCartesian();
     void setResultFormat(char);
@@ -154,8 +155,6 @@ private slots:
     void setSyntaxHighlightingEnabled(bool);
     void setDigitGrouping(QAction*);
     void setAutoResultToClipboardEnabled(bool);
-    void setParseAllRadixChar(bool);
-    void setStrictDigitGrouping(bool);
     void setComplexNumbers(bool);
     void setVariablesDockVisible(bool, bool takeFocus = true);
     void setUserFunctionsDockVisible(bool, bool takeFocus = true);
@@ -283,8 +282,7 @@ private:
         QAction* settingsBehaviorLeaveLastExpression;
         QAction* settingsBehaviorAlwaysOnTop;
         QAction* settingsBehaviorAutoResultToClipboard;
-        QAction* settingsBehaviorParseAllRadixChar;
-        QAction* settingsBehaviorStrictDigitGrouping;
+        QAction* settingsRadixCharBoth;
         QAction* settingsBehaviorComplexNumbers;
         QAction* settingsDisplayZoomIn;
         QAction* settingsDisplayZoomOut;
@@ -322,6 +320,7 @@ private:
         QMenu* display;
         QMenu* edit;
         QMenu* resultFormat;
+        QMenu* inputFormat;
         QMenu* complexFormat;
         QMenu* help;
         QMenu* precision;

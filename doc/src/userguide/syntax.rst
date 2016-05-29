@@ -15,8 +15,6 @@ with either a period (``.``) or a comma (``,``) as the decimal separator. By def
 used interchangeably, i.e. both ``1.234`` and ``1,234`` represent the same number. However, this
 behavior can be changed; see :ref:`Radix Character <radix_character>` for more information.
 
-This also implies that neither comma nor period can be used for digit grouping. For instance, ``1,234.567`` is not a valid input. Instead, use spaces or apostrophes (``'``) to group digits, e.g. ``1 000 000`` or ``1'000'000`` for a million.
-
 Trailing zeros after the decimal point (like in ``12.300``) or leading zeros before it (``0012.3``) are redundant and can be included or omitted to the user's preference. Expressions like ``.5`` as a shorthand notation for ``0.5`` are also permitted.
 
 

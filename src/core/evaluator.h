@@ -89,6 +89,10 @@ public:
     bool valid() const { return m_valid; }
     void setValid(bool v) { m_valid = v; }
 
+#ifdef EVALUATOR_DEBUG
+    void append(const Token&);
+#endif  /* EVALUATOR_DEBUG */
+
 protected:
     bool m_valid;
 };
@@ -106,6 +110,7 @@ public:
 
     static bool isSeparatorChar(const QChar&);
     static bool isRadixChar(const QChar&);
+    static QString fixNumberRadix(const QString&);
 
     QString autoFix(const QString&);
     QString dump();
