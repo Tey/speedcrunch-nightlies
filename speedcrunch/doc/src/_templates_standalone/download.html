@@ -19,7 +19,7 @@
       {% if not win_inst is none() %}<div align="center"><p><a class="btn btn-primary btn-md" href="{{ win_inst }}" role="button"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;&nbsp;{{ _('Installer') }}</a> {% endif %}
       {% if not win_port is none() %}
         &nbsp;&nbsp;<a class="btn btn-primary btn-md " href="{{ win_port }}" role="button"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;&nbsp;{{ _('Portable') }}</a></p></div>
-        <p>{% trans %}A portable version of SpeedCrunch is available. It needs not be installed. Just take it anywhere (e.g. on a thumb drive), and run the file to start SpeedCrunch.{% endtrans %}</p>
+        <p>{% trans %}A portable version of SpeedCrunch is available. It doesn't need to be installed. Just take it anywhere (e.g. on a thumb drive) and run the file to start SpeedCrunch.{% endtrans %}</p>
       {% endif %}
     {% endif %}
     </div><!-- /.col-lg-4 -->
@@ -32,7 +32,7 @@
     {% if not linux is none() %}
       <div align="center"><p><a class="btn btn-primary btn-md" href="{{ linux }}" role="button"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;&nbsp;{{ _('Download') }}</a>&nbsp;</p></div>
     {% endif %}
-      <p>{% trans %}If available, we recommend to install SpeeCrunch directly via your distribution's package manager.{% endtrans %}</p>
+      <p>{% trans %}If available, we recommend to install SpeedCrunch directly via your distribution's package manager.{% endtrans %}</p>
      </div><!-- /.col-lg-4 -->
   </div><!-- /.row -->
   </div>

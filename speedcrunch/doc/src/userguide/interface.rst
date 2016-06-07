@@ -139,7 +139,8 @@ Input Format
 
 This section allows selecting the input format to use.
 
-  .. _radix_character:
+.. _radix_character:
+
 * :menuselection:`Radix Character`
     Select the decimal separator to use in inputs and results. This can either be explicitly set
     to dot (``.``), or comma (``,``), or both, or system default. When both dot and comma are used,
