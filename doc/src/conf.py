@@ -143,7 +143,6 @@ else:
         'navbar_pagenav': False,
         'source_link_position': "footer",
         'globaltoc_depth': 2,
-        'navbar_site_name': "Navigation",
     }
     html_sidebars = {'**': ['scrollspy.html']}
     html_static_path = ['_static_standalone']
