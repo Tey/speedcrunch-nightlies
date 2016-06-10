@@ -5,7 +5,7 @@ COMMON_DEPS="devtoolset-2 scl-utils \
     glibc-devel.i686 glibc-devel.x86_64 \
     devtoolset-2-libstdc++-devel.i686 devtoolset-2-libstdc++-devel.x86_64 \
     xkeyboard-config
-    dpkg rpm-build ImageMagick fakeroot dos2unix"
+    xz dpkg rpm-build ImageMagick fakeroot dos2unix"
 
 PERARCH_DEPS="fontconfig-devel freetype-devel \
     libX11-devel libXext-devel libXfixes-devel libXi-devel libXrender-devel libxcb-devel \

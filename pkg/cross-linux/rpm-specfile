@@ -22,7 +22,7 @@ that is designed to install and run on many RPM-based Linux distributions.
 %clean
 
 %files
-%defattr(-,root,root) 
+%defattr(-,root,root)
 /opt/speedcrunch/speedcrunch
 %doc /opt/speedcrunch/README.md
 /usr/bin/speedcrunch
