@@ -33,13 +33,20 @@
     font-size: 120%;
 }
 
-body { 
-    padding-top: 65px; 
+body {
+    padding-top: 65px;
 }
 
-.carousel-inner > .item > img,
-.carousel-inner > .item > a > img {
-  width: 70%;
-  margin: auto;
-  max-width: 700px
+.btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.dl-button {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.center-div {
+  text-align: center;
 }

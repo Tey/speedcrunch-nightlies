@@ -8,6 +8,13 @@
 {% include "entrance_navbar.html" %}
 {% endmacro %}
 
+{% macro txt_classes(idx) -%}
+  col-md-7 {{ 'col-md-push-5' if idx % 2 != 0 else '' }}
+{%- endmacro %}
+
+{% macro img_classes(idx) -%}
+  col-md-5 {{ 'col-md-pull-7' if idx % 2 != 0 else '' }}
+{%- endmacro %}
 
 {%- block content %}
 {{ entranceNavBar() }}
@@ -15,79 +22,76 @@
 {%- block jumbotron %}
     <div class="jumbotron">
       <div class="container">
-        <h1>SpeedCrunch</h1>
-        <p>{% trans %}A fast, high precision and powerful desktop calculator. {% endtrans %}</p>
-        <p><a class="btn btn-primary btn-lg" href="{{ pathto('download') }}" role="button"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ _('Download') }}</a>
-        <a class="btn btn-default btn-lg " href="{{ pathto('introduction') }}" role="button"> <i class="fa fa-book fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ _('Documentation') }}</a></p>
+        <div class="{{ txt_classes(0) }}">
+          <h1>SpeedCrunch</h1>
+          <p>{% trans %}SpeedCrunch is a high-precision scientific calculator featuring a fast, keyboard-driven user interface. It is free and open-source software, licensed under the GPL.{% endtrans %}</p>
+          <p>
+            <a class="btn btn-primary btn-lg" href="{{ pathto('download') }}" role="button"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ _('Download') }}</a>
+            <a class="btn btn-default btn-lg" href="{{ pathto('introduction') }}" role="button"> <i class="fa fa-book fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ _('Documentation') }}</a>
+          </p>
+        </div>
+        <div class="{{ img_classes(0) }}">
+          <img class="featurette-image img-responsive center-block" src="_static/animation.gif">
+        </div>
       </div>
     </div>
-{%- endblock %}  
-<div class="container">
-  <p>{% trans %}SpeedCrunch is a high-precision scientific calculator with a broad range of features. It is available for Windows, OS X, and Linux in a number of languages. SpeedCrunch is free and open-source, licensed under the GPL.{% endtrans %}</p>
-</div>
+{%- endblock %}
+
 {%- block featurette %}
   <!-- START THE FEATURETTES -->
 <div class="container">
-  <hr class="featurette-divider">
+  {%- set idx = 1 -%}
 
   <div class="row featurette">
-    <div class="col-md-7">
-      <h2 class="featurette-heading">{{ _('Fast &amp efficient.') }}</h2>
-      <p class="lead">{{ _('SpeedCrunch computes the result on the fly, as you enter your input. Customizable syntax highlighting allows you to easily spot mistakes. Select a part of an expression with your cursor to evaluate that part only.') }}</p>
+    <div class="{{ txt_classes(idx) }}">
+      <h2 class="featurette-heading">{% trans %}Efficient &amp; easy-to-use interface.{% endtrans %}</h2>
+      <p class="lead">{% trans %}SpeedCrunch displays results as you type. Select a partial expression to evaluate only that part.{% endtrans %}</p>
+      <p class="lead">{% trans %}Previous inputs and results are shown in a scrollable history and can be easily recalled. Customizable syntax highlighting allows you to spot mistakes easily.{% endtrans %}</p>
+      <p class="lead">{% trans %}If you prefer the old-school way, an optional on-screen keypad is available as well.{% endtrans %}</p>
     </div>
-    <div class="col-md-5">
-      <img class="featurette-image img-responsive center-block" src="_static/animation.gif">
-    </div>
-  </div>
-
-  <hr class="featurette-divider">
-
-  <div class="row featurette">
-    <div class="col-md-7 col-md-push-5">
-      <h2 class="featurette-heading">{{ _('Easy to use.') }}</h2>
-      <p class="lead">{{ _('The results are shown in a scrollable window. Both inputs and results can be easily recalled.') }}</p>
-      <p class="lead">{{ _('If you prefer the oldschool way, an on-screen keypad is available as well.') }}</p>
-    </div>
-    <div class="col-md-5 col-md-pull-7">
+    <div class="{{ img_classes(idx) }}">
       <img class="featurette-image img-responsive center-block" src="_static/keypad.png">
     </div>
   </div>
 
-  <hr class="featurette-divider">
+  <hr class="featurette-divider"/>
+  {%- set idx = idx + 1 -%}
 
   <div class="row featurette">
-    <div class="col-md-7">
+    <div class="{{ txt_classes(idx) }}">
       <h2 class="featurette-heading">{{ _('Powerful.') }}</h2>
-      <p class="lead">{{ _('SpeedCrunch comes with over 80 built-in mathematical functions. Easily define more on your own.') }}</p>
-      <p class="lead">{{ _('Support for variables to store your results, 50 digits precision, complex numbers, numeral bases and unit conversions, ... ') }}</p>
+      <p class="lead">{{ _('SpeedCrunch comes with over 80 built-in mathematical functions. You can also define your own functions.') }}</p>
+      <p class="lead">{{ _('Variables allow you to store your results. Perform calculations with up to 50 digits of precision, using complex numbers, numeral bases, unit conversions, and more.') }}</p>
       <p class="lead">{{ _('Naturally, tab-completion allows you to speed up your task.') }}</p>
     </div>
-    <div class="col-md-5">
+    <div class="{{ img_classes(idx) }}">
       <img class="featurette-image img-responsive center-block" src="_static/advanced_features.png">
     </div>
   </div>
 
-  <hr class="featurette-divider">
+  <hr class="featurette-divider"/>
+  {%- set idx = idx + 1 -%}
 
   <div class="row featurette">
-    <div class="col-md-7 col-md-push-5">
+    <div class="{{ txt_classes(idx) }}">
       <h2 class="featurette-heading">{{ _('Library included.') }}</h2>
       <p class="lead">{{ _('A built-in formula book allows to you to review and insert commonly used formulas, such as the volume of a cone.') }}</p>
       <p class="lead">{{ _('Or insert one out of over 150 built-in scientific constants.') }}</p>
     </div>
-    <div class="col-md-5 col-md-pull-7">
+    <div class="{{ img_classes(idx) }}">
       <img class="featurette-image img-responsive center-block" src="_static/book.png">
     </div>
   </div>
 
-  <hr class="featurette-divider">
+  <hr class="featurette-divider"/>
+  {%- set idx = idx + 1 -%}
 
   <div class="row featurette">
-    <div class="col-md-7">
+    <div class="{{ txt_classes(idx) }}">
       <h2 class="featurette-heading">{{ _('Cross-platform.') }} <span class="text-muted">{{ _('And multi-language.') }}</span></h2>
-      <p class="lead">{{ _('SpeedCrunch is available for Windows, OSX and Linux, and comes in a number of languages.') }}</p>
+      <p class="lead">{% trans %}SpeedCrunch is available for Windows, OSX, and Linux, and comes in <a href="https://www.transifex.com/heldercorreia/speedcrunch/languages/">a number of languages</a>.{% endtrans %}</p>
     </div>
-    <div class="col-md-5">
+    <div class="{{ img_classes(idx) }}">
       <div class="row" style="margin-top:20px">
         <span class="col-md-4"><i class="fa fa-windows fa-5x"></i></span>
         <span class="col-md-4"><i class="fa fa-apple fa-5x"></i></span>
@@ -96,7 +100,9 @@
     </div>
   </div>
 
-  <hr class="featurette-divider">
+  <hr class="featurette-divider"/>
+  {%- set idx = idx + 1 -%}
+
 </div>
   <!-- /END THE FEATURETTES -->
 {%- endblock %}
