@@ -1,73 +1,127 @@
 {% extends "entrance.html" %}
 
+{% macro downloads(win=[], osx=[], linux=[], win_port_text=True, linux_dropdown=True) -%}
+  <div class="container-fluid">
+    <div class="row">
+      {% if win -%}
+        <div class="col-lg-4 center-div">
+          <p><i class="fa fa-windows" style="vertical-align:middle; font-size:8em;"></i></p>
+          <p><b>Windows</b></p>
+          <p>
+            {% for (name, path) in win -%}
+              <a class="btn btn-primary btn-md dl-button" href="{{ path }}"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ name }}</a>
+            {%- endfor %}
+          </p>
+          {% if win_port_text -%}
+            <p>{% trans %}A portable version of SpeedCrunch is available. It doesn't need to be installed. Just take it anywhere (e.g. on a thumb drive) and run the file to start SpeedCrunch.{% endtrans %}</p>
+          {%- endif %}
+        </div>
+      {%- endif %}
+
+      {% if osx -%}
+        <div class="col-lg-4 center-div">
+          <p><i class="fa fa-apple" style="vertical-align:middle; font-size:8em;"></i></p>
+          <p><b>OS X</b></p>
+          <p>
+            {% for (name, path) in osx -%}
+              <a class="btn btn-primary btn-md dl-button" href="{{ path }}"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ name }}</a>
+            {%- endfor %}
+          </p>
+        </div>
+      {%- endif %}
+
+      <div class="col-lg-4 center-div">
+        <p><i class="fa fa-linux" style="vertical-align:middle; font-size:8em;"></i></p>
+        <p><b>Linux</b></p>
+
+        {% if linux -%}
+          <p>
+            {% if not linux_dropdown -%}
+              {% for (name, path) in linux -%}
+                <a class="btn btn-primary btn-md dl-button" href="{{ path }}"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ name }}</a>
+              {%- endfor %}
+            {%- else -%}
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary btn-md dl-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;{% trans %}Download{% endtrans %}&nbsp;<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  {% for (name, path) in linux -%}
+                    <li><a href="{{ path }}">{{ name }}</a></li>
+                  {%- endfor %}
+                </ul>
+              </div>
+            {%- endif %}
+          </p>
+        {%- endif %}
+
+        <p>{% trans %}If available, we recommend to install SpeedCrunch directly via your distribution's package manager.{% endtrans %}</p>
+      </div>
+    </div><!-- /.row -->
+  </div>
+{%- endmacro %}
+
+{% macro oldVersion(version, id) -%} {#, *args, **kwargs #}
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ id }}" aria-expanded="false" aria-controls="collapse{{ id }}">{{ _('Version') }} {{ version }}</a>
+      </h4>
+    </div>
+    <div id="collapse{{ id }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ id }}" style="margin-top: 1em">
+      {{ downloads(*args, **kwargs) }}
+    </div>
+  </div>
+{%- endmacro %}
+
 
 {%- block content %}
-{{ entranceNavBar() }}
-<div class="container">
+  {{ entranceNavBar() }}
+  <div class="container">
     <ul class="breadcrumb">
       <li><a href="{{ pathto('index') }}">{{ _('Home') }} </a></li>
       <li class="active">{{ _('Download')}} </li>
     </ul>
-    
-    
-{% macro downloads(version, win_inst=None, win_port=None, osx=None, linux=None) -%}
-  <div class="container">
-  <div class="row">
-    <div class="col-lg-4">
-    {% if not (win_inst is none() and win_port is none()) %}
-      <div align="center"><p><i class="fa fa-windows" style="vertical-align:middle; font-size:8em;"></i></p><p><b>Windows</b></p> </div>
-      {% if not win_inst is none() %}<div align="center"><p><a class="btn btn-primary btn-md" href="{{ win_inst }}" role="button"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;&nbsp;{{ _('Installer') }}</a> {% endif %}
-      {% if not win_port is none() %}
-        &nbsp;&nbsp;<a class="btn btn-primary btn-md " href="{{ win_port }}" role="button"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;&nbsp;{{ _('Portable') }}</a></p></div>
-        <p>{% trans %}A portable version of SpeedCrunch is available. It doesn't need to be installed. Just take it anywhere (e.g. on a thumb drive) and run the file to start SpeedCrunch.{% endtrans %}</p>
-      {% endif %}
-    {% endif %}
-    </div><!-- /.col-lg-4 -->
-    <div class="col-lg-4">{% if not osx is none() %}
-      <div align="center"><p><i class="fa fa-apple" style="vertical-align:middle; font-size:8em;"></i></p><p><b>OS X</b></p> </div>
-      <div align="center"><p><a class="btn btn-primary btn-md" href="{{ osx }}" role="button"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;&nbsp;{{ _('Download') }}</a>&nbsp;</p></div>
-     {% endif %}</div><!-- /.col-lg-4 --> 
-    <div class="col-lg-4">
-      <div align="center"><p><i class="fa fa-linux" style="vertical-align:middle; font-size:8em;"></i></p><p><b>Linux</b></p> </div>
-    {% if not linux is none() %}
-      <div align="center"><p><a class="btn btn-primary btn-md" href="{{ linux }}" role="button"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;&nbsp;{{ _('Download') }}</a>&nbsp;</p></div>
-    {% endif %}
-      <p>{% trans %}If available, we recommend to install SpeedCrunch directly via your distribution's package manager.{% endtrans %}</p>
-     </div><!-- /.col-lg-4 -->
-  </div><!-- /.row -->
-  </div>
-{%- endmacro %}
-  
-  <div class="container">
-  <h1>{% trans %}Version 0.12{% endtrans %}</h1>
-    {{ downloads('0.12', '#', '#', '#', '#') }}
-  <hr>
-  <p>{% trans %}Unsure about the installation?{% endtrans %} <a href="{{ pathto('userguide/installation') }}">{% trans %}Have a look at the instructions.{% endtrans %}</a></p>
-  
-  <hr>
-  {% macro oldVersion(version, id, win_inst=None, win_port=None, osx=None, linux=None) -%}
-    <div class="panel panel-default">
-    <div class="panel-heading" role="tab">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{id}}" aria-expanded="false" aria-controls="collapse{{id}}">
-          {{ _('Version') }} {{version}}
-        </a>
-      </h4>
-    </div>
-    <div id="collapse{{id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{id}}">
-      {{ downloads(version, win_inst, win_port, osx, linux) }}
+
+    <div class="container">
+      <h1>{% trans %}Version 0.12{% endtrans %}</h1>
+      {{ downloads(
+        win=[
+          (_('Installer'), '#'),
+          (_('Portable'), '#'),],
+        osx=[(_('Download'), '#'),],
+        linux=[
+          (_('32-bit RPM'), '#'),
+          (_('32-bit Deb'), '#'),
+          (_('32-bit Generic'), '#'),
+          (_('64-bit RPM'), '#'),
+          (_('64-bit Deb'), '#'),
+          (_('64-bit Generic'), '#'),]
+      ) }}
+      <hr/>
+
+      <p>
+        {% trans %}Unsure about the installation?{% endtrans %}
+        <a href="{{ pathto('userguide/installation') }}">{% trans %}Have a look at the instructions.{% endtrans %}</a>
+      </p>
+      <hr/>
+
+      <h1>{% trans %}Older Versions{% endtrans %}</h1>
+      <div id="accordion" role="tablist" aria-multiselectable="true">
+        {{ oldVersion('0.11', '011',
+          win=[
+            (_('Installer'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.11.exe'),
+            (_('Portable'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.11.zip')],
+          osx=[(_('Download'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.11.dmg')]
+        ) }}
+
+        {{ oldVersion('0.10.1', '0101',
+          win=[
+            (_('Installer'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.10.1.exe'),
+            (_('Portable'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.10.1.zip')],
+          osx=[(_('Download'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.10.1.dmg')]
+        ) }}
+      </div>
     </div>
   </div>
-  {%- endmacro %}
-  
-  <h1>{% trans %}Older Versions{% endtrans %}</h1>
- <div id="accordion" role="tablist" aria-multiselectable="true">
-    {{ oldVersion('0.11', '011', 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.11.exe', 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.11.zip', 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.11.dmg') }}
-    {{ oldVersion('0.10.1', '0101', 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.10.1.exe', 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.10.1.zip', 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.10.1.dmg') }}
-</div>
-  
-  </div><!-- /.container -->
- 
-  
-</div>
 {%- endblock %}

@@ -13,7 +13,7 @@
           {%- endblock %}
           {% if theme_navbar_title -%}{{ theme_navbar_title|e }}{%- else -%}{{ project|e }}{%- endif -%}
         </a>
-        <span class="navbar-text navbar-version pull-left hidden-sm"><b>{{ version|e }}</b></span>
+        <span class="navbar-text navbar-version pull-left hidden-sm hidden-xs"><b>{{ version|e }}</b></span>
       </div>
 
       {% block navcontent %}
@@ -33,14 +33,13 @@
             {% block navbarextra %}
             {% endblock %}
             {% if theme_source_link_position == "nav" %}
-              <li class="hidden-sm">{% include "sourcelink.html" %}</li>
+              <li class="hidden-sm hidden-xs">{% include "sourcelink.html" %}</li>
             {% endif %}
           </ul>
           <ul class="nav navbar-nav navbar-right">
           {% block navbarsearch %}
             {% include "navbarsearchbox.html" %}
           {% endblock %}
-          
 
           {% block language_selector %}
             {% include "language.html" %}
