@@ -394,7 +394,7 @@ pack2floatnum(
     float_add(x, x, &tmp, DECPRECISION);
   if (result != Success)
     return result;
-  if (!float_getlength(x) == 0) /* no zero, no NaN? */
+  if ((!float_getlength(x)) == 0) /* no zero, no NaN? */
   {
     base = n->prefix.base;
     float_setinteger(&tmp, base);
