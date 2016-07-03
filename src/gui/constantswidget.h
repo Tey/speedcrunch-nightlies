@@ -1,6 +1,6 @@
 // This file is part of the SpeedCrunch project
 // Copyright (C) 2007 Ariya Hidayat <ariya@kde.org>
-// Copyright (C) 2008, 2009, 2010, 2011 @heldercorreia
+// Copyright (C) 2008, 2009, 2010, 2011, 2016 @heldercorreia
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -28,40 +28,39 @@ class QLineEdit;
 class QTreeWidget;
 class QTreeWidgetItem;
 
-class ConstantsWidget : public QWidget
-{
+class ConstantsWidget : public QWidget {
     Q_OBJECT
 
 public:
-    explicit ConstantsWidget(QWidget *parent = 0);
+    explicit ConstantsWidget(QWidget* parent = nullptr);
     ~ConstantsWidget();
 
 signals:
-    void constantSelected(const QString &);
+    void constantSelected(const QString&);
 
 public slots:
     void handleRadixCharacterChange();
 
 protected slots:
     void filter();
-    void handleItem(QTreeWidgetItem *);
+    void handleItem(QTreeWidgetItem*);
     void retranslateText();
     void triggerFilter();
     void updateList();
 
 protected:
-    virtual void changeEvent(QEvent *);
+    virtual void changeEvent(QEvent*);
 
 private:
     Q_DISABLE_COPY(ConstantsWidget)
 
-    QComboBox *m_category;
-    QLabel *m_categoryLabel;
-    QLineEdit *m_filter;
-    QTimer *m_filterTimer;
-    QLabel *m_label;
-    QTreeWidget *m_list;
-    QLabel *m_noMatchLabel;
+    QComboBox* m_category;
+    QLabel* m_categoryLabel;
+    QLineEdit* m_filter;
+    QTimer* m_filterTimer;
+    QLabel* m_label;
+    QTreeWidget* m_list;
+    QLabel* m_noMatchLabel;
 };
 
 #endif

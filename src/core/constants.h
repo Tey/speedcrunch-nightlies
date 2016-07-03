@@ -1,6 +1,6 @@
 // This file is part of the SpeedCrunch project
 // Copyright (C) 2007 Ariya Hidayat <ariya@kde.org>
-// Copyright (C) 2008-2009 @heldercorreia
+// Copyright (C) 2008-2009, 2016 @heldercorreia
 // Copyright (C) 2009 Andreas Scherer <andreas_coder@freenet.de>
 //
 // This program is free software; you can redistribute it and/or
@@ -33,21 +33,12 @@ struct Constant {
     QString value;
 };
 
-class constant_name_is
-{
-    QString m_name;
-public:
-    explicit constant_name_is(const QString&);
-    bool operator()(const Constant&) const;
-};
-
 class Constants : public QObject {
     Q_OBJECT
 
 public:
+    ~Constants(); //  For unique_ptr, define after Private is complete.
     static Constants* instance();
-    ~Constants();
-
     const QStringList& categories() const;
     const QList<Constant>& list() const;
 
@@ -56,11 +47,11 @@ public slots:
 
 private:
     struct Private;
-    const std::auto_ptr<Private> d;
+    std::unique_ptr<Private> d;
 
     Constants();
-    Constants(const Constants&);
-    Constants& operator=(const Constants&);
+    Q_DISABLE_COPY(Constants)
 };
 
 #endif
+

@@ -90,7 +90,6 @@ HEADERS += core/book.h \
            gui/historywidget.h \
            gui/genericdock.h \
            gui/keypad.h \
-           gui/tipwidget.h \
            gui/variablelistwidget.h \
            gui/userfunctionlistwidget.h \
            gui/manualwindow.h \
@@ -145,7 +144,6 @@ SOURCES += main.cpp \
            gui/historywidget.cpp \
            gui/keypad.cpp \
            gui/syntaxhighlighter.cpp \
-           gui/tipwidget.cpp \
            gui/variablelistwidget.cpp \
            gui/userfunctionlistwidget.cpp \
            gui/mainwindow.cpp \

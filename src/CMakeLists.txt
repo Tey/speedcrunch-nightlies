@@ -45,6 +45,7 @@ if(USING_MSVC)
     add_definitions(-D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_WARNINGS -D_SCL_SECURE_NO_WARNINGS)
 else()
     add_definitions(-Wall)
+    add_definitions(-Wno-shift-negative-value)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 endif()
 
