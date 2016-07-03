@@ -1,6 +1,6 @@
 // This file is part of the SpeedCrunch project
 // Copyright (C) 2007 Ariya Hidayat <ariya@kde.org>
-// Copyright (C) 2008, 2009, 2010, 2011 @heldercorreia
+// Copyright (C) 2008, 2009, 2010, 2011, 2016 @heldercorreia
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -34,8 +34,8 @@
 
 #include <algorithm>
 
-ConstantsWidget::ConstantsWidget(QWidget *parent)
-  : QWidget(parent)
+ConstantsWidget::ConstantsWidget(QWidget* parent)
+    : QWidget(parent)
 {
     m_categoryLabel = new QLabel(this);
     m_category = new QComboBox(this);
@@ -44,8 +44,8 @@ ConstantsWidget::ConstantsWidget(QWidget *parent)
 
     connect(m_category, SIGNAL(activated(int)), SLOT(filter()));
 
-    QWidget *categoryBox = new QWidget(this);
-    QHBoxLayout *categoryLayout = new QHBoxLayout;
+    QWidget* categoryBox = new QWidget(this);
+    QHBoxLayout* categoryLayout = new QHBoxLayout;
     categoryBox->setLayout(categoryLayout);
     categoryLayout->addWidget(m_categoryLabel);
     categoryLayout->addWidget(m_category);
@@ -58,8 +58,8 @@ ConstantsWidget::ConstantsWidget(QWidget *parent)
 
     connect(m_filter, SIGNAL(textChanged(const QString &)), SLOT(triggerFilter()));
 
-    QWidget *searchBox = new QWidget(this);
-    QHBoxLayout *searchLayout = new QHBoxLayout;
+    QWidget* searchBox = new QWidget(this);
+    QHBoxLayout* searchLayout = new QHBoxLayout;
     searchBox->setLayout(searchLayout);
     searchLayout->addWidget(m_label);
     searchLayout->addWidget(m_filter);
@@ -78,10 +78,9 @@ ConstantsWidget::ConstantsWidget(QWidget *parent)
     m_list->setAlternatingRowColors(true);
     m_list->setCursor(QCursor(Qt::PointingHandCursor));
 
-    connect(m_list, SIGNAL(itemActivated(QTreeWidgetItem *, int)),
-            SLOT(handleItem(QTreeWidgetItem *)));
+    connect(m_list, SIGNAL(itemActivated(QTreeWidgetItem*, int)), SLOT(handleItem(QTreeWidgetItem*)));
 
-    QVBoxLayout *layout = new QVBoxLayout;
+    QVBoxLayout* layout = new QVBoxLayout;
     setLayout(layout);
     layout->setMargin(3);
     layout->addWidget(categoryBox);
@@ -171,7 +170,7 @@ void ConstantsWidget::filter()
         if (!include)
             continue;
 
-        QTreeWidgetItem *item = 0;
+        QTreeWidgetItem* item = nullptr;
         if (term.isEmpty())
             item = new QTreeWidgetItem(m_list, str);
         else
@@ -217,10 +216,13 @@ void ConstantsWidget::filter()
     setUpdatesEnabled(true);
 }
 
-void ConstantsWidget::handleItem(QTreeWidgetItem *item)
+void ConstantsWidget::handleItem(QTreeWidgetItem* item)
 {
-    const QList<Constant> & c = Constants::instance()->list();
-    emit constantSelected(std::find_if(c.begin(), c.end(), constant_name_is(item->text(0)))->value);
+    const auto& l = Constants::instance()->list();
+    auto found = std::find_if(l.begin(), l.end(), [&](const Constant& c) {
+        return item->text(0) == c.name;
+    });
+    emit constantSelected(found->value);
 }
 
 void ConstantsWidget::triggerFilter()
@@ -239,7 +241,7 @@ void ConstantsWidget::updateList()
     filter();
 }
 
-void ConstantsWidget::changeEvent(QEvent *e)
+void ConstantsWidget::changeEvent(QEvent* e)
 {
     if (e->type() == QEvent::LanguageChange) {
         Constants::instance()->retranslateText();

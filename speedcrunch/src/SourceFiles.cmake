@@ -29,7 +29,6 @@ gui/keypad.h
 gui/mainwindow.h
 gui/manualwindow.h
 gui/resultdisplay.h
-gui/tipwidget.h
 gui/variablelistwidget.h
 gui/userfunctionlistwidget.h
 gui/syntaxhighlighter.h
@@ -87,7 +86,6 @@ gui/mainwindow.cpp
 gui/manualwindow.cpp
 gui/resultdisplay.cpp
 gui/syntaxhighlighter.cpp
-gui/tipwidget.cpp
 gui/variablelistwidget.cpp
 gui/userfunctionlistwidget.cpp
 math/floatcommon.c

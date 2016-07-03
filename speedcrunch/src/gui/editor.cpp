@@ -2,7 +2,7 @@
 // Copyright (C) 2007 Ariya Hidayat <ariya@kde.org>
 // Copyright (C) 2004, 2005 Ariya Hidayat <ariya@kde.org>
 // Copyright (C) 2005, 2006 Johan Thelin <e8johan@gmail.com>
-// Copyright (C) 2007-2010, 2013, 2014 @heldercorreia
+// Copyright (C) 2007-2010, 2013, 2014, 2016 @heldercorreia
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -1236,11 +1236,11 @@ bool ConstantCompletion::eventFilter(QObject* object, QEvent* event)
 void ConstantCompletion::doneCompletion()
 {
     m_editor->setFocus();
-    const QTreeWidgetItem* item = m_constantWidget->currentItem();
-    emit selectedCompletion(item ?
-        std::find_if(m_constantList.begin(), m_constantList.end(),
-            constant_name_is(item->text(0)))->value
-        : QString());
+    const auto* item = m_constantWidget->currentItem();
+    auto found = std::find_if(m_constantList.begin(), m_constantList.end(), [&](const Constant& c) {
+        return item->text(0) == c.name;
+    });
+    emit selectedCompletion((item && found != m_constantList.end()) ? found->value : QString());
 }
 
 void ConstantCompletion::showCompletion()
