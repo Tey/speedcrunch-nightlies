@@ -20,7 +20,7 @@
 #include "math/hmath.h"
 #include "numberformatter.h"
 
-#include <math.h>
+#include <cmath>
 #include <QString>
 #include <QStringList>
 #include <limits.h>
