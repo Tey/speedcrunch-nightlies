@@ -23,13 +23,29 @@
   </description>
 
   <screenshots>
-    
-    <screenshot type="default">https://bitbucket.org/repo/dR7BnG/images/3654665019-capture.png</screenshot>
+    <screenshot type="default">
+      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/advanced-features.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Main window with optional keypad</caption>
+      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/keypad.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>The constants list and formula book</caption>
+      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/constants+book.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Customizable user interface</caption>
+      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/ui-customization.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>The built-in user manual</caption>
+      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/manual.png</image>
+    </screenshot>
   </screenshots>
 
   <url type="homepage">http://speedcrunch.org</url>
   <url type="bugtracker">https://bitbucket.org/heldercorreia/speedcrunch/issues</url>
-  
   <url type="help">http://speedcrunch.org/introduction.html</url>
 
   
