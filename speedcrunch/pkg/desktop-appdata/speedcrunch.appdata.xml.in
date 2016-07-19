@@ -29,13 +29,29 @@
   </description>
 
   <screenshots>
-    <!-- TODO: Placeholder, need better screenshots. -->
-    <screenshot type="default">https://bitbucket.org/repo/dR7BnG/images/3654665019-capture.png</screenshot>
+    <screenshot type="default">
+      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/advanced-features.png</image>
+    </screenshot>
+    <screenshot>
+      <_caption>Main window with optional keypad</_caption>
+      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/keypad.png</image>
+    </screenshot>
+    <screenshot>
+      <_caption>The constants list and formula book</_caption>
+      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/constants+book.png</image>
+    </screenshot>
+    <screenshot>
+      <_caption>Customizable user interface</_caption>
+      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/ui-customization.png</image>
+    </screenshot>
+    <screenshot>
+      <_caption>The built-in user manual</_caption>
+      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/manual.png</image>
+    </screenshot>
   </screenshots>
 
   <url type="homepage">http://speedcrunch.org</url>
   <url type="bugtracker">https://bitbucket.org/heldercorreia/speedcrunch/issues</url>
-  <!-- TODO: Adjust once the URL is clear. -->
   <url type="help">http://speedcrunch.org/introduction.html</url>
 
   <!-- We can't use the <translations> tag since our qm files are baked into the

@@ -50,3 +50,14 @@ body {
 .center-div {
   text-align: center;
 }
+
+
+.featurette-image {
+  -webkit-filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #222);
+}
+
+.jumbotron {
+    margin-top: -15px;
+}
+

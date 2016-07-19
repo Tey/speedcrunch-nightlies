@@ -1,4 +1,4 @@
-<li class="dropdown">
+{% if 0 %}<li class="dropdown">
   <a role="button"
      id="languageSelector"
      class="dropdown-toggle"
@@ -10,4 +10,4 @@
    <li> <a href="{{ pathto('.',1) }}/../{{ lang[0] }}/{{ pagename }}.html"> {{lang[1]}} </a></li>
  {%- endfor %} 
   </ul>
-</li>
+</li> {% endif %}
