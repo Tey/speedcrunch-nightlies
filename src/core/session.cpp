@@ -78,6 +78,8 @@ int Session::deSerialize(const QJsonObject &json, bool merge=false)
         m_variables.clear();
     }
 
+    Evaluator::instance()->initializeBuiltInVariables();
+
     if (json.contains("history")) {
         QJsonArray hist_obj = json["history"].toArray();
         int n = hist_obj.size();
@@ -103,8 +105,8 @@ int Session::deSerialize(const QJsonObject &json, bool merge=false)
             addUserFunction(func);
         }
     }
-    return version==SPEEDCRUNCH_VERSION;
 
+    return version==SPEEDCRUNCH_VERSION;
 }
 
 void Session::addVariable(const Variable &var)
