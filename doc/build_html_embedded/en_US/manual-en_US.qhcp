@@ -2,7 +2,7 @@
 <QHelpCollectionProject version="1.0">
     <assistant>
         <title>SpeedCrunch 0.12 documentation</title>
-        <homePage>qthelp://org.sphinx.manualenus.0.12/doc/index.html</homePage>
+        <homePage>qthelp://org.sphinx.manualenus.0.12/doc/contents.html</homePage>
         <startPage>qthelp://org.sphinx.manualenus.0.12/doc/index.html</startPage>
     </assistant>
     <docFiles>

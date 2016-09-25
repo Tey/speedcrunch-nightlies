@@ -10,56 +10,85 @@
         <filterAttribute>manual-de_DE</filterAttribute>
         <filterAttribute>0.12</filterAttribute>
         <toc>
-            <section title="SpeedCrunch 0.12 Dokumentation" ref="index.html">
+            <section title="SpeedCrunch 0.12 Dokumentation" ref="contents.html">
+                <section title="Introduction" ref="introduction.html"/>
                 <section title="User Guide" ref="userguide/index.html">
                     <section title="Installation" ref="userguide/installation.html">
                         <section title="Microsoft Windows" ref="userguide/installation.html#microsoft-windows"/>
-                        <section title="Apple OS X" ref="userguide/installation.html#apple-os-x"/>
                         <section title="Linux" ref="userguide/installation.html#linux">
-                            <section title="Ubuntu &amp; Debian" ref="userguide/installation.html#ubuntu-debian"/>
+                            <section title="Distribution Packages" ref="userguide/installation.html#distribution-packages"/>
+                            <section title="Generic Packages" ref="userguide/installation.html#generic-packages"/>
                         </section>
                         <section title="Development Builds" ref="userguide/installation.html#development-builds"/>
-                        <section title="Building from Source" ref="userguide/installation.html#building-from-source">
-                            <section title="Dependencies" ref="userguide/installation.html#dependencies"/>
-                            <section title="Building" ref="userguide/installation.html#building"/>
-                            <section title="Installing" ref="userguide/installation.html#installing"/>
-                            <section title="Creating Windows Installers" ref="userguide/installation.html#creating-windows-installers"/>
-                            <section title="Using Qt Creator" ref="userguide/installation.html#using-qt-creator"/>
+                        <section title="Building from Source" ref="userguide/installation.html#building-from-source"/>
+                    </section>
+                    <section title="First Steps" ref="userguide/first_steps.html"/>
+                    <section title="Syntax" ref="userguide/syntax.html">
+                        <section title="Number Notation" ref="userguide/syntax.html#number-notation">
+                            <section title="Decimal Form" ref="userguide/syntax.html#decimal-form"/>
+                            <section title="Scientific Notation" ref="userguide/syntax.html#scientific-notation"/>
+                            <section title="Non-Decimal Bases" ref="userguide/syntax.html#non-decimal-bases"/>
+                        </section>
+                        <section title="Operators and Precedence" ref="userguide/syntax.html#operators-and-precedence"/>
+                        <section title="Deprecated Operators" ref="userguide/syntax.html#deprecated-operators"/>
+                    </section>
+                    <section title="User-Defined Variables and Functions" ref="userguide/advanced.html">
+                        <section title="Variables" ref="userguide/advanced.html#variables"/>
+                        <section title="User Functions" ref="userguide/advanced.html#user-functions"/>
+                    </section>
+                    <section title="Complex numbers" ref="userguide/advanced.html#complex-numbers"/>
+                    <section title="Units" ref="userguide/advanced.html#units"/>
+                    <section title="User Interface" ref="userguide/interface.html">
+                        <section title="Widgets" ref="userguide/interface.html#widgets"/>
+                        <section title="Expression Editor Features" ref="userguide/interface.html#expression-editor-features"/>
+                        <section title="Import/Export" ref="userguide/interface.html#import-export"/>
+                        <section title="Settings" ref="userguide/interface.html#settings">
+                            <section title="Result Format" ref="userguide/interface.html#result-format"/>
+                            <section title="Input Format" ref="userguide/interface.html#input-format"/>
+                            <section title="Angle Unit" ref="userguide/interface.html#angle-unit"/>
+                            <section title="Behavior" ref="userguide/interface.html#behavior"/>
+                            <section title="User Interface Settings" ref="userguide/interface.html#user-interface-settings"/>
+                        </section>
+                        <section title="Keyboard Shortcuts" ref="userguide/interface.html#keyboard-shortcuts">
+                            <section title="Editing" ref="userguide/interface.html#editing"/>
+                            <section title="Widgets and Docks" ref="userguide/interface.html#widgets-and-docks"/>
+                            <section title="Scrolling" ref="userguide/interface.html#scrolling"/>
+                            <section title="Format" ref="userguide/interface.html#format"/>
+                            <section title="Various" ref="userguide/interface.html#various"/>
                         </section>
                     </section>
                 </section>
                 <section title="Reference" ref="reference/index.html">
-                    <section title="Basic Math Functions" ref="reference/basic.html">
-                        <section title="General" ref="reference/basic.html#general"/>
-                        <section title="Trigonometric &amp; Inverse Trigonometric" ref="reference/basic.html#trigonometric-inverse-trigonometric"/>
-                        <section title="Hyperbolic &amp; Inverse Hyperbolic" ref="reference/basic.html#hyperbolic-inverse-hyperbolic"/>
-                        <section title="Special" ref="reference/basic.html#special"/>
-                        <section title="Various" ref="reference/basic.html#various"/>
+                    <section title="Built-in Functions" ref="reference/index.html#built-in-functions">
+                        <section title="Basic Math Functions" ref="reference/basic.html">
+                            <section title="General" ref="reference/basic.html#general"/>
+                            <section title="Trigonometric &amp; Inverse Trigonometric" ref="reference/basic.html#trigonometric-inverse-trigonometric"/>
+                            <section title="Hyperbolic &amp; Inverse Hyperbolic" ref="reference/basic.html#hyperbolic-inverse-hyperbolic"/>
+                            <section title="Special" ref="reference/basic.html#special"/>
+                            <section title="Complex Numbers" ref="reference/basic.html#complex-numbers"/>
+                            <section title="Various" ref="reference/basic.html#various"/>
+                        </section>
+                        <section title="Integer &amp; Bitwise Arithmetic Functions" ref="reference/integer.html">
+                            <section title="Bitwise Operations" ref="reference/integer.html#bitwise-operations"/>
+                            <section title="Numeral Bases" ref="reference/integer.html#numeral-bases"/>
+                            <section title="Rounding" ref="reference/integer.html#rounding"/>
+                            <section title="Integer Division" ref="reference/integer.html#integer-division"/>
+                        </section>
+                        <section title="Statistical Functions" ref="reference/statistical.html">
+                            <section title="General" ref="reference/statistical.html#general"/>
+                            <section title="Binomial Distribution" ref="reference/statistical.html#binomial-distribution"/>
+                            <section title="Hypergeometric Distribution" ref="reference/statistical.html#hypergeometric-distribution"/>
+                            <section title="Poisson Distribution" ref="reference/statistical.html#poisson-distribution"/>
+                        </section>
+                        <section title="IEEE-754 Functions" ref="reference/ieee754.html"/>
                     </section>
-                    <section title="Integer &amp; Bitwise Arithmetic Functions" ref="reference/integer.html">
-                        <section title="Bitwise Operations" ref="reference/integer.html#bitwise-operations"/>
-                        <section title="Radix Change" ref="reference/integer.html#radix-change"/>
-                        <section title="Rounding" ref="reference/integer.html#rounding"/>
-                        <section title="Integer Division" ref="reference/integer.html#integer-division"/>
+                    <section title="Constants" ref="reference/index.html#constants">
+                        <section title="Constants" ref="reference/constants.html"/>
                     </section>
-                    <section title="Statistical Functions" ref="reference/statistical.html">
-                        <section title="General" ref="reference/statistical.html#general"/>
-                        <section title="Binomial Distribution" ref="reference/statistical.html#binomial-distribution"/>
-                        <section title="Hypergeometric Distribution" ref="reference/statistical.html#hypergeometric-distribution"/>
-                        <section title="Poisson Distribution" ref="reference/statistical.html#poisson-distribution"/>
-                    </section>
-                    <section title="IEEE-754 Functions" ref="reference/ieee754.html"/>
-                    <section title="Constants" ref="reference/constants.html"/>
                 </section>
-                <section title="Developer Guide" ref="devguide/index.html">
-                    <section title="Color Scheme File Format" ref="devguide/colorschemeformat.html">
-                        <section title="Supported Color Roles" ref="devguide/colorschemeformat.html#supported-color-roles"/>
-                    </section>
-                    <section title="Documentation Guide" ref="devguide/docguide.html">
-                        <section title="Sphinx Intro" ref="devguide/docguide.html#sphinx-intro"/>
-                        <section title="Style Guide" ref="devguide/docguide.html#style-guide"/>
-                        <section title="The SpeedCrunch Domain" ref="devguide/docguide.html#the-speedcrunch-domain"/>
-                        <section title="Tooling" ref="devguide/docguide.html#tooling"/>
+                <section title="Advanced Topics" ref="advanced/index.html">
+                    <section title="Color Scheme File Format" ref="advanced/colorschemeformat.html">
+                        <section title="Supported Color Roles" ref="advanced/colorschemeformat.html#supported-color-roles"/>
                     </section>
                 </section>
                 <section title="Function Index" ref="sc-functionindex.html"/>
@@ -67,7 +96,7 @@
         </toc>
         <keywords>
             <keyword name="abs() (function)" ref="reference/basic.html#sc.abs"/>
-            <keyword id="home" ref="index.html#kw-0"/>
+            <keyword id="home" ref="introduction.html#kw-0"/>
             <keyword id="abs" ref="reference/basic.html#sc.abs"/>
             <keyword id="sqrt" ref="reference/basic.html#sc.sqrt"/>
             <keyword id="cbrt" ref="reference/basic.html#sc.cbrt"/>
@@ -85,6 +114,7 @@
             <keyword id="arccos" ref="reference/basic.html#sc.arccos"/>
             <keyword id="arcsin" ref="reference/basic.html#sc.arcsin"/>
             <keyword id="arctan" ref="reference/basic.html#sc.arctan"/>
+            <keyword id="arctan2" ref="reference/basic.html#sc.arctan2"/>
             <keyword id="sinh" ref="reference/basic.html#sc.sinh"/>
             <keyword id="cosh" ref="reference/basic.html#sc.cosh"/>
             <keyword id="tanh" ref="reference/basic.html#sc.tanh"/>
@@ -95,13 +125,20 @@
             <keyword id="erfc" ref="reference/basic.html#sc.erfc"/>
             <keyword id="gamma" ref="reference/basic.html#sc.gamma"/>
             <keyword id="lngamma" ref="reference/basic.html#sc.lngamma"/>
+            <keyword id="real" ref="reference/basic.html#sc.real"/>
+            <keyword id="imag" ref="reference/basic.html#sc.imag"/>
+            <keyword id="phase" ref="reference/basic.html#sc.phase"/>
+            <keyword id="polar" ref="reference/basic.html#sc.polar"/>
+            <keyword id="cart" ref="reference/basic.html#sc.cart"/>
             <keyword id="sgn" ref="reference/basic.html#sc.sgn"/>
             <keyword id="radians" ref="reference/basic.html#sc.radians"/>
             <keyword id="degrees" ref="reference/basic.html#sc.degrees"/>
             <keyword id="int" ref="reference/basic.html#sc.int"/>
             <keyword id="frac" ref="reference/basic.html#sc.frac"/>
             <keyword id="pi" ref="reference/constants.html#sc.pi"/>
+            <keyword id="π" ref="reference/constants.html#sc.π"/>
             <keyword id="e" ref="reference/constants.html#sc.e"/>
+            <keyword id="ℯ" ref="reference/constants.html#sc.ℯ"/>
             <keyword id="j" ref="reference/constants.html#sc.j"/>
             <keyword id="ieee754_encode" ref="reference/ieee754.html#sc.ieee754_encode"/>
             <keyword id="ieee754_decode" ref="reference/ieee754.html#sc.ieee754_decode"/>
@@ -134,6 +171,7 @@
             <keyword id="gcd" ref="reference/integer.html#sc.gcd"/>
             <keyword id="average" ref="reference/statistical.html#sc.average"/>
             <keyword id="geomean" ref="reference/statistical.html#sc.geomean"/>
+            <keyword id="median" ref="reference/statistical.html#sc.median"/>
             <keyword id="min" ref="reference/statistical.html#sc.min"/>
             <keyword id="max" ref="reference/statistical.html#sc.max"/>
             <keyword id="sum" ref="reference/statistical.html#sc.sum"/>
@@ -161,6 +199,7 @@
             <keyword name="arcosh() (function)" ref="reference/basic.html#sc.arcosh"/>
             <keyword name="arcsin() (function)" ref="reference/basic.html#sc.arcsin"/>
             <keyword name="arctan() (function)" ref="reference/basic.html#sc.arctan"/>
+            <keyword name="arctan2() (function)" ref="reference/basic.html#sc.arctan2"/>
             <keyword name="arsinh() (function)" ref="reference/basic.html#sc.arsinh"/>
             <keyword name="artanh() (function)" ref="reference/basic.html#sc.artanh"/>
             <keyword name="average() (function)" ref="reference/statistical.html#sc.average"/>
@@ -169,14 +208,9 @@
             <keyword name="binommean() (function)" ref="reference/statistical.html#sc.binommean"/>
             <keyword name="binompmf() (function)" ref="reference/statistical.html#sc.binompmf"/>
             <keyword name="binomvar() (function)" ref="reference/statistical.html#sc.binomvar"/>
+            <keyword name="cart() (function)" ref="reference/basic.html#sc.cart"/>
             <keyword name="cbrt() (function)" ref="reference/basic.html#sc.cbrt"/>
             <keyword name="ceil() (function)" ref="reference/integer.html#sc.ceil"/>
-            <keyword name="CMAKE_INSTALL_PREFIX" ref="userguide/installation.html#index-4"/>
-            <keyword name="PORTABLE_SPEEDCRUNCH" ref="userguide/installation.html#index-0"/>
-            <keyword name="PYTHON_EXECUTABLE" ref="userguide/installation.html#index-1"/>
-            <keyword name="QCOLLECTIONGENERATOR_EXECUTABLE" ref="userguide/installation.html#index-2"/>
-            <keyword name="SPHINX_EXECUTABLE" ref="userguide/installation.html#index-3"/>
-            <keyword name="CMake variable" ref="userguide/installation.html#index-4"/>
             <keyword name="cos() (function)" ref="reference/basic.html#sc.cos"/>
             <keyword name="cosh() (function)" ref="reference/basic.html#sc.cosh"/>
             <keyword name="cot() (function)" ref="reference/basic.html#sc.cot"/>
@@ -208,6 +242,7 @@
             <keyword name="ieee754_quad_encode() (function)" ref="reference/ieee754.html#sc.ieee754_quad_encode"/>
             <keyword name="ieee754_single_decode() (function)" ref="reference/ieee754.html#sc.ieee754_single_decode"/>
             <keyword name="ieee754_single_encode() (function)" ref="reference/ieee754.html#sc.ieee754_single_encode"/>
+            <keyword name="imag() (function)" ref="reference/basic.html#sc.imag"/>
             <keyword name="int() (function)" ref="reference/basic.html#sc.int"/>
             <keyword name="j (constant)" ref="reference/constants.html#sc.j"/>
             <keyword name="lb() (function)" ref="reference/basic.html#sc.lb"/>
@@ -217,6 +252,7 @@
             <keyword name="log() (function)" ref="reference/basic.html#sc.log"/>
             <keyword name="mask() (function)" ref="reference/integer.html#sc.mask"/>
             <keyword name="max() (function)" ref="reference/statistical.html#sc.max"/>
+            <keyword name="median() (function)" ref="reference/statistical.html#sc.median"/>
             <keyword name="min() (function)" ref="reference/statistical.html#sc.min"/>
             <keyword name="mod() (function)" ref="reference/integer.html#sc.mod"/>
             <keyword name="ncr() (function)" ref="reference/statistical.html#sc.ncr"/>
@@ -224,28 +260,23 @@
             <keyword name="npr() (function)" ref="reference/statistical.html#sc.npr"/>
             <keyword name="oct() (function)" ref="reference/integer.html#sc.oct"/>
             <keyword name="or() (function)" ref="reference/integer.html#sc.or"/>
+            <keyword name="phase() (function)" ref="reference/basic.html#sc.phase"/>
             <keyword name="pi (constant)" ref="reference/constants.html#sc.pi"/>
             <keyword name="poicdf() (function)" ref="reference/statistical.html#sc.poicdf"/>
             <keyword name="poimean() (function)" ref="reference/statistical.html#sc.poimean"/>
             <keyword name="poipmf() (function)" ref="reference/statistical.html#sc.poipmf"/>
             <keyword name="poivar() (function)" ref="reference/statistical.html#sc.poivar"/>
-            <keyword name="CMake variable" ref="userguide/installation.html#index-0"/>
+            <keyword name="polar() (function)" ref="reference/basic.html#sc.polar"/>
             <keyword name="product() (function)" ref="reference/statistical.html#sc.product"/>
-            <keyword name="CMake variable" ref="userguide/installation.html#index-1"/>
-            <keyword name="CMake variable" ref="userguide/installation.html#index-2"/>
             <keyword name="radians() (function)" ref="reference/basic.html#sc.radians"/>
+            <keyword name="real() (function)" ref="reference/basic.html#sc.real"/>
             <keyword name="round() (function)" ref="reference/integer.html#sc.round"/>
-            <keyword name="sc:const (Rolle)" ref="devguide/docguide.html#role-sc:const"/>
-            <keyword name="sc:constant (Direktive)" ref="devguide/docguide.html#directive-sc:constant"/>
-            <keyword name="sc:func (Rolle)" ref="devguide/docguide.html#role-sc:func"/>
-            <keyword name="sc:function (Direktive)" ref="devguide/docguide.html#directive-sc:function"/>
             <keyword name="sec() (function)" ref="reference/basic.html#sc.sec"/>
             <keyword name="sgn() (function)" ref="reference/basic.html#sc.sgn"/>
             <keyword name="shl() (function)" ref="reference/integer.html#sc.shl"/>
             <keyword name="shr() (function)" ref="reference/integer.html#sc.shr"/>
             <keyword name="sin() (function)" ref="reference/basic.html#sc.sin"/>
             <keyword name="sinh() (function)" ref="reference/basic.html#sc.sinh"/>
-            <keyword name="CMake variable" ref="userguide/installation.html#index-3"/>
             <keyword name="sqrt() (function)" ref="reference/basic.html#sc.sqrt"/>
             <keyword name="stddev() (function)" ref="reference/statistical.html#sc.stddev"/>
             <keyword name="sum() (function)" ref="reference/statistical.html#sc.sum"/>
@@ -255,23 +286,28 @@
             <keyword name="unmask() (function)" ref="reference/integer.html#sc.unmask"/>
             <keyword name="variance() (function)" ref="reference/statistical.html#sc.variance"/>
             <keyword name="xor() (function)" ref="reference/integer.html#sc.xor"/>
+            <keyword name="π (constant)" ref="reference/constants.html#sc.π"/>
+            <keyword name="ℯ (constant)" ref="reference/constants.html#sc.ℯ"/>
         </keywords>
         <files>
+            <file>contents.html</file>
             <file>genindex.html</file>
-            <file>index.html</file>
-            <file>README.html</file>
+            <file>introduction.html</file>
             <file>sc-functionindex.html</file>
-            <file>devguide\colorschemeformat.html</file>
-            <file>devguide\docguide.html</file>
-            <file>devguide\index.html</file>
+            <file>advanced\colorschemeformat.html</file>
+            <file>advanced\index.html</file>
             <file>reference\basic.html</file>
             <file>reference\constants.html</file>
             <file>reference\ieee754.html</file>
             <file>reference\index.html</file>
             <file>reference\integer.html</file>
             <file>reference\statistical.html</file>
+            <file>userguide\advanced.html</file>
+            <file>userguide\first_steps.html</file>
             <file>userguide\index.html</file>
             <file>userguide\installation.html</file>
+            <file>userguide\interface.html</file>
+            <file>userguide\syntax.html</file>
             <file>_static\ajax-loader.gif</file>
             <file>_static\basic.css</file>
             <file>_static\comment-bright.png</file>

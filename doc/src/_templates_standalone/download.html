@@ -18,17 +18,21 @@
         </div>
       {%- endif %}
 
-      {% if osx -%}
-        <div class="col-lg-4 center-div">
-          <p><i class="fa fa-apple" style="vertical-align:middle; font-size:8em;"></i></p>
-          <p><b>MacOS</b></p>
+      
+      <div class="col-lg-4 center-div">
+        <p><i class="fa fa-apple" style="vertical-align:middle; font-size:8em;"></i></p>
+        <p><b>MacOS</b></p>
+        {% if osx -%}
           <p>
             {% for (name, path) in osx -%}
               <a class="btn btn-primary btn-md dl-button" href="{{ path }}"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ name }}</a>
             {%- endfor %}
-          </p>
-        </div>
-      {%- endif %}
+         </p>
+         {%- else %}
+            An OSX version is not available yet. We are currently looking for someone experienced in deploying Qt apps on OSX. If you know someone who can help, <a href="https://groups.google.com/forum/#!forum/speedcrunch">get in touch</a>.
+         {%- endif %}
+      </div>
+      
 
       <div class="col-lg-4 center-div">
         <p><i class="fa fa-linux" style="vertical-align:middle; font-size:8em;"></i></p>
@@ -89,7 +93,7 @@
         win=[
           (_('Installer'), '#'),
           (_('Portable'), '#'),],
-        osx=[(_('Download'), '#'),],
+
         linux=[
           (_('32-bit RPM'), '#'),
           (_('32-bit Deb'), '#'),
