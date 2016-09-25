@@ -91,7 +91,7 @@ that is used for displaying results, select one of the corresponding settings in
 
 .. function:: hex(n)
 
-    Format ```n`` as hexadecimal (base-16).
+    Format ``n`` as hexadecimal (base-16).
 
 
 Rounding
@@ -128,7 +128,7 @@ Rounding
 
 .. function:: trunc(x [; n])
 
-    Truncate (rounds toward zero) ``x`` to the next number with ``n``fractional digits; ``n`` may be omitted, in which case ``x`` is rounded to integer. Only real, dimensionless arguments are allowed.
+    Truncate (rounds toward zero) ``x`` to the next number with ``n`` fractional digits; ``n`` may be omitted, in which case ``x`` is rounded to integer. Only real, dimensionless arguments are allowed.
 
     .. seealso::
        | :func:`int`

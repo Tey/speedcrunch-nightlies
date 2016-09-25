@@ -4,7 +4,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de_DE">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../_static/quark.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../" type="text/css" />
-    <link rel="top" title="SpeedCrunch 0.12 Dokumentation" href="../index.html" />
+    <link rel="top" title="SpeedCrunch 0.12 Dokumentation" href="../contents.html" />
     <link rel="up" title="Reference" href="index.html" />
     <link rel="next" title="IEEE-754 Functions" href="ieee754.html" />
     <link rel="prev" title="Integer &amp; Bitwise Arithmetic Functions" href="integer.html" /> 
@@ -24,7 +24,7 @@
   <tr>
     <td width="50%">
       <a class="nav-item nav-item-0" 
-         href="../index.html">SpeedCrunch 0.12 Dokumentation</a> &raquo; <a class="nav-item nav-item-1"
+         href="../contents.html">SpeedCrunch 0.12 Dokumentation</a> &#187; <a class="nav-item nav-item-1"
              href="index.html">Reference</a>
           
     </td>
@@ -79,6 +79,13 @@
 </dd></dl>
 
 <dl class="function">
+<dt id="sc.median">
+<code class="descname">median</code><span class="sig-paren">(</span><em>x1</em>; <em>x2</em>; <em>...</em><span class="sig-paren">)</span></dt>
+<dd><p>Computes the median of the arguments, i.e. the value dividing the set of arguments into two evenly sized parts.</p>
+<p>First the set of arguments is sorted. If the number of arguments is odd, the element in the middle of the sorted list is returned. If the number of arguments is even, the arithmetic mean of the two central elements is returned.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="sc.min">
 <code class="descname">min</code><span class="sig-paren">(</span><em>x1</em>; <em>x2</em>; <em>...</em><span class="sig-paren">)</span></dt>
 <dd><p>Returns the minimum out of the supplied argument list. The arguments must be real and share the same dimension.</p>
@@ -111,23 +118,19 @@
 <p class="first admonition-title">Bemerkung</p>
 <p class="last">This function computes the <em>population variance</em>, which assumes that all possible realizations are all given as arguments. A function to estimate the variance from a sample (<em>sample variance</em>) is not included with SpeedCrunch.</p>
 </div>
-<div class="admonition warning">
-<p class="first admonition-title">Warnung</p>
-<p class="last">The function currently accepts complex arguments as well. The results will however be incorrect. See <a class="reference external" href="https://bitbucket.org/heldercorreia/speedcrunch/issues/595/variance-of-complex-numbers">issue 595</a>.</p>
-</div>
 </dd></dl>
 
 <dl class="function">
 <dt id="sc.stddev">
 <code class="descname">stddev</code><span class="sig-paren">(</span><em>x1</em>; <em>x2</em>; <em>...</em><span class="sig-paren">)</span></dt>
-<dd><p>Computes the standard deviation of the given arguments. It is simply obtained by taking the square root of <a class="reference internal" href="#sc.variance" title="variance"><code class="xref sc sc-func docutils literal"><span class="pre">variance()</span></code></a>.</p>
+<dd><p>Computes the standard deviation of the given arguments. It is obtained by taking the square root of the <a class="reference internal" href="#sc.variance" title="variance"><code class="xref sc sc-func docutils literal"><span class="pre">variance</span></code></a> of its arguments.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="sc.absdev">
 <code class="descname">absdev</code><span class="sig-paren">(</span><em>x1</em>; <em>x2</em>; <em>...</em><span class="sig-paren">)</span></dt>
 <dd><p>Computes the average absolute deviation of the arguments from their mean. This means that, with <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">average(x1;</span> <span class="pre">x2;</span> <span class="pre">...)</span></code>, we have:</p>
-<div class="highlight-python"><div class="highlight"><pre>absdev(x1; x2; ... ) = abs(x1 - x) + abs(x2 - x) + ...
+<div class="highlight-speedcrunch"><div class="highlight"><pre><span class="n">absdev</span><span class="p">(</span><span class="n">x1</span><span class="p">;</span> <span class="n">x2</span><span class="p">;</span> <span class="p">...</span> <span class="p">)</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">abs</span><span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="p">...</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -135,7 +138,7 @@
 </div>
 <div class="section" id="binomial-distribution">
 <span id="id1"></span><h2>Binomial Distribution</h2>
-<p>The binomial distribution is described by the parameters <cite>N</cite> and <cite>p</cite>. It gives the probability distribution of the number of successful trials, when the total number of trials is given by <cite>N</cite>, and each test is successful with probability <cite>p</cite>. Not that unlike the <a class="reference internal" href="#hypergeometric-distribution"><span>Hypergeometric Distribution</span></a>, the probability <cite>p</cite> remains the same for all draws. The binomial distribution can be thought of drawing <em>with</em> replacement, while the hypergeometric distribution describes drawing <em>without</em> replacement.</p>
+<p>The binomial distribution is described by the parameters <code class="docutils literal"><span class="pre">N</span></code> and <code class="docutils literal"><span class="pre">p</span></code>. It gives the probability distribution of the number of successful trials, when the total number of trials is given by <code class="docutils literal"><span class="pre">N</span></code>, and each test is successful with probability <code class="docutils literal"><span class="pre">p</span></code>. Not that unlike the <a class="reference internal" href="#hypergeometric-distribution"><span class="std std-ref">Hypergeometric Distribution</span></a>, the probability <code class="docutils literal"><span class="pre">p</span></code> remains the same for all draws. The binomial distribution can be thought of drawing <em>with</em> replacement, while the hypergeometric distribution describes drawing <em>without</em> replacement.</p>
 <dl class="function">
 <dt id="sc.binomcdf">
 <code class="descname">binomcdf</code><span class="sig-paren">(</span><em>x</em>; <em>N</em>; <em>p</em><span class="sig-paren">)</span></dt>
@@ -147,20 +150,17 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>x</strong> &#8211; maximum number of successes, must be integer</li>
 <li><strong>N</strong> &#8211; number of trials, must be a positive integer</li>
-<li><strong>p</strong> &#8211; probability to succeed a single trial, 0 &lt;= <cite>p</cite> &lt;= 1</li>
+<li><strong>p</strong> &#8211; probability to succeed a single trial, <em>0 &lt;= p &lt;= 1</em></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<p>The function computes the probability, that, for <cite>N</cite> independent repetitions of a test successful with probability <cite>p</cite> each, the total number of successes is <strong>less than or equal</strong> to <cite>x</cite>.</p>
-<div class="admonition-example admonition">
-<p class="first admonition-title">Example</p>
-<p>When tossing a fair coin 9 times, what is the probability that we find Heads at most 5 times?:</p>
-<div class="last highlight-python"><div class="highlight"><pre>binomcdf(5; 9; 0.5)
-= 0.74609375
+<p>The function computes the probability, that, for <code class="docutils literal"><span class="pre">N</span></code> independent repetitions of a test successful with probability <code class="docutils literal"><span class="pre">p</span></code> each, the total number of successes is <strong>less than or equal</strong> to <code class="docutils literal"><span class="pre">x</span></code>.</p>
+<p>Example: When tossing a fair coin 9 times, what is the probability that we find Heads at most 5 times?</p>
+<div class="highlight-speedcrunch"><div class="highlight"><pre><span class="n">binomcdf</span><span class="p">(</span><span class="mi">5</span><span class="p">;</span> <span class="mi">9</span><span class="p">;</span> <span class="mf">0.5</span><span class="p">)</span><span class="ge"></span>
+<span class="ge">= 0.74609375</span>
 </pre></div>
-</div>
 </div>
 </dd></dl>
 
@@ -175,20 +175,17 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>x</strong> &#8211; maximum number of successes, must be integer</li>
 <li><strong>N</strong> &#8211; number of trials, must be a positive integer</li>
-<li><strong>p</strong> &#8211; probability to succeed a single trial, 0 &lt;= <cite>p</cite> &lt;= 1</li>
+<li><strong>p</strong> &#8211; probability to succeed a single trial, <em>0 &lt;= p &lt;= 1</em></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<p>The function computes the probability, that, for <cite>N</cite> independent repetitions of a test, each successful with probability <cite>p</cite>, the total number of successes is <strong>exactly equal</strong> to <cite>x</cite>.</p>
-<div class="admonition-example admonition">
-<p class="first admonition-title">Example</p>
-<p>When tossing a fair coin 9 times, what is the probability that we find Heads exactly 5 times?:</p>
-<div class="last highlight-python"><div class="highlight"><pre>binompmf(5; 9; 0.5)
-= 0.24609375
+<p>The function computes the probability, that, for <code class="docutils literal"><span class="pre">N</span></code> independent repetitions of a test, each successful with probability <code class="docutils literal"><span class="pre">p</span></code>, the total number of successes is <strong>exactly equal</strong> to <code class="docutils literal"><span class="pre">x</span></code>.</p>
+<p>Example: When tossing a fair coin 9 times, what is the probability that we find Heads exactly 5 times?</p>
+<div class="highlight-speedcrunch"><div class="highlight"><pre><span class="n">binompmf</span><span class="p">(</span><span class="mi">5</span><span class="p">;</span> <span class="mi">9</span><span class="p">;</span> <span class="mf">0.5</span><span class="p">)</span><span class="ge"></span>
+<span class="ge">= 0.24609375</span>
 </pre></div>
-</div>
 </div>
 </dd></dl>
 
@@ -196,33 +193,33 @@
 <dt id="sc.binommean">
 <code class="descname">binommean</code><span class="sig-paren">(</span><em>N</em>; <em>p</em><span class="sig-paren">)</span></dt>
 <dd><p>Mean (expectation) value of the given binomial distribution.</p>
-<p>The function computes the expected number of successes when an experiment is performed <cite>N</cite> times, each successful independently with probability <cite>p</cite>. The result will simply be given by <cite>N * p</cite>.</p>
+<p>The function computes the expected number of successes when an experiment is performed <code class="docutils literal"><span class="pre">N</span></code> times, each successful independently with probability <code class="docutils literal"><span class="pre">p</span></code>. The result will simply be given by <em>N * p</em>.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="sc.binomvar">
 <code class="descname">binomvar</code><span class="sig-paren">(</span><em>N</em>; <em>p</em><span class="sig-paren">)</span></dt>
-<dd><p>Computes the variance of the given binomial distribution function, equal to <cite>N * p * (1-p)</cite>.</p>
+<dd><p>Computes the variance of the given binomial distribution function, equal to <em>N * p * (1-p)</em>.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="sc.ncr">
 <code class="descname">ncr</code><span class="sig-paren">(</span><em>N</em>; <em>k</em><span class="sig-paren">)</span></dt>
-<dd><p>Computes the binomial coefficient, equal to the number of possibilities of how to select <cite>k</cite> elements from a set of size <cite>N</cite>. The order of the <cite>k</cite> elements is of no importance, i.e. permutations of a subset are not counted as an additional choice.</p>
-<p>In SpeedCrunch the domain of <a class="reference internal" href="#sc.ncr" title="ncr"><code class="xref sc sc-func docutils literal"><span class="pre">ncr()</span></code></a> is extended to all real numbers. The result is 1/((<cite>N</cite> + 1) * B(<cite>k</cite> + 1, <cite>N</cite> - <cite>k</cite> + 1)), where B(a, b) is the complete Beta function.</p>
+<dd><p>Computes the binomial coefficient, equal to the number of possibilities of how to select <code class="docutils literal"><span class="pre">k</span></code> elements from a set of size <code class="docutils literal"><span class="pre">N</span></code>. The order of the <code class="docutils literal"><span class="pre">k</span></code> elements is of no importance, i.e. permutations of a subset are not counted as an additional choice.</p>
+<p>In SpeedCrunch the domain of <a class="reference internal" href="#sc.ncr" title="ncr"><code class="xref sc sc-func docutils literal"><span class="pre">ncr()</span></code></a> is extended to all real numbers. The result is <em>1/((N + 1) * B(k + 1, N - k + 1))</em>, where <em>B(a, b)</em> is the complete Beta function.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="sc.npr">
 <code class="descname">npr</code><span class="sig-paren">(</span><em>N</em>; <em>k</em><span class="sig-paren">)</span></dt>
-<dd><p>Computes the binomial coefficient, equal to the number of possibilities of how to select <cite>k</cite> elements from a set of size <cite>N</cite>. The order of the <cite>k</cite> elements <strong>is</strong> important, i.e. permutations of a subset are counted as an additional choice.</p>
-<p>In SpeedCrunch the domain of <a class="reference internal" href="#sc.npr" title="npr"><code class="xref sc sc-func docutils literal"><span class="pre">npr()</span></code></a> is extended to all real numbers. The result is Γ(<cite>N</cite> + 1)/Γ(<cite>k</cite>), where Γ is the gamma function, see <a class="reference internal" href="basic.html#sc.gamma" title="gamma"><code class="xref sc sc-func docutils literal"><span class="pre">gamma()</span></code></a>.</p>
+<dd><p>Computes the binomial coefficient, equal to the number of possibilities of how to select <code class="docutils literal"><span class="pre">k</span></code> elements from a set of size <code class="docutils literal"><span class="pre">N</span></code>. The order of the <code class="docutils literal"><span class="pre">k</span></code> elements <strong>is</strong> important, i.e. permutations of a subset are counted as an additional choice.</p>
+<p>In SpeedCrunch, the domain of <a class="reference internal" href="#sc.npr" title="npr"><code class="xref sc sc-func docutils literal"><span class="pre">npr()</span></code></a> is extended to all real numbers. The result is <em>Γ(N + 1)/Γ(k)</em>, where <em>Γ</em> is the gamma function; see <a class="reference internal" href="basic.html#sc.gamma" title="gamma"><code class="xref sc sc-func docutils literal"><span class="pre">gamma()</span></code></a>.</p>
 </dd></dl>
 
 </div>
 <div class="section" id="hypergeometric-distribution">
 <span id="id2"></span><h2>Hypergeometric Distribution</h2>
-<p>The hypergeometric distribution is described by the three parameters <cite>N</cite>, <cite>K</cite> and  <cite>n</cite>. It describes the probability distribution of the number of successes when drawing <cite>n</cite> samples from a finite population of size <cite>N</cite>, containing exactly <cite>K</cite> successes. Unlike the <a class="reference internal" href="#binomial-distribution"><span>Binomial Distribution</span></a>, the hypergeometric distribution describes drawing <em>without</em> replacement.</p>
+<p>The hypergeometric distribution is described by the three parameters <code class="docutils literal"><span class="pre">N</span></code>, <code class="docutils literal"><span class="pre">K</span></code> and  <code class="docutils literal"><span class="pre">n</span></code>. It describes the probability distribution of the number of successes when drawing <code class="docutils literal"><span class="pre">n</span></code> samples from a finite population of size <code class="docutils literal"><span class="pre">N</span></code>, containing exactly <code class="docutils literal"><span class="pre">K</span></code> successes. Unlike the <a class="reference internal" href="#binomial-distribution"><span class="std std-ref">Binomial Distribution</span></a>, the hypergeometric distribution describes drawing <em>without</em> replacement.</p>
 <dl class="function">
 <dt id="sc.hyperpmf">
 <code class="descname">hyperpmf</code><span class="sig-paren">(</span><em>k</em>; <em>N</em>; <em>K</em>; <em>n</em><span class="sig-paren">)</span></dt>
@@ -234,27 +231,24 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>k</strong> &#8211; desired number of successes, must be integer</li>
 <li><strong>N</strong> &#8211; total size of the population, must be positive integer</li>
-<li><strong>K</strong> &#8211; number of successes within the population, 0 &lt;= <cite>K</cite> &lt;= <cite>N</cite>, must be integer</li>
-<li><strong>n</strong> &#8211; number of draws, 0 &lt;= <cite>n</cite> &lt;= <cite>N</cite>, must be integer</li>
+<li><strong>K</strong> &#8211; number of successes within the population, <em>0 &lt;= K &lt;= N</em>, must be integer</li>
+<li><strong>n</strong> &#8211; number of draws, <em>0 &lt;= n &lt;= N</em>, must be integer</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<p>The function computes the probability that for <cite>n</cite> draws without replacement from a population of size <cite>N</cite> and containing <cite>K</cite> successes, the number of successes drawn is <strong>exactly</strong> equal to <cite>k</cite>.</p>
-<div class="admonition-example admonition">
-<p class="first admonition-title">Example</p>
-<p>An urn contains 50 marbles, 40 of which are white, the rest are black. We draw 15 marbles without replacement. What is the probability of drawing 8 white ones?:</p>
-<div class="last highlight-python"><div class="highlight"><pre>hyperpmf(8; 50; 40; 15)
-= 0.00410007
+<p>The function computes the probability that for <code class="docutils literal"><span class="pre">n</span></code> draws without replacement from a population of size <code class="docutils literal"><span class="pre">N</span></code> and containing <code class="docutils literal"><span class="pre">K</span></code> successes, the number of successes drawn is <em>exactly</em> equal to <code class="docutils literal"><span class="pre">k</span></code>.</p>
+<p>Example: An urn contains 50 marbles, 40 of which are white, the rest are black. We draw 15 marbles without replacement. What is the probability of drawing 8 white ones?</p>
+<div class="highlight-speedcrunch"><div class="highlight"><pre><span class="n">hyperpmf</span><span class="p">(</span><span class="mi">8</span><span class="p">;</span> <span class="mi">50</span><span class="p">;</span> <span class="mi">40</span><span class="p">;</span> <span class="mi">15</span><span class="p">)</span><span class="ge"></span>
+<span class="ge">= 0.00410007</span>
 </pre></div>
-</div>
 </div>
 </dd></dl>
 
 <dl class="function">
 <dt id="sc.hypercdf">
-<code class="descname">hypercdf</code><span class="sig-paren">(</span><em>max</em>; <em>trials</em>; <em>p</em><span class="sig-paren">)</span></dt>
+<code class="descname">hypercdf</code><span class="sig-paren">(</span><em>k</em>; <em>N</em>; <em>K</em>; <em>n</em><span class="sig-paren">)</span></dt>
 <dd><p>Hypergeometric cumulative distribution function.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -263,21 +257,18 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>k</strong> &#8211; maximum desired number of successes, must be integer</li>
 <li><strong>N</strong> &#8211; total size of the population, must be positive integer</li>
-<li><strong>K</strong> &#8211; number of successes within the population, 0 &lt;= <cite>K</cite> &lt;= <cite>N</cite>, must be integer</li>
-<li><strong>n</strong> &#8211; number of draws, 0 &lt;= <cite>n</cite> &lt;= <cite>N</cite>, must be integer</li>
+<li><strong>K</strong> &#8211; number of successes within the population, <em>0 &lt;= K &lt;= N</em>, must be integer</li>
+<li><strong>n</strong> &#8211; number of draws, <em>0 &lt;= n &lt;= N</em>, must be integer</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<p>The function computes the probability that for <cite>n</cite> draws without replacement from a population of size <cite>N</cite> and containing <cite>K</cite> successes, the number of successes drawn is <strong>smaller than or equal</strong> to <cite>k</cite>.</p>
-<div class="admonition-example admonition">
-<p class="first admonition-title">Example</p>
-<p>An urn contains 50 marbles, 40 of which are white, the rest are black. We draw 15 marbles without replacement. What is the probability of drawing at most 8 white ones?:</p>
-<div class="last highlight-python"><div class="highlight"><pre>hypercdf(8; 50; 40; 15)
-= 0.00449015
+<p>The function computes the probability that for <code class="docutils literal"><span class="pre">n</span></code> draws without replacement from a population of size <code class="docutils literal"><span class="pre">N</span></code> and containing <code class="docutils literal"><span class="pre">K</span></code> successes, the number of successes drawn is <em>smaller than or equal</em> to <code class="docutils literal"><span class="pre">k</span></code>.</p>
+<p>Example: An urn contains 50 marbles, 40 of which are white, the rest are black. We draw 15 marbles without replacement. What is the probability of drawing at most 8 white ones?</p>
+<div class="highlight-speedcrunch"><div class="highlight"><pre><span class="n">hypercdf</span><span class="p">(</span><span class="mi">8</span><span class="p">;</span> <span class="mi">50</span><span class="p">;</span> <span class="mi">40</span><span class="p">;</span> <span class="mi">15</span><span class="p">)</span><span class="ge"></span>
+<span class="ge">= 0.00449015</span>
 </pre></div>
-</div>
 </div>
 </dd></dl>
 
@@ -291,20 +282,17 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>N</strong> &#8211; total size of the population, must be positive integer</li>
-<li><strong>K</strong> &#8211; number of successes within the population, 0 &lt;= <cite>K</cite> &lt;= <cite>N</cite>, must be integer</li>
-<li><strong>n</strong> &#8211; number of draws, 0 &lt;= <cite>n</cite> &lt;= <cite>N</cite>, must be integer</li>
+<li><strong>K</strong> &#8211; number of successes within the population, <em>0 &lt;= K &lt;= N</em>, must be integer</li>
+<li><strong>n</strong> &#8211; number of draws, <em>0 &lt;= n &lt;= N</em>, must be integer</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="admonition-example admonition">
-<p class="first admonition-title">Example</p>
-<p>An urn contains 50 marbles, 40 of which are white, the rest are black. We draw 15 marbles without replacement. How many white marbles do we expect to find in our drawn sample?:</p>
-<div class="last highlight-python"><div class="highlight"><pre>hypermean(50; 40; 15)
-= 12
+<p>Example: An urn contains 50 marbles, 40 of which are white, the rest are black. We draw 15 marbles without replacement. How many white marbles do we expect to find in our drawn sample?</p>
+<div class="highlight-speedcrunch"><div class="highlight"><pre><span class="n">hypermean</span><span class="p">(</span><span class="mi">50</span><span class="p">;</span> <span class="mi">40</span><span class="p">;</span> <span class="mi">15</span><span class="p">)</span><span class="ge"></span>
+<span class="ge">= 12</span>
 </pre></div>
-</div>
 </div>
 </dd></dl>
 
@@ -318,31 +306,28 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>N</strong> &#8211; total size of the population, must be positive integer</li>
-<li><strong>K</strong> &#8211; number of successes within the population, 0 &lt;= <cite>K</cite> &lt;= <cite>N</cite>, must be integer</li>
-<li><strong>n</strong> &#8211; number of draws, 0 &lt;= <cite>n</cite> &lt;= <cite>N</cite>, must be integer</li>
+<li><strong>K</strong> &#8211; number of successes within the population, <em>0 &lt;= K &lt;= N</em>, must be integer</li>
+<li><strong>n</strong> &#8211; number of draws, <em>0 &lt;= n &lt;= N</em>, must be integer</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="admonition-example admonition">
-<p class="first admonition-title">Example</p>
-<p>An urn contains 50 marbles, 40 of which are white, the rest are black. We draw 15 marbles without replacement. We estimate the standard deviation of the experiment:</p>
-<div class="highlight-python"><div class="highlight"><pre>sqrt(hypervar(50; 40; 15))
-= 1.309
+<p>Example: An urn contains 50 marbles, 40 of which are white, the rest are black. We draw 15 marbles without replacement. We estimate the standard deviation of the experiment:</p>
+<div class="highlight-speedcrunch"><div class="highlight"><pre><span class="n">sqrt</span><span class="p">(</span><span class="n">hypervar</span><span class="p">(</span><span class="mi">50</span><span class="p">;</span> <span class="mi">40</span><span class="p">;</span> <span class="mi">15</span><span class="p">))</span><span class="ge"></span>
+<span class="ge">= 1.309</span>
 </pre></div>
 </div>
-<p class="last">This number is an estimate on by how many marbles our sample will deviate from the expectation value.</p>
-</div>
+<p>This number is an estimate on by how many marbles our sample will deviate from the expectation value.</p>
 </dd></dl>
 
 </div>
 <div class="section" id="poisson-distribution">
 <h2>Poisson Distribution</h2>
-<p>The Poisson distribution is characterized by only a single parameter, named <cite>mu</cite>. It represents both the mean and the variance of the distribution. It describes the probability distribution of the number of events during a fixed period of time, when the average rate of events is known. The Poisson distribution reqires the events to be independent. This is usually a good approximation when the rate is low compared to the total population size.</p>
+<p>The Poisson distribution is characterized by only a single parameter, named <code class="docutils literal"><span class="pre">mu</span></code>. It represents both the mean and the variance of the distribution. It describes the probability distribution of the number of events during a fixed period of time, when the average rate of events is known. The Poisson distribution requires the events to be independent. This is usually a good approximation when the rate is low compared to the total population size.</p>
 <dl class="function">
 <dt id="sc.poipmf">
-<code class="descname">poipmf</code><span class="sig-paren">(</span><em>x, mu</em><span class="sig-paren">)</span></dt>
+<code class="descname">poipmf</code><span class="sig-paren">(</span><em>x</em>; <em>mu</em><span class="sig-paren">)</span></dt>
 <dd><p>Poisson probability mass function.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -356,33 +341,28 @@
 </tr>
 </tbody>
 </table>
-<p>Computes the probability to observe <strong>exactly</strong> <cite>x</cite> events.</p>
-<div class="admonition-example admonition">
-<p class="first admonition-title">Example</p>
-<p>In a manufacturing process with yield of 99%, what is the probability that 2 out of 10 manufactured products are failures?</p>
-<p>First, we not that according to the yield, the expected number of failures are given by:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.99</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.1</span>
+<p>Computes the probability to observe exactly <code class="docutils literal"><span class="pre">x</span></code> events.</p>
+<p><em>Example 1</em>: In a manufacturing process with yield of 99%, what is the probability that 2 out of 10 manufactured products are failures?
+First, we note that according to the yield, the expected number of failures are given by:</p>
+<div class="highlight-speedcrunch"><div class="highlight"><pre><span class="mi">10 </span><span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.99</span><span class="p">)</span><span class="ge"></span>
+<span class="ge">= 0.1</span>
 </pre></div>
 </div>
 <p>Hence the answer to the problem is:</p>
-<div class="last highlight-python"><div class="highlight"><pre>poipmf(2; 0.1)
-= 0.0045
+<div class="highlight-speedcrunch"><div class="highlight"><pre><span class="n">poipmf</span><span class="p">(</span><span class="mi">2</span><span class="p">;</span> <span class="mf">0.1</span><span class="p">)</span><span class="ge"></span>
+<span class="ge">= 0.0045</span>
 </pre></div>
 </div>
-</div>
-<div class="admonition-example admonition">
-<p class="first admonition-title">Example</p>
-<p>An insurance company expects 10 claims over the period of one year. What is the probability that instead as many as 20 claims will be filed?:</p>
-<div class="last highlight-python"><div class="highlight"><pre>poipmf(20; 10)
-= 0.001866
+<p><em>Example 2</em> ::An insurance company expects 10 claims over the period of one year. What is the probability that instead as many as 20 claims will be filed?</p>
+<div class="highlight-speedcrunch"><div class="highlight"><pre><span class="n">poipmf</span><span class="p">(</span><span class="mi">20</span><span class="p">;</span> <span class="mi">10</span><span class="p">)</span><span class="ge"></span>
+<span class="ge">= 0.001866</span>
 </pre></div>
-</div>
 </div>
 </dd></dl>
 
 <dl class="function">
 <dt id="sc.poicdf">
-<code class="descname">poicdf</code><span class="sig-paren">(</span><em>x, mu</em><span class="sig-paren">)</span></dt>
+<code class="descname">poicdf</code><span class="sig-paren">(</span><em>x</em>; <em>mu</em><span class="sig-paren">)</span></dt>
 <dd><p>Poisson cumulative distribution function.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -396,27 +376,24 @@
 </tr>
 </tbody>
 </table>
-<p>Computes the probability to observe <cite>x</cite> <strong>or less</strong> events.</p>
-<div class="admonition-example admonition">
-<p class="first admonition-title">Example</p>
-<p>An insurance company expects 10 claims over the period of one year. What is the probability that more than 12 claims will be filed?</p>
-<div class="last highlight-python"><div class="highlight"><pre>1 - poicdf(12; 10)
-= 0.208
+<p>Computes the probability to observe <code class="docutils literal"><span class="pre">x</span></code> or fewer events.</p>
+<p>Example: An insurance company expects 10 claims over the period of one year. What is the probability that more than 12 claims will be filed?</p>
+<div class="highlight-speedcrunch"><div class="highlight"><pre><span class="mi">1 </span><span class="o">-</span> <span class="n">poicdf</span><span class="p">(</span><span class="mi">12</span><span class="p">;</span> <span class="mi">10</span><span class="p">)</span><span class="ge"></span>
+<span class="ge">= 0.208</span>
 </pre></div>
-</div>
 </div>
 </dd></dl>
 
 <dl class="function">
 <dt id="sc.poimean">
 <code class="descname">poimean</code><span class="sig-paren">(</span><em>mu</em><span class="sig-paren">)</span></dt>
-<dd><p>Computes the expectation value of the given Poisson distribution. By definition this value is equal to <cite>mu</cite>.</p>
+<dd><p>Computes the expectation value of the given Poisson distribution. By definition, this value is equal to <code class="docutils literal"><span class="pre">mu</span></code>.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="sc.poivar">
 <code class="descname">poivar</code><span class="sig-paren">(</span><em>mu</em><span class="sig-paren">)</span></dt>
-<dd><p>Computes the variance of the given Poisson distribution. By definition this value is equal to <cite>mu</cite>.</p>
+<dd><p>Computes the variance of the given Poisson distribution. By definition, this value is equal to <code class="docutils literal"><span class="pre">mu</span></code>.</p>
 </dd></dl>
 
 </div>
@@ -432,7 +409,7 @@
   <tr>
     <td width="50%">
       <a class="nav-item nav-item-0" 
-         href="../index.html">SpeedCrunch 0.12 Dokumentation</a> &raquo; <a class="nav-item nav-item-1"
+         href="../contents.html">SpeedCrunch 0.12 Dokumentation</a> &#187; <a class="nav-item nav-item-1"
              href="index.html">Reference</a>
           
     </td>
@@ -467,8 +444,8 @@
       <td colspan="2" align="center">
         
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2016, The SpeedCrunch Developers.
-      Mit <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5 erstellt.
+        &#169; Copyright 2016, The SpeedCrunch Developers.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
     </div>
       </td>
     </tr>

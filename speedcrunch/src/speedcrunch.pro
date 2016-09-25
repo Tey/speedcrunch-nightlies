@@ -62,7 +62,8 @@ macx {
     ICON = resources/speedcrunch.icns
     QMAKE_INFO_PLIST = ../pkg/Info.plist
     TARGET = SpeedCrunch
-    QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.5
+    QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.8
+    QMAKE_CXXFLAGS += -std=c++11
 }
 
 
