@@ -814,7 +814,7 @@ void MainWindow::createFixedConnections()
     connect(m_actions.sessionQuit, SIGNAL(triggered()), SLOT(close()));
     connect(m_actions.sessionSave, SIGNAL(triggered()), SLOT(saveSessionDialog()));
 
-    connect(m_actions.editClearExpression, SIGNAL(triggered()), SLOT(clearEditor()));
+    connect(m_actions.editClearExpression, SIGNAL(triggered()), SLOT(clearEditorAndBitfield()));
     connect(m_actions.editClearHistory, SIGNAL(triggered()), SLOT(clearHistory()));
     connect(m_actions.editCopyLastResult, SIGNAL(triggered()), SLOT(copyResultToClipboard()));
     connect(m_actions.editCopy, SIGNAL(triggered()), SLOT(copy()));
@@ -1213,7 +1213,7 @@ void MainWindow::showAboutDialog()
 void MainWindow::clearHistory()
 {
     m_session->clearHistory();
-    clearEditor();
+    clearEditorAndBitfield();
     emit historyChanged();
 }
 
@@ -1221,6 +1221,13 @@ void MainWindow::clearEditor()
 {
     m_widgets.editor->clear();
     m_widgets.editor->setFocus();
+}
+
+void MainWindow::clearEditorAndBitfield()
+{
+    clearEditor();
+    if (m_widgets.bitField)
+        m_widgets.bitField->clear();
 }
 
 void MainWindow::copyResultToClipboard()

@@ -62,7 +62,7 @@ const Quantity& Evaluator::checkOperatorResult(const Quantity& n)
     switch (n.error()) {
     case Success: break;
     case NoOperand:
-        if(m_assignFunc == false)
+        if(m_assignFunc == false) // the arguments are still NaN, so ignore this error
             m_error = Evaluator::tr("cannot operate on a NaN");
         break;
     case Underflow:
@@ -84,7 +84,9 @@ const Quantity& Evaluator::checkOperatorResult(const Quantity& n)
         m_error = Evaluator::tr("too time consuming - computation was rejected");
         break;
     case DimensionMismatch:
-        m_error = Evaluator::tr("dimension mismatch - quantities with different dimensions cannot be compared, added, etc.");
+        // we cannot make any assumptions about the dimension of the arguments, so ignore this error when assigning a function
+        if (m_assignFunc == false)
+            m_error = Evaluator::tr("dimension mismatch - quantities with different dimensions cannot be compared, added, etc.");
         break;
     case InvalidDimension:
         m_error = Evaluator::tr("invalid dimension - operation might require dimensionless arguments");
@@ -1722,7 +1724,7 @@ Quantity Evaluator::exec(const QVector<Opcode>& opcodes, const QVector<Quantity>
                 // functions declaration work with arbitrary identifiers).
                 stack.pop();
 
-                // Show function signature if the user gave no argument (yet).
+                // Show function signature if the user has given no argument (yet).
                 if (userFunction) {
                     if (!args.count() && userFunction->arguments().count() != 0) {
                         m_error = QString::fromLatin1("<b>%1</b>(%2)").arg(userFunction->name())
@@ -1849,7 +1851,7 @@ Quantity Evaluator::eval()
                 return CMath::nan();
             }
 
-            // Check that each arguments is unique and not a reserved identifier.
+            // Check that each argument is unique and not a reserved identifier.
             for (int i = 0; i < m_assignArg.count() - 1; ++i) {
                 const QString &argName = m_assignArg.at(i);
 

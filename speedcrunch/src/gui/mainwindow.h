@@ -80,6 +80,7 @@ public slots:
 private slots:
     void applySelectedColorScheme();
     void clearEditor();
+    void clearEditorAndBitfield();
     void clearHistory();
     void copyResultToClipboard();
     void cycleAngleUnits();
@@ -340,10 +341,10 @@ private:
         QLabel* state;
         ResultDisplay* display;
         Editor* editor;
-        Keypad* keypad;
+        Keypad* keypad = nullptr;
         QWidget* root;
-        ManualWindow* manual;
-        BitFieldWidget* bitField;
+        ManualWindow* manual = nullptr;
+        BitFieldWidget* bitField = nullptr;
     } m_widgets;
 
     struct {
