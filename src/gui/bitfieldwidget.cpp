@@ -191,11 +191,15 @@ void BitFieldWidget::invertBits()
     onBitChanged();
 }
 
+void BitFieldWidget::clear()
+{
+    for (auto w : m_bitWidgets)
+        w->setState(false);
+}
+
 void BitFieldWidget::resetBits()
 {
-    foreach (BitWidget* w, m_bitWidgets)
-        w->setState(false);
-
+    clear();
     onBitChanged();
 }
 

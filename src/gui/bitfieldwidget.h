@@ -62,9 +62,10 @@ signals:
     void bitsChanged(const QString&);
 
 protected:
-    virtual void wheelEvent(QWheelEvent *we);
+    virtual void wheelEvent(QWheelEvent*);
 
 public slots:
+    void clear();
     void updateBits(const Quantity&);
 
 private slots:

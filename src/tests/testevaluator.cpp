@@ -627,6 +627,9 @@ void test_function_simplified()
     CHECK_EVAL("func2 -123 + 10", "133");
     CHECK_EVAL("10 * func2 123", "1230");
     CHECK_EVAL("func2 123 * 10", "1230");
+    CHECK_USERFUNC_SET("f(x) = 5 meter + x"); /* (issue #656)  */
+    CHECK_EVAL("f(2 meter)", "7 meter");      /* (issue #656)  */
+    CHECK_EVAL_FAIL("f(2)");                  /* (issue #656)  */
     /* Tests for priority management (issue #451) */
     CHECK_EVAL("lg 10^2", "2");
     CHECK_EVAL("frac 3!",  "0");
