@@ -417,14 +417,13 @@ void Editor::triggerAutoComplete()
         return;
 
     // No space after identifier.
-    if (lastToken.pos() + id.length() < subtext.length())
+    if (lastToken.pos() + lastToken.size() < subtext.length())
         return;
 
     QStringList choices(matchFragment(id));
 
-    // TODO: if we are assigning a user function, find matches in its arguments names and
-    //       replace variables names that collide. But we cannot know if we are assigning
-    //       a user function without evaluating the expression (a token scan will not be enough).
+    // If we are assigning a user function, find matches in its arguments names
+    // and replace variables names that collide
     if(Evaluator::instance()->isUserFunctionAssign())
     {
         for(int i=2; i<tokens.size(); ++i) {
@@ -477,12 +476,18 @@ void Editor::autoComplete(const QString& item)
 
     const QStringList str = item.split(':');
 
+    // Add leading space characters if any
+    QString newTokenText = str.at(0);
+    const int leadingSpaces = lastToken.size() - lastToken.text().length();
+    if (leadingSpaces > 0)
+        newTokenText = newTokenText.rightJustified(leadingSpaces + newTokenText.length(), ' ');
+
     blockSignals(true);
     QTextCursor cursor = textCursor();
     cursor.setPosition(lastToken.pos());
-    cursor.setPosition(lastToken.pos() + lastToken.text().length(), QTextCursor::KeepAnchor);
+    cursor.setPosition(lastToken.pos() + lastToken.size(), QTextCursor::KeepAnchor);
     setTextCursor(cursor);
-    insert(str.at(0));
+    insert(newTokenText);
     blockSignals(false);
 
     cursor = textCursor();
