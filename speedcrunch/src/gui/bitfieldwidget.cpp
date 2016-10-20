@@ -149,7 +149,7 @@ void BitFieldWidget::wheelEvent(QWheelEvent* we)
 
 void BitFieldWidget::updateBits(const Quantity& number)
 {
-    QString binaryNumberString = DMath::format(number, Quantity::Format::Binary());
+    QString binaryNumberString = DMath::format(number, Quantity::Format::Fixed() + Quantity::Format::Binary());
     QListIterator<BitWidget*> bitsIterator(m_bitWidgets);
 
     if (number.isZero() || !number.isInteger())

@@ -606,6 +606,8 @@ void Quantity::Format::serialize(QJsonObject& json) const
         json["base"] = QStringLiteral("Hexadecimal");
         break;
     case Base::Decimal:
+        json["base"] = QStringLiteral("Decimal");
+        break;
     case Base::Null:
         break;
     }
