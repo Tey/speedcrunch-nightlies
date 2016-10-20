@@ -94,6 +94,7 @@ void test_format()
     CHECK_FORMAT(f + Format::Precision(8), HNumber("-0.001"), "-0.00100000");
     CHECK_FORMAT(f + Format::Precision(9), HNumber("-0.001"), "-0.001000000");
     CHECK_FORMAT(f + Format::Precision(-1), HNumber("4.000000000000000000000000000000000000000000001"), "4");
+    CHECK_FORMAT(f + Format::Precision(-1) + Format::Hexadecimal(), HNumber("0.6"), "0x0.9999999999999999999A"); /* Issue 659 */
 
 
     // Engineering notation.

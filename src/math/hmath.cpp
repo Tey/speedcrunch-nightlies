@@ -778,17 +778,12 @@ char* _doFormat(cfloatnum x, signed char base, signed char expbase, char outmode
  */
 char* formatFixed(cfloatnum x, int prec, int base = 10)
 {
-    int scale = float_getlength(x) - float_getexponent(x) - 1;
-    if (scale < 0)
-        scale = 0;
     unsigned flags = IO_FLAG_SUPPRESS_PLUS + IO_FLAG_SUPPRESS_DOT + IO_FLAG_SUPPRESS_EXPZERO;
     if (base != 10)
         flags += IO_FLAG_SHOW_BASE + IO_FLAG_SHOW_EXPBASE;
     if (prec < 0) {
         flags |= IO_FLAG_SUPPRESS_TRL_ZERO;
         prec = HMATH_MAX_SHOWN;
-        if (scale < HMATH_MAX_SHOWN)
-            prec = scale;
     }
     char* result = _doFormat(x, base, base, IO_MODE_FIXPOINT, prec, flags);
     return result ? result : _doFormat(x, base, base, IO_MODE_SCIENTIFIC, HMATH_MAX_SHOWN, flags);
