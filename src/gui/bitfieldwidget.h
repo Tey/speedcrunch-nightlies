@@ -32,14 +32,13 @@ public:
     explicit BitWidget(int apos, QWidget* parent = 0);
 
     bool state() const { return m_state; }
-    void setState(bool state) { m_state = state; update(); }
+    void setState(bool state);
 
 signals:
     void stateChanged(bool);
 
 protected:
     void mouseReleaseEvent(QMouseEvent*);
-    void paintEvent(QPaintEvent*);
 
 private:
     enum {
