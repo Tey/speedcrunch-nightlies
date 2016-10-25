@@ -25,9 +25,9 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QListIterator>
-#include <QPainter>
 #include <QPaintEvent>
 #include <QPushButton>
+#include <QApplication>
 
 BitWidget::BitWidget(int bitPosition, QWidget* parent)
     : QLabel(parent),
@@ -39,6 +39,22 @@ BitWidget::BitWidget(int bitPosition, QWidget* parent)
     setToolTip(QString("2<sup>%1</sup> = %2")
         .arg(bitPosition)
         .arg(HMath::format(number, Quantity::Format::Decimal())));
+
+    setText(QString("%1").arg(bitPosition));
+    setObjectName("BitWidget");
+}
+
+void BitWidget::setState(bool state)
+{
+    if (state != m_state) {
+        m_state = state;
+        setStyleSheet(
+            QString("QLabel { background-color : %1; color : %2; }")
+                .arg(QApplication::palette().color(state ? QPalette::WindowText : QPalette::Window).name())
+                .arg(QApplication::palette().color(state ? QPalette::Window : QPalette::WindowText).name())
+        );
+        update();
+    }
 }
 
 void BitWidget::mouseReleaseEvent(QMouseEvent*)
@@ -47,20 +63,18 @@ void BitWidget::mouseReleaseEvent(QMouseEvent*)
     emit stateChanged(m_state);
 }
 
-void BitWidget::paintEvent(QPaintEvent* event)
-{
-    QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing);
-
-    if (m_state)
-        painter.fillRect(event->rect(), Qt::SolidPattern);
-    else
-        painter.drawRect(event->rect());
-}
-
 BitFieldWidget::BitFieldWidget(QWidget* parent) :
     QWidget(parent)
 {
+    setStyleSheet(QString("QLabel#BitWidget {"
+                          " qproperty-alignment: 'AlignHCenter | AlignVCenter';"
+                          " font: 500 10pt \"Arial\";"
+                          " border: 1px solid;"
+                          " background-color : %1; color : %2;"
+                          "}")
+                      .arg(QApplication::palette().color(QPalette::Window).name())
+                      .arg(QApplication::palette().color(QPalette::WindowText).name())
+                 );
     m_bitWidgets.reserve(NumberOfBits);
     for (int i = 0; i < NumberOfBits; ++i) {
         BitWidget* bitWidget = new BitWidget(i);
@@ -71,24 +85,13 @@ BitFieldWidget::BitFieldWidget(QWidget* parent) :
     QGridLayout* fieldLayout = new QGridLayout;
     int bitOffset = 0;
 
-    for (int column = 0; column < 17; ++column) {
+    for (int column = 1; column < 17; ++column) {
         if ((column % 2) == 0) {
             if ((column % 4) != 0)
                 continue;
 
             QLabel* topNumberLabel = new QLabel;
             QLabel* bottomNumberLabel = new QLabel;
-
-            int topNumber = NumberOfBits - column * 2;
-            int bottomNumber = topNumber - NumberOfBits / 2;
-
-            if (column == 0) {
-                --topNumber;
-                --bottomNumber;
-            }
-
-            topNumberLabel->setText(QString("%1").arg(topNumber));
-            bottomNumberLabel->setText(QString("%1").arg(bottomNumber));
 
             fieldLayout->addWidget(topNumberLabel, 0, column);
             fieldLayout->addWidget(bottomNumberLabel, 1, column);
@@ -110,19 +113,27 @@ BitFieldWidget::BitFieldWidget(QWidget* parent) :
         }
     }
 
+    // TODO: find some more justifiable size calculation.
+    int buttonHeight = m_bitWidgets.at(0)->height() * 4 / 3;
+    int buttonWidth = buttonHeight * 2;
+
     QPushButton* resetButton = new QPushButton("0");
+    resetButton->setFixedSize(buttonWidth, buttonHeight);
     resetButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     connect(resetButton, SIGNAL(clicked()), this, SLOT(resetBits()));
 
     QPushButton* invertButton = new QPushButton("~");
+    invertButton->setFixedSize(buttonWidth, buttonHeight);
     invertButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     connect(invertButton, SIGNAL(clicked()), this, SLOT(invertBits()));
 
     QPushButton* shiftLeftButton = new QPushButton("<<");
+    shiftLeftButton->setFixedSize(buttonWidth, buttonHeight);
     shiftLeftButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     connect(shiftLeftButton, SIGNAL(clicked()), this, SLOT(shiftBitsLeft()));
 
     QPushButton* shiftRightButton = new QPushButton(">>");
+    shiftRightButton->setFixedSize(buttonWidth, buttonHeight);
     shiftRightButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     connect(shiftRightButton, SIGNAL(clicked()), this, SLOT(shiftBitsRight()));
 
