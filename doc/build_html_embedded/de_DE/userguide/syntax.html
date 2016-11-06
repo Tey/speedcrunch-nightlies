@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de_DE">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Syntax</title>
+    
+    <link rel="stylesheet" href="../_static/quark.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../" type="text/css" />
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="top" title="SpeedCrunch 0.12 Dokumentation" href="../contents.html" />
+    <link rel="up" title="User Guide" href="index.html" />
+    <link rel="next" title="User-Defined Variables and Functions" href="advanced.html" />
+    <link rel="prev" title="First Steps" href="first_steps.html" /> 
+  </head>
+  <body role="document">
+  <table class="navbar navbar-top">
+    
+  <tr>
+    <td width="50%">
+      <a class="nav-item nav-item-0" 
+         href="../contents.html">SpeedCrunch 0.12 Dokumentation</a> &#187; <a class="nav-item nav-item-1"
+             href="index.html">User Guide</a>
+          
+    </td>
+
+    <td align="right" width="50%">
+      <a class="rel-item rel-item-1"
+           href="first_steps.html"
+           title="First Steps"
+           accesskey="P">zurück</a>
+         | 
+      <a class="rel-item rel-item-2"
+           href="advanced.html"
+           title="User-Defined Variables and Functions"
+           accesskey="N">weiter</a>
+         | 
+      <a class="rel-item rel-item-3"
+           href="../sc-functionindex.html"
+           title="Function Index"
+           >functions</a>
+         | 
+      <a class="rel-item rel-item-4"
+           href="../genindex.html"
+           title="Stichwortverzeichnis"
+           accesskey="I">Index</a>
+        
+      
+    </td>
+
+  </tr>
+
+  </table>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="syntax">
+<h1>Syntax</h1>
+<p>This part of the documentation explains the syntax of valid SpeedCrunch input. As you will see, SpeedCrunch honors most conventions for mathematical expressions. You will find using SpeedCrunch to be very natural and intuitive, especially so if you are already familiar with a programming language.</p>
+<div class="section" id="number-notation">
+<h2>Number Notation</h2>
+<div class="section" id="decimal-form">
+<h3>Decimal Form</h3>
+<p>When you would like to specify a non-integer value, simply enter the number as you would write it on paper,
+with either a period (<code class="docutils literal"><span class="pre">.</span></code>) or a comma (<code class="docutils literal"><span class="pre">,</span></code>) as the decimal separator. By default, these can be
+used interchangeably, i.e. both <code class="docutils literal"><span class="pre">1.234</span></code> and <code class="docutils literal"><span class="pre">1,234</span></code> represent the same number. However, this
+behavior can be changed; see <a class="reference internal" href="interface.html#radix-character"><span class="std std-ref">Radix Character</span></a> for more information.</p>
+<p>Trailing zeros after the decimal point (like in <code class="docutils literal"><span class="pre">12.300</span></code>) or leading zeros before it (<code class="docutils literal"><span class="pre">0012.3</span></code>) are redundant and can be included or omitted to the user&#8217;s preference. Expressions like <code class="docutils literal"><span class="pre">.5</span></code> as a shorthand notation for <code class="docutils literal"><span class="pre">0.5</span></code> are also permitted.</p>
+</div>
+<div class="section" id="scientific-notation">
+<span id="id1"></span><h3>Scientific Notation</h3>
+<p>When dealing with very small or very large numbers (think the size of an atom or of a galaxy) the notation above is inconvenient. These are more commonly expressed in scientific notation; for instance, 1.234*10<sup>-9</sup> is preferable to 0.000000001234.</p>
+<p>Naturally, in SpeedCrunch this could be written as <code class="docutils literal"><span class="pre">1.234*10^-9</span></code>, but there&#8217;s also a shorthand notation: <code class="docutils literal"><span class="pre">1.234e-9</span></code>. Here, the <code class="docutils literal"><span class="pre">e</span></code> represents <code class="docutils literal"><span class="pre">*10^</span></code>, but it is considered a part of the number literal and treated with higher precedence. For example, <code class="docutils literal"><span class="pre">1e2^3</span></code> is equivalent to <code class="docutils literal"><span class="pre">(1e2)^3</span> <span class="pre">=</span> <span class="pre">100^3</span></code>. The scale of a number (sometimes called its exponent) always begins with the scale character <code class="docutils literal"><span class="pre">E</span></code> or <code class="docutils literal"><span class="pre">e</span></code> followed by a signed integer. So <code class="docutils literal"><span class="pre">e+10</span></code>, <code class="docutils literal"><span class="pre">e-4</span></code>, <code class="docutils literal"><span class="pre">E-0</span></code> are all valid scale expressions. If the sign is &#8216;+&#8217;, you may simply omit it: <code class="docutils literal"><span class="pre">e0</span></code>, <code class="docutils literal"><span class="pre">E10</span></code>. The significand (i.e. the part preceding the exponent) is required; exactly one exponent must be specified.</p>
+<p>Compared to most calculators, SpeedCrunch can accept very large numbers without overflowing (e.g. both <code class="docutils literal"><span class="pre">1e+536870911</span></code> and <code class="docutils literal"><span class="pre">1e-536870911</span></code> are still valid). However, only about 78 significant digits are stored at any point. Any digits beyond that are lost.</p>
+</div>
+<div class="section" id="non-decimal-bases">
+<h3>Non-Decimal Bases</h3>
+<p>In addition to decimal (base-10) numbers, SpeedCrunch provides support for binary (base-2), octal (base-8) and hexadecimal (base-16) numbers.
+You can enter a number in any of these bases by marking it with the corresponding prefix:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">0b</span></code> or <code class="docutils literal"><span class="pre">0B</span></code> for <strong>binary</strong>, e.g. <code class="docutils literal"><span class="pre">0b10010</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">0o</span></code> or <code class="docutils literal"><span class="pre">0O</span></code> for <strong>octal</strong>, e.g. <code class="docutils literal"><span class="pre">0o1412</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">0d</span></code> or <code class="docutils literal"><span class="pre">0D</span></code> for <strong>decimal</strong>. These can be omitted since decimal is the default base.</li>
+<li><code class="docutils literal"><span class="pre">0x</span></code>, <code class="docutils literal"><span class="pre">0X</span></code>, or <code class="docutils literal"><span class="pre">#</span></code> for <strong>hexadecimal</strong>. The additional six digits are represented by the upper or lower case letters <code class="docutils literal"><span class="pre">a</span></code> to <code class="docutils literal"><span class="pre">f</span></code>, e.g. <code class="docutils literal"><span class="pre">0xdeadbeef</span></code> or <code class="docutils literal"><span class="pre">0xDEADBEEF</span></code>.</li>
+</ul>
+<p>You may even enter fractional values in any of these bases. Note that scientific notation is not
+supported for non-decimal bases, however. Examples:</p>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch"><div class="highlight"><pre><span class="mb">0b1.01</span><span class="ge"></span>
+<span class="ge">= 1.25</span>
+
+<span class="mh">0xf.a</span><span class="ge"></span>
+<span class="ge">= 15.625</span>
+</pre></div>
+</div>
+</td></tr></tbody></table><p>To have SpeedCrunch output its results in a base other than decimal, you may use one of the functions <a class="reference internal" href="../reference/integer.html#sc.bin" title="bin"><code class="xref sc sc-func docutils literal"><span class="pre">bin()</span></code></a>, <a class="reference internal" href="../reference/integer.html#sc.oct" title="oct"><code class="xref sc sc-func docutils literal"><span class="pre">oct()</span></code></a>, <a class="reference internal" href="../reference/integer.html#sc.dec" title="dec"><code class="xref sc sc-func docutils literal"><span class="pre">dec()</span></code></a>, or <a class="reference internal" href="../reference/integer.html#sc.hex" title="hex"><code class="xref sc sc-func docutils literal"><span class="pre">hex()</span></code></a>:</p>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch"><div class="highlight"><pre><span class="n">hex</span><span class="p">(</span><span class="mi">12341</span><span class="p">)</span><span class="ge"></span>
+<span class="ge">= 0x3035</span>
+</pre></div>
+</div>
+</td></tr></tbody></table><p>The effect of these functions only applies to the immediate result and doesn&#8217;t carry to future
+operations:</p>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch"><div class="highlight"><pre><span class="mh">0x2 </span><span class="o">*</span> <span class="n">hex</span><span class="p">(</span><span class="mi">12341</span><span class="p">)</span><span class="ge"></span>
+<span class="ge">= 24682</span>
+</pre></div>
+</div>
+</td></tr></tbody></table><p>To change the base that is used for displaying results, select one of the corresponding settings in <span class="menuselection">Settings ‣ Result Format</span>.</p>
+<p>SpeedCrunch stores integers with a precision of up to 256 bits. Since this would be unwieldy,
+the binary representation of a negative number in SpeedCrunch is <em>not</em> its two&#8217;s complement.
+Instead, like with other bases, the value and the sign are represented separately:</p>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch"><div class="highlight"><pre><span class="n">bin</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="ge"></span>
+<span class="ge">= -0b1</span>
+</pre></div>
+</div>
+</td></tr></tbody></table><p>See <a class="reference internal" href="../reference/integer.html#sc.mask" title="mask"><code class="xref sc sc-func docutils literal"><span class="pre">mask()</span></code></a> and <a class="reference internal" href="../reference/integer.html#sc.unmask" title="unmask"><code class="xref sc sc-func docutils literal"><span class="pre">unmask()</span></code></a> to convert a negative number into the two&#8217;s complement form.</p>
+<p>Any integer larger than the 256-bit limit will be silently converted into a floating point number, making it susceptible to rounding errors.
+To specify large integers, using the shift operators (<code class="docutils literal"><span class="pre">1</span> <span class="pre">&lt;&lt;</span> <span class="pre">n</span></code>) is preferable to exponentiation (<code class="docutils literal"><span class="pre">2</span> <span class="pre">^</span> <span class="pre">n</span></code>) as the latter are floating point
+calculations and thus susceptible to rounding errors.</p>
+</div>
+</div>
+<div class="section" id="operators-and-precedence">
+<h2>Operators and Precedence</h2>
+<p>When writing an expression like <code class="docutils literal"><span class="pre">10+5*4</span></code>, which operation will be executed first? The common rules of operator precedence tell us that in this case multipication shall be computed first, hence the result is <code class="docutils literal"><span class="pre">30</span></code>. We also distinguish <strong>unary</strong> operators (which act on a single number/operand) and <strong>binary</strong> operators (which link two operands).</p>
+<p>SpeedCrunch supports the following operators, listed in order of decreasing precedence:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="53%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Description</th>
+<th class="head">Examples</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">(...)</span></code></td>
+<td><dl class="first last docutils">
+<dt><strong>Parentheses</strong></dt>
+<dd>Parentheses mark precedence
+explicitly.</dd>
+</dl>
+</td>
+<td><code class="docutils literal"><span class="pre">(2+3)*4</span> <span class="pre">=</span> <span class="pre">5*4</span> <span class="pre">=</span> <span class="pre">20</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">x!</span></code></td>
+<td><dl class="first last docutils">
+<dt><strong>Factorial</strong></dt>
+<dd>Computes the factorial of its
+argument. See also <a class="reference internal" href="../reference/basic.html#sc.gamma" title="gamma"><code class="xref sc sc-func docutils literal"><span class="pre">gamma()</span></code></a>.</dd>
+</dl>
+</td>
+<td><code class="docutils literal"><span class="pre">5!</span> <span class="pre">=</span> <span class="pre">120</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">a</span> <span class="pre">^</span> <span class="pre">b</span></code>, <code class="docutils literal"><span class="pre">a</span> <span class="pre">**</span> <span class="pre">b</span></code></td>
+<td><dl class="first last docutils">
+<dt><strong>Exponentiation</strong></dt>
+<dd>Both variants are equivalent. Note
+that the power operation is
+<em>right-associative</em>, i.e. it is
+evaluated from right to left.</dd>
+</dl>
+</td>
+<td><code class="docutils literal"><span class="pre">2^2^3</span> <span class="pre">=</span> <span class="pre">2^8</span> <span class="pre">=</span> <span class="pre">256</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">+x</span></code>, <code class="docutils literal"><span class="pre">-x</span></code></td>
+<td><strong>Unary plus and minus</strong></td>
+<td><code class="docutils literal"><span class="pre">--5</span> <span class="pre">=</span> <span class="pre">+5</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">a</span> <span class="pre">\</span> <span class="pre">b</span></code></td>
+<td><dl class="first last docutils">
+<dt><strong>Integer division</strong></dt>
+<dd>Divides the operands and truncates
+the result to an integer.</dd>
+</dl>
+</td>
+<td><code class="docutils literal"><span class="pre">5\4</span> <span class="pre">=</span> <span class="pre">1</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span></code>, <code class="docutils literal"><span class="pre">a</span> <span class="pre">b</span></code>, <code class="docutils literal"><span class="pre">a</span> <span class="pre">/</span> <span class="pre">b</span></code></td>
+<td><dl class="first docutils">
+<dt><strong>Multiplication and division</strong></dt>
+<dd>In many situations, <em>implicit
+multiplication</em> allows writing
+multiplications without the <code class="docutils literal"><span class="pre">*</span></code>
+operator.</dd>
+</dl>
+<div class="last versionadded">
+<p><span class="versionmodified">Neu in Version 0.12: </span>Implicit multiplication was added
+SpeedCrunch 0.12.</p>
+</div>
+</td>
+<td><code class="docutils literal"><span class="pre">3</span> <span class="pre">sqrt(2)</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code>, <code class="docutils literal"><span class="pre">a</span> <span class="pre">-</span> <span class="pre">b</span></code></td>
+<td><strong>Addition and subtraction</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">a</span> <span class="pre">&lt;&lt;</span> <span class="pre">n</span></code>, <code class="docutils literal"><span class="pre">a</span> <span class="pre">&gt;&gt;</span> <span class="pre">n</span></code></td>
+<td><dl class="first last docutils">
+<dt><strong>Left/right arithmetic shifts</strong></dt>
+<dd>Shifts the first operand left/right
+by <code class="docutils literal"><span class="pre">n</span></code> bits. See also <a class="reference internal" href="../reference/integer.html#sc.shl" title="shl"><code class="xref sc sc-func docutils literal"><span class="pre">shl()</span></code></a>
+and <a class="reference internal" href="../reference/integer.html#sc.shr" title="shr"><code class="xref sc sc-func docutils literal"><span class="pre">shr()</span></code></a>.</dd>
+</dl>
+</td>
+<td><p class="first"><code class="docutils literal"><span class="pre">0b11&lt;&lt;1</span> <span class="pre">=</span> <span class="pre">0b110</span></code></p>
+<p class="last"><code class="docutils literal"><span class="pre">0b100&gt;&gt;2</span> <span class="pre">=</span> <span class="pre">0b1</span></code></p>
+</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">a</span> <span class="pre">&amp;</span> <span class="pre">b</span></code></td>
+<td><dl class="first last docutils">
+<dt><strong>Bitwise AND</strong></dt>
+<dd>See also <a class="reference internal" href="../reference/integer.html#sc.and" title="and"><code class="xref sc sc-func docutils literal"><span class="pre">and()</span></code></a>.</dd>
+</dl>
+</td>
+<td><code class="docutils literal"><span class="pre">0b11</span> <span class="pre">&amp;</span> <span class="pre">0b10</span> <span class="pre">=</span> <span class="pre">0b10</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">a</span> <span class="pre">|</span> <span class="pre">b</span></code></td>
+<td><dl class="first last docutils">
+<dt><strong>Bitwise OR</strong></dt>
+<dd>See also <a class="reference internal" href="../reference/integer.html#sc.or" title="or"><code class="xref sc sc-func docutils literal"><span class="pre">or()</span></code></a>.</dd>
+</dl>
+</td>
+<td><code class="docutils literal"><span class="pre">0b10</span> <span class="pre">|</span> <span class="pre">0b01</span> <span class="pre">=</span> <span class="pre">0b11</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">-&gt;</span></code>, <code class="docutils literal"><span class="pre">in</span></code></td>
+<td><dl class="first last docutils">
+<dt><strong>Unit conversion</strong></dt>
+<dd>Convert the operand into the given
+unit. Both forms are equivalent. See
+<a class="reference internal" href="advanced.html#units"><span class="std std-ref">Units</span></a> for more information.</dd>
+</dl>
+</td>
+<td><p class="first"><code class="docutils literal"><span class="pre">1000</span> <span class="pre">meter</span> <span class="pre">in</span> <span class="pre">mile</span></code></p>
+<p class="last"><code class="docutils literal"><span class="pre">1000</span> <span class="pre">meter</span> <span class="pre">-&gt;</span> <span class="pre">mile</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="deprecated-operators">
+<h2>Deprecated Operators</h2>
+<p>The following operators used to be supported, but were either removed from recent SpeedCrunch
+versions or are considered deprecated. Generally, these features were removed because of significant problems
+so you may want to avoid them even if they&#8217;re still supported in your version of SpeedCrunch.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="53%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operator</th>
+<th class="head">Description</th>
+<th class="head">Examples</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">x%</span></code></td>
+<td><dl class="first docutils">
+<dt><strong>Percent operator</strong></dt>
+<dd>Equivalent to multiplication with
+0.01.</dd>
+</dl>
+<div class="last deprecated">
+<p><span class="versionmodified">Veraltet ab Version 0.12: </span>This operator was <strong>removed</strong> in
+SpeedCrunch 0.12 as it was confusing and not very useful.
+The reasons for its removal are discussed in more detail
+in <a class="reference external" href="https://bitbucket.org/heldercorreia/speedcrunch/issues/239/more-intuitive-and-useful-percentage">issue #239</a>.</p>
+</div>
+</td>
+<td><code class="docutils literal"><span class="pre">10%</span> <span class="pre">=</span> <span class="pre">0.1</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">f</span> <span class="pre">x</span></code></td>
+<td><dl class="first docutils">
+<dt><strong>Simplified function syntax</strong></dt>
+<dd>Allows omitting the parentheses when
+calling a function.</dd>
+</dl>
+<div class="last deprecated">
+<p><span class="versionmodified">Veraltet ab Version 0.12: </span>Use of this feature is
+discouraged because it allows
+for very ambiguous expressions. It
+will likely be removed in a future release.</p>
+</div>
+</td>
+<td><code class="docutils literal"><span class="pre">sqrt</span> <span class="pre">2</span> <span class="pre">=</span> <span class="pre">sqrt(2)</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <table class="navbar navbar-bottom">
+    
+  <tr>
+    <td width="50%">
+      <a class="nav-item nav-item-0" 
+         href="../contents.html">SpeedCrunch 0.12 Dokumentation</a> &#187; <a class="nav-item nav-item-1"
+             href="index.html">User Guide</a>
+          
+    </td>
+
+    <td align="right" width="50%">
+      <a class="rel-item rel-item-1"
+           href="first_steps.html"
+           title="First Steps"
+           >zurück</a>
+         | 
+      <a class="rel-item rel-item-2"
+           href="advanced.html"
+           title="User-Defined Variables and Functions"
+           >weiter</a>
+         | 
+      <a class="rel-item rel-item-3"
+           href="../sc-functionindex.html"
+           title="Function Index"
+           >functions</a>
+         | 
+      <a class="rel-item rel-item-4"
+           href="../genindex.html"
+           title="Stichwortverzeichnis"
+           >Index</a>
+        
+      
+    </td>
+
+  </tr>
+
+    <tr>
+      <td colspan="2" align="center">
+        
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, The SpeedCrunch Developers.
+      Mit <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8 erstellt.
+    </div>
+      </td>
+    </tr>
+  </table>
+
+  </body>
+</html>
