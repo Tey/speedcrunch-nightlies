@@ -1,0 +1,251 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de_DE">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Color Scheme File Format</title>
+    
+    <link rel="stylesheet" href="../_static/quark.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../" type="text/css" />
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="top" title="SpeedCrunch 0.12 Dokumentation" href="../contents.html" />
+    <link rel="up" title="Advanced Topics" href="index.html" />
+    <link rel="prev" title="Advanced Topics" href="index.html" /> 
+  </head>
+  <body role="document">
+  <table class="navbar navbar-top">
+    
+  <tr>
+    <td width="50%">
+      <a class="nav-item nav-item-0" 
+         href="../contents.html">SpeedCrunch 0.12 Dokumentation</a> &#187; <a class="nav-item nav-item-1"
+             href="index.html">Advanced Topics</a>
+          
+    </td>
+
+    <td align="right" width="50%">
+      <a class="rel-item rel-item-1"
+           href="index.html"
+           title="Advanced Topics"
+           accesskey="P">zurück</a>
+         | 
+      <a class="rel-item rel-item-2"
+           href="../sc-functionindex.html"
+           title="Function Index"
+           >functions</a>
+         | 
+      <a class="rel-item rel-item-3"
+           href="../genindex.html"
+           title="Stichwortverzeichnis"
+           accesskey="I">Index</a>
+        
+      
+    </td>
+
+  </tr>
+
+  </table>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="color-scheme-file-format">
+<span id="color-schemes"></span><h1>Color Scheme File Format</h1>
+<div class="versionadded">
+<p><span class="versionmodified">Neu in Version 0.12: </span>Support for custom color schemes using this format was introduced in SpeedCrunch 0.12.</p>
+</div>
+<p>SpeedCrunch uses a simple <abbr title="JavaScript Object Notation">JSON</abbr>-based file format
+for color scheme definitions. New color schemes may easily be created, used and shared
+without having to recompile SpeedCrunch.</p>
+<p>In addition to the color schemes integrated into the application, color scheme files
+are loaded from the following directory:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Windows: <code class="file docutils literal"><span class="pre">C:/Users/&lt;USERNAME&gt;/AppData/Roaming/SpeedCrunch/color-schemes</span></code></li>
+<li>Linux/Unix: <code class="file docutils literal"><span class="pre">~/.local/SpeedCrunch/color-schemes</span></code></li>
+<li>OS X: <code class="file docutils literal"><span class="pre">~/Library/Application</span> <span class="pre">Support/SpeedCrunch/color-schemes</span></code></li>
+<li>When using a portable version of SpeedCrunch on any operating system, additional color schemes
+are loaded from the <code class="file docutils literal"><span class="pre">color-schemes</span></code> subdirectory in the portable application directory.</li>
+</ul>
+</div></blockquote>
+<p>All color scheme files must have the extension <code class="docutils literal"><span class="pre">.json</span></code>. The file name without the extension
+will be displayed in the color scheme menu (<span class="menuselection">Settings ‣ Display ‣ Color Scheme</span>).
+The contents of the color scheme directory are retrieved when SpeedCrunch is launched, so to have it pick up
+a newly-added color scheme file, it is necessary to restart the application. However, color scheme
+files are always reloaded when a color scheme is selected in the menu; that means after making
+changes to a color scheme file, re-selecting it in SpeedCrunch will reload the color scheme and show
+the changes. This allows for quick feedback when editing color schemes.</p>
+<p>The files themselves are simple <a class="reference external" href="http://json.org">JSON</a> files containing a single JSON object mapping
+role names to color values. By way of example, this is the color scheme definition for
+the &#8220;Terminal&#8221; scheme that ships with SpeedCrunch:</p>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;cursor&quot;</span><span class="p">:</span> <span class="s2">&quot;#8C648C&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;number&quot;</span><span class="p">:</span> <span class="s2">&quot;#FFFFFF&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;parens&quot;</span><span class="p">:</span> <span class="s2">&quot;#AD7FA8&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;#689FCF&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;comment&quot;</span><span class="p">:</span> <span class="s2">&quot;#894B7A&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;matched&quot;</span><span class="p">:</span> <span class="s2">&quot;#64507B&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;#EF2928&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;#C4A000&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;#4A9A07&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;scrollbar&quot;</span><span class="p">:</span> <span class="s2">&quot;#8C648C&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;separator&quot;</span><span class="p">:</span> <span class="s2">&quot;#AD7FA8&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;background&quot;</span><span class="p">:</span> <span class="s2">&quot;#300A24&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;editorbackground&quot;</span><span class="p">:</span> <span class="s2">&quot;#26001A&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td></tr></tbody></table><p>Here, the keys are <em>roles</em>, each referring to elements in the SpeedCrunch history view
+and expression editor that can be colored. The values specify the colors for these
+roles. Color values may be any valid argument to the method <a class="reference external" href="http://doc.qt.io/qt-5/qcolor.html#setNamedColor"><code class="docutils literal"><span class="pre">QColor::setNamedColor</span></code></a>; the
+recommended form are simple HTML-style <code class="docutils literal"><span class="pre">#RRGGBB</span></code> definitions, using two
+hexadecimal digits per color component as in the example.</p>
+<p>Any unknown roles will be ignored. If a role is not defined in the color scheme, corresponding
+elements will be using the application&#8217;s default text color (or, for background roles, the default
+background color). However, if the file is not valid JSON or otherwise does not follow the format
+described above, the color scheme will not load and SpeedCrunch will use the fallback colors
+for every element.</p>
+<div class="section" id="supported-color-roles">
+<h2>Supported Color Roles</h2>
+<p>The following role names are supported by SpeedCrunch:</p>
+<dl class="describe">
+<dt>
+<code class="descname">cursor</code></dt>
+<dd><p>The cursor in the expression editor.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">number</code></dt>
+<dd><p>Any number.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">parens</code></dt>
+<dd><p>Any parentheses. This role defines the text color, both for regular as well as for
+highlighted matching parentheses.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">result</code></dt>
+<dd><p>The result value in the history view.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">comment</code></dt>
+<dd><p>Any comments.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">matched</code></dt>
+<dd><p>The background color for matching parentheses. When moving the cursor on a parenthesis,
+both it and its corresponding counterpart will be highlighted by changing their background
+to this color.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">function</code></dt>
+<dd><p>The names of defined functions, built-in as well as user-defined functions.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">operator</code></dt>
+<dd><p>Any operator.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">variable</code></dt>
+<dd><p>The names of any variables or built-in constants.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">scrollbar</code></dt>
+<dd><p>The color of the history view&#8217;s scrollbar.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">separator</code></dt>
+<dd><p>Separators; notably, the semicolon (<code class="docutils literal"><span class="pre">;</span></code>) used for defining and using multi-argument functions.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">background</code></dt>
+<dd><p>The background color of the main history view.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt>
+<code class="descname">editorbackground</code></dt>
+<dd><p>The background color of the expression editor.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <table class="navbar navbar-bottom">
+    
+  <tr>
+    <td width="50%">
+      <a class="nav-item nav-item-0" 
+         href="../contents.html">SpeedCrunch 0.12 Dokumentation</a> &#187; <a class="nav-item nav-item-1"
+             href="index.html">Advanced Topics</a>
+          
+    </td>
+
+    <td align="right" width="50%">
+      <a class="rel-item rel-item-1"
+           href="index.html"
+           title="Advanced Topics"
+           >zurück</a>
+         | 
+      <a class="rel-item rel-item-2"
+           href="../sc-functionindex.html"
+           title="Function Index"
+           >functions</a>
+         | 
+      <a class="rel-item rel-item-3"
+           href="../genindex.html"
+           title="Stichwortverzeichnis"
+           >Index</a>
+        
+      
+    </td>
+
+  </tr>
+
+    <tr>
+      <td colspan="2" align="center">
+        
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, The SpeedCrunch Developers.
+      Mit <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8 erstellt.
+    </div>
+      </td>
+    </tr>
+  </table>
+
+  </body>
+</html>

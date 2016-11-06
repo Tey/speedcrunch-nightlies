@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-QT_TARBALL=qt-everywhere-opensource-src-5.6.1.tar.xz
-QT_TARBALL_URL=http://download.qt.io/official_releases/qt/5.6/5.6.1/single/$QT_TARBALL
+QT_TARBALL=qt-everywhere-opensource-src-5.6.2.tar.xz
+QT_TARBALL_URL=http://download.qt.io/official_releases/qt/5.6/5.6.2/single/$QT_TARBALL
 
 BASE_DIR=~
 QT_SOURCE_DIR=$BASE_DIR/qt-source

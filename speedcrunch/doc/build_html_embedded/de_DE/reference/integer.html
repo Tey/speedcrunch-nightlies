@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../_static/quark.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../" type="text/css" />
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
     <link rel="top" title="SpeedCrunch 0.12 Dokumentation" href="../contents.html" />
     <link rel="up" title="Reference" href="index.html" />
     <link rel="next" title="Statistical Functions" href="statistical.html" />
@@ -88,11 +89,11 @@
 <dt id="sc.not">
 <code class="descname">not</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span></dt>
 <dd><p>The <a class="reference internal" href="#sc.not" title="not"><code class="xref sc sc-func docutils literal"><span class="pre">not()</span></code></a> function is defined by <code class="docutils literal"><span class="pre">not(x)</span> <span class="pre">=</span> <span class="pre">-x-1</span></code>, giving the same result as the one&#8217;s complement operator <code class="docutils literal"><span class="pre">~</span></code> in C/C++.</p>
-<div class="admonition warning">
+<table class="-x-quark-box -x-quark-admonition -x-quark-warning"><tbody><tr><td width="100%" class="-x-quark-box-td"><div class="admonition warning">
 <p class="first admonition-title">Warnung</p>
 <p class="last">This function does <em>not</em> simply flip the bits!</p>
 </div>
-</dd></dl>
+</td></tr></tbody></table></dd></dl>
 
 <dl class="function">
 <dt id="sc.shl">
@@ -140,11 +141,11 @@
 <dd><p>Returns the lowest <code class="docutils literal"><span class="pre">n</span></code> bits from <code class="docutils literal"><span class="pre">x</span></code>. For this, <code class="docutils literal"><span class="pre">x</span></code> must be in the range -2<sup>255</sup> &lt;= <code class="docutils literal"><span class="pre">x</span></code> &lt;= +2<sup>256</sup>-1, and <code class="docutils literal"><span class="pre">n</span></code> must be an integer, 1 &lt;= <code class="docutils literal"><span class="pre">n</span></code> &lt;= 255. <code class="docutils literal"><span class="pre">x</span></code> is rounded toward zero.</p>
 <p>The result is always unsigned.</p>
 <p>Example: Getting the two&#8217;s complement of -1 in a 16-bit system:</p>
-<div class="highlight-speedcrunch"><div class="highlight"><pre><span class="n">hex</span><span class="p">(</span><span class="n">mask</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="mi">16</span><span class="p">))</span><span class="ge"></span>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch"><div class="highlight"><pre><span class="n">hex</span><span class="p">(</span><span class="n">mask</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="mi">16</span><span class="p">))</span><span class="ge"></span>
 <span class="ge">= 0xFFFF</span>
 </pre></div>
 </div>
-</dd></dl>
+</td></tr></tbody></table></dd></dl>
 
 <dl class="function">
 <dt id="sc.unmask">
@@ -152,13 +153,13 @@
 <dd><p>Takes the lower <code class="docutils literal"><span class="pre">n</span></code> bits from <code class="docutils literal"><span class="pre">x</span></code> and sign-extends them to full 256 bits. This means that bit at position <em>n-1</em> is copied to all upper bits.</p>
 <p>The value of <code class="docutils literal"><span class="pre">x</span></code> must be in the range <em>-2</em> <sup>255</sup> <em>&lt;= x &lt;= +2</em> <sup>256</sup> <em>-1</em>, and <code class="docutils literal"><span class="pre">n</span></code> must be an integer, <em>1 &lt;= n &lt;= 255</em>. <code class="docutils literal"><span class="pre">x</span></code> is rounded toward zero.</p>
 <p>Example: Converting a number in two&#8217;s complement representation to a signed number:</p>
-<div class="highlight-speedcrunch"><div class="highlight"><pre><span class="n">unmask</span><span class="p">(</span><span class="mh">0xFFFF</span><span class="p">;</span> <span class="mi">16</span><span class="p">)</span><span class="ge"></span>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch"><div class="highlight"><pre><span class="n">unmask</span><span class="p">(</span><span class="mh">0xFFFF</span><span class="p">;</span> <span class="mi">16</span><span class="p">)</span><span class="ge"></span>
 <span class="ge">= -1</span>
 <span class="n">unmask</span><span class="p">(</span><span class="mh">0x1FFF</span><span class="p">;</span> <span class="mi">16</span><span class="p">)</span><span class="ge"></span>
 <span class="ge">= 0x1FFF</span>
 </pre></div>
 </div>
-</dd></dl>
+</td></tr></tbody></table></dd></dl>
 
 </div>
 <div class="section" id="numeral-bases">
@@ -209,7 +210,7 @@ that is used for displaying results, select one of the corresponding settings in
 <code class="descname">round</code><span class="sig-paren">(</span><em>x</em><span class="optional">[</span>; <em>n</em><span class="optional">]</span><span class="sig-paren">)</span></dt>
 <dd><p>Round <code class="docutils literal"><span class="pre">x</span></code> to the nearest number with <code class="docutils literal"><span class="pre">n</span></code> fractional digits; <code class="docutils literal"><span class="pre">n</span></code> may be omitted, in which case <code class="docutils literal"><span class="pre">x</span></code> is rounded to the closest integer. Ties are broken by rounding to the nearest <em>even</em> integer. This rounding strategy, commonly known as <em>Banker&#8217;s rounding</em>, serves to avoid a bias (for instance when averaging or summing).</p>
 <p>Example:</p>
-<div class="highlight-speedcrunch"><div class="highlight"><pre><span class="n">round</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="ge"></span>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch"><div class="highlight"><pre><span class="n">round</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="ge"></span>
 <span class="ge">= 0</span>
 
 <span class="n">round</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span><span class="ge"></span>
@@ -222,21 +223,21 @@ that is used for displaying results, select one of the corresponding settings in
 <span class="ge">= 12300</span>
 </pre></div>
 </div>
-<p>Only real, dimensionless arguments are allowed.</p>
+</td></tr></tbody></table><p>Only real, dimensionless arguments are allowed.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="sc.trunc">
 <code class="descname">trunc</code><span class="sig-paren">(</span><em>x</em><span class="optional">[</span>; <em>n</em><span class="optional">]</span><span class="sig-paren">)</span></dt>
 <dd><p>Truncate (rounds toward zero) <code class="docutils literal"><span class="pre">x</span></code> to the next number with <code class="docutils literal"><span class="pre">n</span></code> fractional digits; <code class="docutils literal"><span class="pre">n</span></code> may be omitted, in which case <code class="docutils literal"><span class="pre">x</span></code> is rounded to integer. Only real, dimensionless arguments are allowed.</p>
-<div class="admonition seealso">
+<table class="-x-quark-box -x-quark-admonition -x-quark-seealso"><tbody><tr><td width="100%" class="-x-quark-box-td"><div class="admonition seealso">
 <p class="first admonition-title">Siehe auch</p>
 <div class="last line-block">
 <div class="line"><a class="reference internal" href="basic.html#sc.int" title="int"><code class="xref sc sc-func docutils literal"><span class="pre">int()</span></code></a></div>
 <div class="line"><a class="reference internal" href="basic.html#sc.frac" title="frac"><code class="xref sc sc-func docutils literal"><span class="pre">frac()</span></code></a></div>
 </div>
 </div>
-</dd></dl>
+</td></tr></tbody></table></dd></dl>
 
 </div>
 <div class="section" id="integer-division">
@@ -265,10 +266,10 @@ that is used for displaying results, select one of the corresponding settings in
 If a rational number is given as <code class="docutils literal"><span class="pre">p/q</span></code>, its reduced form is <code class="docutils literal"><span class="pre">(p</span> <span class="pre">/</span> <span class="pre">gcd(p;</span> <span class="pre">q))</span> <span class="pre">/</span> <span class="pre">(q</span> <span class="pre">/</span> <span class="pre">gcd(p;</span> <span class="pre">q))</span></code>.</p>
 <p>A closely related function is <code class="docutils literal"><span class="pre">lcm()</span></code> (<em>least common multiple</em>). While <code class="docutils literal"><span class="pre">lcm()</span></code> is not defined by default
 in SpeedCrunch, you can define it yourself as:</p>
-<div class="highlight-speedcrunch"><div class="highlight"><pre><span class="n">lcm</span><span class="p">(</span><span class="n">n1</span><span class="p">;</span> <span class="n">n2</span><span class="p">)</span> <span class="o">=</span> <span class="n">n1</span> <span class="o">*</span> <span class="n">n2</span> <span class="o">/</span> <span class="n">gcd</span><span class="p">(</span><span class="n">n1</span><span class="p">;</span> <span class="n">n2</span><span class="p">)</span>
+<table class="-x-quark-literal-block"><tbody><tr><td width="100%" class="-x-quark-literal-block-td"><div class="highlight-speedcrunch"><div class="highlight"><pre><span class="n">lcm</span><span class="p">(</span><span class="n">n1</span><span class="p">;</span> <span class="n">n2</span><span class="p">)</span> <span class="o">=</span> <span class="n">n1</span> <span class="o">*</span> <span class="n">n2</span> <span class="o">/</span> <span class="n">gcd</span><span class="p">(</span><span class="n">n1</span><span class="p">;</span> <span class="n">n2</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Only real, integer arguments are allowed.</p>
+</td></tr></tbody></table><p>Only real, integer arguments are allowed.</p>
 </dd></dl>
 
 </div>
@@ -320,7 +321,7 @@ in SpeedCrunch, you can define it yourself as:</p>
         
     <div class="footer" role="contentinfo">
         &#169; Copyright 2016, The SpeedCrunch Developers.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+      Mit <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8 erstellt.
     </div>
       </td>
     </tr>
