@@ -153,7 +153,8 @@ else:
     }
     html_additional_pages = {
         "index": "entrance.html",
-        "download": "download.html"
+        "download": "download.html",
+        "donate": "donate.html"
     }
 
 # The name for this set of Sphinx documents.  If None, it defaults to

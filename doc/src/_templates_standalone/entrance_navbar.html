@@ -3,21 +3,23 @@
 {% block navcontent %}
 <div class="collapse navbar-collapse nav-collapse">
   <ul class="nav navbar-nav">
-    <li><a href="{{ pathto('index') }}">{{  _('Home') }}</a></li>
-    <li><a href="{{ pathto('download') }}">{{  _('Get It') }}</a></li>
-    <li><a href="{{ pathto('introduction') }}">{{  _('Documentation') }}</a></li>
-    <li><a href="https://groups.google.com/forum/#!forum/speedcrunch">{{  _('Forum') }}</a></li>
+    <li><a href="{{ pathto('index') }}"><i class="fa fa-home"></i>&nbsp;{{  _('Home') }}</a></li>
+    <li><a href="{{ pathto('download') }}"><i class="fa fa-download"></i>&nbsp;{{  _('Get It') }}</a></li>
+    <li><a href="{{ pathto('introduction') }}"><i class="fa fa-book"></i>&nbsp;{{  _('Documentation') }}</a></li>
     <li class="dropdown">
       <a role="button"
          id="languageSelector"
          class="dropdown-toggle"
          data-toggle="dropdown"
          data-target="#"
-         href="">  {{_('Contribute')}}<b class="caret"></b></a>
+         href=""><i class="fa fa-user"></i>&nbsp;  {{_('Help')}}<b class="caret"></b></a>
       <ul class="dropdown-menu">                                      
-       <li> <a href="https://bitbucket.org/heldercorreia/speedcrunch"> <i class="fa fa-bitbucket"></i>&nbsp;Bitbucket </a></li>
-       <li> <a href="https://www.transifex.com/heldercorreia/speedcrunch/">{{ _('Help translating') }} </a></li>
-       <li> <a href="https://bitbucket.org/heldercorreia/speedcrunch/issues">{{ _('Report a bug') }} </a></li>
+       <li> <a href="https://bitbucket.org/heldercorreia/speedcrunch/issues"> <i class="fa fa-bug"></i>&nbsp;{{ _('Report Bug') }} </a></li>
+       <li> <a href="https://bitbucket.org/heldercorreia/speedcrunch/issues"> <i class="fa fa-thumbs-up"></i>&nbsp;{{ _('Request Feature') }} </a></li>
+       <li> <a href="https://groups.google.com/forum/#!forum/speedcrunch"> <i class="fa fa-at"></i>&nbsp;{{ _('Send Message') }} </a></li>
+       <li> <a href="https://www.transifex.com/heldercorreia/speedcrunch/"> <i class="fa fa-language"></i>&nbsp;{{ _('Translate') }} </a></li>
+       <li> <a href="https://bitbucket.org/heldercorreia/speedcrunch"> <i class="fa fa-git"></i>&nbsp;{{ _('Code') }} </a></li>
+       <li> <a href="{{ pathto('donate') }}"> <i class="fa fa-money"></i>&nbsp;{{ _('Donate') }} </a></li>
       </ul>
     </li>
 
