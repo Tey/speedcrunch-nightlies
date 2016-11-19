@@ -1,0 +1,48 @@
+{% extends "entrance.html" %}
+
+{%- block content %}
+  {{ entranceNavBar() }}
+  <div class="container">
+    <ul class="breadcrumb">
+      <li><a href="{{ pathto('index') }}">{{ _('Home') }} </a></li>
+      <li class="active">{{ _('Donate')}} </li>
+    </ul>
+
+    <div class="container">
+      <h1>{% trans %}Thank you for helping{% endtrans %}</h1>
+      <p>
+        {% trans %}SpeedCrunch is and will always be available to you at no cost.{% endtrans %}
+        {% trans %}However, if you use this application on a regular basis and you find it very useful for performing on your work, studies or private affairs, please consider supporting it financially.{% endtrans %}
+        {% trans %}Any contribution, no matter how small, will help supporting the expenses of server hosting, internet domain and computers for further development.{% endtrans %}
+        {% trans %}It will also somehow compensate for the many thousands of hours spent by volunteers since 2004 on this project.{% endtrans %}
+        {% trans %}As a result, much more frequent releases will be possible with your help.{% endtrans %}
+      </p>
+      <hr/>
+      <p>
+        {% trans %}Please send us your contribution via one of the methods below.{% endtrans %}
+        {% trans %}If it is not working for you or think we should support other payment methods, please <a href="https://groups.google.com/forum/#!forum/speedcrunch">get in touch</a>.{% endtrans %}
+      </p>
+      <p>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>{% trans %}Service{% endtrans %}</th>
+            <th>{% trans %}Account{% endtrans %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><i class="fa fa-paypal"></i>&nbsp;Paypal &nbsp; | &nbsp; Skrill &nbsp; | &nbsp; Neteller</td>
+            <td>donations@speedcrunch.org</td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-bitcoin"></i>&nbsp;Bitcoin</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      </p>
+      </br>
+    </div>
+  </div>
+{%- endblock %}

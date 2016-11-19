@@ -9,30 +9,41 @@
           <p><b>Windows</b></p>
           <p>
             {% for (name, path) in win -%}
-              <a class="btn btn-primary btn-md dl-button" href="{{ path }}"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ name }}</a>
+              {% if name == "Installer" -%}
+                <a class="btn btn-primary btn-md dl-button" href="{{ path }}"><i class="fa fa-laptop fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ name }}</a>
+              {%- else %}
+                <a class="btn btn-primary btn-md dl-button" href="{{ path }}"><i class="fa fa-usb fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ name }}</a>
+              {%- endif %}
             {%- endfor %}
           </p>
           {% if win_port_text -%}
-            <p>{% trans %}A portable version of SpeedCrunch is available. It doesn't need to be installed. Just take it anywhere (e.g. on a thumb drive) and run the file to start SpeedCrunch.{% endtrans %}</p>
+            <p>
+              {% trans %}Use the portable version if you can't or don't want to install the application. Take it anywhere and just run the file to start.{% endtrans %}
+            </p>
           {%- endif %}
         </div>
       {%- endif %}
 
-      
       <div class="col-lg-4 center-div">
         <p><i class="fa fa-apple" style="vertical-align:middle; font-size:8em;"></i></p>
         <p><b>MacOS</b></p>
         {% if osx -%}
           <p>
             {% for (name, path) in osx -%}
-              <a class="btn btn-primary btn-md dl-button" href="{{ path }}"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ name }}</a>
+              <a class="btn btn-primary btn-md dl-button" href="{{ path }}"><i class="fa fa-laptop fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ name }}</a>
             {%- endfor %}
-         </p>
-         {%- else %}
-            An OSX version is not available yet. We are currently looking for someone experienced in deploying Qt apps on OSX. If you know someone who can help, <a href="https://groups.google.com/forum/#!forum/speedcrunch">get in touch</a>.
-         {%- endif %}
+          </p>
+        {%- else %}
+          <p>
+            <a class="btn btn-primary btn-md dl-button disabled"><i class="fa fa-laptop fa-lg" style="vertical-align:middle;"></i>&nbsp;Download</a>
+          </p>
+          <p>
+            {% trans %}Not currently available for this version.{% endtrans %}
+            {% trans %}We are looking for someone experienced in deploying Qt-based applications on MacOS.{% endtrans %}
+            {% trans %}Please <a href="https://groups.google.com/forum/#!forum/speedcrunch">get in touch</a>.{% endtrans %}
+          </p>
+        {%- endif %}
       </div>
-      
 
       <div class="col-lg-4 center-div">
         <p><i class="fa fa-linux" style="vertical-align:middle; font-size:8em;"></i></p>
@@ -42,12 +53,12 @@
           <p>
             {% if not linux_dropdown -%}
               {% for (name, path) in linux -%}
-                <a class="btn btn-primary btn-md dl-button" href="{{ path }}"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ name }}</a>
+                <a class="btn btn-primary btn-md dl-button" href="{{ path }}"><i class="fa fa-laptop fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ name }}</a>
               {%- endfor %}
             {%- else -%}
               <div class="btn-group">
                 <button type="button" class="btn btn-primary btn-md dl-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;{% trans %}Download{% endtrans %}&nbsp;<span class="caret"></span>
+                  <i class="fa fa-laptop fa-lg" style="vertical-align:middle;"></i>&nbsp;{% trans %}Download{% endtrans %}&nbsp;<span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
                   {% for (name, path) in linux -%}
@@ -57,9 +68,16 @@
               </div>
             {%- endif %}
           </p>
+        {%- else -%}
+          <p>
+            <a class="btn btn-primary btn-md dl-button disabled"><i class="fa fa-laptop fa-lg" style="vertical-align:middle;"></i>&nbsp;Download</a>
+          </p>
         {%- endif %}
 
-        <p>{% trans %}If available, we recommend to install SpeedCrunch directly via your distribution's package manager.{% endtrans %}</p>
+        <p>
+          {% trans %}If available, we recommend installing SpeedCrunch directly via your distribution's package manager.{% endtrans %}
+          {% trans %}Note that the latest version may not be available.{% endtrans %}
+        </p>
       </div>
     </div><!-- /.row -->
   </div>

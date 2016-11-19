@@ -106,7 +106,7 @@ often be omitted (using implicit multiplication), as shown by the previous examp
 By default SpeedCrunch converts the quantity into SI units::
 
     60 mile/hour
-    = 26.8224 meter second^-1
+    = 26.8224 meter second⁻¹
 
 This alone would not be terribly useful. However, it is possible to convert the value to a different unit using the conversion operator ``->``
 (``in`` can be used as an alias)::

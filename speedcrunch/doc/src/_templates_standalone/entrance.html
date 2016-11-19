@@ -26,8 +26,9 @@
           <h1>SpeedCrunch</h1>
           <p>{% trans %}SpeedCrunch is a high-precision scientific calculator featuring a fast, keyboard-driven user interface. It is free and open-source software, licensed under the GPL.{% endtrans %}</p>
           <p>
-            <a class="btn btn-primary btn-lg" href="{{ pathto('download') }}" role="button"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ _('Download') }}</a>
-            <a class="btn btn-default btn-lg" href="{{ pathto('introduction') }}" role="button"> <i class="fa fa-book fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ _('Documentation') }}</a>
+            <a class="btn btn-success btn-lg" href="{{ pathto('download') }}" role="button"><i class="fa fa-download fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ _('Download') }}</a>
+            <a class="btn btn-info btn-lg" href="{{ pathto('introduction') }}" role="button"> <i class="fa fa-book fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ _('Documentation') }}</a>
+            <a class="btn btn-warning btn-lg" href="{{ pathto('donate') }}" role="button"> <i class="fa fa-money fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ _('Donate') }}</a>
           </p>
         </div>
         <div class="{{ img_classes(0) }}">
@@ -62,7 +63,7 @@
       <h2 class="featurette-heading">{{ _('Powerful.') }}</h2>
       <p class="lead">{{ _('SpeedCrunch comes with over 80 built-in mathematical functions. You can also define your own functions.') }}</p>
       <p class="lead">{{ _('Variables allow you to store your results. Perform calculations with up to 50 digits of precision, using complex numbers, numeral bases, unit conversions, and more.') }}</p>
-      <p class="lead">{{ _('Naturally, tab-completion allows you to speed up your task.') }}</p>
+      <p class="lead">{{ _('Auto-completion allows you to speed up your task.') }}</p>
     </div>
     <div class="{{ img_classes(idx) }}">
       <img class="featurette-image img-responsive center-block" src="_static/advanced_features.png">
