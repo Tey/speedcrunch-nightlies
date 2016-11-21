@@ -176,6 +176,7 @@ void MainWindow::createActions()
     m_actions.helpFeedback = new QAction(this);
     m_actions.helpCommunity = new QAction(this);
     m_actions.helpNews = new QAction(this);
+    m_actions.helpDonate = new QAction(this);
     m_actions.helpAbout = new QAction(this);
     m_actions.contextHelp = new QAction(this);
 
@@ -361,6 +362,7 @@ void MainWindow::setActionsText()
     m_actions.helpFeedback->setText(MainWindow::tr("Send &Feedback"));
     m_actions.helpCommunity->setText(MainWindow::tr("Join &Community"));
     m_actions.helpNews->setText(MainWindow::tr("&News Feed"));
+    m_actions.helpDonate->setText(MainWindow::tr("&Donate"));
     m_actions.helpAbout->setText(MainWindow::tr("About &SpeedCrunch"));
 }
 
@@ -565,6 +567,7 @@ void MainWindow::createMenus()
     m_menus.help->addAction(m_actions.helpFeedback);
     m_menus.help->addAction(m_actions.helpCommunity);
     m_menus.help->addAction(m_actions.helpNews);
+    m_menus.help->addAction(m_actions.helpDonate);
     m_menus.help->addSeparator();
     m_menus.help->addAction(m_actions.helpAbout);
 
@@ -879,6 +882,7 @@ void MainWindow::createFixedConnections()
     connect(m_actions.helpFeedback, SIGNAL(triggered()), SLOT(openFeedbackURL()));
     connect(m_actions.helpCommunity, SIGNAL(triggered()), SLOT(openCommunityURL()));
     connect(m_actions.helpNews, SIGNAL(triggered()), SLOT(openNewsURL()));
+    connect(m_actions.helpDonate, SIGNAL(triggered()), SLOT(openDonateURL()));
     connect(m_actions.helpAbout, SIGNAL(triggered()), SLOT(showAboutDialog()));
 
     connect(m_widgets.editor, SIGNAL(autoCalcDisabled()), SLOT(hideStateLabel()));
@@ -2051,6 +2055,11 @@ void MainWindow::openCommunityURL()
 void MainWindow::openNewsURL()
 {
     QDesktopServices::openUrl(QUrl(QString::fromLatin1("http://speedcrunch.blogspot.com/")));
+}
+
+void MainWindow::openDonateURL()
+{
+    QDesktopServices::openUrl(QUrl(QString::fromLatin1("http://speedcrunch.org/donate.html")));
 }
 
 void MainWindow::copy()
