@@ -112,6 +112,7 @@ private slots:
     void openFeedbackURL();
     void openCommunityURL();
     void openNewsURL();
+    void openDonateURL();
     void retranslateText();
     void saveSessionDialog();
     void selectEditorExpression();
@@ -298,6 +299,7 @@ private:
         QAction* helpFeedback;
         QAction* helpCommunity;
         QAction* helpNews;
+        QAction* helpDonate;
         QAction* helpAbout;
         QAction* contextHelp;
     } m_actions;
