@@ -1,7 +1,7 @@
 // This file is part of the SpeedCrunch project
 // Copyright (C) 2004 Ariya Hidayat <ariya@kde.org>
 // Copyright (C) 2005, 2006 Johan Thelin <e8johan@gmail.com>
-// Copyright (C) 2007-2014 @heldercorreia
+// Copyright (C) 2007- @heldercorreia
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -22,6 +22,7 @@
 #define GUI_MAINWINDOW_H
 
 #include "gui/keypad.h"
+#include "math/quantity.h"
 
 #include <QMainWindow>
 
@@ -92,8 +93,10 @@ private slots:
     void evaluateEditorExpression();
     void exportHtml();
     void exportPlainText();
+    void handleAutoCalcMessageAvailable(const QString&);
+    void handleAutoCalcQuantityAvailable(const Quantity&);
     void handleCopyAvailable(bool copyAvailable);
-    void handleBitsChanged(const QString&str);
+    void handleBitsChanged(const QString&);
     void handleKeypadButtonPress(Keypad::Button);
     void handleEditorTextChange();
     void handleDisplaySelectionChange();

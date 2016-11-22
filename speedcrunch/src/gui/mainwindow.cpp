@@ -1,7 +1,7 @@
 // This file is part of the SpeedCrunch project
 // Copyright (C) 2004, 2007 Ariya Hidayat <ariya@kde.org>
 // Copyright (C) 2005, 2006 Johan Thelin <e8johan@gmail.com>
-// Copyright (C) 2007-2014 @heldercorreia
+// Copyright (C) 2007-2016 @heldercorreia
 // Copyright (C) 2011 Daniel Schäufele <git@schaeufele.org>
 //
 // This program is free software; you can redistribute it and/or
@@ -886,7 +886,8 @@ void MainWindow::createFixedConnections()
     connect(m_actions.helpAbout, SIGNAL(triggered()), SLOT(showAboutDialog()));
 
     connect(m_widgets.editor, SIGNAL(autoCalcDisabled()), SLOT(hideStateLabel()));
-    connect(m_widgets.editor, SIGNAL(autoCalcEnabled(const QString&)), SLOT(showStateLabel(const QString&)));
+    connect(m_widgets.editor, SIGNAL(autoCalcMessageAvailable(const QString&)), SLOT(handleAutoCalcMessageAvailable(const QString&)));
+    connect(m_widgets.editor, SIGNAL(autoCalcQuantityAvailable(const Quantity&)), SLOT(handleAutoCalcQuantityAvailable(const Quantity&)));
     connect(m_widgets.editor, SIGNAL(returnPressed()), SLOT(evaluateEditorExpression()));
     connect(m_widgets.editor, SIGNAL(shiftDownPressed()), SLOT(decreaseDisplayFontPointSize()));
     connect(m_widgets.editor, SIGNAL(shiftUpPressed()), SLOT(increaseDisplayFontPointSize()));
@@ -1663,6 +1664,17 @@ void MainWindow::showStateLabel(const QString& msg)
     m_widgets.state->move(pos);
 }
 
+void MainWindow::handleAutoCalcMessageAvailable(const QString& message)
+{
+    showStateLabel(message);
+}
+
+void MainWindow::handleAutoCalcQuantityAvailable(const Quantity& quantity)
+{
+    if (m_settings->bitfieldVisible)
+        m_widgets.bitField->updateBits(quantity);
+}
+
 void MainWindow::setFullScreenEnabled(bool b)
 {
     m_settings->windowOnfullScreen = b;
@@ -2168,10 +2180,17 @@ void MainWindow::handleCopyAvailable(bool copyAvailable)
 
 void MainWindow::handleBitsChanged(const QString& str)
 {
-    clearEditor();
     Quantity num(CNumber(str.toLatin1().data()));
-    insertTextIntoEditor(DMath::format(num, Quantity::Format::Fixed() + Quantity::Format::Hexadecimal()));
+    auto result = DMath::format(num, Quantity::Format::Fixed() + Quantity::Format::Hexadecimal());
+    insertTextIntoEditor(result);
     showStateLabel(QString("Current value: %1").arg(NumberFormatter::format(num)));
+
+    auto cursor = m_widgets.editor->textCursor();
+    if (cursor.hasSelection())
+        cursor.removeSelectedText();
+    cursor.movePosition(QTextCursor::Left, QTextCursor::MoveAnchor, result.length());
+    cursor.movePosition(QTextCursor::Right, QTextCursor::KeepAnchor, result.length());
+    m_widgets.editor->setTextCursor(cursor);
 }
 
 void MainWindow::handleEditorTextChange()

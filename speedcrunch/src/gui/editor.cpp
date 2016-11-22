@@ -2,7 +2,7 @@
 // Copyright (C) 2007 Ariya Hidayat <ariya@kde.org>
 // Copyright (C) 2004, 2005 Ariya Hidayat <ariya@kde.org>
 // Copyright (C) 2005, 2006 Johan Thelin <e8johan@gmail.com>
-// Copyright (C) 2007-2010, 2013, 2014, 2016 @heldercorreia
+// Copyright (C) 2007-2016 @heldercorreia
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -530,32 +530,22 @@ void Editor::autoCalc()
     if (str.isEmpty())
         return;
 
-    // Very short (just one token) and still no calculation, then skip.
-    if (!m_isAnsAvailable) {
-        const Tokens tokens = m_evaluator->scan(text());
-        if (tokens.count() < 2)
-            return;
-    }
-
-    // Too short even after autofix? Do not bother either.
-    const Tokens tokens = m_evaluator->scan(str);
-    if (tokens.count() < 2)
-        return;
-
     // Same reason as above, do not update "ans".
     m_evaluator->setExpression(str);
-    const Quantity num = m_evaluator->evalNoAssign();
+    auto quantity = m_evaluator->evalNoAssign();
 
     if (m_evaluator->error().isEmpty()) {
-        if (num.isNan() && m_evaluator->isUserFunctionAssign()) {
+        if (quantity.isNan() && m_evaluator->isUserFunctionAssign()) {
             // Result is not always available when assigning a user function.
             emit autoCalcDisabled();
         } else {
-            const QString message = tr("Current result: <b>%1</b>").arg(NumberFormatter::format(num));
-            emit autoCalcEnabled(message);
+            auto formatted = NumberFormatter::format(quantity);
+            auto message = tr("Current result: <b>%1</b>").arg(formatted);
+            emit autoCalcMessageAvailable(message);
+            emit autoCalcQuantityAvailable(quantity);
         }
     } else
-        emit autoCalcEnabled(m_evaluator->error());
+        emit autoCalcMessageAvailable(m_evaluator->error());
 }
 
 void Editor::increaseFontPointSize()
@@ -587,34 +577,23 @@ void Editor::autoCalcSelection(const QString& custom)
     if (str.isEmpty())
         return;
 
-    // Very short (just one token) and still no calculation, then skip.
-    if (!m_isAnsAvailable) {
-        auto expr = custom.isNull() ? text() : custom;
-        auto tokens = m_evaluator->scan(expr);
-        if (tokens.count() < 2)
-            return;
-    }
-
-    // Too short even after autofix? Don't bother either.
-    auto tokens = m_evaluator->scan(str);
-    if (tokens.count() < 2)
-        return;
-
     // Same reason as above, do not update "ans".
     m_evaluator->setExpression(str);
-    auto num = m_evaluator->evalNoAssign();
+    auto quantity = m_evaluator->evalNoAssign();
 
     if (m_evaluator->error().isEmpty()) {
-        if (num.isNan() && m_evaluator->isUserFunctionAssign()) {
+        if (quantity.isNan() && m_evaluator->isUserFunctionAssign()) {
             // Result is not always available when assigning a user function.
             auto message = tr("Selection result: n/a");
-            emit autoCalcEnabled(message);
+            emit autoCalcMessageAvailable(message);
         } else {
-            auto message = tr("Selection result: <b>%1</b>").arg(NumberFormatter::format(num));
-            emit autoCalcEnabled(message);
+            auto formatted = NumberFormatter::format(quantity);
+            auto message = tr("Selection result: <b>%1</b>").arg(formatted);
+            emit autoCalcMessageAvailable(message);
+            emit autoCalcQuantityAvailable(quantity);
         }
     } else
-        emit autoCalcEnabled(m_evaluator->error());
+        emit autoCalcMessageAvailable(m_evaluator->error());
 }
 
 void Editor::insertConstant(const QString& constant)
