@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: SpeedCrunch\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-07-19 01:43+0200\n"
+"PO-Revision-Date: 2016-07-18 23:45+0000\n"
+"Last-Translator: Felix Krull <f_krull@gmx.de>\n"
+"Language-Team: Portuguese (Portugal) (http://www.transifex.com/heldercorreia/speedcrunch/language/pt_PT/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_PT\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. TRANSLATORS: Name of the application, usually shouldn't be translated.
+#: tmp/speedcrunch.appdata.xml.in.h:2 tmp/speedcrunch.desktop.in.h:1
+msgid "SpeedCrunch"
+msgstr ""
+
+#. TRANSLATORS: Short one-line description.
+#: tmp/speedcrunch.appdata.xml.in.h:4 tmp/speedcrunch.desktop.in.h:2
+msgid "A high-precision scientific calculator"
+msgstr ""
+
+#: tmp/speedcrunch.appdata.xml.in.h:5
+msgid ""
+"SpeedCrunch is a fast, high-precision scientific calculator. It features a "
+"syntax-highlighted scrollable display and is designed to be fully used via "
+"keyboard."
+msgstr ""
+
+#: tmp/speedcrunch.appdata.xml.in.h:6
+msgid ""
+"It includes many built-in maths functions and supports advanced features "
+"like user-defined functions, complex numbers, and unit conversions. This is "
+"combined with a simple yet powerful user interface featuring on-the-fly "
+"results preview, syntax highlighting, and autocompletion."
+msgstr ""
+
+#: tmp/speedcrunch.appdata.xml.in.h:7
+msgid ""
+"SpeedCrunch is available for several platforms in a number of languages."
+msgstr ""
+
+#: tmp/speedcrunch.appdata.xml.in.h:8
+msgid "Main window with optional keypad"
+msgstr ""
+
+#: tmp/speedcrunch.appdata.xml.in.h:9
+msgid "The constants list and formula book"
+msgstr ""
+
+#: tmp/speedcrunch.appdata.xml.in.h:10
+msgid "Customizable user interface"
+msgstr ""
+
+#: tmp/speedcrunch.appdata.xml.in.h:11
+msgid "The built-in user manual"
+msgstr ""
+
+#. TRANSLATORS: Extra keywords for finding the application in the desktop
+#. environment. The trailing ';' is important!
+#: tmp/speedcrunch.desktop.in.h:4
+msgid "arithmetic;calculation;math;scientific;"
+msgstr ""

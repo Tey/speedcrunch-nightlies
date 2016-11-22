@@ -8,18 +8,53 @@
   
   <name>SpeedCrunch</name>
   <name xml:lang="de">SpeedCrunch</name>
+  <name xml:lang="el">SpeedCrunch</name>
+  <name xml:lang="en_GB">SpeedCrunch</name>
+  <name xml:lang="hu">SpeedCrunch</name>
+  <name xml:lang="it">SpeedCrunch</name>
+  <name xml:lang="lt">SpeedCrunch</name>
+  <name xml:lang="pt">SpeedCrunch</name>
+  <name xml:lang="ru">SpeedCrunch</name>
+  <name xml:lang="zh">SpeedCrunch</name>
   
   <summary>A high-precision scientific calculator</summary>
   <summary xml:lang="de">Ein hochpräziser wissenschaftlicher Taschenrechner</summary>
+  <summary xml:lang="el">Επιστημονική αριθμομηχανή υψηλής ακρίβειας</summary>
+  <summary xml:lang="en_GB">A high-precision scientific calculator</summary>
+  <summary xml:lang="hu">Egy nagy pontosságú tudományos számológép</summary>
+  <summary xml:lang="it">Una calcolatrice scientifica ad alta precisione</summary>
+  <summary xml:lang="lt">Labai tikslus mokslinis skaičiuotuvas</summary>
+  <summary xml:lang="pt">Calculadora científica de alta precisão</summary>
+  <summary xml:lang="ru">Научный инженерный калькулятор</summary>
+  <summary xml:lang="zh">高精度科学计算器</summary>
   <description>
     <p>SpeedCrunch is a fast, high-precision scientific calculator. It features a syntax-highlighted scrollable display and is designed to be fully used via keyboard.</p>
     <p xml:lang="de">SpeedCrunch ist ein schneller, hochpräziser, wissenschaftlicher Taschenrechner. Es bietet eine scrollbare Anzeige mit Syntaxhervorhebung und ist auf vollständige Tastaturbedienung ausgelegt.</p>
+    <p xml:lang="en_GB">SpeedCrunch is a fast, high-precision scientific calculator. It features a syntax-highlighted scrollable display and is designed to be fully used via keyboard.</p>
+    <p xml:lang="hu">A SpeedCrunch egy gyors, nagy pontosságú tudományos számológép. Szintaxis kiemeléses, görgethető kijelzővel rendelkezik és úgy tervezték, hogy teljes mértékben használható legyen billentyűzetről.</p>
+    <p xml:lang="it">SpeedCrunch è una calcolatrice scientifica veloce e ad alta precisione. Presenta uno schermo scorrevole con evidenziazione della sintassi ed è progettata per essere completamente usabile tramite tastiera.</p>
+    <p xml:lang="lt">SpeedCrunch yra greitas, labai tikslus mokslinis skaičiuotuvas. Jis pasižymi sintaksę paryškinančiu slenkančiu ekranu ir yra sukurtas, kad būtų pilnai naudojamas su klaviatūra.</p>
+    <p xml:lang="pt">SpeedCrunch é uma calculadora científica rápida e de alta precisão. Ela possui um mostrador rolável, com destaque de sintaxe e é concebida para ser plenamente utilizável através do teclado.</p>
+    <p xml:lang="zh">SpeedCrunch 是一个快速、高精度的科学计算器。它具有语法高亮和可滚动的显示，并且可以全程使用键盘操作。</p>
 
     <p>It includes many built-in maths functions and supports advanced features like user-defined functions, complex numbers, and unit conversions. This is combined with a simple yet powerful user interface featuring on-the-fly results preview, syntax highlighting, and autocompletion.</p>
     <p xml:lang="de">Es enthält viele eingebaute Mathematikfunktionen und unterstützt fortgeschrittene Funktionen wie benutzerdefinierte Funktionen, komplexe Zahlen und Einheitenumwandlungen. Dies ist verbunden mit einer einfacher, aber leistungsfähigen Benutzeroberfläche mit dynamischer Ergebnisvorschau, Syntaxhervorhebung und automatischer Vervollständigung.</p>
+    <p xml:lang="en_GB">It includes many built-in maths functions and supports advanced features like user-defined functions, complex numbers, and unit conversions. This is combined with a simple yet powerful user interface featuring on-the-fly results preview, syntax highlighting, and autocompletion.</p>
+    <p xml:lang="hu">Számos beépített matematikai függvényt tartalmaz és támogatja az olyan fejlett képességeket, mint a felhasználó által biztosított függvények, komplex számok és a mértékegység konvertálás. Mindez kombinálva van egy egyszerű, de fejlett felhasználói felülettel, ami lehetővé teszi az eredmények azonnali előnézetét, szintaxis kiemelést és az automatikus kiegészítést.</p>
+    <p xml:lang="it">Include molte funzioni matematiche predefinite e supporta funzionalità avanzate come funzioni definite dall'utente, numeri complessi e conversione di unità. Questo si aggiunge ad un'interfaccia utente semplice ma potente che fornisce anteprime al volo dei risultati, evidenziazione della sintassi ed autocompletamento. </p>
+    <p xml:lang="lt">Jame yra įtaisytos daugelis matematinių funkcijų ir jis palaiko tokias išplėstines funkcijas kaip naudotojo apibrėžtos funkcijos, kompleksiniai skaičiai ir vienetų konvertavimai. Tai yra sujungta su paprasta, tačiau galinga naudotojo sąsaja, kuri pasižymi žaibiškai greita rezultatų peržiūra, sintaksės paryškinimu ir automatiniu užbaigimu.</p>
+    <p xml:lang="pt">Ela inclui muitas funções matemáticas embutidas e suporta características avançadas como funções definidas pelo usuário, números complexos e conversão de unidades. Isso combinado a uma poderosa interface com resultados instantâneos, destaque de sintaxe e auto completação.</p>
+    <p xml:lang="zh">它内置许多数学函数并支持一些高级功能，例如用户定义函数、复杂数字和单位转换。这可配合简单又强大的用户界面，包括结果预览、语法高亮和自动完成。</p>
 
     <p>SpeedCrunch is available for several platforms in a number of languages.</p>
     <p xml:lang="de">SpeedCrunch ist für verschiedene Plattformen in einer Anzahl von Sprachen verfügbar.</p>
+    <p xml:lang="en_GB">SpeedCrunch is available for several platforms in a number of languages.</p>
+    <p xml:lang="hu">A SpeedCrunch számos platformra elérhető különböző nyelveken.</p>
+    <p xml:lang="it">SpeedCrunch è disponibile per diverse piattaforme in varie lingue.</p>
+    <p xml:lang="lt">SpeedCrunch skaičiuotuvas yra prieinamas kelioms platformoms daugeliu kalbų.</p>
+    <p xml:lang="pt">SpeedCrunch está disponível para diversas plataformas e em várias línguas.</p>
+    <p xml:lang="ru">SpeedCrunch доступен для нескольких платформ в ряде языков.</p>
+    <p xml:lang="zh">SpeedCrunch 提供多种语言和平台。</p>
   </description>
 
   <screenshots>
@@ -28,18 +63,38 @@
     </screenshot>
     <screenshot>
       <caption>Main window with optional keypad</caption>
+      <caption xml:lang="hu">Fő ablak opcionális billentyűzettel</caption>
+      <caption xml:lang="it">Finestra principale con tastierino numerico opzionale</caption>
+      <caption xml:lang="lt">Pagrindinis langas su pasirinktine klaviatūra</caption>
+      <caption xml:lang="ru">Главное окно с дополнительной клавиатурой</caption>
+      <caption xml:lang="zh">主窗口（键盘可用）</caption>
       <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/keypad.png</image>
     </screenshot>
     <screenshot>
       <caption>The constants list and formula book</caption>
+      <caption xml:lang="hu">Az állandók listája és formula könyv</caption>
+      <caption xml:lang="it">Lista delle costanti e formulario</caption>
+      <caption xml:lang="lt">Konstantų sąrašas bei formulių knyga</caption>
+      <caption xml:lang="ru">Константы и формулы</caption>
+      <caption xml:lang="zh">常量列表和公式书</caption>
       <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/constants+book.png</image>
     </screenshot>
     <screenshot>
       <caption>Customizable user interface</caption>
+      <caption xml:lang="hu">Testreszabható felhasználói felület</caption>
+      <caption xml:lang="it">Interfaccia utente personalizzabile</caption>
+      <caption xml:lang="lt">Tinkinama naudotojo sąsaja</caption>
+      <caption xml:lang="ru">Настраиваемый пользовательский интерфейс</caption>
+      <caption xml:lang="zh">可定制用户界面</caption>
       <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/ui-customization.png</image>
     </screenshot>
     <screenshot>
       <caption>The built-in user manual</caption>
+      <caption xml:lang="hu">Beépített kézikönyv</caption>
+      <caption xml:lang="it">Manuale integrato</caption>
+      <caption xml:lang="lt">Įtaisytas naudotojo vadovas</caption>
+      <caption xml:lang="pt">O manual de usuário interno</caption>
+      <caption xml:lang="zh">内置用户手册</caption>
       <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/manual.png</image>
     </screenshot>
   </screenshots>

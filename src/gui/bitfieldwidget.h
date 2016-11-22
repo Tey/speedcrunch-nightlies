@@ -24,6 +24,9 @@
 #include <QWidget>
 
 class Quantity;
+class QPushButton;
+class QGridLayout;
+class QHBoxLayout;
 
 class BitWidget : public QLabel {
     Q_OBJECT
@@ -62,10 +65,13 @@ signals:
 
 protected:
     virtual void wheelEvent(QWheelEvent*);
+    virtual void resizeEvent(QResizeEvent*);
 
 public slots:
     void clear();
     void updateBits(const Quantity&);
+    void updateSize();
+    void updateFieldLayout();
 
 private slots:
     void onBitChanged();
@@ -82,6 +88,16 @@ private:
     Q_DISABLE_COPY(BitFieldWidget)
 
     QList<BitWidget*> m_bitWidgets;
+    QList<QHBoxLayout*> m_byteLayouts;
+
+    QGridLayout* m_fieldLayout;
+    QGridLayout* m_buttonsLayout;
+    QHBoxLayout* m_mainLayout;
+
+    QPushButton* m_resetButton;
+    QPushButton* m_invertButton;
+    QPushButton* m_shiftLeftButton;
+    QPushButton* m_shiftRightButton;
 };
 
 #endif // BITFIELDWIDGET_H

@@ -1,12 +1,12 @@
 <RCC>
   <qresource prefix="/manual">
+    <file alias="manual-de_DE.qch">de_DE/manual-de_DE.qch</file>
+    <file alias="manual-de_DE.qhc">de_DE/manual-de_DE.qhc</file>
+    <file alias="manual-fr_FR.qch">fr_FR/manual-fr_FR.qch</file>
+    <file alias="manual-fr_FR.qhc">fr_FR/manual-fr_FR.qhc</file>
     <file alias="manual-es_ES.qch">es_ES/manual-es_ES.qch</file>
     <file alias="manual-es_ES.qhc">es_ES/manual-es_ES.qhc</file>
     <file alias="manual-en_US.qch">en_US/manual-en_US.qch</file>
     <file alias="manual-en_US.qhc">en_US/manual-en_US.qhc</file>
-    <file alias="manual-fr_FR.qch">fr_FR/manual-fr_FR.qch</file>
-    <file alias="manual-fr_FR.qhc">fr_FR/manual-fr_FR.qhc</file>
-    <file alias="manual-de_DE.qch">de_DE/manual-de_DE.qch</file>
-    <file alias="manual-de_DE.qhc">de_DE/manual-de_DE.qhc</file>
   </qresource>
 </RCC>

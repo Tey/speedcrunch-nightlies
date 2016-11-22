@@ -1,0 +1,71 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Luigi Toscano <luigi.toscano@tiscali.it>, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: SpeedCrunch\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-07-19 01:43+0200\n"
+"PO-Revision-Date: 2016-07-20 22:52+0000\n"
+"Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
+"Language-Team: Italian (Italy) (http://www.transifex.com/heldercorreia/speedcrunch/language/it_IT/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it_IT\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. TRANSLATORS: Name of the application, usually shouldn't be translated.
+#: tmp/speedcrunch.appdata.xml.in.h:2 tmp/speedcrunch.desktop.in.h:1
+msgid "SpeedCrunch"
+msgstr "SpeedCrunch"
+
+#. TRANSLATORS: Short one-line description.
+#: tmp/speedcrunch.appdata.xml.in.h:4 tmp/speedcrunch.desktop.in.h:2
+msgid "A high-precision scientific calculator"
+msgstr "Una calcolatrice scientifica ad alta precisione"
+
+#: tmp/speedcrunch.appdata.xml.in.h:5
+msgid ""
+"SpeedCrunch is a fast, high-precision scientific calculator. It features a "
+"syntax-highlighted scrollable display and is designed to be fully used via "
+"keyboard."
+msgstr "SpeedCrunch è una calcolatrice scientifica veloce e ad alta precisione. Presenta uno schermo scorrevole con evidenziazione della sintassi ed è progettata per essere completamente usabile tramite tastiera."
+
+#: tmp/speedcrunch.appdata.xml.in.h:6
+msgid ""
+"It includes many built-in maths functions and supports advanced features "
+"like user-defined functions, complex numbers, and unit conversions. This is "
+"combined with a simple yet powerful user interface featuring on-the-fly "
+"results preview, syntax highlighting, and autocompletion."
+msgstr "Include molte funzioni matematiche predefinite e supporta funzionalità avanzate come funzioni definite dall'utente, numeri complessi e conversione di unità. Questo si aggiunge ad un'interfaccia utente semplice ma potente che fornisce anteprime al volo dei risultati, evidenziazione della sintassi ed autocompletamento. "
+
+#: tmp/speedcrunch.appdata.xml.in.h:7
+msgid ""
+"SpeedCrunch is available for several platforms in a number of languages."
+msgstr "SpeedCrunch è disponibile per diverse piattaforme in varie lingue."
+
+#: tmp/speedcrunch.appdata.xml.in.h:8
+msgid "Main window with optional keypad"
+msgstr "Finestra principale con tastierino numerico opzionale"
+
+#: tmp/speedcrunch.appdata.xml.in.h:9
+msgid "The constants list and formula book"
+msgstr "Lista delle costanti e formulario"
+
+#: tmp/speedcrunch.appdata.xml.in.h:10
+msgid "Customizable user interface"
+msgstr "Interfaccia utente personalizzabile"
+
+#: tmp/speedcrunch.appdata.xml.in.h:11
+msgid "The built-in user manual"
+msgstr "Manuale integrato"
+
+#. TRANSLATORS: Extra keywords for finding the application in the desktop
+#. environment. The trailing ';' is important!
+#: tmp/speedcrunch.desktop.in.h:4
+msgid "arithmetic;calculation;math;scientific;"
+msgstr "aritmetica;calcolo;matematica;scientifico;"

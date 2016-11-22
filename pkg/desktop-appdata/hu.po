@@ -1,0 +1,72 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Zoltán Csáti <csati_zoltan@freemail.hu>, 2016
+# Zoltán Csáti <csati_zoltan@freemail.hu>, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: SpeedCrunch\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-07-19 01:43+0200\n"
+"PO-Revision-Date: 2016-10-17 21:14+0000\n"
+"Last-Translator: Zoltán Csáti <csati_zoltan@freemail.hu>\n"
+"Language-Team: Hungarian (Hungary) (http://www.transifex.com/heldercorreia/speedcrunch/language/hu_HU/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hu_HU\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. TRANSLATORS: Name of the application, usually shouldn't be translated.
+#: tmp/speedcrunch.appdata.xml.in.h:2 tmp/speedcrunch.desktop.in.h:1
+msgid "SpeedCrunch"
+msgstr "SpeedCrunch"
+
+#. TRANSLATORS: Short one-line description.
+#: tmp/speedcrunch.appdata.xml.in.h:4 tmp/speedcrunch.desktop.in.h:2
+msgid "A high-precision scientific calculator"
+msgstr "Egy nagy pontosságú tudományos számológép"
+
+#: tmp/speedcrunch.appdata.xml.in.h:5
+msgid ""
+"SpeedCrunch is a fast, high-precision scientific calculator. It features a "
+"syntax-highlighted scrollable display and is designed to be fully used via "
+"keyboard."
+msgstr "A SpeedCrunch egy gyors, nagy pontosságú tudományos számológép. Szintaxis kiemeléses, görgethető kijelzővel rendelkezik és úgy tervezték, hogy teljes mértékben használható legyen billentyűzetről."
+
+#: tmp/speedcrunch.appdata.xml.in.h:6
+msgid ""
+"It includes many built-in maths functions and supports advanced features "
+"like user-defined functions, complex numbers, and unit conversions. This is "
+"combined with a simple yet powerful user interface featuring on-the-fly "
+"results preview, syntax highlighting, and autocompletion."
+msgstr "Számos beépített matematikai függvényt tartalmaz és támogatja az olyan fejlett képességeket, mint a felhasználó által biztosított függvények, komplex számok és a mértékegység konvertálás. Mindez kombinálva van egy egyszerű, de fejlett felhasználói felülettel, ami lehetővé teszi az eredmények azonnali előnézetét, szintaxis kiemelést és az automatikus kiegészítést."
+
+#: tmp/speedcrunch.appdata.xml.in.h:7
+msgid ""
+"SpeedCrunch is available for several platforms in a number of languages."
+msgstr "A SpeedCrunch számos platformra elérhető különböző nyelveken."
+
+#: tmp/speedcrunch.appdata.xml.in.h:8
+msgid "Main window with optional keypad"
+msgstr "Fő ablak opcionális billentyűzettel"
+
+#: tmp/speedcrunch.appdata.xml.in.h:9
+msgid "The constants list and formula book"
+msgstr "Az állandók listája és formula könyv"
+
+#: tmp/speedcrunch.appdata.xml.in.h:10
+msgid "Customizable user interface"
+msgstr "Testreszabható felhasználói felület"
+
+#: tmp/speedcrunch.appdata.xml.in.h:11
+msgid "The built-in user manual"
+msgstr "Beépített kézikönyv"
+
+#. TRANSLATORS: Extra keywords for finding the application in the desktop
+#. environment. The trailing ';' is important!
+#: tmp/speedcrunch.desktop.in.h:4
+msgid "arithmetic;calculation;math;scientific;"
+msgstr "aritmetika;számítás;matematika;tudományos;"
