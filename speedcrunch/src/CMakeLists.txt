@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.11)
 
 project(speedcrunch)
-set(speedcrunch_VERSION "master" )
+set(speedcrunch_VERSION "master")
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_COLOR_MAKEFILE ON)

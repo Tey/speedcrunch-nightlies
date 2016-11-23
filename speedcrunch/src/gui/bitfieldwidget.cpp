@@ -265,7 +265,11 @@ void BitFieldWidget::resizeEvent(QResizeEvent* re)
 
 void BitFieldWidget::updateBits(const Quantity& number)
 {
-    QString binaryNumberString = DMath::format(number, Quantity::Format::Fixed() + Quantity::Format::Binary());
+    // Create a binary copy of number
+    // (simply converting it to binary will not work if its base is defined)
+    Quantity binNumber(number);
+    binNumber.setFormat(Quantity::Format::Fixed() + Quantity::Format::Binary() + Quantity(number).format());
+    QString binaryNumberString = DMath::format(binNumber);
     QListIterator<BitWidget*> bitsIterator(m_bitWidgets);
 
     if (number.isZero() || !number.isInteger())

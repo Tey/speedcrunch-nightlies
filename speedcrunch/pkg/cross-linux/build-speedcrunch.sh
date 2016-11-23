@@ -3,8 +3,14 @@ set -e
 
 BASE_DIR=~
 SPEEDCRUNCH_SOURCE_DIR=/speedcrunch-source
-RELEASE_VERSION=0.11.99.snapshot.$(date +"%Y.%m.%d")
+RELEASE_VERSION=master
 OUTPUT_DIR=/vagrant/dist
+
+if [ "$RELEASE_VERSION" = "master" ]; then
+    PACKAGE_VERSION=0+$RELEASE_VERSION+snapshot.$(date +"%Y.%m.%d")
+else
+    PACKAGE_VERSION=$RELEASE_VERSION
+fi
 
 function build_speedcrunch {
     ARCH=$*
@@ -65,7 +71,7 @@ function build_deb_package {
     ARCH=$*
     PKGROOT=$BASE_DIR/speedcrunch$ARCH-pkgroot
     echo "Building Debian package for '$ARCH'..."
-    VARS_VERSION=$RELEASE_VERSION
+    VARS_VERSION=$PACKAGE_VERSION
     VARS_NBYTES=`du $PKGROOT -s | sed -e "s/\s.*//"`
     if [ $ARCH = 32 ]; then
         VARS_ARCH=i386
@@ -82,7 +88,7 @@ function build_rpm_package {
     ARCH=$*
     PKGROOT=$BASE_DIR/speedcrunch$ARCH-pkgroot
     echo "Building RPM package for '$ARCH'..."
-    VARS_VERSION=$RELEASE_VERSION
+    VARS_VERSION=$PACKAGE_VERSION
     if [ $ARCH = 32 ]; then
         ARCHNAME=i686
     elif [ $ARCH = 64 ]; then
@@ -106,7 +112,7 @@ function build_tarball {
         ARCHNAME=amd64
     fi
     pushd $PKGROOT/opt/speedcrunch
-    tar cjf $OUTPUT_DIR/speedcrunch_${RELEASE_VERSION}_${ARCHNAME}.tar.bz2 *
+    tar cjf $OUTPUT_DIR/speedcrunch_${PACKAGE_VERSION}_${ARCHNAME}.tar.bz2 *
     popd
 }
 
