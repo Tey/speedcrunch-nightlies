@@ -1,6 +1,6 @@
 // This file is part of the SpeedCrunch project
 // Copyright (C) 2004-2006 Ariya Hidayat <ariya@kde.org>
-// Copyright (C) 2007-2008, 2014, 2016 @heldercorreia
+// Copyright (C) 2007-2016 @heldercorreia
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -35,13 +35,13 @@ typedef HNumber::Format Format;
 #define CHECK_PRECISE(x,y) check_precise(__FILE__,__LINE__,#x,x,y)
 #define CHECK_KNOWN_ISSUE(x,y,n) check_value(__FILE__,__LINE__,#x,x,y,n)
 
-static int hmath_total_tests  = 0;
+static int hmath_total_tests = 0;
 static int hmath_failed_tests = 0;
 static int hmath_new_failed_tests = 0;
 
-static HNumber PI;
+HNumber PI;
 
-static void check_value(const char*file, int line, const char* msg, const HNumber& n, const char* expected, int issue = 0)
+static void check_value(const char* file, int line, const char* msg, const HNumber& n, const char* expected, int issue = 0)
 {
     ++hmath_total_tests;
     string result = HMath::format(n, HNumber::Format::Fixed()).toStdString();
@@ -95,7 +95,6 @@ void test_format()
     CHECK_FORMAT(f + Format::Precision(9), HNumber("-0.001"), "-0.001000000");
     CHECK_FORMAT(f + Format::Precision(-1), HNumber("4.000000000000000000000000000000000000000000001"), "4");
     CHECK_FORMAT(f + Format::Precision(-1) + Format::Hexadecimal(), HNumber("0.6"), "0x0.9999999999999999999A"); /* Issue 659 */
-
 
     // Engineering notation.
     Format n = Format::Engineering();
@@ -169,9 +168,6 @@ void test_format()
     CHECK_FORMAT(g + Format::Precision(3), HNumber("1403.1977"), "1403.198");
     CHECK_FORMAT(g + Format::Precision(3), HNumber("2604.1980"), "2604.198");
     CHECK_FORMAT(g + Format::Precision(3), HNumber("2.47e4"), "24700.000");
-
-
-
 }
 
 void test_op()
@@ -997,7 +993,7 @@ int main(int argc, char* argv[])
     hmath_failed_tests = 0;
 
     floatmath_init();
-    PI  = HMath::pi();
+    PI = HMath::pi();
 
     test_create();
     test_format();

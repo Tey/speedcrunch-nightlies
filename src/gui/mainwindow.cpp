@@ -231,8 +231,9 @@ void MainWindow::createActions()
     m_actions.viewBitfield->setCheckable(true);
     m_actions.viewUserFunctions->setCheckable(true);
 
-    for (QString colorScheme : ColorScheme::enumerate()) {
-        QAction* action = new QAction(this);
+    const auto schemes = ColorScheme::enumerate(); // TODO: use qAsConst().
+    for (auto& colorScheme : schemes) {
+        auto action = new QAction(this);
         action->setCheckable(true);
         action->setText(colorScheme);
         action->setData(colorScheme);
@@ -401,7 +402,8 @@ void MainWindow::createActionGroups()
     m_actionGroups.angle->addAction(m_actions.settingsAngleUnitDegree);
 
     m_actionGroups.colorScheme = new QActionGroup(this);
-    for (QAction* action : m_actions.settingsDisplayColorSchemes)
+    const auto schemes = m_actions.settingsDisplayColorSchemes;
+    for (auto& action : schemes)
         m_actionGroups.colorScheme->addAction(action);
 
     m_actionGroups.digitGrouping = new QActionGroup(this);
@@ -552,7 +554,8 @@ void MainWindow::createMenus()
 
     m_menus.display = m_menus.settings->addMenu("");
     m_menus.colorScheme = m_menus.display->addMenu("");
-    for (QAction* action : m_actions.settingsDisplayColorSchemes)
+    const auto schemes = m_actions.settingsDisplayColorSchemes; // TODO: qAsConst().
+    for (auto& action : schemes)
         m_menus.colorScheme->addAction(action);
     m_menus.display->addAction(m_actions.settingsDisplayFont);
 
@@ -789,7 +792,8 @@ void MainWindow::addTabifiedDock(QDockWidget* newDock, bool takeFocus, Qt::DockW
     connect(newDock, &QDockWidget::visibilityChanged, this, &MainWindow::handleDockWidgetVisibilityChanged);
     addDockWidget(area, newDock);
     // Try to find an existing dock we can tabify with.
-    for (QDockWidget* d : m_allDocks) {
+    const auto allDocks = m_allDocks; // TODO: Use Qt 5.7's qAsConst().
+    for (auto& d : allDocks) {
         if (dockWidgetArea(d) == area)
             tabifyDockWidget(d, newDock);
     }
@@ -924,7 +928,8 @@ void MainWindow::createFixedConnections()
 
     connect(m_actions.settingsDisplayFont, SIGNAL(triggered()), SLOT(showFontDialog()));
 
-    for (QAction* action : m_actions.settingsDisplayColorSchemes)
+    const auto schemes = m_actions.settingsDisplayColorSchemes;
+    for (auto& action : schemes) // TODO: Use Qt 5.7's qAsConst();
         connect(action, SIGNAL(triggered()), SLOT(applySelectedColorScheme()));
 
     connect(this, SIGNAL(languageChanged()), SLOT(retranslateText()));
@@ -1030,7 +1035,8 @@ void MainWindow::applySettings()
     m_widgets.display->setFont(font);
     m_widgets.editor->setFont(font);
 
-    for (QAction* action : m_actions.settingsDisplayColorSchemes) {
+    const auto schemes = m_actions.settingsDisplayColorSchemes;
+    for (auto& action : schemes) {
         if (m_settings->colorScheme == action->data().toString())
             action->setChecked(true);
     }
@@ -1335,7 +1341,6 @@ void MainWindow::hideStateLabel()
 
 void MainWindow::showSessionLoadDialog()
 {
-    QString errMsg  = tr("File %1 is not a valid session");
     QString filters = tr("SpeedCrunch Sessions (*.json);;All Files (*)");
     QString fname = QFileDialog::getOpenFileName(this, tr("Load Session"), QString::null, filters);
     if (fname.isEmpty())
@@ -2333,7 +2338,8 @@ void MainWindow::showLanguageChooserDialog()
         map.insert(langName, localeName);
     }
 
-    int current = map.values().indexOf(m_settings->language) + 1;
+    const auto values = map.values();
+    int current = values.indexOf(m_settings->language) + 1;
 
     QString defaultKey = tr("System Default");
     QStringList keys(QStringList() << defaultKey << map.keys());

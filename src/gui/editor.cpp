@@ -351,8 +351,8 @@ QStringList Editor::matchFragment(const QString & id) const
     QList<Variable> variables = m_evaluator->getVariables();
     for (int i = 0; i < variables.count(); ++i)
         if (variables.at(i).identifier().startsWith(id, Qt::CaseInsensitive))
-            vchoices.append(QString("%1:%2").arg(variables.at(i).identifier())
-                .arg(NumberFormatter::format(variables.at(i).value())));
+            vchoices.append(QString("%1:%2").arg(variables.at(i).identifier(),
+                                                 NumberFormatter::format(variables.at(i).value())));
     vchoices.sort();
     choices += vchoices;
 

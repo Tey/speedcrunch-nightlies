@@ -1,6 +1,6 @@
 // This file is part of the SpeedCrunch project
 // Copyright (C) 2014 Sébastien Szymanski <seb.szymanski@gmail.com>
-// Copyright (C) 2014 @heldercorreia
+// Copyright (C) 2014-2016 @heldercorreia
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -50,8 +50,8 @@ void BitWidget::setState(bool state)
         m_state = state;
         setStyleSheet(
             QString("QLabel { background-color : %1; color : %2; }")
-                .arg(QApplication::palette().color(state ? QPalette::WindowText : QPalette::Window).name())
-                .arg(QApplication::palette().color(state ? QPalette::Window : QPalette::WindowText).name())
+                .arg(QApplication::palette().color(state ? QPalette::WindowText : QPalette::Window).name(),
+                     QApplication::palette().color(state ? QPalette::Window : QPalette::WindowText).name())
         );
         update();
     }
@@ -87,9 +87,9 @@ BitFieldWidget::BitFieldWidget(QWidget* parent) :
                           " border-left: 1px solid %3;"
                           "}"
                           )
-                      .arg(QApplication::palette().color(QPalette::Window).name())
-                      .arg(QApplication::palette().color(QPalette::WindowText).name())
-                      .arg(cssBorderColor)
+                      .arg(QApplication::palette().color(QPalette::Window).name(),
+                           QApplication::palette().color(QPalette::WindowText).name(),
+                           cssBorderColor)
                  );
 
     m_bitWidgets.reserve(NumberOfBits);
@@ -313,7 +313,7 @@ void BitFieldWidget::invertBits()
 
 void BitFieldWidget::clear()
 {
-    for (auto w : m_bitWidgets)
+    for (auto& w : m_bitWidgets)
         w->setState(false);
 }
 

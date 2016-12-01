@@ -1,6 +1,6 @@
 // This file is part of the SpeedCrunch project
 // Copyright (C) 2004-2006 Ariya Hidayat <ariya@kde.org>
-// Copyright (C) 2007-2008, 2014, 2016 @heldercorreia
+// Copyright (C) 2007-2016 @heldercorreia
 // Copyright (C) 2015-2016 Hadrien Theveneau <hadrien.theveneau@gmail.com>
 //
 // This program is free software; you can redistribute it and/or
@@ -36,11 +36,11 @@ typedef CNumber::Format Format;
 #define CHECK_PRECISE(x,y) check_precise(__FILE__,__LINE__,#x,x,y)
 #define CHECK_KNOWN_ISSUE(x,y,n) check_value(__FILE__,__LINE__,#x,x,y,n)
 
-static int cmath_total_tests  = 0;
+static int cmath_total_tests = 0;
 static int cmath_failed_tests = 0;
 static int cmath_new_failed_tests = 0;
 
-static CNumber PI;
+CNumber PI;
 
 static void check_value(const char* file, int line, const char* msg, const CNumber& n, const char* expected, int issue = 0)
 {
@@ -1023,7 +1023,7 @@ int main(int, char**)
     cmath_failed_tests = 0;
 
     floatmath_init();
-    PI  = CMath::pi();
+    PI = CMath::pi();
 
     test_create();
     test_format();

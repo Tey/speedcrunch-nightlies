@@ -1,7 +1,7 @@
 // This file is part of the SpeedCrunch project
 // Copyright (C) 2004 Ariya Hidayat <ariya@kde.org>
 // Copyright (C) 2005, 2006 Johan Thelin <e8johan@gmail.com>
-// Copyright (C) 2007, 2008, 2009, 2010, 2013 @heldercorreia
+// Copyright (C) 2007-2016 @heldercorreia
 // Copyright (C) 2009 Wolf Lammen <ookami1@gmx.de>
 // Copyright (C) 2014 Tey <teyut@free.fr>
 // Copyright (C) 2015 Pol Welter <polwelter@gmail.com>
@@ -613,7 +613,7 @@ void Evaluator::initializeBuiltInVariables()
     }
 
     QList<Unit> unitList(Units::getList());
-    for(Unit u : unitList) {
+    for (Unit& u : unitList) {
         setVariable(u.name, u.value, Variable::BuiltIn);
     }
 
@@ -1727,13 +1727,13 @@ Quantity Evaluator::exec(const QVector<Opcode>& opcodes, const QVector<Quantity>
                 // Show function signature if the user has given no argument (yet).
                 if (userFunction) {
                     if (!args.count() && userFunction->arguments().count() != 0) {
-                        m_error = QString::fromLatin1("<b>%1</b>(%2)").arg(userFunction->name())
-                            .arg(userFunction->arguments().join(";"));
+                        m_error = QString::fromLatin1("<b>%1</b>(%2)").arg(userFunction->name(),
+                                                                           userFunction->arguments().join(";"));
                         return CMath::nan();
                     }
                 } else if (function) {
                     if (!args.count()) {
-                        m_error = QString::fromLatin1("<b>%1</b>(%2)").arg(fname).arg(function->usage());
+                        m_error = QString::fromLatin1("<b>%1</b>(%2)").arg(fname, function->usage());
                         return CMath::nan();
                     }
                 }
@@ -1961,23 +1961,23 @@ void Evaluator::unsetAllUserDefinedVariables()
     setVariable(QLatin1String("ans"), ansBackup, Variable::BuiltIn);
 }
 
-static QRegularExpression s_superscriptPowersRE("(\\x{207B})?[\\x{2070}¹²³\\x{2074}-\\x{2079}]+");
-static QHash<QChar, QChar> s_superscriptPowersHash{
-  {L'\u207B', '-'},
-  {L'\u2070', '0'},
-  {L'\u00B9', '1'},
-  {L'\u00B2', '2'},
-  {L'\u00B3', '3'},
-  {L'\u2074', '4'},
-  {L'\u2075', '5'},
-  {L'\u2076', '6'},
-  {L'\u2077', '7'},
-  {L'\u2078', '8'},
-  {L'\u2079', '9'},
-};
-
 static void replaceSuperscriptPowersWithCaretEquivalent(QString& expr)
 {
+    static const QRegularExpression s_superscriptPowersRE("(\\x{207B})?[\\x{2070}¹²³\\x{2074}-\\x{2079}]+");
+    static const QHash<QChar, QChar> s_superscriptPowersHash{
+        {L'\u207B', '-'},
+        {L'\u2070', '0'},
+        {L'\u00B9', '1'},
+        {L'\u00B2', '2'},
+        {L'\u00B3', '3'},
+        {L'\u2074', '4'},
+        {L'\u2075', '5'},
+        {L'\u2076', '6'},
+        {L'\u2077', '7'},
+        {L'\u2078', '8'},
+        {L'\u2079', '9'},
+    };
+
     int offset = 0;
     while (true) {
       QRegularExpressionMatch match = s_superscriptPowersRE.match(expr, offset);
@@ -2116,7 +2116,7 @@ QString Evaluator::dump()
 
     result.append("\n");
     result.append("  Code:\n");
-    for(int i = 0; i < m_codes.count(); ++i) {
+    for (int i = 0; i < m_codes.count(); ++i) {
         QString ctext;
         switch (m_codes.at(i).type) {
             case Opcode::Load: ctext = QString("Load #%1").arg(m_codes.at(i).index); break;
