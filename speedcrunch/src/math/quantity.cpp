@@ -352,7 +352,7 @@ Quantity Quantity::deSerialize(const QJsonObject& json)
     if (json.contains("dimension")) {
         QJsonObject dim_json = json["dimension"].toObject();
         for (int i = 0; i < dim_json.count(); ++i) {
-            auto key = dim_json.keys()[i];
+            auto key = dim_json.keys().at(i);
             Rational val(dim_json[key].toString());
             result.modifyDimension(key, val);
         }

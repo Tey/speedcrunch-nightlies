@@ -1,5 +1,5 @@
 // This file is part of the SpeedCrunch project
-// Copyright (C) 2009, 2011, 2013, 2014 @heldercorreia
+// Copyright (C) 2009-2016 @heldercorreia
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -300,6 +300,6 @@ void ResultDisplay::updateScrollBarStyleSheet()
         "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {"
         "   background: %1;"
         "}"
-    ).arg(m_highlighter->colorForRole(ColorScheme::Background).name())
-     .arg(m_highlighter->colorForRole(ColorScheme::ScrollBar).name()));
+    ).arg(m_highlighter->colorForRole(ColorScheme::Background).name(),
+          m_highlighter->colorForRole(ColorScheme::ScrollBar).name()));
 }

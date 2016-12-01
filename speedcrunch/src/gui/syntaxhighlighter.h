@@ -1,6 +1,6 @@
 // This file is part of the SpeedCrunch project
 // Copyright (C) 2007 Ariya Hidayat <ariya@kde.org>
-// Copyright (C) 2007-2009, 2013, 2014 @heldercorreia
+// Copyright (C) 2007-2016 @heldercorreia
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -55,9 +55,11 @@ public:
 private:
     bool m_valid;
     QHash<Role, QColor> m_colors;
+    static const constexpr char* m_colorSchemeExtension = "json";
 };
 
 class SyntaxHighlighter : public QSyntaxHighlighter {
+    Q_OBJECT
 public:
     explicit SyntaxHighlighter(QPlainTextEdit*);
 

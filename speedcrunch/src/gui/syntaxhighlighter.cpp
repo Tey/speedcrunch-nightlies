@@ -1,6 +1,6 @@
 // This file is part of the SpeedCrunch project
 // Copyright (C) 2007 Ariya Hidayat <ariya@kde.org>
-// Copyright (C) 2007-2009, 2013, 2014 @heldercorreia
+// Copyright (C) 2007-2016 @heldercorreia
 // Copyright (c) 2013 Larswad
 //
 // This program is free software; you can redistribute it and/or
@@ -34,25 +34,7 @@
 #include <QTextDocument>
 #include <QTextDocumentFragment>
 
-
-static const char* ColorSchemeExtension = "json";
-static const QVector<std::pair<QString, ColorScheme::Role>> RoleNames {
-    { QStringLiteral("cursor"), ColorScheme::Cursor },
-    { QStringLiteral("number"), ColorScheme::Number },
-    { QStringLiteral("parens"), ColorScheme::Parens },
-    { QStringLiteral("result"), ColorScheme::Result },
-    { QStringLiteral("comment"), ColorScheme::Comment },
-    { QStringLiteral("matched"), ColorScheme::Matched },
-    { QStringLiteral("function"), ColorScheme::Function },
-    { QStringLiteral("operator"), ColorScheme::Operator },
-    { QStringLiteral("variable"), ColorScheme::Variable },
-    { QStringLiteral("scrollbar"), ColorScheme::ScrollBar },
-    { QStringLiteral("separator"), ColorScheme::Separator },
-    { QStringLiteral("background"), ColorScheme::Background },
-    { QStringLiteral("editorbackground"), ColorScheme::EditorBackground },
-};
-
-static QVector<QString> colorSchemeSearchPaths()
+static const QVector<QString> colorSchemeSearchPaths()
 {
     static QVector<QString> searchPaths;
     if (searchPaths.isEmpty()) {
@@ -78,15 +60,30 @@ QColor getFallbackColor(ColorScheme::Role role)
 ColorScheme::ColorScheme(const QJsonDocument& doc)
     : m_valid(false)
 {
+    static const QVector<std::pair<QString, ColorScheme::Role>> RoleNames {
+        { QStringLiteral("cursor"), ColorScheme::Cursor },
+        { QStringLiteral("number"), ColorScheme::Number },
+        { QStringLiteral("parens"), ColorScheme::Parens },
+        { QStringLiteral("result"), ColorScheme::Result },
+        { QStringLiteral("comment"), ColorScheme::Comment },
+        { QStringLiteral("matched"), ColorScheme::Matched },
+        { QStringLiteral("function"), ColorScheme::Function },
+        { QStringLiteral("operator"), ColorScheme::Operator },
+        { QStringLiteral("variable"), ColorScheme::Variable },
+        { QStringLiteral("scrollbar"), ColorScheme::ScrollBar },
+        { QStringLiteral("separator"), ColorScheme::Separator },
+        { QStringLiteral("background"), ColorScheme::Background },
+        { QStringLiteral("editorbackground"), ColorScheme::EditorBackground },
+    };
     if (!doc.isObject())
         return;
-    QJsonObject obj = doc.object();
-    for (std::pair<QString, ColorScheme::Role> role : RoleNames) {
-        QJsonValue v = obj.value(role.first);
+    auto obj = doc.object();
+    for (auto& role : RoleNames) {
+        auto v = obj.value(role.first);
         if (v.isUndefined())
             // Having a key missing is fine...
             continue;
-        QColor color = QColor(v.toString());
+        auto color = QColor(v.toString());
         if (!color.isValid())
             // ...having one that's not a color is not.
             return;
@@ -107,11 +104,12 @@ QColor ColorScheme::colorForRole(Role role) const
 QStringList ColorScheme::enumerate()
 {
     QMap<QString, void*> colorSchemes;
-    for (QString searchPath : colorSchemeSearchPaths()) {
+    for (auto& searchPath : colorSchemeSearchPaths()) {
         QDir dir(searchPath);
         dir.setFilter(QDir::Files | QDir::Readable);
-        dir.setNameFilters({ QString("*.%1").arg(ColorSchemeExtension) });
-        for (QFileInfo info : dir.entryInfoList())
+        dir.setNameFilters({ QString("*.%1").arg(m_colorSchemeExtension) });
+        const auto infoList = dir.entryInfoList();
+        for (auto& info : infoList) // TODO: Use Qt 5.7's qAsConst().
             colorSchemes.insert(info.completeBaseName(), nullptr);
     }
     // Since this is a QMap, the keys are already sorted in ascending order.
@@ -129,9 +127,9 @@ ColorScheme ColorScheme::loadFromFile(const QString& path)
 
 ColorScheme ColorScheme::loadByName(const QString& name)
 {
-    for (QString path : colorSchemeSearchPaths()) {
-        QString fileName = QString("%1/%2.%3").arg(path, name, ColorSchemeExtension);
-        ColorScheme colorScheme = loadFromFile(fileName);
+    for (auto& path : colorSchemeSearchPaths()) {
+        auto fileName = QString("%1/%2.%3").arg(path, name, m_colorSchemeExtension);
+        auto colorScheme = loadFromFile(fileName);
         if (colorScheme.isValid())
             return colorScheme;
     }

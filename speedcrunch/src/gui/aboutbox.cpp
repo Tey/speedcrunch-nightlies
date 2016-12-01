@@ -1,7 +1,7 @@
 //  This file is part of the SpeedCrunch project
 //  Copyright (C) 2004, 2006 Ariya Hidayat <ariya@kde.org>
 //  Copyright (C) 2005, 2006 Johan Thelin <e8johan@gmail.com>
-//  Copyright (C) 2007, 2009, 2013 @heldercorreia
+//  Copyright (C) 2007-2016 @heldercorreia
 //
 //  This program is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU General Public License
@@ -43,7 +43,7 @@ AboutBox::AboutBox(QWidget* parent, Qt::WindowFlags f)
     msg += "</b><br>(Qt " + QLatin1String(QT_VERSION_STR) + ")<br>";
 
     const QString authors = "<p><b>%1</b><br>%2";
-    msg += authors.arg(tr("Maintainer")).arg("Helder Correia");
+    msg += authors.arg(tr("Maintainer"), "Helder Correia");
 
     msg += "<p>" + QString("<b>%1</b><br>").arg(tr("Core developers"));
     msg +=
@@ -53,8 +53,8 @@ AboutBox::AboutBox(QWidget* parent, Qt::WindowFlags f)
         THANKS(Teyut)
         ;
 
-    msg += authors.arg(tr("Original author")).arg("Ariya Hidayat");
-    msg += authors.arg(tr("Math engine")).arg("Wolf Lammen");
+    msg += authors.arg(tr("Original author"), "Ariya Hidayat");
+    msg += authors.arg(tr("Math engine"), "Wolf Lammen");
 
     msg += "<p>" + QString("<b>%1</b><br>").arg(tr("Thanks"));
     msg +=

@@ -462,7 +462,7 @@ QString CMath::format(const CNumber& cn, CNumber::Format format)
         if (phase.isZero())
             return strRadius;
         QString strPhase = HMath::format(phase, format);
-        return QString("%1 * exp(j*%2)").arg(strRadius).arg(strPhase);
+        return QString("%1 * exp(j*%2)").arg(strRadius, strPhase);
     } else {
         QString real_part = cn.real.isZero()? "" : HMath::format(cn.real, format);
         QString imag_part = "";
