@@ -40,7 +40,8 @@ needs_sphinx = '1.3'
 # ones.
 sys.path.append(os.path.abspath('extensions'))
 
-extensions = ['qtkeyword', 'speedcrunch_domain', 'sc_post_config', 'sc_lexer']
+extensions = ['qtkeyword', 'speedcrunch_domain', 'sc_post_config', 'sc_lexer',
+              'translations']
 ignore_qtkeywords = not bundled
 primary_domain = 'sc'
 

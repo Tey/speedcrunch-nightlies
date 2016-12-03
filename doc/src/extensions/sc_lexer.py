@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+
+"""
+A lexer extension that reads and highlights the SpeedCrunch expression syntax.
+To use, enable the extension and use the 'sc' or 'speedcrunch' syntax.
+"""
+
 from __future__ import print_function, unicode_literals
 import re
 

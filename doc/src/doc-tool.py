@@ -29,7 +29,7 @@ import os
 import subprocess
 import sys
 
-from languages import SOURCE_LANGUAGE, TRANSLATIONS, LANGUAGE_CODES as LANGUAGES
+from languages import TRANSLATIONS, LANGUAGE_CODES as LANGUAGES
 
 DOC_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -60,7 +60,7 @@ class Tools:
 
 
 def build_docs(tools, source_dir, build_dir, lang=None, builder='html',
-               tags=[], extra_config={}, auto_doctree_dir=True):
+               tags=[], extra_config={}):
     config = extra_config.copy()
     if lang:
         print('Building docs for %s...' % lang)
@@ -74,8 +74,6 @@ def build_docs(tools, source_dir, build_dir, lang=None, builder='html',
     if tags:
         for tag in tags:
             args.extend(['-t', tag])
-    if auto_doctree_dir:
-        args.extend(['-d', os.path.join(build_dir, '_doctrees')])
     return tools.sphinx_build(*args)
 
 
