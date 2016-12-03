@@ -18,6 +18,14 @@
 # the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301, USA.
 
+
+"""
+Add a directive that allows to specify extra keywords for a QtHelp project. To
+use, enable the extension and use the qtkeyword directive with the included
+qthelp2 builder.
+"""
+
+
 from docutils.parsers.rst import Directive
 from sphinx.builders.qthelp import QtHelpBuilder
 from docutils import nodes

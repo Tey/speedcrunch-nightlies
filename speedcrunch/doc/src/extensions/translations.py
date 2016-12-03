@@ -17,6 +17,17 @@
 # the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301, USA.
 
+"""
+Helper extension to provide translation strings for our custom extensions. This
+extension piggy-backs onto Sphinx's i18n system to load the 'extra-doc-strings'
+catalog and hand out translations from it. To use, enable the extension (this
+causes the translations to be loaded); in other extensions, import this module
+and use the `_` and `l_` functions.
+
+The translations are loaded during the 'env-before-read-docs' event;
+module-level strings should only ever use `l_` (to lazy-load the translation).
+"""
+
 import os
 
 from sphinx import locale
@@ -34,8 +45,15 @@ def l_(string):
     return locale._TranslationProxy(_, string)
 
 
-def load_translations(env):
+def load_translations(app):
+    env = app.env
     # (try to) load string translations
     locale_dirs = [os.path.join(env.srcdir, x)
                    for x in env.config.locale_dirs]
+    print("loading '%s' translations [%s]..." % (_CATALOG, env.config.language))
     locale.init(locale_dirs, env.config.language, _CATALOG)
+
+
+def setup(app):
+    app.connect('builder-inited', load_translations)
+    return {'version': '0.1'}
