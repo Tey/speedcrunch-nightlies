@@ -1035,6 +1035,8 @@ void MainWindow::applySettings()
     m_widgets.display->setFont(font);
     m_widgets.editor->setFont(font);
 
+    m_widgets.display->scrollToBottom();
+
     const auto schemes = m_actions.settingsDisplayColorSchemes;
     for (auto& action : schemes) {
         if (m_settings->colorScheme == action->data().toString())

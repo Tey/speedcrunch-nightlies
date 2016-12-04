@@ -1959,6 +1959,7 @@ void Evaluator::unsetAllUserDefinedVariables()
     Quantity ansBackup = getVariable(QLatin1String("ans")).value();
     m_session->clearVariables();
     setVariable(QLatin1String("ans"), ansBackup, Variable::BuiltIn);
+    initializeBuiltInVariables();
 }
 
 static void replaceSuperscriptPowersWithCaretEquivalent(QString& expr)
