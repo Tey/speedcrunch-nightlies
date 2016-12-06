@@ -191,11 +191,14 @@ static Token::Op matchOperator(const QString& text)
 
     if (text.length() == 1) {
         QChar p = text.at(0);
+
         switch(p.unicode()) {
         case '+': result = Token::Plus; break;
         case '-': result = Token::Minus; break;
-        case '*': result = Token::Asterisk; break;
-        case '/': result = Token::Slash; break;
+        case 0x00D7: // ×
+        case '*': result = Token::Multiplication; break;
+        case 0x00F7: // ÷
+        case '/': result = Token::Division; break;
         case '^': result = Token::Caret; break;
         case ';': result = Token::Semicolon; break;
         case '(': result = Token::LeftPar; break;
@@ -240,8 +243,8 @@ static int opPrecedence(Token::Op op)
     case Token::Caret: prec = 700; break;
     /* Not really an operator but needed for managing shift/reduce conflicts */
     case Token::Function: prec = 600; break;
-    case Token::Asterisk:
-    case Token::Slash: prec = 500; break;
+    case Token::Multiplication:
+    case Token::Division: prec = 500; break;
     case Token::Modulo:
     case Token::Backslash: prec = 600; break;
     case Token::Plus:
@@ -518,10 +521,10 @@ bool Evaluator::isRadixChar(const QChar &ch)
 }
 
 // Helper function: return true for valid thousand separator characters.
-bool Evaluator::isSeparatorChar(const QChar &ch)
+bool Evaluator::isSeparatorChar(const QChar& ch)
 {
     // Match everything that is not alphanumeric or an operator or NUL.
-    static QRegExp s_separatorRE("[^a-zA-Z0-9\\+\\-\\*/\\^;\\(\\)%!=\\\\&\\|<>\\?#\\x0000]");
+    static const QRegExp s_separatorRE("[^a-zA-Z0-9\\+\\-\\*×÷/\\^;\\(\\)%!=\\\\&\\|<>\\?#\\x0000]");
 
     if (isRadixChar(ch))
         return false;
@@ -702,7 +705,7 @@ Tokens Evaluator::tokens() const
 Tokens Evaluator::scan(const QString& expr) const
 {
     // Associate character codes with the highest number base they might belong to
-#define DIGIT_MAP_COUNT 128
+    constexpr unsigned DIGIT_MAP_COUNT = 128;
     static unsigned char s_digitMap[DIGIT_MAP_COUNT] = {0};
 
     if (s_digitMap[0] == 0) {
@@ -1236,7 +1239,7 @@ void Evaluator::compile(const Tokens& tokens)
                            && token.asOperator() != Token::LeftPar
                            && token.asOperator() != Token::Caret)    // token is normal operator
                           || (token.isOperand()                      // token may represent implicit multiplication
-                              && opPrecedence(op.asOperator()) >= opPrecedence(Token::Asterisk)))
+                              && opPrecedence(op.asOperator()) >= opPrecedence(Token::Multiplication)))
                       && !(isFunction(b)))
                     {
                       ruleFound = true;
@@ -1244,8 +1247,8 @@ void Evaluator::compile(const Tokens& tokens)
                       // Simple binary operations.
                       case Token::Plus:      m_codes.append(Opcode::Add); break;
                       case Token::Minus:     m_codes.append(Opcode::Sub); break;
-                      case Token::Asterisk:  m_codes.append(Opcode::Mul); break;
-                      case Token::Slash:     m_codes.append(Opcode::Div); break;
+                      case Token::Multiplication: m_codes.append(Opcode::Mul); break;
+                      case Token::Division:  m_codes.append(Opcode::Div); break;
                       case Token::Caret:     m_codes.append(Opcode::Pow); break;
                       case Token::Modulo:    m_codes.append(Opcode::Modulo); break;
                       case Token::Backslash: m_codes.append(Opcode::IntDiv); break;
@@ -1257,7 +1260,7 @@ void Evaluator::compile(const Tokens& tokens)
                           static const QRegExp unitNameNumberRE("(^[0-9e\\+\\-\\.,]|[0-9e\\.,]$)", Qt::CaseInsensitive);
                           QString unitName = m_expression.mid(b.pos(), b.size()).simplified();
                           // Make sure the whole unit name can be used as a single operand in multiplications
-                          if (b.minPrecedence() < opPrecedence(Token::Asterisk))
+                          if (b.minPrecedence() < opPrecedence(Token::Multiplication))
                               unitName = "(" + unitName + ")";
                           // Protect the unit name if it starts or ends with a number
                           else if (unitNameNumberRE.indexIn(unitName) != -1)
@@ -1286,12 +1289,12 @@ void Evaluator::compile(const Tokens& tokens)
                   if(a.isOperand() && b.isOperand()
                      && token.asOperator() != Token::LeftPar
                      && ((token.isOperator()
-                          && opPrecedence(Token::Asterisk) >= opPrecedence(token.asOperator())) // token is normal operator
+                          && opPrecedence(Token::Multiplication) >= opPrecedence(token.asOperator())) // token is normal operator
                          || token.isOperand()) // token represents implicit multiplication
                      && !(isFunction(b)))
                     {
                       ruleFound = true;
-                      syntaxStack.reduce(2, opPrecedence(Token::Asterisk));
+                      syntaxStack.reduce(2, opPrecedence(Token::Multiplication));
                       m_codes.append(Opcode::Mul);
 #ifdef EVALUATOR_DEBUG
                         dbg << "\tRule for implicit multiplication" << "\n";
@@ -1312,7 +1315,7 @@ void Evaluator::compile(const Tokens& tokens)
                     if (x.isOperand() && op1.isOperator()
                          && (op2.asOperator() == Token::Plus || op2.asOperator() == Token::Minus)
                          && (token.isOperand()
-                             || opPrecedence(token.asOperator()) <= opPrecedence(Token::Asterisk)))
+                             || opPrecedence(token.asOperator()) <= opPrecedence(Token::Multiplication)))
                     {
                         ruleFound = true;
                         if (op2.asOperator() == Token::Minus)
@@ -1335,7 +1338,7 @@ void Evaluator::compile(const Tokens& tokens)
                     Token op = syntaxStack.top(1);
                     if (x.isOperand()
                         && (op.asOperator() == Token::Plus || op.asOperator() == Token::Minus)
-                        && ((token.isOperator() && opPrecedence(token.asOperator()) <= opPrecedence(Token::Asterisk))
+                        && ((token.isOperator() && opPrecedence(token.asOperator()) <= opPrecedence(Token::Multiplication))
                             || token.isOperand()))
                     {
                         ruleFound = true;

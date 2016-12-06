@@ -2213,8 +2213,8 @@ void MainWindow::handleEditorTextChange()
             bool operatorCondition =
                 tokens.at(0).asOperator() == Token::Plus
                 || tokens.at(0).asOperator() == Token::Minus
-                || tokens.at(0).asOperator() == Token::Asterisk
-                || tokens.at(0).asOperator() == Token::Slash
+                || tokens.at(0).asOperator() == Token::Multiplication
+                || tokens.at(0).asOperator() == Token::Division
                 || tokens.at(0).asOperator() == Token::Caret;
             if (operatorCondition) {
                 m_conditions.autoAns = false;

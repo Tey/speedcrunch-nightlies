@@ -199,6 +199,21 @@ void test_binary()
     CHECK_EVAL("0+1", "1");
     CHECK_EVAL("1+1", "2");
 
+    CHECK_EVAL("0-0", "0");
+    CHECK_EVAL("1-0", "1");
+    CHECK_EVAL("0-1", "-1");
+    CHECK_EVAL("1-1", "0");
+
+    CHECK_EVAL("2*3", "6");
+    CHECK_EVAL("2×3", "6");
+    CHECK_EVAL("3*2", "6");
+    CHECK_EVAL("3×2", "6");
+
+    CHECK_EVAL("10/2", "5");
+    CHECK_EVAL("10÷2", "5");
+    CHECK_EVAL("2/10", "0.2");
+    CHECK_EVAL("2÷10", "0.2");
+
     // Check that parentheses are added in unit conversion results when needed
     CHECK_EVAL("1 meter -> 10 meter", "0.1 (10 meter)");
     CHECK_EVAL("1 meter -> .1 meter", "10 (.1 meter)");
