@@ -129,8 +129,8 @@ todo_include_todos = True
 if bundled:
     import quark_sphinx_theme
     html_theme_path = [quark_sphinx_theme.get_path()]
-    html_theme = 'quark'
-    html_theme_options = {
+    html_theme = qthelp_theme = 'quark'
+    html_theme_options = qthelp_theme_options = {
         'headerlink_color': 'transparent',
     }
 else:

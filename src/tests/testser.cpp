@@ -49,7 +49,11 @@ void check_ser(const char* file, int line, const char* msg, const T& num, const 
     QJsonObject obj;
     num.serialize(obj);
     QJsonDocument doc(obj);
-    const auto array = doc.toJson(QJsonDocument::Compact);
+    auto array = doc.toJson(QJsonDocument::Compact);
+#if QT_VERSION < QT_VERSION_CHECK(5, 3, 0)
+    // toJson(Compact) inserts a space after colons in Qt 5.2, see QTBUG-36682.
+    array.replace(": ", ":");
+#endif
     string result(array.data());
     /* Test result and display info */
     ++ser_total_tests;
