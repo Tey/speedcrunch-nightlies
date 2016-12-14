@@ -20,8 +20,9 @@
 #ifndef GUI_EDITOR_H
 #define GUI_EDITOR_H
 
-#include <QPlainTextEdit>
 #include "core/sessionhistory.h"
+
+#include <QPlainTextEdit>
 
 struct Constant;
 class ConstantCompletion;

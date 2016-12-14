@@ -48,7 +48,7 @@ const Keypad::KeyDescription Keypad::keyDescriptions[] = {
     {QString::fromLatin1(","), KeyRadixChar, true, 3, 1},
     {QString::fromUtf8("="), KeyEquals, true, 3, 2},
     {QString::fromUtf8("÷"), KeyDivide, true, 0, 3},
-    {QString::fromUtf8("∗"), KeyTimes, true, 1, 3},
+    {QString::fromUtf8("×"), KeyTimes, true, 1, 3},
     {QString::fromUtf8("−"), KeyMinus, true, 2, 3},
     {QString::fromUtf8("+"), KeyPlus, true, 3, 3},
     {QString::fromLatin1("arccos"), KeyAcos, false, 2, 8},

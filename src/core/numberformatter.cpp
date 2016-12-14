@@ -76,5 +76,7 @@ QString NumberFormatter::format(Quantity q)
     if (settings->radixCharacter() == ',')
         result.replace('.', ',');
 
+    result.replace('-', QString::fromUtf8("−"));
+
     return result;
 }
