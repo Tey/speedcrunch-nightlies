@@ -2021,9 +2021,9 @@ void MainWindow::handleKeypadButtonPress(Keypad::Button b)
     case Keypad::Key9: insertTextIntoEditor("9"); break;
 
     case Keypad::KeyPlus: insertTextIntoEditor("+"); break;
-    case Keypad::KeyMinus: insertTextIntoEditor("-"); break;
-    case Keypad::KeyTimes: insertTextIntoEditor("*"); break;
-    case Keypad::KeyDivide: insertTextIntoEditor("/"); break;
+    case Keypad::KeyMinus: insertTextIntoEditor("−"); break;
+    case Keypad::KeyTimes: insertTextIntoEditor("×"); break;
+    case Keypad::KeyDivide: insertTextIntoEditor("÷"); break;
 
     case Keypad::KeyEE: insertTextIntoEditor("e"); break;
     case Keypad::KeyLeftPar: insertTextIntoEditor("("); break;
@@ -2211,11 +2211,11 @@ void MainWindow::handleEditorTextChange()
         Tokens tokens = m_evaluator->scan(expr);
         if (tokens.count() == 1) {
             bool operatorCondition =
-                tokens.at(0).asOperator() == Token::Plus
-                || tokens.at(0).asOperator() == Token::Minus
+                tokens.at(0).asOperator() == Token::Addition
+                || tokens.at(0).asOperator() == Token::Subtraction
                 || tokens.at(0).asOperator() == Token::Multiplication
                 || tokens.at(0).asOperator() == Token::Division
-                || tokens.at(0).asOperator() == Token::Caret;
+                || tokens.at(0).asOperator() == Token::Exponentiation;
             if (operatorCondition) {
                 m_conditions.autoAns = false;
                 expr.prepend("ans");
