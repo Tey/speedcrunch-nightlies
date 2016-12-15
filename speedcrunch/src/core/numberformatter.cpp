@@ -78,5 +78,15 @@ QString NumberFormatter::format(Quantity q)
 
     result.replace('-', QString::fromUtf8("−"));
 
+    // Replace all spaces between units with dot operator.
+    int emptySpaces = 0;
+    for (auto& ch : result) {
+        if (ch.isSpace()) {
+            ++emptySpaces;
+            if (emptySpaces > 1)
+                ch = u'⋅';
+        }
+    }
+
     return result;
 }
