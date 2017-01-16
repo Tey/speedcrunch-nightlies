@@ -30,7 +30,7 @@ win32:DEFINES += _CRT_SECURE_NO_WARNINGS _CRT_NONSTDC_NO_WARNINGS _SCL_SECURE_NO
 
 TEMPLATE = app
 TARGET = speedcrunch
-QT += network help
+QT += help
 
 DEPENDPATH += . \
               core \
