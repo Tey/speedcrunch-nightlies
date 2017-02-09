@@ -26,7 +26,7 @@
 
       <div class="col-lg-4 center-div">
         <p><i class="fa fa-apple" style="vertical-align:middle; font-size:8em;"></i></p>
-        <p><b>MacOS</b></p>
+        <p><b>macOS</b></p>
         {% if osx -%}
           <p>
             {% for (name, path) in osx -%}
@@ -35,12 +35,7 @@
           </p>
         {%- else %}
           <p>
-            <a class="btn btn-primary btn-md dl-button disabled"><i class="fa fa-laptop fa-lg" style="vertical-align:middle;"></i>&nbsp;Download</a>
-          </p>
-          <p>
-            {% trans %}Not currently available for this version.{% endtrans %}
-            {% trans %}We are looking for someone experienced in deploying Qt-based applications on MacOS.{% endtrans %}
-            {% trans %}Please <a href="https://groups.google.com/forum/#!forum/speedcrunch">get in touch</a>.{% endtrans %}
+            <a class="btn btn-primary btn-md dl-button"><i class="fa fa-laptop fa-lg" style="vertical-align:middle;"></i>&nbsp;Download</a>
           </p>
         {%- endif %}
       </div>
@@ -111,6 +106,8 @@
         win=[
           (_('Installer'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12-win32.exe'),
           (_('Portable'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12-win32.zip'),],
+
+        osx=[(_('Download'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12.dmg')],
 
         linux=[
           (_('32-bit RPM'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12-linux32.rpm'),
