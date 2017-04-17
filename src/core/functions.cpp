@@ -305,6 +305,11 @@ Quantity function_imag(Function* f, const Function::ArgumentList& args)
     return DMath::imag(args.at(0));
 }
 
+Quantity function_conj(Function* f, const Function::ArgumentList& args)
+{
+    ENSURE_ARGUMENT_COUNT(1);
+    return DMath::conj(args.at(0));
+}
 
 Quantity function_phase(Function* f, const Function::ArgumentList& args)
 {
@@ -858,6 +863,7 @@ void FunctionRepo::createFunctions()
     // Complex.
     FUNCTION_INSERT(real);
     FUNCTION_INSERT(imag);
+    FUNCTION_INSERT(conj);
     FUNCTION_INSERT(phase);
     FUNCTION_INSERT(polar);
     FUNCTION_INSERT(cart);
@@ -988,6 +994,7 @@ void FunctionRepo::setNonTranslatableFunctionUsages()
     FUNCTION_USAGE(cart, "x");
     FUNCTION_USAGE(cbrt, "x");
     FUNCTION_USAGE(ceil, "x");
+    FUNCTION_USAGE(conj, "x");
     FUNCTION_USAGE(cos, "x");
     FUNCTION_USAGE(cosh, "x");
     FUNCTION_USAGE(cot, "x");
@@ -1091,6 +1098,7 @@ void FunctionRepo::setFunctionNames()
     FUNCTION_NAME(cart, tr("Convert to Cartesian Notation"));
     FUNCTION_NAME(cbrt, tr("Cube Root"));
     FUNCTION_NAME(ceil, tr("Ceiling"));
+    FUNCTION_NAME(conj, tr("Complex Conjugate"));
     FUNCTION_NAME(cos, tr("Cosine"));
     FUNCTION_NAME(cosh, tr("Hyperbolic Cosine"));
     FUNCTION_NAME(cot, tr("Cotangent"));

@@ -316,6 +316,12 @@ Complex Numbers
 
     The argument may have a dimension.
 
+.. function:: conj(x)
+
+    Return the complex conjugate of a complex number ``x``.
+
+    In *complex mode*, this function accepts any real or complex input. In *real mode*, the imaginary portion of ``x`` is stripped to ensure that the value returned is purely real.
+
 .. function:: phase(x)
 
     Returns the phase (angle) of a complex number ``x``. The unit of the angle corresponds to the current angle mode.

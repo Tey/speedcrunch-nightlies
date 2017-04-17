@@ -108,9 +108,22 @@ void test_basic()
 
 void test_functions()
 {
+    Quantity tmp1;
+
     CHECK(DMath::abs(Quantity(CNumber("3+4j"))*Units::meter()), "5 meter");
     CHECK(DMath::round(CNumber("1.234"), 1), "1.2");
     CHECK(DMath::round(Quantity(CNumber("1.234"))*Units::joule(), 0), "NaN");
+
+    DMath::complexMode = true;
+    tmp1 = Quantity(CNumber("3+4j"))*Units::ohm();
+    CHECK(DMath::conj(Quantity(CNumber("3"))*Units::ohm()), "3 ohm");
+    CHECK(DMath::conj(Quantity(CNumber("3+4j"))*Units::ohm()), "(3-4j) ohm");
+    DMath::complexMode = false;
+    CHECK(DMath::conj(Quantity(CNumber("3"))*Units::ohm()), "3 ohm");
+    // for a complex number declared in complex mode, ensure that if we've switched to real mode
+    // and call this function that the imaginary part is stripped. 
+    CHECK(DMath::conj(tmp1), "3 ohm"); 
+    DMath::complexMode = true;
 
     CHECK(DMath::trunc(CNumber("1.274"), 1), "1.2");
     CHECK(DMath::trunc(Quantity(CNumber("1.234"))*Units::joule(), 0), "NaN");
