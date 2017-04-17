@@ -489,6 +489,14 @@ CNumber CMath::abs(const CNumber& n)
     return HMath::sqrt(n.real * n.real + n.imag * n.imag);
 }
 
+/*
+ * Returns the complex conjugate of n
+ */
+CNumber CMath::conj(const CNumber& n)
+{
+    return CNumber(n.real, -n.imag);
+}
+
 /**
  * Returns the square root of n.
  */

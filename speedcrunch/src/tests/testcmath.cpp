@@ -259,6 +259,11 @@ void test_functions()
     CHECK(CMath::abs("-3.14159"), "3.14159");
     CHECK(CMath::abs("-0.00000014159"), "0.00000014159");
 
+    CHECK(CMath::conj("NaN"), "NaN");
+    CHECK(CMath::conj("1"), "1");
+    CHECK(CMath::conj("1j"), "-1j");
+    CHECK(CMath::conj("1+1j"), "1-1j");
+
     CHECK(CMath::floor("NaN"), "NaN");
     CHECK(CMath::floor("0"), "0");
     CHECK(CMath::floor("5"), "5");

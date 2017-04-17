@@ -183,6 +183,7 @@ public:
     // COMPLEX
     static Quantity real(const Quantity&);
     static Quantity imag(const Quantity&);
+    static Quantity conj(const Quantity&);
     static Quantity phase(const Quantity&);
     // TRIGONOMETRY
     static Quantity sin(const Quantity&);
