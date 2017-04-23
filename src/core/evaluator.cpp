@@ -990,9 +990,9 @@ Tokens Evaluator::scan(const QString& expr) const
             } else if (isSeparatorChar(ch)) {
                 // Ignore thousand separators.
                 ++i;
-            } else if (tokenText.isEmpty() && (ch == '+' || ch == '-')) {
+            } else if (tokenText.isEmpty() && (ch == '+' || ch == '-' || ch == 0x2212)) {
                 // Allow expressions like "$-10" or "$+10".
-                if (ch == '-')
+                if (ch == '-' || ch == 0x2212)
                     tokenText.append('-');
                 ++i;
             } else {
@@ -1045,9 +1045,10 @@ Tokens Evaluator::scan(const QString& expr) const
         }
 
         case InExpIndicator:
-            if (ch == '+' || ch == '-') {
+            if (ch == '+' || ch == '-' || ch == 0x2212) {
                 // Possible + or - right after E.
-                expText.append(ex.at(i++));
+                expText.append(ch == 0x2212 ? '-' : ch);
+                ++i;
             } else if (ch.isDigit()) {
                 // Parse the exponent absolute value.
                 state = InExponent;

@@ -170,6 +170,12 @@ void test_unary()
     CHECK_EVAL("-1!", "-1");
     CHECK_EVAL("-2!", "-2");
     CHECK_EVAL("-3!", "-6");
+
+    // Unicode minus sign
+    CHECK_EVAL("−1", "-1");
+    CHECK_EVAL("−(2*3)", "-6");
+    CHECK_EVAL("2*−1", "-2");
+    CHECK_EVAL("2e−1", "0.2");
 }
 
 void test_binary()
