@@ -813,10 +813,20 @@ void Editor::keyPressEvent(QKeyEvent* event)
         }
         break;
 
-    case Qt::Key_Asterisk:
-        insert(QString::fromUtf8("×")); // U+00D7 × MULTIPLICATION SIGN.
+    case Qt::Key_Asterisk: {
+        auto position = textCursor().position();
+        if (position > 0 && QString("*×").contains(text().at(position - 1))) {
+          // Replace ×* by ^ operator
+          auto cursor = textCursor();
+          cursor.removeSelectedText();  // just in case some text is selected
+          cursor.deletePreviousChar();
+          insert(QString::fromUtf8("^"));
+        } else {
+          insert(QString::fromUtf8("×")); // U+00D7 × MULTIPLICATION SIGN.
+        }
         event->accept();
         return;
+    }
 
     case Qt::Key_Minus:
         insert(QString::fromUtf8("−")); // U+2212 − MINUS SIGN.
