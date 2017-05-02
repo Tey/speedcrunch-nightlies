@@ -20,7 +20,7 @@ function build_speedcrunch {
     mkdir -p $BUILD_DIR
     cd $BUILD_DIR
     scl enable devtoolset-2 "bash <<END
-    $QT_INSTALL_DIR/bin/qmake $SPEEDCRUNCH_SOURCE_DIR/src 'CONFIG-=debug'
+    $QT_INSTALL_DIR/bin/qmake $SPEEDCRUNCH_SOURCE_DIR/src CONFIG-=debug QTPLUGIN+='composeplatforminputcontextplugin ibusplatforminputcontextplugin'
     make -j$(nproc --all)
 END"
 }
