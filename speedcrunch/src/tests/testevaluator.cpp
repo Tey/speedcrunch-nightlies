@@ -467,7 +467,7 @@ void test_function_trig()
 
 void test_function_stat()
 {
-    CHECK_EVAL("MIN(0)", "0");
+    CHECK_EVAL_FAIL("MIN(0)");
     CHECK_EVAL("MIN(0; 1)", "0");
     CHECK_EVAL("MIN(0; 2)", "0");
     CHECK_EVAL("MIN(-1; 0)", "-1");
@@ -477,7 +477,7 @@ void test_function_stat()
     CHECK_EVAL("MIN(-1; 0; 1; 2)", "-1");
     CHECK_EVAL("MIN(-2; -1; 0; 1; 2)", "-2");
 
-    CHECK_EVAL("MAX(0)", "0");
+    CHECK_EVAL_FAIL("MAX(0)");
     CHECK_EVAL("MAX(0; 1)", "1");
     CHECK_EVAL("MAX(0; 2)", "2");
     CHECK_EVAL("MAX(-1; 0)", "0");
@@ -487,11 +487,7 @@ void test_function_stat()
     CHECK_EVAL("MAX(-1; 0; 1; 2)", "2");
     CHECK_EVAL("MAX(-2; -1; 0; 1; 2)", "2");
 
-    CHECK_EVAL("SUM(0)", "0");
-    CHECK_EVAL("SUM(1)", "1");
-    CHECK_EVAL("SUM(-1)", "-1");
-    CHECK_EVAL("SUM(100)", "100");
-    CHECK_EVAL("SUM(-100)", "-100");
+    CHECK_EVAL_FAIL("SUM(1)");
     CHECK_EVAL("SUM(100;1)", "101");
     CHECK_EVAL("SUM(-100;1)", "-99");
     CHECK_EVAL("SUM(0;0;0)", "0");
@@ -500,10 +496,7 @@ void test_function_stat()
     CHECK_EVAL("SUM(1;2;3;4;5;6)", "21");
     CHECK_EVAL("SUM(1;-2;3;-4;5;-6)", "-3");
 
-    CHECK_EVAL("PRODUCT(0)", "0");
-    CHECK_EVAL("PRODUCT(1)", "1");
-    CHECK_EVAL("PRODUCT(-1)", "-1");
-    CHECK_EVAL("PRODUCT(100)", "100");
+    CHECK_EVAL_FAIL("PRODUCT(-1)");
     CHECK_EVAL("PRODUCT(100;0)", "0");
     CHECK_EVAL("PRODUCT(100;1)", "100");
     CHECK_EVAL("PRODUCT(-100;1)", "-100");
@@ -512,7 +505,7 @@ void test_function_stat()
     CHECK_EVAL("PRODUCT(1;2;3;4;5;6)", "720");
     CHECK_EVAL("PRODUCT(1;-2;3;-4;5;-6)", "-720");
 
-    CHECK_EVAL("AVERAGE(0)", "0");
+    CHECK_EVAL_FAIL("AVERAGE(0)");
     CHECK_EVAL("AVERAGE(0;0)", "0");
     CHECK_EVAL("AVERAGE(0;0;0)", "0");
     CHECK_EVAL("AVERAGE(0;1)", "0.5");
@@ -525,14 +518,8 @@ void test_function_stat()
     CHECK_EVAL("AVERAGE(2.25;4.75)", "3.5");
     CHECK_EVAL("AVERAGE(1/3;2/3)", "0.5");
 
-    CHECK_EVAL_FAIL("GEOMEAN(0)");
-    CHECK_EVAL_FAIL("GEOMEAN(-1)");
-    CHECK_EVAL_FAIL("GEOMEAN(-1e20)");
-    CHECK_EVAL("GEOMEAN(1)", "1");
-    CHECK_EVAL("GEOMEAN(2)", "2");
-    CHECK_EVAL("GEOMEAN(3)", "3");
-    CHECK_EVAL("GEOMEAN(4)", "4");
-    CHECK_EVAL("GEOMEAN(5)", "5");
+    CHECK_EVAL_FAIL("GEOMEAN(-1e20;0;-1)");
+    CHECK_EVAL_FAIL("GEOMEAN(5)");
     CHECK_EVAL("GEOMEAN(1;1)", "1");
     CHECK_EVAL("GEOMEAN(1;4)", "2");
     CHECK_EVAL("GEOMEAN(4;9)", "6");
@@ -549,14 +536,9 @@ void test_function_stat()
 
 void test_function_logic()
 {
-    CHECK_EVAL("and(0)", "0");
-    CHECK_EVAL("and(1)", "1");
-
-    CHECK_EVAL("or(0)", "0");
-    CHECK_EVAL("or(1)", "1");
-
-    CHECK_EVAL("xor(0)", "0");
-    CHECK_EVAL("xor(1)", "1");
+    CHECK_EVAL_FAIL("and(1)");
+    CHECK_EVAL_FAIL("or(2)");
+    CHECK_EVAL_FAIL("xor(3)");
 
     CHECK_EVAL("and(0;0)", "0");
     CHECK_EVAL("and(0;1)", "0");

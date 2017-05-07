@@ -56,6 +56,11 @@ static void s_deleteEvaluator()
     delete s_evaluatorInstance;
 }
 
+bool isMinus(const QChar& ch)
+{
+    return ch == QLatin1Char('-') || ch == QChar(0x2212);
+}
+
 const Quantity& Evaluator::checkOperatorResult(const Quantity& n)
 {
     switch (n.error()) {
@@ -990,9 +995,9 @@ Tokens Evaluator::scan(const QString& expr) const
             } else if (isSeparatorChar(ch)) {
                 // Ignore thousand separators.
                 ++i;
-            } else if (tokenText.isEmpty() && (ch == '+' || ch == '-' || ch == 0x2212)) {
+            } else if (tokenText.isEmpty() && (ch == '+' || isMinus(ch))) {
                 // Allow expressions like "$-10" or "$+10".
-                if (ch == '-' || ch == 0x2212)
+                if (isMinus(ch))
                     tokenText.append('-');
                 ++i;
             } else {
@@ -1045,9 +1050,9 @@ Tokens Evaluator::scan(const QString& expr) const
         }
 
         case InExpIndicator:
-            if (ch == '+' || ch == '-' || ch == 0x2212) {
+            if (ch == '+' || isMinus(ch)) {
                 // Possible + or - right after E.
-                expText.append(ch == 0x2212 ? '-' : ch);
+                expText.append(ch == QChar(0x2212) ? '-' : ch);
                 ++i;
             } else if (ch.isDigit()) {
                 // Parse the exponent absolute value.

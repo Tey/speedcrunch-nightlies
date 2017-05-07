@@ -6,15 +6,15 @@ Bitwise Operations
 
 .. function:: and(x1; x2; ...)
 
-    Performs a bitwise logical AND on the submitted parameters (one or more). All parameters have to be real integers from the range -2\ :sup:`255` to +2\ :sup:`255`-1 (signed or unsigned 256 bit integers), non integer arguments are rounded toward zero. The result ranges from -2\ :sup:`255` to +2\ :sup:`255`-1 (signed integer). Note that ``and(x)`` is not the identity, because the unsigned +2\ :sup:`255` is mapped to the signed -2\ :sup:`255` for example. An error is returned if the parameters are not in the valid range.
+    Performs a bitwise logical AND on the submitted parameters (at least two). All parameters have to be real integers from the range -2\ :sup:`255` to +2\ :sup:`255`-1 (signed or unsigned 256 bit integers), non integer arguments are rounded toward zero. The result ranges from -2\ :sup:`255` to +2\ :sup:`255`-1 (signed integer).
 
 .. function:: or(x1; x2; ...)
 
-    Performs a bitwise logical OR on the submitted parameters (one or more). All parameters have to be integers from the range -2\ :sup:`255` to +2\ :sup:`255`-1 (signed integer), non integer arguments are rounded toward zero. Note that ``or(x)`` is not the identity, because the unsigned 2\ :sup:`255`     is mapped to the signed -2\ :sup:`255`, for example.
+    Performs a bitwise logical OR on the submitted parameters (at least two). All parameters have to be integers from the range -2\ :sup:`255` to +2\ :sup:`255`-1 (signed integer), non integer arguments are rounded toward zero.
 
 .. function:: xor(x1; x2; ...)
 
-    Performs a bitwise logical XOR on the submitted parameters (one or more). All parameters have to be integers from the range -2\ :sup:`255` to +2\ :sup:`255`-1  (signed integer), non integer arguments are rounded toward zero. Note that ``xor(x)`` is not the identity, because the unsigned 2\ :sup:`255` is mapped to the signed -2\ :sup:`255`, for example.
+    Performs a bitwise logical XOR on the submitted parameters (at least two). All parameters have to be integers from the range -2\ :sup:`255` to +2\ :sup:`255`-1  (signed integer), non integer arguments are rounded toward zero.
 
 .. function:: not(n)
 
