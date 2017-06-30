@@ -1359,7 +1359,7 @@ void Evaluator::compile(const Tokens& tokens)
                        (token.isOperator()
                            && opPrecedence(op.asOperator()) >=
                                opPrecedence(token.asOperator())
-                           && token.asOperator() != Token::AssociationStart
+                           && !(b.isIdentifier() && token.asOperator() == Token::AssociationStart)
                            && token.asOperator() != Token::Exponentiation)
 
                        || ( // May represent implicit multiplication.
