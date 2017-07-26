@@ -61,6 +61,22 @@ bool isMinus(const QChar& ch)
     return ch == QLatin1Char('-') || ch == QChar(0x2212);
 }
 
+bool isExponent(const QChar& ch, int base)
+{
+    switch (base) {
+        case 2:
+            return ch == QLatin1Char('b') || ch == QLatin1Char('B');
+        case 8:
+            return ch == QLatin1Char('o') || ch == QLatin1Char('O') || ch == QLatin1Char('C');
+        case 10:
+            return ch == QLatin1Char('e') || ch == QLatin1Char('E');
+        case 16:
+            return ch == QLatin1Char('h') || ch == QLatin1Char('H');
+        default:
+            return false;
+    }
+}
+
 const Quantity& Evaluator::checkOperatorResult(const Quantity& n)
 {
     switch (n.error()) {
@@ -814,7 +830,7 @@ Tokens Evaluator::scan(const QString& expr) const
     // Parsing state.
     enum {
         Init, Start, Finish, Bad, InNumberPrefix, InNumber, InExpIndicator,
-        InExponent, InIdentifier, InNumberEnd
+        InExponentBase, InExponent, InIdentifier, InNumberEnd
     } state;
 
     // Initialize variables.
@@ -825,6 +841,7 @@ Tokens Evaluator::scan(const QString& expr) const
     int tokenStart = 0; // Includes leading spaces.
     Token::Type type;
     int numberBase;
+    int expBase;
     int expStart = -1;  // Index of the exponent part in the expression.
     QString expText;    // Start of the exponent text matching /E[\+\-]*/
 
@@ -853,6 +870,8 @@ Tokens Evaluator::scan(const QString& expr) const
             // State variables reset
             expStart = -1;
             expText = "";
+            numberBase = 10;
+            expBase = 0;
 
             // No break here on purpose (make sure Start is the next case)
 
@@ -949,11 +968,11 @@ Tokens Evaluator::scan(const QString& expr) const
                     numberBase = 10;
                     state = InNumber;
                 }
-            } else if (ch.toUpper() == 'E') {
+            } else if (isExponent(ch, numberBase)) {
                 if (tokenText.endsWith("0")) {
                     // Maybe exponent (tokenText is "0" or "-0").
                     numberBase = 10;
-                    expText = "E";
+                    expText = ch.toUpper();
                     expStart = i;
                     ++i;
                     state = InExpIndicator;
@@ -1020,15 +1039,15 @@ Tokens Evaluator::scan(const QString& expr) const
             if (isDigit) {
                 // Consume as long as it's a digit
                 tokenText.append(ex.at(i++).toUpper());
-            } else if (numberBase == 10 && ch.toUpper() == 'E') {
-                // Maybe exponent (only for decimal numbers)
-                expText = "E";
+            } else if (isExponent(ch, numberBase)) {
+                // Maybe exponent
+                expText = ch.toUpper();
                 expStart = i;
                 ++i;
                 tokenText = fixNumberRadix(tokenText);
-                if (!tokenText.isNull())
+                if (!tokenText.isNull()) {
                     state = InExpIndicator;
-                else
+                } else
                     state = Bad;
             } else if (isRadixChar(ch)) {
                 // Might be a radix point or a separator.
@@ -1046,18 +1065,35 @@ Tokens Evaluator::scan(const QString& expr) const
                 else
                     state = Bad;
             }
+
             break;
         }
 
-        case InExpIndicator:
-            if (ch == '+' || isMinus(ch)) {
+        // Validate exponent start.
+        case InExpIndicator: {
+            ushort c = ch.unicode();
+            bool isDigit = c < DIGIT_MAP_COUNT && (s_digitMap[c] <= numberBase);
+
+            if (expBase == 0) {
+                // Set the default exponent base (same as number)
+                expBase = numberBase;
+            }
+
+            if (expText.length() == 1 && (ch == '+' || isMinus(ch))) {
                 // Possible + or - right after E.
                 expText.append(ch == QChar(0x2212) ? '-' : ch);
                 ++i;
-            } else if (ch.isDigit()) {
-                // Parse the exponent absolute value.
-                state = InExponent;
-                tokenText.append(expText);
+            } else if (isDigit) {
+                if (ch == '0') {
+                    // Might be a base prefix
+                    expText.append(ch);
+                    ++i;
+                    state = InExponentBase;
+                } else {
+                    // Parse the exponent absolute value.
+                    tokenText.append(expText);
+                    state = InExponent;
+                }
             } else if (isSeparatorChar(ch)) {
                 // Ignore thousand separators.
                 ++i;
@@ -1067,10 +1103,50 @@ Tokens Evaluator::scan(const QString& expr) const
                 i = expStart;
                 state = InNumberEnd;
             }
-            break;
 
-        case InExponent:
-            if (ch.isDigit()) {
+            break;
+        }
+
+        // Detect exponent base.
+        case InExponentBase: {
+            int base = -1;
+            switch (ch.toUpper().unicode()) {
+                case 'B':
+                    base = 2;
+                    break;
+                case 'O':
+                    base = 8;
+                    break;
+                case 'D':
+                    base = 10;
+                    break;
+                case 'X':
+                    base = 16;
+                    break;
+            }
+
+            if (base != -1) {
+                // Specific exponent base found
+                expBase = base;
+                tokenText.append(expText);
+                tokenText.append(ch.toLower());
+                ++i;
+            } else {
+                // No exponent base specified, use the default one
+                tokenText.append(expText);
+            }
+
+            state = InExponent;
+
+            break;
+        }
+
+        // Parse exponent.
+        case InExponent: {
+            ushort c = ch.unicode();
+            bool isDigit = c < DIGIT_MAP_COUNT && (s_digitMap[c] <= expBase);
+
+            if (isDigit) {
                 // Consume as long as it's a digit.
                 tokenText.append(ex.at(i++));
             } else if (isSeparatorChar(ch)) {
@@ -1080,7 +1156,9 @@ Tokens Evaluator::scan(const QString& expr) const
                 // We're done with floating-point number.
                 state = InNumberEnd;
             };
+
             break;
+        }
 
         case InNumberEnd: {
             int tokenSize = i - tokenStart;
