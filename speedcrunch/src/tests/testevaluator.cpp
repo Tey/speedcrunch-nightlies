@@ -122,6 +122,34 @@ void test_constants()
     CHECK_EVAL("1", "1");
 }
 
+void test_exponentiation()
+{
+    CHECK_EVAL("2e10", "20000000000");
+    CHECK_EVAL("2E10", "20000000000");
+    CHECK_EVAL("2e-10", "0.0000000002");
+    CHECK_EVAL("2E0xa", "20000000000");
+    CHECK_EVAL("2e-0xa", "0.0000000002");
+    CHECK_EVAL("0b10b10", "8");
+    CHECK_EVAL("0b10B10", "8");
+    CHECK_EVAL("0b10b-10", "0.5");
+    CHECK_EVAL("0b10b0d2", "8");
+    CHECK_EVAL("0b10b-0d2", "0.5");
+    CHECK_EVAL("0o2o10", "33554432");
+    CHECK_EVAL("0o2O10", "33554432");
+    CHECK_EVAL("0o2C10", "33554432");
+    CHECK_EVAL("0o2o-10", "0.00000011920928955078");
+    CHECK_EVAL("0o2o0d8", "33554432");
+    CHECK_EVAL("0o2o-0d8", "0.00000011920928955078");
+    CHECK_EVAL("0x2h10", "36893488147419103232");
+    CHECK_EVAL("0x2H10", "36893488147419103232");
+    CHECK_EVAL("0x2h-10", "0.00000000000000000011");
+    CHECK_EVAL("0x2h0d16", "36893488147419103232");
+    CHECK_EVAL("0x2h-0d16", "0.00000000000000000011");
+    CHECK_EVAL_FAIL("0x2o11");
+    CHECK_EVAL_FAIL("0b2C11");
+    CHECK_EVAL_FAIL("0o2b11");
+}
+
 void test_unary()
 {
     CHECK_EVAL("-0", "0");
@@ -895,6 +923,7 @@ int main(int argc, char* argv[])
     eval->initializeBuiltInVariables();
 
     test_constants();
+    test_exponentiation();
     test_unary();
     test_binary();
 

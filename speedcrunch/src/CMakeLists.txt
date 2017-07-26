@@ -100,6 +100,7 @@ target_link_libraries(testevaluator ${QT_LIBRARIES})
 add_test(testevaluator testevaluator)
 
 add_executable(testfloatnum ${testfloatnum_SOURCES})
+set_property(TARGET testfloatnum APPEND PROPERTY COMPILE_DEFINITIONS _FLOATNUMTEST)
 add_test(testfloatnum testfloatnum)
 
 add_executable(testcmath ${testcmath_SOURCES})
