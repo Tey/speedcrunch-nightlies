@@ -126,7 +126,7 @@ if(UNIX AND NOT APPLE)
     set(BIN_INSTALL_DIR "bin")
 
     set(MENU_DIR "${SHARE_DIR}/applications/")
-    set(APP_DATA_DIR "${SHARE_DIR}/appdata/")
+    set(APP_DATA_DIR "${SHARE_DIR}/metainfo/")
     set(ICON_DIR "${SHARE_DIR}/pixmaps/")
 elseif(APPLE)
     set(BIN_INSTALL_DIR ".")
