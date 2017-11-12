@@ -832,9 +832,10 @@ void test_angle_mode(Settings* settings)
     CHECK_EVAL("sin(180)", "0");
     CHECK_EVAL("arcsin(-1)", "-90");
     CHECK_EVAL_FAIL("sin(1j)");
-    CHECK_EVAL_FAIL("arcsin(-2)");
+    CHECK_EVAL("arcsin(-2)", "-90+75.4561292902168920041j");
     CHECK_EVAL("radian","57.2957795130823208768");
     CHECK_EVAL("degree","1");
+    CHECK_EVAL_KNOWN_ISSUE("arcsin(0.25)", "14.47751218592992387877", 781);
 }
 
 void test_implicit_multiplication()

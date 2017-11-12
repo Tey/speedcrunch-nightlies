@@ -3,7 +3,7 @@
 // Copyright (C) 2007, 2009 Wolf Lammen
 // Copyright (C) 2007-2009, 2013, 2014 @heldercorreia
 // Copyright (C) 2009 Andreas Scherer <andreas_coder@freenet.de>
-// Copyright (C) 2011 Enrico Rós <enrico.ros@gmail.com>
+// Copyright (C) 2011 Enrico RÃ³s <enrico.ros@gmail.com>
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -86,14 +86,8 @@
     }
 
 #define CONVERT_RESULT_ANGLE(result) \
-    if (Settings::instance()->angleUnit == 'd') { \
-        if (result.isReal()) \
-            result = DMath::rad2deg(result); \
-	else { \
-            f->setError(OutOfDomain); \
-            return DMath::nan(); \
-        } \
-    }
+    if (Settings::instance()->angleUnit == 'd') \
+        result = DMath::rad2deg(result); \
 
 static FunctionRepo* s_FunctionRepoInstance = 0;
 
