@@ -685,7 +685,6 @@ CNumber CMath::phase(const CNumber& x)
     return HMath::arctan2(x.real, x.imag);
 }
 
-
 /**
  * Returns the arc tangent of x.
  */
@@ -709,6 +708,25 @@ CNumber CMath::arccos(const CNumber& x)
 {
     return -CMath::i() * CMath::ln(x + sqrt(x * x - CNumber(1)));
 }
+
+/**
+ * Converts an angle from radians to degrees.
+ * Also accepts complex arguments.
+ */
+CNumber CMath::rad2deg(const CNumber& x)
+{
+    return CNumber(HMath::rad2deg(x.real), HMath::rad2deg(x.imag));
+}
+
+/**
+ * Converts an angle from radians to degrees.
+ * Also accepts complex arguments.
+ */
+CNumber CMath::deg2rad(const CNumber& x)
+{
+    return CNumber(HMath::deg2rad(x.real), HMath::deg2rad(x.imag));
+}
+
 
 // Wrappers towards functions defined only on real numbers
 // =======================================================
@@ -810,8 +828,6 @@ REAL_WRAPPER_CNUMBER_1(operator~, OutOfLogicRange)
 REAL_WRAPPER_CNUMBER_2(operator>>, OutOfLogicRange)
 REAL_WRAPPER_CNUMBER_2(operator<<, OutOfLogicRange)
 // CMath GENERAL MATH
-REAL_WRAPPER_CMATH_NUM(rad2deg, OutOfDomain)
-REAL_WRAPPER_CMATH_NUM(deg2rad, OutOfDomain)
 REAL_WRAPPER_CMATH_NUM(integer, OutOfDomain)
 REAL_WRAPPER_CMATH_NUM(frac, OutOfDomain)
 REAL_WRAPPER_CMATH_NUM(floor, OutOfDomain)
