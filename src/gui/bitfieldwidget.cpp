@@ -258,7 +258,7 @@ void BitFieldWidget::wheelEvent(QWheelEvent* we)
         shiftBitsRight();
 }
 
-void BitFieldWidget::resizeEvent(QResizeEvent* re)
+void BitFieldWidget::resizeEvent(QResizeEvent*)
 {
   this->updateFieldLayout();
 }

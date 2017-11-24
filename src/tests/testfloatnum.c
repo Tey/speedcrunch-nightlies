@@ -144,14 +144,14 @@ static unsigned hash(floatnum x)
   if (x)
   {
     bc = x->significand;
-    result = rol(x->exponent) ^ (unsigned)(bc);
+    result = rol(x->exponent) ^ (unsigned long)(bc);
     if (bc)
     {
       result = rol(result) ^ bc->n_sign;
       result = rol(result) ^ bc->n_len;
       result = rol(result) ^ bc->n_scale;
       p = bc->n_value;
-      result = rol(result) ^ (unsigned)p;
+      result = rol(result) ^ (unsigned long)p;
       for (i = 0; i++ <= bc->n_scale;)
         result = rol(result) ^ *(p++);
     }
@@ -654,6 +654,8 @@ static int tc_setsignificand(const char* mant, int mlg,
   int z, d, i;
   char retvalue;
 
+  float_create(&f);
+
   retvalue = 1;
   float_geterror();
   /* test zero or NaN cases */
@@ -713,6 +715,7 @@ static int tc_setsignificand(const char* mant, int mlg,
   }
   _one_->n_sign = PLUS;
   float_setnan(&f);
+  float_free(&f);
   return retvalue;
 }
 
@@ -3109,6 +3112,7 @@ static int test_lnxplus1lt1()
   printf("testing _lnxplus1lt1\n");
 
   float_create(&x);
+  float_create(&x1);
   float_create(&max);
   float_create(&step);
   float_create(&ofs);
@@ -3214,6 +3218,7 @@ static int test_lnxplus1lt1()
   float_getscientific(buf, 50, &max);
   printf("max error _lnxplus1: %s\n", buf);
   float_free(&x);
+  float_free(&x1);
   float_free(&max);
   float_free(&step);
   float_free(&ofs);
