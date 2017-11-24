@@ -31,37 +31,51 @@ QString NumberFormatter::format(Quantity q)
         switch (settings->resultFormat) {
         case 'b':
             format.base = Quantity::Format::Base::Binary;
-            format.mode = Quantity::Format::Mode::Fixed;
             break;
         case 'o':
             format.base = Quantity::Format::Base::Octal;
-            format.mode = Quantity::Format::Mode::Fixed;
             break;
         case 'h':
             format.base = Quantity::Format::Base::Hexadecimal;
-            format.mode = Quantity::Format::Mode::Fixed;
             break;
         case 'n':
             format.base = Quantity::Format::Base::Decimal;
-            format.mode = Quantity::Format::Mode::Engineering;
             break;
         case 'f':
             format.base = Quantity::Format::Base::Decimal;
-            format.mode = Quantity::Format::Mode::Fixed;
             break;
         case 'e':
             format.base = Quantity::Format::Base::Decimal;
-            format.mode = Quantity::Format::Mode::Scientific;
             break;
         case 'g':
         default:
             format.base = Quantity::Format::Base::Decimal;
-            format.mode = Quantity::Format::Mode::General;
             break;
         }
     }
-    if (format.mode == Quantity::Format::Mode::Null)
-        format.mode = Quantity::Format::Mode::General;
+
+    if (format.mode == Quantity::Format::Mode::Null) {
+        if (format.base == Quantity::Format::Base::Decimal) {
+          switch (settings->resultFormat) {
+          case 'n':
+              format.mode = Quantity::Format::Mode::Engineering;
+              break;
+          case 'f':
+              format.mode = Quantity::Format::Mode::Fixed;
+              break;
+          case 'e':
+              format.mode = Quantity::Format::Mode::Scientific;
+              break;
+          case 'g':
+          default:
+              format.mode = Quantity::Format::Mode::General;
+              break;
+          }
+        } else {
+            format.mode = Quantity::Format::Mode::Fixed;
+        }
+    }
+
     if (format.precision == Quantity::Format::PrecisionNull)
         format.precision = settings->resultPrecision;
     if (format.notation == Quantity::Format::Notation::Null) {
