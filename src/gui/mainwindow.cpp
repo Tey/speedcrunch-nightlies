@@ -554,7 +554,7 @@ void MainWindow::createMenus()
 
     m_menus.display = m_menus.settings->addMenu("");
     m_menus.colorScheme = m_menus.display->addMenu("");
-    const auto schemes = m_actions.settingsDisplayColorSchemes; // TODO: qAsConst().
+    const auto schemes = m_actions.settingsDisplayColorSchemes; // TODO: Qt 5.7's qAsConst().
     for (auto& action : schemes)
         m_menus.colorScheme->addAction(action);
     m_menus.display->addAction(m_actions.settingsDisplayFont);
@@ -923,6 +923,9 @@ void MainWindow::createFixedConnections()
     connect(this, SIGNAL(resultPrecisionChanged()), m_widgets.display, SLOT(refresh()));
     connect(this, SIGNAL(colorSchemeChanged()), m_widgets.display, SLOT(rehighlight()));
     connect(this, SIGNAL(colorSchemeChanged()), m_widgets.editor, SLOT(rehighlight()));
+    connect(m_actionGroups.colorScheme, &QActionGroup::hovered, this, &MainWindow::applyColorSchemeFromAction);
+    connect(m_menus.colorScheme, &QMenu::aboutToHide, this, &MainWindow::revertColorScheme);
+    connect(m_menus.colorScheme, &QMenu::aboutToShow, this, &MainWindow::saveColorSchemeToRevert);
     connect(this, SIGNAL(syntaxHighlightingChanged()), m_widgets.display, SLOT(rehighlight()));
     connect(this, SIGNAL(syntaxHighlightingChanged()), m_widgets.editor, SLOT(rehighlight()));
 
@@ -1327,6 +1330,23 @@ void MainWindow::setResultPrecisionAutomatic()
 void MainWindow::applySelectedColorScheme()
 {
     m_settings->colorScheme = m_actionGroups.colorScheme->checkedAction()->data().toString();
+    emit colorSchemeChanged();
+}
+
+void MainWindow::applyColorSchemeFromAction(QAction* action)
+{
+    m_settings->colorScheme = action->data().toString();
+    emit colorSchemeChanged();
+}
+
+void MainWindow::saveColorSchemeToRevert()
+{
+    m_colorSchemeToRevert = m_settings->colorScheme;
+}
+
+void MainWindow::revertColorScheme()
+{
+    m_settings->colorScheme = m_colorSchemeToRevert;
     emit colorSchemeChanged();
 }
 

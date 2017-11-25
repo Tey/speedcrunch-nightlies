@@ -79,6 +79,7 @@ public slots:
     void copy();
 
 private slots:
+    void applyColorSchemeFromAction(QAction*);
     void applySelectedColorScheme();
     void clearEditor();
     void clearEditorAndBitfield();
@@ -117,6 +118,8 @@ private slots:
     void openNewsURL();
     void openDonateURL();
     void retranslateText();
+    void revertColorScheme();
+    void saveColorSchemeToRevert();
     void saveSessionDialog();
     void selectEditorExpression();
     void setAlwaysOnTopEnabled(bool);
@@ -379,6 +382,7 @@ private:
     QTranslator* m_translator;
     QPlainTextEdit* m_copyWidget;
     ManualServer* m_manualServer;
+    QString m_colorSchemeToRevert;
 };
 
 #endif // GUI_MAINWINDOW_H
