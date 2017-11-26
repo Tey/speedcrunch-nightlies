@@ -840,8 +840,8 @@ Tokens Evaluator::scan(const QString& expr) const
     QString tokenText;
     int tokenStart = 0; // Includes leading spaces.
     Token::Type type;
-    int numberBase;
-    int expBase;
+    int numberBase = 10;
+    int expBase = 0;
     int expStart = -1;  // Index of the exponent part in the expression.
     QString expText;    // Start of the exponent text matching /E[\+\-]*/
 
