@@ -66,8 +66,6 @@ Editor::Editor(QWidget* parent)
     m_completionTimer = new QTimer(this);
     m_isAutoCalcEnabled = true;
     m_highlighter = new SyntaxHighlighter(this);
-    m_autoCalcTimer = new QTimer(this);
-    m_autoCalcSelectionTimer = new QTimer(this);
     m_matchingTimer = new QTimer(this);
     m_isAnsAvailable = false;
     m_shouldPaintCustomCursor = true;
@@ -80,15 +78,11 @@ Editor::Editor(QWidget* parent)
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setCursorWidth(0);
 
-    connect(m_autoCalcTimer, SIGNAL(timeout()), SLOT(autoCalc()));
-    connect(m_autoCalcSelectionTimer, SIGNAL(timeout()),
-            SLOT(autoCalcSelection()));
     connect(m_completion, &EditorCompletion::selectedCompletion,
             this, &Editor::autoComplete);
     connect(m_completionTimer, SIGNAL(timeout()), SLOT(triggerAutoComplete()));
     connect(m_matchingTimer, SIGNAL(timeout()), SLOT(doMatchingPar()));
-    connect(this, &Editor::selectionChanged,
-            this, &Editor::startSelAutoCalcTimer);
+    connect(this, &Editor::selectionChanged, this, &Editor::checkSelectionAutoCalc);
     connect(this, &Editor::textChanged, this, &Editor::checkAutoCalc);
     connect(this, &Editor::textChanged, this, &Editor::checkAutoComplete);
     connect(this, &Editor::textChanged, this, &Editor::checkMatching);
@@ -194,24 +188,8 @@ void Editor::checkMatching()
 
 void Editor::checkAutoCalc()
 {
-    if (!m_isAutoCalcEnabled)
-        return;
-
-    m_autoCalcTimer->stop();
-    m_autoCalcTimer->setSingleShot(true);
-    m_autoCalcTimer->start();
-
-    emit autoCalcDisabled();
-}
-
-void Editor::startSelAutoCalcTimer()
-{
-    if (!m_isAutoCalcEnabled)
-        return;
-
-    m_autoCalcSelectionTimer->stop();
-    m_autoCalcSelectionTimer->setSingleShot(true);
-    m_autoCalcSelectionTimer->start();
+    if (m_isAutoCalcEnabled)
+        autoCalc();
 }
 
 void Editor::doMatchingPar()
@@ -224,6 +202,12 @@ void Editor::doMatchingPar()
 
     doMatchingLeft();
     doMatchingRight();
+}
+
+void Editor::checkSelectionAutoCalc()
+{
+    if (m_isAutoCalcEnabled)
+        autoCalcSelection();
 }
 
 void Editor::doMatchingLeft()
@@ -704,8 +688,6 @@ void Editor::triggerEnter()
 {
     m_completionTimer->stop();
     m_matchingTimer->stop();
-    m_autoCalcTimer->stop();
-    m_autoCalcSelectionTimer->stop();
     m_currentHistoryIndex = m_history.count();
     emit returnPressed();
 }
@@ -889,8 +871,6 @@ void Editor::setAnsAvailable(bool available)
 
 void Editor::stopAutoCalc()
 {
-    m_autoCalcTimer->stop();
-    m_autoCalcSelectionTimer->stop();
     emit autoCalcDisabled();
 }
 
