@@ -127,6 +127,8 @@ void Keypad::createButtons()
         QObject::connect(key, SIGNAL(clicked()), &mapper, SLOT(map()));
         mapper.setMapping(key, description->button);
     }
+
+    handleRadixCharacterChange();
 }
 
 void Keypad::disableButtonFocus()
