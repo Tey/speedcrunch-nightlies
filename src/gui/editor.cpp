@@ -67,7 +67,6 @@ Editor::Editor(QWidget* parent)
     m_isAutoCalcEnabled = true;
     m_highlighter = new SyntaxHighlighter(this);
     m_matchingTimer = new QTimer(this);
-    m_isAnsAvailable = false;
     m_shouldPaintCustomCursor = true;
 
     setViewportMargins(0, 0, 0, 0);
@@ -862,11 +861,6 @@ void Editor::updateHistory()
 {
     m_history = Evaluator::instance()->session()->historyToList();
     m_currentHistoryIndex = m_history.count();
-}
-
-void Editor::setAnsAvailable(bool available)
-{
-    m_isAnsAvailable = available;
 }
 
 void Editor::stopAutoCalc()

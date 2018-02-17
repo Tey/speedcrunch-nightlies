@@ -52,7 +52,6 @@ public:
     int cursorPosition() const;
     void doBackspace();
     char radixChar() const;
-    void setAnsAvailable(bool);
     void setAutoCalcEnabled(bool);
     void setAutoCompletionEnabled(bool);
     void setCursorPosition(int pos);
@@ -118,7 +117,6 @@ protected:
 private:
     Q_DISABLE_COPY(Editor)
 
-    bool m_isAnsAvailable;
     bool m_isAutoCalcEnabled;
     bool m_shouldBlockAutoCompletionOnce = false;
     bool m_isAutoCompletionEnabled;
