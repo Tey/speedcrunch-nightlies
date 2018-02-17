@@ -1231,6 +1231,8 @@ void MainWindow::clearHistory()
     m_session->clearHistory();
     clearEditorAndBitfield();
     emit historyChanged();
+
+    m_conditions.autoAns = false;
 }
 
 void MainWindow::clearEditor()
@@ -2125,6 +2127,8 @@ void MainWindow::restoreSession() {
     emit historyChanged();
     emit variablesChanged();
     emit functionsChanged();
+
+    m_conditions.autoAns = !m_session->historyToList().empty();
 }
 
 void MainWindow::evaluateEditorExpression()
