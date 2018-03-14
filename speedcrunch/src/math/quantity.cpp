@@ -760,6 +760,8 @@ Quantity DMath::nan(Error error)
 
 WRAPPER_DMATH_1(rad2deg)
 WRAPPER_DMATH_1(deg2rad)
+WRAPPER_DMATH_1(rad2gon)
+WRAPPER_DMATH_1(gon2rad)
 WRAPPER_DMATH_1(integer)
 WRAPPER_DMATH_1(frac)
 WRAPPER_DMATH_1(floor)

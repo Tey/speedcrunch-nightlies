@@ -83,11 +83,21 @@
             f->setError(OutOfDomain); \
             return DMath::nan(); \
         } \
+    } \
+    else if (Settings::instance()->angleUnit == 'g') { \
+        if (angle.isReal()) \
+            angle = DMath::gon2rad(angle); \
+        else { \
+            f->setError(OutOfDomain); \
+            return DMath::nan(); \
+        } \
     }
 
 #define CONVERT_RESULT_ANGLE(result) \
     if (Settings::instance()->angleUnit == 'd') \
         result = DMath::rad2deg(result); \
+    else if (Settings::instance()->angleUnit == 'g') \
+        result = DMath::rad2gon(result);
 
 static FunctionRepo* s_FunctionRepoInstance = 0;
 
@@ -489,6 +499,12 @@ Quantity function_radians(Function* f, const Function::ArgumentList& args)
 {
     ENSURE_ARGUMENT_COUNT(1);
     return DMath::deg2rad(args[0]);
+}
+
+Quantity function_gradians(Function* f, const Function::ArgumentList& args)
+{
+    ENSURE_ARGUMENT_COUNT(1);
+    return DMath::rad2gon(args[0]);
 }
 
 Quantity function_max(Function* f, const Function::ArgumentList& args)
@@ -898,6 +914,7 @@ void FunctionRepo::createFunctions()
     FUNCTION_INSERT(csc);
     FUNCTION_INSERT(degrees);
     FUNCTION_INSERT(exp);
+    FUNCTION_INSERT(gradians);
     FUNCTION_INSERT(lb);
     FUNCTION_INSERT(lg);
     FUNCTION_INSERT(ln);
@@ -1003,6 +1020,7 @@ void FunctionRepo::setNonTranslatableFunctionUsages()
     FUNCTION_USAGE(gamma, "x");
     FUNCTION_USAGE(gcd, "n<sub>1</sub>; n<sub>2</sub>; ...");
     FUNCTION_USAGE(geomean, "x<sub>1</sub>; x<sub>2</sub>; ...");
+    FUNCTION_USAGE(gradians, "x");
     FUNCTION_USAGE(hex, "n");
     FUNCTION_USAGE(ieee754_half_decode, "x");
     FUNCTION_USAGE(ieee754_half_encode, "x");
@@ -1107,6 +1125,7 @@ void FunctionRepo::setFunctionNames()
     FUNCTION_NAME(gamma, tr("Extension of Factorials [= (x-1)!]"));
     FUNCTION_NAME(gcd, tr("Greatest Common Divisor"));
     FUNCTION_NAME(geomean, tr("Geometric Mean"));
+    FUNCTION_NAME(gradians, tr("Gradians of arc"));
     FUNCTION_NAME(hex, tr("Convert to Hexadecimal Representation"));
     FUNCTION_NAME(hypercdf, tr("Hypergeometric Cumulative Distribution Function"));
     FUNCTION_NAME(hypermean, tr("Hypergeometric Distribution Mean"));

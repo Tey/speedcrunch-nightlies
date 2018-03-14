@@ -44,7 +44,7 @@ public:
 
     bool complexNumbers;
 
-    char angleUnit; // 'r': radian; 'd': degree.
+    char angleUnit; // 'r': radian; 'd': degree; 'g': gradian.
 
     char resultFormat;
     int resultPrecision; // See HMath documentation.

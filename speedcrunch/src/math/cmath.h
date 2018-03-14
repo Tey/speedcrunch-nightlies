@@ -131,6 +131,8 @@ public:
     // GENERAL MATH
     static CNumber rad2deg(const CNumber&);
     static CNumber deg2rad(const CNumber&);
+    static CNumber rad2gon(const CNumber&);
+    static CNumber gon2rad(const CNumber&);
     static CNumber abs(const CNumber&);
     static CNumber integer(const CNumber&);
     static CNumber frac(const CNumber&);
