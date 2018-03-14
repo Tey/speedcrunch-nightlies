@@ -732,10 +732,19 @@ void Evaluator::initializeAngleUnits()
 {
     if (Settings::instance()->angleUnit == 'r') {
         setVariable("radian", 1, Variable::BuiltIn);
-        setVariable("degree", HMath::pi()/HNumber(180),Variable::BuiltIn);
-    } else {
-        setVariable("radian", HNumber(180)/HMath::pi(),Variable::BuiltIn);
+        setVariable("degree", HMath::pi() / HNumber(180), Variable::BuiltIn);
+        setVariable("gradian", HMath::pi() / HNumber(200), Variable::BuiltIn);
+        setVariable("gon", HMath::pi() / HNumber(200), Variable::BuiltIn);
+    } else if (Settings::instance()->angleUnit == 'g') {
+        setVariable("radian", HNumber(200) / HMath::pi(), Variable::BuiltIn);
+        setVariable("degree", HNumber(200) / HNumber(180), Variable::BuiltIn);
+        setVariable("gradian", 1, Variable::BuiltIn);
+        setVariable("gon", 1, Variable::BuiltIn);
+    } else {    // d
+        setVariable("radian", HNumber(180) / HMath::pi(), Variable::BuiltIn);
         setVariable("degree", 1,Variable::BuiltIn);
+        setVariable("gradian", HNumber(180) / HNumber(200), Variable::BuiltIn);
+        setVariable("gon", HNumber(180) / HNumber(200), Variable::BuiltIn);
     }
 }
 

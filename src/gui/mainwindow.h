@@ -125,6 +125,7 @@ private slots:
     void setAlwaysOnTopEnabled(bool);
     void setAngleModeDegree();
     void setAngleModeRadian();
+    void setAngleModeGradian();
     void setAutoAnsEnabled(bool);
     void setAutoCalcEnabled(bool);
     void setAutoCompletionEnabled(bool);
@@ -277,6 +278,8 @@ private:
         QAction* settingsResultFormatHexadecimal;
         QAction* settingsAngleUnitRadian;
         QAction* settingsAngleUnitDegree;
+        QAction* settingsAngleUnitGradian;
+        QAction* settingsAngleUnitCycle;
         QAction* settingsBehaviorSaveSessionOnExit;
         QAction* settingsBehaviorSaveWindowPositionOnExit;
         QAction* settingsBehaviorPartialResults;

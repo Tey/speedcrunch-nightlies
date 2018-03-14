@@ -911,6 +911,22 @@ HNumber HMath::deg2rad(const HNumber& angle)
 }
 
 /**
+ * Converts radians to gons.
+ */
+HNumber HMath::rad2gon(const HNumber& angle)
+{
+    return angle * (HNumber(200) / HMath::pi());
+}
+
+/**
+ * Converts gons to radians.
+ */
+HNumber HMath::gon2rad(const HNumber& angle)
+{
+    return angle * (HMath::pi() / HNumber(200));
+}
+
+/**
  * Returns the constant e (Euler's number).
  */
 HNumber HMath::e()

@@ -491,6 +491,12 @@ void test_function_trig()
     CHECK_EVAL("radians(180)/pi", "1");
     CHECK_EVAL("radians(270)/pi", "1.5");
     CHECK_EVAL("radians(360)/pi", "2");
+
+    CHECK_EVAL("gradians(0)", "0");
+    CHECK_EVAL("gradians(pi/2)", "100");
+    CHECK_EVAL("gradians(pi)", "200");
+    CHECK_EVAL("gradians(3*pi/2)", "300");
+    CHECK_EVAL("gradians(2*pi)", "400");
 }
 
 void test_function_stat()
@@ -825,7 +831,8 @@ void test_angle_mode(Settings* settings)
     CHECK_EVAL("arcsin(-2)", "-1.57079632679489661923+1.31695789692481670863j");
     CHECK_EVAL("radian","1");
     CHECK_EVAL("degree","0.01745329251994329577");
-
+    CHECK_EVAL("gradian","0.01570796326794896619");
+    CHECK_EVAL("gon","0.01570796326794896619");
 
     settings->angleUnit = 'd';
     Evaluator::instance()->initializeAngleUnits();
@@ -835,7 +842,20 @@ void test_angle_mode(Settings* settings)
     CHECK_EVAL("arcsin(-2)", "-90+75.4561292902168920041j");
     CHECK_EVAL("radian","57.2957795130823208768");
     CHECK_EVAL("degree","1");
+    CHECK_EVAL("gradian","0.9");
+    CHECK_EVAL("gon","0.9");
     CHECK_EVAL_KNOWN_ISSUE("arcsin(0.25)", "14.47751218592992387877", 781);
+
+    settings->angleUnit = 'g';
+    Evaluator::instance()->initializeAngleUnits();
+    CHECK_EVAL("sin(200)", "0");
+    CHECK_EVAL("arcsin(-1)", "-100");
+    CHECK_EVAL_FAIL("sin(1j)");
+    CHECK_EVAL("arcsin(-2)", "-100+83.84014365579654667122j");
+    CHECK_EVAL("radian","63.66197723675813430755");
+    CHECK_EVAL("degree","1.11111111111111111111");
+    CHECK_EVAL("gradian","1");
+    CHECK_EVAL("gon","1");
 }
 
 void test_implicit_multiplication()

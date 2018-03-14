@@ -719,7 +719,7 @@ CNumber CMath::rad2deg(const CNumber& x)
 }
 
 /**
- * Converts an angle from radians to degrees.
+ * Converts an angle from degrees to radians.
  * Also accepts complex arguments.
  */
 CNumber CMath::deg2rad(const CNumber& x)
@@ -727,6 +727,23 @@ CNumber CMath::deg2rad(const CNumber& x)
     return CNumber(HMath::deg2rad(x.real), HMath::deg2rad(x.imag));
 }
 
+/**
+ * Converts an angle from radians to gons.
+ * Also accepts complex arguments.
+ */
+CNumber CMath::rad2gon(const CNumber& x)
+{
+    return CNumber(HMath::rad2gon(x.real), HMath::rad2gon(x.imag));
+}
+
+/**
+ * Converts an angle from gons to radians.
+ * Also accepts complex arguments.
+ */
+CNumber CMath::gon2rad(const CNumber& x)
+{
+    return CNumber(HMath::gon2rad(x.real), HMath::gon2rad(x.imag));
+}
 
 // Wrappers towards functions defined only on real numbers
 // =======================================================
