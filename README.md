@@ -12,7 +12,7 @@ To build SpeedCrunch, you need:
 
 - A C++11-capable compiler (e.g. Microsoft Visual C++ 2013 or later, GCC 4.8 or later)
 - [Qt](http://qt.io) 5.2 or later
-- [CMake](http://cmake.org) 2.8.12 or later
+- [CMake](http://cmake.org) 3.0 or later
 
 To build SpeedCrunch in a dedicated build directory and install it, run the following
 commands from the root of the source directory:
@@ -28,17 +28,35 @@ environment variable to the prefix directory of the Qt installation when running
 
 You can customize the build using the following variables. These are specified when
 running CMake, in the form `cmake ../src -Dvariable=value`.
-    
+
 - **PORTABLE_SPEEDCRUNCH**: Set this to `on` to have the application settings stored
   in the same location as the executable, e.g. for running from a USB drive without
   requiring installation.
 - **CMAKE_INSTALL_PREFIX**: Change the installation prefix for SpeedCrunch.
-- **REBUILD_MANUAL**: Set to `on` to also rebuild the included manual. By default,
-  a bundled prebuilt copy is used to minimize dependencies. Rebuilding the manual
-  requires the following additional software:
-    - [Python](http://python.org) 3.4 or later
-    - [Sphinx](http://sphinx-doc.org) 1.3 or later
-    - [the Quark theme](https://pypi.python.org/pypi/quark-sphinx-theme) 0.2 or later
+- **HTML_DOCS_DIR**: Change the path to the HTML manual that's embedded in the binary
+  by the build. By default, a bundled prebuilt copy is used to minimize dependencies.
+
+## Building the HTML manual
+Building the HTML manual is normally not necessary because a prebuilt copy is included
+with the SpeedCrunch source. Rebuilding the manual requires the following additional
+software:
+
+  - [Python](http://python.org) 3.4 or later
+  - [Sphinx](http://sphinx-doc.org) 1.3 or later
+  - [the Quark theme](https://pypi.python.org/pypi/quark-sphinx-theme) 0.2 or later
+
+To build the manual in a dedicated build directory, run the following commands from
+the root of the source directory:
+
+    mkdir docs-build
+    cd docs-build
+    cmake ../doc/src
+    make
+
+Then, when building SpeedCrunch itself, point the `HTML_DOCS_DIR` to your manual build
+directory:
+
+    cmake <SpeedCrunch source>/src -DHTML_DOCS_DIR=<manual build dir>
 
 ## Contributing
 - Report bugs or request features in the

@@ -1,3 +1,7 @@
+cmake_minimum_required(VERSION 3.0)
+# We need C++ support to find Qt.
+project(speedcrunch-doc LANGUAGES CXX)
+
 file(GLOB_RECURSE doc_RST *.rst)
 file(GLOB_RECURSE doc_PO *.po)
 list(APPEND doc_depends
@@ -57,7 +61,7 @@ add_custom_command(
     COMMAND ${DOCTOOL_COMMAND}
             build-bundled-docs --build-dir="${CMAKE_CURRENT_BINARY_DIR}"
     DEPENDS ${doc_depends})
-add_custom_target(manual DEPENDS manual.qrc)
+add_custom_target(manual ALL DEPENDS manual.qrc)
 
 
 # command for updating the prebuilt manual in the source; invoke manually (hah)
