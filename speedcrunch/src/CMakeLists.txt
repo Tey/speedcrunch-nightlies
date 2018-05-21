@@ -60,15 +60,11 @@ if(WIN32)
 endif()
 
 # Embedded manual
-option(REBUILD_MANUAL "Rebuild the manual rather than using the bundled copy" FALSE)
-add_subdirectory(../doc/src doc)
-if(REBUILD_MANUAL)
-    # set here so CMake knows about this file in this CMakeLists
-    set_property(SOURCE ${CMAKE_CURRENT_BINARY_DIR}/doc/manual.qrc PROPERTY GENERATED true)
-    set(speedcrunch_RESOURCES ${speedcrunch_RESOURCES} ${CMAKE_CURRENT_BINARY_DIR}/doc/manual.qrc)
-else()
-    set(speedcrunch_RESOURCES ${speedcrunch_RESOURCES} ${CMAKE_CURRENT_SOURCE_DIR}/../doc/build_html_embedded/manual.qrc)
-endif()
+set(HTML_DOCS_DIR
+    "${CMAKE_CURRENT_SOURCE_DIR}/../doc/build_html_embedded"
+    CACHE PATH
+    "Path to the HTML manual. Defaults to the bundled prebuilt copy.")
+set(speedcrunch_RESOURCES ${speedcrunch_RESOURCES} ${HTML_DOCS_DIR}/manual.qrc)
 
 if(WIN32)
     add_executable(${APPLICATION_NAME} WIN32 ${speedcrunch_SOURCES} ${speedcrunch_RESOURCES} ${WIN32_RES_FILE})
@@ -77,10 +73,6 @@ elseif(APPLE)
     set_target_properties(${APPLICATION_NAME} PROPERTIES MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/../pkg/Info.plist)
 else()
     add_executable(${APPLICATION_NAME} ${speedcrunch_SOURCES} ${speedcrunch_RESOURCES})
-endif()
-
-if(REBUILD_MANUAL)
-    set_property(TARGET ${APPLICATION_NAME} PROPERTY AUTOGEN_TARGET_DEPENDS manual)
 endif()
 
 add_custom_target(confclean COMMAND rm -rf Makefile CMakeFiles/ CMakeCache.txt cmake_install.cmake DartTestfile.txt install_manifest.txt)
