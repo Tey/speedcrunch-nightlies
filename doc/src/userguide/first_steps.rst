@@ -46,7 +46,7 @@ To continue the computation directly from the previous result, you can use the s
     7*ans       ? 'ans' is now equal to 5
     = 35
 
-    ans + 300
+    ans + 3
     = 38
 
 As you can see, ``ans`` provides a quick and easy way to access the previous result. Sometimes,
