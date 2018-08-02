@@ -6694,7 +6694,7 @@ static int test_erfc()
     printf("%d\n", prec);
     /* clear all cached coefficients */
     erfcdigits = 0;
-    for (i = 0; ++i < 100;);
+    for (i = 0; ++i < 100;)
     {
       float_setinteger(&x, 1);
       float_setexponent(&x, -i);
