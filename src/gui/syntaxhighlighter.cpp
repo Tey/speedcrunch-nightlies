@@ -327,6 +327,9 @@ void SyntaxHighlighter::groupDigits(const QString& text, int pos, int length)
                         endOfNumber = false;
                 }
 
+                if (c == ':' || c == 0xB0 || c == '\'' || c == '"')
+                    endOfNumber = true;
+
                 if (endOfNumber) {
                     // End of current number found, start grouping the digits.
                     formatDigitsGroup(text, s, i, invertGroup, groupSize);

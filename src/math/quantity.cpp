@@ -591,6 +591,9 @@ void Quantity::Format::serialize(QJsonObject& json) const
     case Mode::Engineering:
         json["mode"] = QStringLiteral("Engineering");
         break;
+    case Mode::Sexagesimal:
+        json["mode"] = QStringLiteral("Sexagesimal");
+        break;
     case Mode::Null:
         break;
     }
@@ -641,6 +644,8 @@ Quantity::Format Quantity::Format::deSerialize(const QJsonObject& json)
             result.mode = Mode::Scientific;
         else if (strMode == "Engineering")
             result.mode = Mode::Engineering;
+        else if (strMode == "Sexagesimal")
+            result.mode = Mode::Sexagesimal;
         else
             result.mode = Mode::Null;
     } else
@@ -839,7 +844,7 @@ WRAPPER_DMATH_4(decodeIeee754)
 
 QString DMath::format(Quantity q, Quantity::Format format)
 {
-    format = q.format() + format;  // Left hand side oerator takes priority.
+    format = q.format() + format;  // Left hand side operator takes priority.
 
     // Handle units.
     if (!q.hasUnit() && !q.isDimensionless()) {

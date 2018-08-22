@@ -132,6 +132,7 @@ public:
     static bool isSeparatorChar(const QChar&);
     static bool isRadixChar(const QChar&);
     static QString fixNumberRadix(const QString&);
+    static QString fixSexagesimal(const QString&, QString& unit);
 
     QString autoFix(const QString&);
     QString dump();
