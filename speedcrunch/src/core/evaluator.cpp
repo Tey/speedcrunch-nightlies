@@ -688,6 +688,138 @@ QString Evaluator::fixNumberRadix(const QString& number)
     return result;
 }
 
+HNumber getNumber(const QString& number) {
+    if (number.size() == 0)
+        return HNumber(0);
+    int endPos = number.indexOf(QRegExp("['\":]"));
+    if (endPos == 0)
+        return HNumber(0);
+    if (endPos > 0)
+        return HNumber(Evaluator::fixNumberRadix(number.left(endPos)).toStdString().c_str());
+    return HNumber(Evaluator::fixNumberRadix(number).toStdString().c_str());
+}
+
+QString Evaluator::fixSexagesimal(const QString& number, QString& unit)
+{
+    unit.clear();
+    QString bad, result = number;
+
+    bool arc = false;
+    int colonCount = 0, degreeCount = 0, minuteCount = 0, secondCount = 0, digitCount = 0;
+    for (int i = 0 ; i < number.size() ; ++i) { // check order and amount
+        QChar c = number[i];
+        if (c == 0xB0) {   // °
+            if (colonCount || minuteCount || secondCount)
+                return bad;
+            if (++degreeCount > 1)
+                return bad;
+            arc = true;
+        }
+        else if (c == ':') {
+            if (minuteCount || degreeCount || secondCount)
+                return bad;
+            if (++colonCount > 2)
+                return bad;
+        }
+        else if (c == '\'') {
+            if (secondCount)
+                return bad;
+            if (++minuteCount > 1)
+                return bad;
+            arc = true;
+        }
+        else if (c == '"') {
+            if (degreeCount && !minuteCount)
+                return bad;
+            if (++secondCount > 1)
+                return bad;
+            arc = true;
+        }
+        else if (c.isDigit())
+            ++digitCount;
+    }
+
+    if (colonCount || degreeCount || minuteCount || secondCount) {  // sexagesimal value
+        if (digitCount == 0)
+            return bad;
+        HNumber::Format fixed = HNumber::Format::Fixed();
+        HNumber mains(0), minutes(0), seconds(0), sign(1);
+        int minPos = number.indexOf(arc ? 0xB0 : ':');
+        if (minPos >= 0) {  // degree sign or first colon -> minutes
+            mains = getNumber(number.left(minPos));    // hours or degrees
+            if (mains.isNegative())
+                sign = HNumber(-1);
+            int secPos = number.indexOf(arc ? '\'' : ':', minPos + 1);
+            if (secPos >= 0) {  // single quote or second colon -> seconds
+                minutes = getNumber(number.mid(minPos + 1));
+                seconds = getNumber(number.mid(secPos + 1));
+                if (seconds.isZero()) {  // postfix minutes
+                    result = HMath::format(mains * HNumber(60) + minutes * sign, fixed);
+                    unit = arc ? "arcminute" : "minute";
+                }
+                else {  // minutes and seconds
+                    result = HMath::format(mains * HNumber(3600) + minutes * HNumber(60) * sign + seconds * sign, fixed);
+                    unit = arc ? "arcsecond" : "second";
+                }
+            }
+            else {  // just minutes
+                minutes = getNumber(number.mid(minPos + 1));
+                result = HMath::format(mains * HNumber(60) + minutes * sign, fixed);
+                unit = arc ? "arcminute" : "minute";
+            }
+            if (seconds.isZero() && minutes.isZero()) {  // postfix mains
+                result = HMath::format(mains, fixed);
+                unit = arc ? "" : "hour";
+            }
+        }
+        else if ( arc ) {
+            int secPos = number.indexOf('\'');
+            if (secPos >= 0) {  // single quote -> seconds
+                minutes = getNumber(number.left(secPos));
+                if (minutes.isNegative())
+                    sign = HNumber(-1);
+                seconds = getNumber(number.mid(secPos + 1));
+                if (seconds.isZero()) {  // postfix minutes
+                    result = HMath::format(minutes, fixed);
+                    unit = "arcminute";
+                }
+                else {
+                    result = HMath::format(minutes * HNumber(60) + seconds * sign, fixed);
+                    unit = "arcsecond";
+                }
+            }
+            else {
+                int unitPos = number.indexOf('"');
+                if (unitPos >= 0) {  // postfix seconds
+                    seconds = getNumber(number.left(unitPos));
+                    result = HMath::format(seconds, fixed);
+                    unit = "arcsecond";
+                }
+            }
+        }
+        int unitPos = number.indexOf('"');  // check digits after seconds unit
+        if (unitPos >= 0 && !getNumber(number.mid(unitPos + 1)).isZero())
+            return bad;
+        if (!seconds.isZero() && (!minutes.isInteger() || !mains.isInteger()))
+            return bad;
+        if (!minutes.isZero() && !mains.isInteger())
+            return bad;
+        int dotNumber = number.lastIndexOf(QRegExp("[.,]"));
+        if (dotNumber >= 0) {  // append decimals, remove possible postfix units
+            int minPos = number.indexOf('\''), secPos = number.indexOf('"');
+            int unitPos = (secPos >= 0 && secPos < minPos) ? secPos : minPos;
+            int dotResult = result.lastIndexOf('.');
+            if (dotResult >= 0)  // replace decimals with original ones for accuracy
+                result.resize(dotResult);
+            result += number.mid(dotNumber, unitPos < 0 ? -1 : unitPos - dotNumber);
+        }
+    }
+    else
+        result = fixNumberRadix(result);
+
+    return result;
+}
+
 Evaluator* Evaluator::instance()
 {
     if (!s_evaluatorInstance) {
@@ -735,16 +867,22 @@ void Evaluator::initializeAngleUnits()
         setVariable("degree", HMath::pi() / HNumber(180), Variable::BuiltIn);
         setVariable("gradian", HMath::pi() / HNumber(200), Variable::BuiltIn);
         setVariable("gon", HMath::pi() / HNumber(200), Variable::BuiltIn);
+        setVariable("arcminute", HMath::pi() / HNumber(180) / HNumber(60), Variable::BuiltIn);
+        setVariable("arcsecond", HMath::pi() / HNumber(180) / HNumber(3600), Variable::BuiltIn);
     } else if (Settings::instance()->angleUnit == 'g') {
         setVariable("radian", HNumber(200) / HMath::pi(), Variable::BuiltIn);
         setVariable("degree", HNumber(200) / HNumber(180), Variable::BuiltIn);
         setVariable("gradian", 1, Variable::BuiltIn);
         setVariable("gon", 1, Variable::BuiltIn);
+        setVariable("arcminute", HNumber(200) / HNumber(180) / HNumber(60), Variable::BuiltIn);
+        setVariable("arcsecond", HNumber(200) / HNumber(180) / HNumber(3600), Variable::BuiltIn);
     } else {    // d
         setVariable("radian", HNumber(180) / HMath::pi(), Variable::BuiltIn);
-        setVariable("degree", 1,Variable::BuiltIn);
+        setVariable("degree", 1, Variable::BuiltIn);
         setVariable("gradian", HNumber(180) / HNumber(200), Variable::BuiltIn);
         setVariable("gon", HNumber(180) / HNumber(200), Variable::BuiltIn);
+        setVariable("arcminute", HNumber(1) / HNumber(60), Variable::BuiltIn);
+        setVariable("arcsecond", HNumber(1) / HNumber(3600), Variable::BuiltIn);
     }
 }
 
@@ -815,6 +953,10 @@ Tokens Evaluator::tokens() const
     return scan(m_expression);
 }
 
+bool isArcTime(QChar ch) {
+    return (ch == 0xB0 || ch == '\'' || ch == '"' || ch == ':');
+}
+
 Tokens Evaluator::scan(const QString& expr) const
 {
     // Associate character codes with the highest number base
@@ -846,7 +988,7 @@ Tokens Evaluator::scan(const QString& expr) const
     state = Init;
     int i = 0;
     QString ex = expr;
-    QString tokenText;
+    QString tokenText, tokenUnit;
     int tokenStart = 0; // Includes leading spaces.
     Token::Type type;
     int numberBase = 10;
@@ -977,6 +1119,11 @@ Tokens Evaluator::scan(const QString& expr) const
                     numberBase = 10;
                     state = InNumber;
                 }
+            } else if (isArcTime(ch)) {
+                // Time/Degree notation
+                numberBase = 10;
+                tokenText.append(ex.at(i++));
+                state = InNumber;
             } else if (isExponent(ch, numberBase)) {
                 if (tokenText.endsWith("0")) {
                     // Maybe exponent (tokenText is "0" or "-0").
@@ -1048,15 +1195,18 @@ Tokens Evaluator::scan(const QString& expr) const
             if (isDigit) {
                 // Consume as long as it's a digit
                 tokenText.append(ex.at(i++).toUpper());
+            } else if (isArcTime(ch)) {
+                // Time/Degree notation
+                tokenText.append(ex.at(i++));
             } else if (isExponent(ch, numberBase)) {
                 // Maybe exponent
                 expText = ch.toUpper();
                 expStart = i;
                 ++i;
                 tokenText = fixNumberRadix(tokenText);
-                if (!tokenText.isNull()) {
+                if (!tokenText.isNull())
                     state = InExpIndicator;
-                } else
+                else
                     state = Bad;
             } else if (isRadixChar(ch)) {
                 // Might be a radix point or a separator.
@@ -1068,7 +1218,10 @@ Tokens Evaluator::scan(const QString& expr) const
                 ++i;
             } else {
                 // We're done with number.
-                tokenText = fixNumberRadix(tokenText);
+                if (numberBase == 10)
+                    tokenText = fixSexagesimal(tokenText, tokenUnit);
+                else
+                    tokenText = fixNumberRadix(tokenText);
                 if (!tokenText.isNull())
                     state = InNumberEnd;
                 else
@@ -1173,6 +1326,11 @@ Tokens Evaluator::scan(const QString& expr) const
             int tokenSize = i - tokenStart;
             tokens.append(Token(Token::stxNumber, tokenText,
                                 tokenStart, tokenSize));
+
+            if (!tokenUnit.isEmpty()) { // add unit token
+                tokens.append(Token(Token::stxIdentifier, tokenUnit,
+                    tokenStart + tokenSize, 0));
+            }
 
             // Make sure a number cannot be followed by another number.
             if (ch.isDigit() || isRadixChar(ch) || ch == '#')
