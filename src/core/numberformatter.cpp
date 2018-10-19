@@ -1,4 +1,4 @@
-﻿// This file is part of the SpeedCrunch project
+// This file is part of the SpeedCrunch project
 // Copyright (C) 2013 @heldercorreia
 // Copyright (C) 2015 Pol Welter <polwelter@gmail.com>
 //
@@ -21,6 +21,9 @@
 
 #include "core/settings.h"
 #include "math/quantity.h"
+
+static const QChar g_dotChar = QString::fromUtf8("⋅")[0];
+static const QChar g_minusChar = QString::fromUtf8("−")[0];
 
 QString NumberFormatter::format(Quantity q)
 {
@@ -133,7 +136,7 @@ QString NumberFormatter::format(Quantity q)
     if (settings->radixCharacter() == ',')
         result.replace('.', ',');
 
-    result.replace('-', QString::fromUtf8("−"));
+    result.replace('-', g_minusChar);
 
     // Replace all spaces between units with dot operator.
     int emptySpaces = 0;
@@ -141,7 +144,7 @@ QString NumberFormatter::format(Quantity q)
         if (ch.isSpace()) {
             ++emptySpaces;
             if (emptySpaces > 1)
-                ch = u'⋅';
+                ch = g_dotChar;
         }
     }
 
