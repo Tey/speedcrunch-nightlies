@@ -1077,16 +1077,16 @@ void FunctionRepo::setTranslatableFunctionUsages()
     FUNCTION_USAGE_TR(ieee754_decode, tr("x; exponent_bits; significand_bits [; exponent_bias]"));
     FUNCTION_USAGE_TR(ieee754_encode, tr("x; exponent_bits; significand_bits [; exponent_bias]"));
     FUNCTION_USAGE_TR(log, tr("base; x"));
-    FUNCTION_USAGE_TR(mask, tr("n; bits"));
+    FUNCTION_USAGE_TR(mask, "x; bits");
     FUNCTION_USAGE_TR(mod, tr("value; modulo"));
     FUNCTION_USAGE_TR(poicdf, tr("events; average_events"));
     FUNCTION_USAGE_TR(poimean, tr("average_events"));
     FUNCTION_USAGE_TR(poipmf, tr("events; average_events"));
     FUNCTION_USAGE_TR(poivar, tr("average_events"));
     FUNCTION_USAGE_TR(round, tr("x [; precision]"));
-    FUNCTION_USAGE_TR(shl, tr("n; bits"));
-    FUNCTION_USAGE_TR(shr, tr("n; bits"));
-    FUNCTION_USAGE_TR(unmask, tr("n; bits"));
+    FUNCTION_USAGE_TR(shl, "x; bits");
+    FUNCTION_USAGE_TR(shr, "x; bits");
+    FUNCTION_USAGE_TR(unmask, "x; bits");
 }
 
 void FunctionRepo::setFunctionNames()

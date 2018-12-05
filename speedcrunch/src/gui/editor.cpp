@@ -513,6 +513,8 @@ void Editor::autoComplete(const QString& item)
         cursor.movePosition(QTextCursor::PreviousCharacter);
         setTextCursor(cursor);
     }
+
+    checkAutoCalc();
 }
 
 void Editor::insertFromMimeData(const QMimeData* source)

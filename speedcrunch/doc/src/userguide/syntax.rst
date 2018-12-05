@@ -76,6 +76,70 @@ To specify large integers, using the shift operators (``1 << n``) is preferable 
 calculations and thus susceptible to rounding errors.
 
 
+.. _sexagecimal_values:
+
+Sexagecimal Values
+++++++++++++++++++
+
+    .. versionadded:: 1.0
+
+Sexagecimal values in SpeedCrunch are angle degrees or time values represented with minutes and seconds.
+
+When sexagecimal mode is selected in :menuselection:`Settings --> Result Format`, dimensionless and time results are displayed as sexagecimal values. All other results are displayed as fixed decimal values. Actual sexagecimal math depends on the result. Dimensionless results are handled as degrees with minutes and seconds generated from the decimal part. With time dimension results, base unit is second and the integer part is divided to minutes and hours.
+
+In input, characters ``°`` (degree), ``:`` (colon), ``'`` (single quote) and ``"`` (double quote) can be used for entering sexagecimal values. Degree sign ``°`` separates degrees and minutes. First colon character ``:`` separates hours and minutes. Single quote ``'`` or second colon character ``:`` separates minutes and seconds. Additionally, postfix double quote ``"`` can be used as an arc second unit. Because the degree sign is difficult to produce from keyboard, at sign ``@`` is automatically converted to it.
+
+Amount of minutes or seconds is not limited to values below 60. It is possible to input time 90 minutes after noon::
+
+    12:90
+    = 13:30:00
+    
+Dimensionless input values are automatically considered to be in current angle units. For example, in radian mode::
+
+    pi
+    = 180°00'00
+    
+Only last part of sexagecimal input value can contain decimals.
+
+Following tables show some possible input notations and their results in both fixed decimal and sexagecimal modes:
+
+=================    ===================    =================
+Input                Fixed Decimal          Sexagecimal
+=================    ===================    =================
+``0``                ``0``                  ``0°00'00``
+``°'56``             ``0.01555556``         ``0°00'56.00``
+``56"``              ``0.01555556``         ``0°00'56.00``
+``56 arcsecond``     ``0.01555556``         ``0°00'56.00``
+``56.78"``           ``0.01577222``         ``0°00'56.78``
+``°34``              ``0.56666667``         ``0°34'00.00``
+``34'``              ``0.56666667``         ``0°34'00.00``
+``34 arcminute``     ``0.56666667``         ``0°34'00.00``
+``34'56``            ``0.58222222``         ``0°34'56.00``
+``12°``              ``12.00000000``        ``12°00'00.00``
+``12°34``            ``12.56666667``        ``12°34'00.00``
+``12°34.5``          ``12.57500000``        ``12°34'30.00``
+``12°34'56``         ``12.58222222``        ``12°34'56.00``
+``12°34'56.78``      ``12.58243889``        ``12°34'56.78``
+=================    ===================    =================
+
+=================    ===================    =================
+Input                Fixed Decimal          Sexagecimal
+=================    ===================    =================
+``0 second``         ``0 second``           ``0:00:00``
+``::56``             ``56.00 second``       ``0:00:56.00``
+``56 second``        ``56.00 second``       ``0:00:56.00``
+``:34``              ``2040.00 second``     ``0:34:00.00``
+``34 minute``        ``2040.00 second``     ``0:34:00.00``
+``12:``              ``43200.00 second``    ``12:00:00.00``
+``12 hour``          ``43200.00 second``    ``12:00:00.00``
+``12:34``            ``45240.00 second``    ``12:34:00.00``
+``12:34.5``          ``45270.00 second``    ``12:34:30.00``
+``12:34:56``         ``45296.00 second``    ``12:34:56.00``
+``12:34:56.78``      ``45296.78 second``    ``12:34:56.78``
+=================    ===================    =================
+
+Note that when entering time values with colons, no additional dimension units are needed. Formatting itself works as an unit.
+
 Operators and Precedence
 ------------------------
 
