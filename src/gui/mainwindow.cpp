@@ -327,7 +327,7 @@ void MainWindow::setActionsText()
     m_actions.settingsAngleUnitDegree->setText(MainWindow::tr("&Degree"));
     m_actions.settingsAngleUnitRadian->setText(MainWindow::tr("&Radian"));
     m_actions.settingsAngleUnitGradian->setText(MainWindow::tr("&Gradian"));
-    m_actions.settingsAngleUnitCycle->setText(MainWindow::tr("&Cycle unit"));
+    m_actions.settingsAngleUnitCycle->setText(MainWindow::tr("&Cycle Unit"));
     m_actions.settingsBehaviorAlwaysOnTop->setText(MainWindow::tr("Always on &Top"));
     m_actions.settingsBehaviorAutoAns->setText(MainWindow::tr("Automatic Result &Reuse"));
     m_actions.settingsBehaviorAutoCompletion->setText(MainWindow::tr("Automatic &Completion"));

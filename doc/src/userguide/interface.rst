@@ -124,6 +124,8 @@ formats:
     Display all results as octal numbers, i.e. in base-8.
 * :menuselection:`Hexadecimal`
     Display all results as hexadecimal numbers, i.e. in base-16.
+* :menuselection:`Sexagecimal`
+    Display dimensionless and time results as :ref:`sexagecimal values <sexagecimal_values>`, i.e. with minutes and seconds. All other results are displayed in fixed decimal form.
 
 In addition to the main result format, some further options are available to customize
 the result output:
@@ -159,6 +161,13 @@ determines the angle format of the arguments.
     Use radians for angles. A full circle corresponds to an angle of 2π radians.
 * :menuselection:`Degree`
     Use degrees for angles. A full circle corresponds to an angle of 360°.
+* :menuselection:`Gradian`
+    Use gradians for angles. A full circle corresponds to an angle of 400 gradians.
+
+    .. versionadded:: 1.0
+    
+* :menuselection:`Cycle Unit`
+    Cycle unit selection between Radian, Degree and Gradian.
 
 
 Behavior
@@ -286,9 +295,12 @@ Format
 * :kbd:`F8`
     Set result format to hexadecimal.
 * :kbd:`F9`
-    Set angle unit to radian.
+    Set result format to sexagecimal.
+
+    .. versionadded:: 1.0
+    
 * :kbd:`F10`
-    Set angle unit to degree.
+    Cycle angle unit (Degree/Radian/Gradian).
 * :kbd:`Control+.`
     Use a period as decimal separator.
 * :kbd:`Control+,`
