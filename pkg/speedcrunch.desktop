@@ -12,6 +12,7 @@ Name[ru]=SpeedCrunch
 Name[zh]=SpeedCrunch
 Exec=speedcrunch
 Icon=speedcrunch
+StartupWMClass=speedcrunch
 Comment=A high-precision scientific calculator
 Comment[de]=Ein hochpräziser wissenschaftlicher Taschenrechner
 Comment[el]=Επιστημονική αριθμομηχανή υψηλής ακρίβειας
