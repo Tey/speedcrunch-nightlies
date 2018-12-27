@@ -522,7 +522,8 @@ void Editor::insertFromMimeData(const QMimeData* source)
     QStringList expressions =
         source->text().split('\n', QString::SkipEmptyParts);
     if (expressions.size() == 1) {
-        QPlainTextEdit::insertFromMimeData(source);
+        // Insert text manually to make sure expression does not contain new line characters
+        insert(expressions.at(0));
         return;
     }
     for (int i = 0; i < expressions.size(); ++i) {
