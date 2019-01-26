@@ -33,6 +33,7 @@
 #include <functional>
 #include <cfloat>
 #include <cmath>
+#include <ctime>
 #include <numeric>
 
 #define FUNCTION_INSERT(ID) insert(new Function(#ID, function_ ## ID, this))
@@ -708,7 +709,7 @@ Quantity function_not(Function* f, const Function::ArgumentList& args)
 {
     /* TODO : complex mode switch for this function */
     ENSURE_ARGUMENT_COUNT(1);
-	return ~args.at(0);
+    return ~args.at(0);
 }
 
 Quantity function_and(Function* f, const Function::ArgumentList& args)
@@ -841,6 +842,30 @@ Quantity function_ieee754_quad_encode(Function* f, const Function::ArgumentList&
     return DMath::encodeIeee754(args.at(0), 15, 112);
 }
 
+Quantity function_datetime(Function* f, const Function::ArgumentList& args)
+{
+    ENSURE_EITHER_ARGUMENT_COUNT(1, 2);
+    time_t timestamp = args.at(0).numericValue().toInt();
+    struct tm time;
+
+    char format[] = "%Y%m%d.%H%M%S";
+    char res[32];
+
+    if (args.count() == 2) {
+      timestamp += args.at(1).numericValue().toInt() * 3600;
+      time = *std::gmtime(&timestamp);
+      
+    } else
+    {
+      time = *localtime(&timestamp);
+    }
+    
+    strftime(res, sizeof(res), format, &time);
+    HNumber Temp(res);
+		return Quantity(Temp).setFormat(Quantity::Format::Fixed() + Quantity::Format::Decimal() + Quantity::Format::Precision(6));
+
+}
+
 void FunctionRepo::createFunctions()
 {
     // Analysis.
@@ -949,6 +974,9 @@ void FunctionRepo::createFunctions()
     FUNCTION_INSERT(ieee754_double_encode);
     FUNCTION_INSERT(ieee754_quad_decode);
     FUNCTION_INSERT(ieee754_quad_encode);
+
+    //Date convertion
+    FUNCTION_INSERT(datetime);
 }
 
 FunctionRepo* FunctionRepo::instance()
@@ -1069,6 +1097,7 @@ void FunctionRepo::setTranslatableFunctionUsages()
     FUNCTION_USAGE_TR(binommean, tr("trials; probability"));
     FUNCTION_USAGE_TR(binompmf, tr("hits; trials; probability"));
     FUNCTION_USAGE_TR(binomvar, tr("trials; probability"));
+    FUNCTION_USAGE_TR(datetime, tr("unix_timestamp; x offset to GMT"));
     FUNCTION_USAGE_TR(hypercdf, tr("max; total; hits; trials"));
     FUNCTION_USAGE_TR(hypermean, tr("total; hits; trials"));
     FUNCTION_USAGE_TR(hyperpmf, tr("count; total; hits; trials"));
@@ -1115,6 +1144,7 @@ void FunctionRepo::setFunctionNames()
     FUNCTION_NAME(cosh, tr("Hyperbolic Cosine"));
     FUNCTION_NAME(cot, tr("Cotangent"));
     FUNCTION_NAME(csc, tr("Cosecant"));
+    FUNCTION_NAME(datetime, tr("Convert Unix timestamp to Date"));
     FUNCTION_NAME(dec, tr("Convert to Decimal Representation"));
     FUNCTION_NAME(degrees, tr("Degrees of Arc"));
     FUNCTION_NAME(erf, tr("Error Function"));
