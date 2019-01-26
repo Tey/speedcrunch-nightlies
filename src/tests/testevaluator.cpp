@@ -1069,6 +1069,14 @@ void test_format()
 }
 
 
+void test_datetime()
+{
+    CHECK_EVAL("datetime(1538242871;0)", "20180929.174111");
+	  CHECK_EVAL("datetime(1514761200;1)", "20180101.000000");
+    CHECK_EVAL("datetime(1514764800;-1)", "20171231.230000");
+}
+
+
 int main(int argc, char* argv[])
 {
     QCoreApplication app(argc, argv);
@@ -1118,6 +1126,7 @@ int main(int argc, char* argv[])
     eval->initializeBuiltInVariables();
     test_complex();
     test_format();
+    test_datetime();
 
     test_angle_mode(settings);
 
