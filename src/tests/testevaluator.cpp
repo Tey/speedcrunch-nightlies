@@ -1071,9 +1071,13 @@ void test_format()
 
 void test_datetime()
 {
-    CHECK_EVAL("datetime(1538242871;0)", "20180929.174111");
-	  CHECK_EVAL("datetime(1514761200;1)", "20180101.000000");
-    CHECK_EVAL("datetime(1514764800;-1)", "20171231.230000");
+    // NOTE We cannot test datetime() with only 1 argument as it depends on current timezone (and DST?)
+
+    CHECK_EVAL("datetime(1538242871;    0)", "20180929.174111");
+    CHECK_EVAL("datetime(1514761200;    1)", "20180101.000000");
+    CHECK_EVAL("datetime(1514764800;   -1)", "20171231.230000");
+    CHECK_EVAL("datetime(1551464695;13.75)", "20190302.080955");  // GMT +13:45
+    CHECK_EVAL("datetime(1551464695; -3.5)", "20190301.145455");  // GMT -03:30
 }
 
 
@@ -1130,8 +1134,11 @@ int main(int argc, char* argv[])
 
     test_angle_mode(settings);
 
-    if (!eval_failed_tests)
+    if (!eval_failed_tests) {
+        cout << "All tests succeed" << endl;
         return 0;
+    }
+
     cout << eval_total_tests  << " total, "
          << eval_failed_tests << " failed, "
          << eval_new_failed_tests << " new" << endl;
