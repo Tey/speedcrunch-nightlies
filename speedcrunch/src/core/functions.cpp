@@ -846,23 +846,27 @@ Quantity function_datetime(Function* f, const Function::ArgumentList& args)
 {
     ENSURE_EITHER_ARGUMENT_COUNT(1, 2);
     time_t timestamp = args.at(0).numericValue().toInt();
-    struct tm time;
+    struct tm *time;
 
     char format[] = "%Y%m%d.%H%M%S";
     char res[32];
 
     if (args.count() == 2) {
-      timestamp += args.at(1).numericValue().toInt() * 3600;
-      time = *std::gmtime(&timestamp);
-      
-    } else
-    {
-      time = *localtime(&timestamp);
+        timestamp += (args.at(1).numericValue() * 3600).toInt();
+        time = std::gmtime(&timestamp);
+    } else {
+        time = localtime(&timestamp);
     }
-    
-    strftime(res, sizeof(res), format, &time);
+
+    if (time == nullptr) {
+        // Happen when specifying a negative timestamp on Windows
+        f->setError(OutOfIntegerRange);
+        return CMath::nan(OutOfIntegerRange);
+    }
+
+    strftime(res, sizeof(res), format, time);
     HNumber Temp(res);
-		return Quantity(Temp).setFormat(Quantity::Format::Fixed() + Quantity::Format::Decimal() + Quantity::Format::Precision(6));
+    return Quantity(Temp).setFormat(Quantity::Format::Fixed() + Quantity::Format::Decimal() + Quantity::Format::Precision(6));
 
 }
 
@@ -1097,7 +1101,7 @@ void FunctionRepo::setTranslatableFunctionUsages()
     FUNCTION_USAGE_TR(binommean, tr("trials; probability"));
     FUNCTION_USAGE_TR(binompmf, tr("hits; trials; probability"));
     FUNCTION_USAGE_TR(binomvar, tr("trials; probability"));
-    FUNCTION_USAGE_TR(datetime, tr("unix_timestamp; x offset to GMT"));
+    FUNCTION_USAGE_TR(datetime, tr("unix_timestamp; x hours offset to GMT"));
     FUNCTION_USAGE_TR(hypercdf, tr("max; total; hits; trials"));
     FUNCTION_USAGE_TR(hypermean, tr("total; hits; trials"));
     FUNCTION_USAGE_TR(hyperpmf, tr("count; total; hits; trials"));
