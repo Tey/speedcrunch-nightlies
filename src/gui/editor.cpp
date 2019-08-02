@@ -90,6 +90,16 @@ Editor::Editor(QWidget* parent)
     setFixedHeight(sizeHint().height());
 }
 
+void Editor::refreshAutoCalc()
+{
+    if (m_isAutoCalcEnabled) {
+      if (!textCursor().selectedText().isEmpty())
+          checkSelectionAutoCalc();
+      else
+          checkAutoCalc();
+    }
+}
+
 QString Editor::text() const
 {
     return toPlainText();
