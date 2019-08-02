@@ -938,8 +938,11 @@ void MainWindow::createFixedConnections()
     connect(this, SIGNAL(historyChanged()), m_widgets.display, SLOT(refresh()));
 
     connect(this, SIGNAL(radixCharacterChanged()), m_widgets.display, SLOT(refresh()));
+    connect(this, SIGNAL(radixCharacterChanged()), m_widgets.editor, SLOT(refreshAutoCalc()));
     connect(this, SIGNAL(resultFormatChanged()), m_widgets.display, SLOT(refresh()));
+    connect(this, SIGNAL(resultFormatChanged()), m_widgets.editor, SLOT(refreshAutoCalc()));
     connect(this, SIGNAL(resultPrecisionChanged()), m_widgets.display, SLOT(refresh()));
+    connect(this, SIGNAL(resultPrecisionChanged()), m_widgets.editor, SLOT(refreshAutoCalc()));
     connect(this, SIGNAL(colorSchemeChanged()), m_widgets.display, SLOT(rehighlight()));
     connect(this, SIGNAL(colorSchemeChanged()), m_widgets.editor, SLOT(rehighlight()));
     connect(m_actionGroups.colorScheme, &QActionGroup::hovered, this, &MainWindow::applyColorSchemeFromAction);

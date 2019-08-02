@@ -58,6 +58,7 @@ AboutBox::AboutBox(QWidget* parent, Qt::WindowFlags f)
 
     msg += "<p>" + QString("<b>%1</b><br>").arg(tr("Thanks"));
     msg +=
+        THANKS(Alan Birtles)
         THANKS(Alan Davies)
         THANKS(Alejandro Villarreal)
         THANKS(Alessandro Portale)

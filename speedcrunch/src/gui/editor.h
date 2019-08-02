@@ -88,6 +88,7 @@ public slots:
     void insertConstant(const QString&);
     void rehighlight();
     void updateHistory();
+    void refreshAutoCalc();
 
 protected slots:
     void insertFromMimeData(const QMimeData*) override;
