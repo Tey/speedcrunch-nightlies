@@ -17,8 +17,8 @@
    Boston, MA 02110-1301, USA.
  */
 
-#ifndef _ERRORS_H
-#define _ERRORS_H
+#ifndef _SCERRORS_H
+#define _SCERRORS_H
 
 #ifdef __cplusplus
 extern "C"{
@@ -161,4 +161,4 @@ typedef enum
 }
 #endif
 
-#endif /* _ERRORS_H */
+#endif /* _SCERRORS_H */
