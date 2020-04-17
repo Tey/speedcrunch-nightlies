@@ -3,7 +3,8 @@ host = https://www.transifex.com
 
 [speedcrunch.en_usts]
 file_filter = <lang>.ts
+lang_map = uz@Latn:uz_Latn_UZ
 source_file = en_US.ts
 source_lang = en
 type = QT
-lang_map = uz@Latn:uz_Latn_UZ
+
