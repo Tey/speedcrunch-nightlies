@@ -2,7 +2,7 @@
 Type=Application
 _Name=SpeedCrunch
 Exec=speedcrunch
-Icon=speedcrunch
+Icon=org.speedcrunch.SpeedCrunch
 StartupWMClass=speedcrunch
 _Comment=A high-precision scientific calculator
 Categories=Qt;Utility;Calculator;
