@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2016 Felix Krull <f_krull@gmx.de> -->
-<component type="desktop">
-  <id>speedcrunch.desktop</id>
+<!-- Copyright 2016-2020 The SpeedCrunch Developers -->
+<component type="desktop-application">
+  <id>org.speedcrunch.SpeedCrunch</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <update_contact>speedcrunch@googlegroups.com</update_contact>
@@ -28,6 +28,17 @@
       SpeedCrunch is available for several platforms in a number of languages.
     </_p>
   </description>
+
+  <launchable type="desktop-id">org.speedcrunch.SpeedCrunch.desktop</launchable>
+  <provides>
+    <binary>speedcrunch</binary>
+    <id>speedcrunch.desktop</id>
+  </provides>
+
+  <kudos>
+   <kudo>ModernToolkit</kudo>
+   <kudo>UserDocs</kudo>
+  </kudos>
 
   <screenshots>
     <screenshot type="default">

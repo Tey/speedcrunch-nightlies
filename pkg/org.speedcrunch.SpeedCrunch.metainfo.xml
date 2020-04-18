@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop">
-  <id>speedcrunch.desktop</id>
+<component type="desktop-application">
+  <id>org.speedcrunch.SpeedCrunch</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <update_contact>speedcrunch@googlegroups.com</update_contact>
@@ -57,6 +57,17 @@
     <p xml:lang="ru">SpeedCrunch доступен для нескольких платформ в ряде языков.</p>
     <p xml:lang="zh">SpeedCrunch 提供多种语言和平台。</p>
   </description>
+
+  <launchable type="desktop-id">org.speedcrunch.SpeedCrunch.desktop</launchable>
+  <provides>
+    <binary>speedcrunch</binary>
+    <id>speedcrunch.desktop</id>
+  </provides>
+
+  <kudos>
+   <kudo>ModernToolkit</kudo>
+   <kudo>UserDocs</kudo>
+  </kudos>
 
   <screenshots>
     <screenshot type="default">
