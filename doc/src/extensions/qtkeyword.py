@@ -27,7 +27,7 @@ qthelp2 builder.
 
 
 from docutils.parsers.rst import Directive
-from sphinx.builders.qthelp import QtHelpBuilder
+from sphinxcontrib.qthelp import QtHelpBuilder
 from docutils import nodes
 
 
@@ -147,6 +147,7 @@ def process_keywords(app, env, docname):
 
 
 def setup(app):
+    app.setup_extension('sphinxcontrib.qthelp')
     app.add_config_value('ignore_qtkeywords', True, 'html')
     app.add_builder(MyQtHelpBuilder)
     app.add_directive('qtkeyword', QtKeywordDirective)

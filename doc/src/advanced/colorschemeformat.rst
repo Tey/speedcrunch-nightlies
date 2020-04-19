@@ -13,9 +13,10 @@ without having to recompile SpeedCrunch.
 In addition to the color schemes integrated into the application, color scheme files
 are loaded from the following directory:
 
- * Windows: :file:`C:/Users/<USERNAME>/AppData/Roaming/SpeedCrunch/color-schemes`
+ * Windows: :file:`C:/Users/<USERNAME>/AppData/Roaming/SpeedCrunch/color-schemes/`
  * Linux/Unix: :file:`~/.local/share/SpeedCrunch/color-schemes/`
- * OS X: :file:`~/Library/Application Support/SpeedCrunch/color-schemes`
+ * Linux (Flatpak): :file:`~/.var/app/org.speedcrunch.SpeedCrunch/data/SpeedCrunch/color-schemes/`
+ * OS X: :file:`~/Library/Application Support/SpeedCrunch/color-schemes/`
  * When using a portable version of SpeedCrunch on any operating system, additional color schemes
    are loaded from the :file:`color-schemes` subdirectory in the portable application directory.
 
