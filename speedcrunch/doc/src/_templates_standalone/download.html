@@ -48,7 +48,11 @@
           <p>
             {% if not linux_dropdown -%}
               {% for (name, path) in linux -%}
-                <a class="btn btn-primary btn-md dl-button" href="{{ path }}"><i class="fa fa-laptop fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ name }}</a>
+                {% if name == 'Flathub' -%}
+                  <a href="{{ path }}"><img width="180" alt="{{ _('Download on Flathub') }}" src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
+                {%- else -%}
+                  <a class="btn btn-primary btn-md dl-button" href="{{ path }}"><i class="fa fa-laptop fa-lg" style="vertical-align:middle;"></i>&nbsp;{{ name }}</a>
+                {%- endif %}
               {%- endfor %}
             {%- else -%}
               <div class="btn-group">
@@ -101,7 +105,7 @@
     </ul>
 
     <div class="container">
-      <h1>{% trans %}Version 0.12{% endtrans %}</h1>
+      <h1>{% trans %}Version 1.0{% endtrans %}</h1>
       {{ downloads(
         win=[
           (_('Installer'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12-win32.exe'),
@@ -109,13 +113,8 @@
 
         osx=[(_('Download'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12.dmg')],
 
-        linux=[
-          (_('32-bit RPM'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12-linux32.rpm'),
-          (_('32-bit Deb'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12-linux32.deb'),
-          (_('32-bit Generic'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12-linux32.tar.bz2'),
-          (_('64-bit RPM'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12-linux64.rpm'),
-          (_('64-bit Deb'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12-linux64.deb'),
-          (_('64-bit Generic'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12-linux64.tar.bz2'),]
+        linux=[('Flathub', 'https://flathub.org/apps/details/org.speedcrunch.SpeedCrunch'),],
+        linux_dropdown=False,
       ) }}
       <hr/>
 
@@ -127,6 +126,22 @@
 
       <h1>{% trans %}Older Versions{% endtrans %}</h1>
       <div id="accordion" role="tablist" aria-multiselectable="true">
+        {{ oldVersion('0.12', '012',
+          win=[
+            (_('Installer'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12-win32.exe'),
+            (_('Portable'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12-win32.zip'),],
+
+          osx=[(_('Download'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12.dmg')],
+
+          linux=[
+            (_('32-bit RPM'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12-linux32.rpm'),
+            (_('32-bit Deb'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12-linux32.deb'),
+            (_('32-bit Generic'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12-linux32.tar.bz2'),
+            (_('64-bit RPM'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12-linux64.rpm'),
+            (_('64-bit Deb'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12-linux64.deb'),
+            (_('64-bit Generic'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.12-linux64.tar.bz2'),],
+        ) }}
+
         {{ oldVersion('0.11', '011',
           win=[
             (_('Installer'), 'https://bitbucket.org/heldercorreia/speedcrunch/downloads/SpeedCrunch-0.11.exe'),

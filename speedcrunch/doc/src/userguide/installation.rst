@@ -32,10 +32,8 @@ there.
 Linux
 -----
 
-On Linux, there are two main ways to install SpeedCrunch: Either install the package
-provided by your distribution, if any, or install the binary packages from
-the SpeedCrunch website.
-
+On Linux, SpeedCrunch can be installed either from packages provided by your distribution
+or from official Flatpak packages.
 
 Distribution Packages
 +++++++++++++++++++++
@@ -48,45 +46,26 @@ Ubuntu, the included SpeedCrunch package can be installed by running this comman
 
 On Fedora, this command will install SpeedCrunch::
 
-   sudo yum install speedcrunch
+   sudo dnf install speedcrunch
 
 Check your system's documentation to find out how to install additional packages.
 Many desktop distributions also include graphical package management software that
 can be used to install SpeedCrunch.
 
 
-Generic Packages
-++++++++++++++++
+Flatpak
++++++++
 
-.. versionadded:: 0.12
+`Flatpak <flatpak_>`_ is a distribution-independent packaging format for Linux desktop applications. The latest stable
+release of SpeedCrunch is available as a Flatpak package from `Flathub <flathub_>`_.
 
-   The generic Linux packages are available starting with SpeedCrunch 0.12.
+First, visit Flathub's `setup page <flathub-setup_>`_ and follow the instructions for your distribution to set up
+Flatpak and Flathub. Then install SpeedCrunch from its `store page <flathub-sc_>`_ on Flathub.
 
-As an alternative to distribution packages, Linux binary packages of SpeedCrunch are
-available on `the SpeedCrunch website <sc_>`_. They are generic packages that are built
-to be compatible with many different Linux systems. As a rule of thumb, they are likely
-to work on most Linux distributions released since around 2010; however, due to the
-wide variety and flexibility of Linux systems, this is only a best-effort endeavor and
-never guaranteed. Additionally, due to the generic nature of the packages, they may not
-integrate as well with the system as your distribution's packages; in particular, they
-won't adapt as well to the visual style of your desktop environment. In general, if there's
-a SpeedCrunch package available from your distribution, that will likely work better for
-your system than these generic packages, but it may be an older version.
-
-.. _sc: http://speedcrunch.org
-
-There's choice of three different types of packages per architecture (32-bit or 64-bit); which
-one is right for you depends on your system:
-
-* Use the ``.deb`` packages for Debian and derived distributions, like Ubuntu.
-* Use the ``.rpm`` packages for RPM-based systems like Fedora, Red Hat Enterprise Linux/CentOS, openSUSE or Mageia.
-
-The exact steps for installing the package again depend on your system. Most desktop Linux distributions
-include a graphical utility to install package files from the file manager.
-
-If neither of these fit your system, there are also ``.tar.bz2`` archives that simply contain
-the binary. The contents can be copied to any directory and the :program:`speedcrunch` binary
-can be run from there.
+.. _flatpak: https://flatpak.org/
+.. _flathub: https://flathub.org/
+.. _flathub-setup: https://flatpak.org/setup/
+.. _flathub-sc: https://flathub.org/apps/details/org.speedcrunch.SpeedCrunch
 
 
 Development Builds
@@ -103,11 +82,10 @@ yourself. Currently, automatically updated
 development builds of SpeedCrunch are available for the following platforms:
 
 * `Windows <dev-win_>`_
-* `Ubuntu <dev-ubuntu_>`_ (14.04 and later)
+* `Ubuntu <dev-ubuntu_>`_ (16.04 and later)
 
 .. _dev-win: https://github.com/Tey/speedcrunch-nightlies/releases
 .. _dev-ubuntu: https://code.launchpad.net/~fkrull/+archive/ubuntu/speedcrunch-daily
-
 
 
 Building from Source
