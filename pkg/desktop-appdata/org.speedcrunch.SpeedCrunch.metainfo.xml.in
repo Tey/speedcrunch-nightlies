@@ -77,7 +77,6 @@
        executable so we just use a static list instead. See:
        https://blogs.gnome.org/hughsie/2016/01/25/appdata-and-the-gettext-domain/#comment-5137
        TODO: Maybe autogenerate this. -->
-  <translation/>
   <languages>
     <lang>hu</lang>
     <lang>pt_PT</lang>
