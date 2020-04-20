@@ -12,7 +12,7 @@ To build SpeedCrunch, you need:
 
 - A C++11-capable compiler (e.g. Microsoft Visual C++ 2013 or later, GCC 4.8 or later)
 - [Qt](http://qt.io) 5.2 or later
-- [CMake](http://cmake.org) 3.0 or later
+- [CMake](http://cmake.org) 3.1 or later
 
 To build SpeedCrunch in a dedicated build directory and install it, run the following
 commands from the root of the source directory:

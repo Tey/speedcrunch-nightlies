@@ -1,5 +1,5 @@
 project(speedcrunch)
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.1)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
@@ -9,7 +9,6 @@ if (MSVC)
 else()
     add_compile_options(-Wall
                         -Wno-shift-negative-value)
-    set(CMAKE_CXX_FLAGS "-std=c++0x")
 endif()
 
 if(APPLE)
@@ -76,6 +75,8 @@ elseif(APPLE)
 else()
     add_executable(${APPLICATION_NAME} ${speedcrunch_SOURCES} ${speedcrunch_RESOURCES})
 endif()
+
+set_property(TARGET ${APPLICATION_NAME} PROPERTY CXX_STANDARD 11)
 
 add_custom_target(confclean COMMAND rm -rf Makefile CMakeFiles/ CMakeCache.txt cmake_install.cmake DartTestfile.txt install_manifest.txt)
 
