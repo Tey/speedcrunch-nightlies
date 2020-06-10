@@ -35,6 +35,7 @@ typedef CNumber::Format Format;
 #define CHECK_FORMAT(f,x,y) check_format(__FILE__,__LINE__,#x,x,f,y)
 #define CHECK_PRECISE(x,y) check_precise(__FILE__,__LINE__,#x,x,y)
 #define CHECK_KNOWN_ISSUE(x,y,n) check_value(__FILE__,__LINE__,#x,x,y,n)
+#define CHECK_KNOWN_ISSUE_PRECISE(x,y,n) check_precise(__FILE__,__LINE__,#x,x,y,n)
 
 static int cmath_total_tests = 0;
 static int cmath_failed_tests = 0;
@@ -56,11 +57,11 @@ static void check_format(const char* file, int line, const char* msg, const CNum
     DisplayErrorOnMismatch(file, line, msg, result, expected, cmath_failed_tests, cmath_new_failed_tests, 0);
 }
 
-static void check_precise(const char* file, int line, const char* msg, const CNumber& n, const char* expected)
+static void check_precise(const char* file, int line, const char* msg, const CNumber& n, const char* expected, int issue = 0)
 {
     ++cmath_total_tests;
     string result = CMath::format(n, Format::Fixed() + Format::Precision(50)).toStdString();
-    DisplayErrorOnMismatch(file, line, msg, result, expected, cmath_failed_tests, cmath_new_failed_tests, 0);
+    DisplayErrorOnMismatch(file, line, msg, result, expected, cmath_failed_tests, cmath_new_failed_tests, issue);
 }
 
 void test_create()
@@ -623,6 +624,10 @@ void test_functions()
     CHECK_PRECISE(CMath::ln("3.0"), "1.09861228866810969139524523692252570464749055782275");
     CHECK_PRECISE(CMath::ln("4.0"), "1.38629436111989061883446424291635313615100026872051");
     CHECK_PRECISE(CMath::ln("100"), "4.60517018598809136803598290936872841520220297725755");
+
+    // Issue 965
+    CHECK_KNOWN_ISSUE_PRECISE(CMath::ln(CMath::raise("16", "3")), "8.31776616671934371300678545749811881690600161232306", 965);
+    CHECK_KNOWN_ISSUE_PRECISE(CMath::log("2", CMath::raise("16", "3")), "12.00000000000000000000000000000000000000000000000000", 965);
 
     CHECK(CMath::lg("NaN"), "NaN");
     CHECK(CMath::lg("-1"), "1.36437635384184134749j");
