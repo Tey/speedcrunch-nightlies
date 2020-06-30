@@ -1378,7 +1378,7 @@ void MainWindow::hideStateLabel()
 void MainWindow::showSessionLoadDialog()
 {
     QString filters = tr("SpeedCrunch Sessions (*.json);;All Files (*)");
-    QString fname = QFileDialog::getOpenFileName(this, tr("Load Session"), QString::null, filters);
+    QString fname = QFileDialog::getOpenFileName(this, tr("Load Session"), QString(), filters);
     if (fname.isEmpty())
         return;
 
@@ -1423,7 +1423,7 @@ void MainWindow::wrapSelection()
 void MainWindow::saveSessionDialog()
 {
     QString filters = tr("SpeedCrunch Sessions (*.json);;All Files (*)");
-    QString fname = QFileDialog::getSaveFileName(this, tr("Save Session"), QString::null, filters);
+    QString fname = QFileDialog::getSaveFileName(this, tr("Save Session"), QString(), filters);
     if (fname.isEmpty())
         return;
 
@@ -1444,7 +1444,7 @@ void MainWindow::saveSessionDialog()
 void MainWindow::showSessionImportDialog()
 {
     QString filters = tr("All Files (*)");
-    QString fname = QFileDialog::getOpenFileName(this, tr("Import Session"), QString::null, filters);
+    QString fname = QFileDialog::getOpenFileName(this, tr("Import Session"), QString(), filters);
     if (fname.isEmpty())
         return;
 
