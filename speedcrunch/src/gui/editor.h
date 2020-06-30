@@ -79,7 +79,7 @@ signals:
     void shiftPageUpPressed();
 
 public slots:
-    void autoCalcSelection(const QString& custom = QString::null);
+    void autoCalcSelection(const QString& custom = QString());
     void cancelConstantCompletion();
     void evaluate();
     void decreaseFontPointSize();
