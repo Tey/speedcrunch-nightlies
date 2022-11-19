@@ -1,5 +1,5 @@
 project(speedcrunch)
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.16)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
@@ -25,9 +25,9 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 set(CMAKE_MACOSX_RPATH ON)
 
-find_package(Qt5Core REQUIRED)
-find_package(Qt5Widgets REQUIRED)
-find_package(Qt5Help REQUIRED)
+find_package(Qt5 COMPONENTS REQUIRED Core)
+find_package(Qt5 COMPONENTS REQUIRED Widgets)
+find_package(Qt5 COMPONENTS REQUIRED Help)
 
 ADD_DEFINITIONS("-DSPEEDCRUNCH_VERSION=\"${speedcrunch_VERSION}\"")
 ADD_DEFINITIONS(-DQT_USE_QSTRINGBUILDER)
@@ -82,8 +82,7 @@ set_property(TARGET ${APPLICATION_NAME} PROPERTY CXX_STANDARD 11)
 add_custom_target(confclean COMMAND rm -rf Makefile CMakeFiles/ CMakeCache.txt cmake_install.cmake DartTestfile.txt install_manifest.txt)
 
 set(QT_LIBRARIES Qt5::Widgets Qt5::Help)
-target_link_libraries(${APPLICATION_NAME} ${QT_LIBRARIES})
-qt5_use_modules(${APPLICATION_NAME} Widgets Help Sql)
+target_link_libraries(${APPLICATION_NAME} ${QT_LIBRARIES} Qt5::Widgets Qt5::Help Qt5::Sql)
 
 enable_testing()
 
@@ -154,10 +153,6 @@ if(WIN32)
     include(QtWin32Deploy)
     qtwin32_deploy_modules(${BIN_INSTALL_DIR} qtwin32_Qt5Widgets qtwin32_Qt5Help)
     qtwin32_deploy_default_qt_conf(${BIN_INSTALL_DIR})
-    if(${qtwin32_QT_MINOR_VERSION} VERSION_LESS 5.5)
-        # Qt 5.4 and below also require ICU.
-        qtwin32_deploy_modules(${BIN_INSTALL_DIR} qtwin32_ICU)
-    endif()
 elseif(APPLE)
     include(MacdeployQt)
     macdeployqt(${APPLICATION_NAME}.app ${APPLICATION_NAME})
