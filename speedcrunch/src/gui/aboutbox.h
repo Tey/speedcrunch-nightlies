@@ -26,7 +26,7 @@ class AboutBox : public QDialog {
     Q_OBJECT
 
 public:
-    explicit AboutBox(QWidget *parent = 0, Qt::WindowFlags f = 0);
+    explicit AboutBox(QWidget *parent = 0, Qt::WindowFlags f = QFlag(0));
 
 private:
     Q_DISABLE_COPY(AboutBox)

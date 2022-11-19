@@ -1,5 +1,6 @@
 // This file is part of the SpeedCrunch project
 // Copyright (C) 2016 Pol Welter <polwelter@gmail.com>
+// Copyright (C) 2021 @heldercorreia
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -24,6 +25,7 @@
 #include <QtCore/QLocale>
 #include <QFile>
 #include <QtHelp/QHelpEngineCore>
+#include <QtHelp/QHelpLink>
 #include <QString>
 #include <QMap>
 #include <QEvent>
@@ -40,7 +42,7 @@
 #define QHC_RES_PATH(lang) (":/manual/" + QHC_NAME(lang))
 #define QCH_RES_PATH(lang) (":/manual/" + QCH_NAME(lang))
 
-ManualServer* ManualServer::s_instance = NULL;
+ManualServer* ManualServer::s_instance = nullptr;
 
 QString ManualServer::deployDocs()
 {
@@ -96,7 +98,7 @@ void ManualServer::setupHelpEngine()
 
 ManualServer *ManualServer::instance()
 {
-    if(!s_instance)
+    if (!s_instance)
         s_instance = new ManualServer();
     return s_instance;
 }
@@ -105,14 +107,13 @@ bool ManualServer::URLforKeyword(const QString id, QUrl &result)
 {
     ensureCorrectLanguage();
     result = "";
-    if(!m_helpEngine)
-        return 0;
-    QMap<QString, QUrl> l;
-    l = m_helpEngine->linksForIdentifier(id);
-    if(l.isEmpty())
-        return 0;
-    result = l.first();
-    return 1;
+    if (!m_helpEngine)
+        return false;
+    auto docs = m_helpEngine->documentsForIdentifier(id);
+    if (docs.isEmpty())
+        return false;
+    result = docs[0].url;
+    return true;
 }
 
 QByteArray ManualServer::fileData(const QUrl &url)
@@ -128,11 +129,11 @@ void ManualServer::languageChanged()
 
 void ManualServer::ensureCorrectLanguage()
 {
-    if(Settings::instance()->language != m_deployedLanguage)
+    if (Settings::instance()->language != m_deployedLanguage)
         languageChanged();
 }
 
 ManualServer::ManualServer()
 {
-    m_helpEngine = NULL;
+    m_helpEngine = nullptr;
 }

@@ -34,6 +34,8 @@
 #include <QTextDocument>
 #include <QTextDocumentFragment>
 
+static const constexpr auto COLOR_SCHEME_EXTENSION = "json";
+
 static const QVector<QString> colorSchemeSearchPaths()
 {
     static QVector<QString> searchPaths;
@@ -107,7 +109,7 @@ QStringList ColorScheme::enumerate()
     for (auto& searchPath : colorSchemeSearchPaths()) {
         QDir dir(searchPath);
         dir.setFilter(QDir::Files | QDir::Readable);
-        dir.setNameFilters({ QString("*.%1").arg(m_colorSchemeExtension) });
+        dir.setNameFilters({ QString("*.%1").arg(COLOR_SCHEME_EXTENSION) });
         const auto infoList = dir.entryInfoList();
         for (auto& info : infoList) // TODO: Use Qt 5.7's qAsConst().
             colorSchemes.insert(info.completeBaseName(), nullptr);
@@ -128,7 +130,7 @@ ColorScheme ColorScheme::loadFromFile(const QString& path)
 ColorScheme ColorScheme::loadByName(const QString& name)
 {
     for (auto& path : colorSchemeSearchPaths()) {
-        auto fileName = QString("%1/%2.%3").arg(path, name, m_colorSchemeExtension);
+        auto fileName = QString("%1/%2.%3").arg(path, name, COLOR_SCHEME_EXTENSION);
         auto colorScheme = loadFromFile(fileName);
         if (colorScheme.isValid())
             return colorScheme;
@@ -404,7 +406,7 @@ void SyntaxHighlighter::asHtml(QString& html)
     for(QTextBlock current = start; current.isValid() && current != end; current = current.next()) {
         const QTextLayout* layout(current.layout());
 
-        foreach(const QTextLayout::FormatRange &range, layout->additionalFormats()) {
+        foreach(const QTextLayout::FormatRange &range, layout->formats()) {
             const int start = current.position() + range.start - selectionStart;
             const int end = start + range.length;
             if(end <= 0 || start >= endOfDocument)

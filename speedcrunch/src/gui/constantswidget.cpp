@@ -54,7 +54,7 @@ ConstantsWidget::ConstantsWidget(QWidget* parent)
     m_label = new QLabel(this);
 
     m_filter = new QLineEdit(this);
-    m_filter->setMinimumWidth(fontMetrics().width('X') * 10);
+    m_filter->setMinimumWidth(fontMetrics().horizontalAdvance('X') * 10);
 
     connect(m_filter, SIGNAL(textChanged(const QString &)), SLOT(triggerFilter()));
 

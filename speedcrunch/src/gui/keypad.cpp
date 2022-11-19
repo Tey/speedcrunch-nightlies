@@ -187,7 +187,7 @@ void Keypad::sizeButtons()
     // The same font in all buttons, so just pick one.
     QFontMetrics fm = key(Key0)->fontMetrics();
 
-    int maxWidth = fm.width(key(KeyAcos)->text());
+    int maxWidth = fm.horizontalAdvance(key(KeyAcos)->text());
     const int textHeight = qMax(fm.lineSpacing(), 14);
 
     QStyle::ContentsType type = QStyle::CT_ToolButton;
