@@ -1604,6 +1604,10 @@ void Evaluator::compile(const Tokens& tokens)
                        (token.isOperator()
                            && opPrecedence(op.asOperator()) >=
                                opPrecedence(token.asOperator())
+#ifdef ALLOW_IMPLICIT_MULT
+                           && (token.asOperator() != Token::AssociationStart
+                               || opPrecedence(op.asOperator()) >= opPrecedence(Token::Multiplication))
+#endif
                            && !(b.isIdentifier() && token.asOperator() == Token::AssociationStart)
                            && token.asOperator() != Token::Exponentiation)
 
