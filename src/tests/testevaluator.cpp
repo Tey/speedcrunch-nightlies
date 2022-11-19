@@ -1057,6 +1057,9 @@ void test_implicit_multiplication()
     CHECK_EVAL_KNOWN_ISSUE("2^2(2*2)", "16", 741);
     CHECK_EVAL_KNOWN_ISSUE("2^2(2)+3", "11", 741);
     CHECK_EVAL_FAIL("pi (2)");
+
+    CHECK_EVAL_KNOWN_ISSUE("2(7.5−0.5)+4(12−0.75)", "59", 1155);
+    CHECK_EVAL_KNOWN_ISSUE("2+2(5)", "12", 1155);
 }
 
 void test_format()
