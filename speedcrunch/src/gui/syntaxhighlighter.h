@@ -55,6 +55,7 @@ public:
 private:
     bool m_valid;
     QHash<Role, QColor> m_colors;
+    static const constexpr char* m_colorSchemeExtension = "json";
 };
 
 class SyntaxHighlighter : public QSyntaxHighlighter {
