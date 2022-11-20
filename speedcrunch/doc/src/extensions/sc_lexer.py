@@ -114,16 +114,18 @@ class SpeedCrunchSessionLexer(SpeedCrunchLexer):
         ]
     }
 
+    def __init__(self):
+        super().__init__(stripnl=False)
+        self.add_filter('raiseonerror')
+
 
 __all__ = ['SpeedCrunchLexer', 'SpeedCrunchSessionLexer']
 
 
 # Sphinx extension interface
 def setup(app):
-    sc_lexer = SpeedCrunchSessionLexer(stripnl=False)
-    sc_lexer.add_filter('raiseonerror')
-    app.add_lexer('sc', sc_lexer)
-    app.add_lexer('speedcrunch', sc_lexer)
+    app.add_lexer('sc', SpeedCrunchSessionLexer)
+    app.add_lexer('speedcrunch', SpeedCrunchSessionLexer)
     return {
         'version': '0.1',
         'parallel_read_safe': True,
