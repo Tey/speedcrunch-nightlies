@@ -42,29 +42,29 @@
 
   <screenshots>
     <screenshot type="default">
-      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/advanced-features.png</image>
+      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/advanced-features.png</image>
     </screenshot>
     <screenshot>
       <_caption>Main window with optional keypad</_caption>
-      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/keypad.png</image>
+      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/keypad.png</image>
     </screenshot>
     <screenshot>
       <_caption>The constants list and formula book</_caption>
-      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/constants+book.png</image>
+      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/constants+book.png</image>
     </screenshot>
     <screenshot>
       <_caption>Customizable user interface</_caption>
-      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/ui-customization.png</image>
+      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/ui-customization.png</image>
     </screenshot>
     <screenshot>
       <_caption>The built-in user manual</_caption>
-      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/manual.png</image>
+      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/manual.png</image>
     </screenshot>
   </screenshots>
 
-  <url type="homepage">http://speedcrunch.org</url>
+  <url type="homepage">https://heldercorreia.bitbucket.io/speedcrunch</url>
   <url type="bugtracker">https://bitbucket.org/heldercorreia/speedcrunch/issues</url>
-  <url type="help">http://speedcrunch.org/introduction.html</url>
+  <url type="help">https://heldercorreia.bitbucket.io/speedcrunch/introduction.html</url>
 
   <releases>
     <release version="0.12" date="2016-11-29"/>

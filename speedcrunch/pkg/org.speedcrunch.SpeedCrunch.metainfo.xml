@@ -71,7 +71,7 @@
 
   <screenshots>
     <screenshot type="default">
-      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/advanced-features.png</image>
+      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/advanced-features.png</image>
     </screenshot>
     <screenshot>
       <caption>Main window with optional keypad</caption>
@@ -80,7 +80,7 @@
       <caption xml:lang="lt">Pagrindinis langas su pasirinktine klaviatūra</caption>
       <caption xml:lang="ru">Главное окно с дополнительной клавиатурой</caption>
       <caption xml:lang="zh">主窗口（键盘可用）</caption>
-      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/keypad.png</image>
+      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/keypad.png</image>
     </screenshot>
     <screenshot>
       <caption>The constants list and formula book</caption>
@@ -89,7 +89,7 @@
       <caption xml:lang="lt">Konstantų sąrašas bei formulių knyga</caption>
       <caption xml:lang="ru">Константы и формулы</caption>
       <caption xml:lang="zh">常量列表和公式书</caption>
-      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/constants+book.png</image>
+      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/constants+book.png</image>
     </screenshot>
     <screenshot>
       <caption>Customizable user interface</caption>
@@ -98,7 +98,7 @@
       <caption xml:lang="lt">Tinkinama naudotojo sąsaja</caption>
       <caption xml:lang="ru">Настраиваемый пользовательский интерфейс</caption>
       <caption xml:lang="zh">可定制用户界面</caption>
-      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/ui-customization.png</image>
+      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/ui-customization.png</image>
     </screenshot>
     <screenshot>
       <caption>The built-in user manual</caption>
@@ -107,13 +107,13 @@
       <caption xml:lang="lt">Įtaisytas naudotojo vadovas</caption>
       <caption xml:lang="pt">O manual de usuário interno</caption>
       <caption xml:lang="zh">内置用户手册</caption>
-      <image>http://speedcrunch.org/_static/appdata-screenshots/0.12/manual.png</image>
+      <image>https://heldercorreia.bitbucket.io/speedcrunch/_static/appdata-screenshots/0.12/manual.png</image>
     </screenshot>
   </screenshots>
 
-  <url type="homepage">http://speedcrunch.org</url>
+  <url type="homepage">https://heldercorreia.bitbucket.io/speedcrunch</url>
   <url type="bugtracker">https://bitbucket.org/heldercorreia/speedcrunch/issues</url>
-  <url type="help">http://speedcrunch.org/introduction.html</url>
+  <url type="help">https://heldercorreia.bitbucket.io/speedcrunch/introduction.html</url>
 
   <releases>
     <release version="0.12" date="2016-11-29"/>
